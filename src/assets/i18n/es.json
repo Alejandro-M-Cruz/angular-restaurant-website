@@ -1,0 +1,95 @@
+{
+  "tabTitles": {
+    "home": "La Nostra Casa",
+    "login": "Iniciar sesión",
+    "signup": "Registrarse",
+    "myAccount": "Mi cuenta",
+    "reservations": "Reservas",
+    "newReservation": "Nueva reserva",
+    "complaints": "Hoja de reclamaciones",
+    "complaintsAdmin": "Reclamaciones"
+  },
+  "titles": {
+    "main": "La Nostra Casa",
+    "login": "Inicie sesión para poder ver sus reservas",
+    "signup": "Regístrese para poder realizar su primera reserva",
+    "myAccount": "Mi cuenta",
+    "reservations": "Reservas",
+    "newReservation": "Complete los datos para realizar su reserva",
+    "complaints": "Hoja de reclamaciones",
+    "complaintsAdmin": "Reclamaciones"
+  },
+  "navbarLinks": {
+    "home": "Inicio",
+    "reservations": "Reservas",
+    "menu": "Menú",
+    "aboutUs": "Sobre nosotros",
+    "contact": "Contacto",
+    "login": "Iniciar sesión",
+    "editMenu": "Editar menú",
+    "complaints": "Reclamaciones"
+  },
+  "links":{
+    "reservations": "HAGA SU RESERVA AQUÍ",
+    "adminReservations": "RESERVAS",
+    "complaints": "HOJA DE RECLAMACIONES",
+    "adminComplaints": "RECLAMACIONES Y SUGERENCIAS",
+    "editMenu": "Editar menú"
+  },
+  "buttons": {
+    "back": "Atrás",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "newReservation": "Nueva reserva",
+    "cancelReservation": "Cancelar reserva",
+    "deleteAccount": "Eliminar cuenta",
+    "logout": "Cerrar sesión",
+    "deleteSection": "Eliminar sección",
+    "addSection": "Añadir sección",
+    "editSection": "Editar sección",
+    "addProduct": "Añadir producto",
+    "undoChanges": "Deshacer cambios",
+    "saveChanges": "Guardar cambios"
+  },
+  "tableEmptyRows": {
+    "reservations": "Puede realizar {{available}} reserva/s más",
+    "adminReservations": "No hay reservas en este momento"
+  },
+  "formLabels": {
+    "phoneNumber": "Número de teléfono: ",
+    "password": "Contraseña: ",
+    "passwordConfirmation": "Confirme la contraseña: ",
+    "date": "Fecha: ",
+    "time": "Hora: ",
+    "customers": "Número de comensales: ",
+    "name": "A nombre de: "
+  },
+  "formHints": {
+    "menuItemName": "Nombre del producto",
+    "menuItemDescription": "Descripción del producto",
+    "menuItemPrice": "Precio del producto",
+    "menuImageSrc": "Ruta de la imagen del producto"
+  },
+  "alerts": {
+    "NOT_FOUND": "El recurso solicitado no está disponible",
+    "UNKNOWN_ERROR": "Se ha producido un error, inténtelo de nuevo",
+    "PASSWORDS_DONT_MATCH": "Las contraseñas no coinciden",
+    "DUPLICATE_USER": "Este número de teléfono ya ha sido registrado",
+    "FAILED_LOGIN": "El número de teléfono o la contraseña son incorrectos",
+    "NOT_LOGGED_IN": "No se ha iniciado sesión",
+    "INVALID_DATE": "La fecha seleccionada no es válida",
+    "INVALID_TIME": "La hora seleccionada no es válida",
+    "RESERVATION_SAME_DAY": "Ya ha realizado una reserva para la fecha seleccionada",
+    "RESERVATIONS_FULL": "No hay más reservas disponibles para la hora seleccionada",
+    "MAX_RESERVATIONS_EXCEEDED": "Ha alcanzado el número máximo de reservas",
+    "MAX_CUSTOMERS_EXCEEDED": "Ha seleccionado más asientos de los disponibles",
+    "SELECT_RESERVATION_TO_CANCEL": "Seleccione una reserva para poder cancelarla",
+    "CONFIRM_CANCEL_RESERVATION": "¿Está seguro de que desea cancelar la reserva?",
+    "CONFIRM_DELETE_ACCOUNT": "¿Está seguro de que desea eliminar su cuenta? Sus reservas se cancelarán automáticamente",
+    "CONFIRM_DELETE_ACCOUNT2": "¿Está seguro? Eliminar su cuenta no es reversible",
+    "DUPLICATE_MENU_SECTION": "Ya existe una sección con ese nombre",
+    "CONFIRM_CANCEL_CHANGES": "¿Está seguro de que desea cancelar los cambios?",
+    "CONFIRM_SAVE_CHANGES": "¿Está seguro de que desea guardar los cambios?",
+    "CONFIRM_DELETE_MENU_SECTION": "¿Está seguro de que desea eliminar esta sección del menú y todos los productos que contiene?"
+  }
+}

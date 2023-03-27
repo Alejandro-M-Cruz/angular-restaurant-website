@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-	  items = [{ link: "home", label: "Inicio" }, {link: "reservations", label: "Reservas" }, {link: "about-us", label: "Sobre nosotros" }];
-    showUserIcon = true;
+  items = ["home", "reservations", "menu", "aboutUs", "contact", "login"];
+  showUserIcon = false;
 }

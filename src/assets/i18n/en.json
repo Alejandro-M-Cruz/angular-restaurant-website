@@ -1,0 +1,94 @@
+{
+  "tabTitles": {
+    "home": "La Nostra Casa",
+    "login": "Log in",
+    "signup": "Sign up",
+    "myAccount": "My account",
+    "reservations": "Reservations",
+    "newReservation": "New reservation",
+    "complaints": "Complaint form",
+    "complaintsAdmin": "Complaints"
+  },
+  "titles": {
+    "main": "La Nostra Casa",
+    "login": "Log in to access your reservations",
+    "signup": "Sign up to make your first reservation",
+    "myAccount": "My account",
+    "reservations": "Reservations",
+    "newReservation": "Fill in the form to make a reservation",
+    "complaints": "Complaint form",
+    "complaintsAdmin": "Complaints"
+  },
+  "navbarLinks": {
+    "home": "Home",
+    "reservations": "Reservations",
+    "menu": "Menu",
+    "aboutUs": "About us",
+    "contact": "Contact",
+    "login": "Log in"
+  },
+  "links":{
+    "reservations": "MAKE YOUR RESERVATION HERE",
+    "adminReservations": "RESERVATIONS",
+    "complaints": "COMPLAINT FORM",
+    "adminComplaints": "COMPLAINTS AND SUGGESTIONS",
+    "editMenu": "EDIT MENU"
+  },
+  "buttons": {
+    "back": "Back",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "newReservation": "New reservation",
+    "cancelReservation": "Cancel reservation",
+    "deleteAccount": "Delete account",
+    "logout": "Log out",
+    "deleteSection": "Delete section",
+    "addSection": "Add section",
+    "editSection": "Edit section",
+    "addProduct": "Add product",
+    "undoChanges": "Undo changes",
+    "saveChanges": "Save changes"
+  },
+  "tableEmptyRows": {
+    "reservations": "You can create {{available}} more reservation/s",
+    "adminReservations": "There are no reservations for the moment"
+  },
+  "formLabels": {
+    "phoneNumber": "Phone number: ",
+    "password": "Password: ",
+    "passwordConfirmation": "Repeat the password: ",
+    "date": "Date: ",
+    "time": "Time: ",
+    "customers": "Number of customers: ",
+    "name": "In name of: "
+  },
+  "formHints": {
+    "menuItemName": "Nombre del producto",
+    "menuItemDescription": "Descripción del producto",
+    "menuItemPrice": "Precio del producto",
+    "menuImageSrc": "Ruta de la imagen del producto"
+  },
+  "alerts": {
+    "NOT_FOUND": "The requested resource is not available",
+    "UNKNOWN_ERROR": "There has been an error, try again later",
+    "PASSWORDS_DONT_MATCH": "The passwords don't match",
+    "DUPLICATE_USER": "The phone number is already registered",
+    "FAILED_LOGIN": "The phone number or password is incorrect",
+    "NOT_LOGGED_IN": "You must be logged in to access this resource",
+    "INVALID_DATE": "The selected date is not valid",
+    "INVALID_TIME": "The selected time is not valid",
+    "RESERVATION_SAME_DAY": "You can only make one reservation for the same day",
+    "RESERVATIONS_FULL": "There are no more reservations available for the selected date and time",
+    "MAX_RESERVATIONS_EXCEEDED": "You have reached the maximum number of reservations",
+    "MAX_CUSTOMERS_EXCEEDED": "You have requested more seats than the available",
+    "SELECT_RESERVATION_TO_CANCEL": "Select a reservation to be able to cancel it",
+    "CONFIRM_CANCEL_RESERVATION": "Are you sure you want to cancel your reservation?",
+    "CONFIRM_DELETE_ACCOUNT": "Are you sure you want to delete your account? Your reservations will be deleted",
+    "CONFIRM_DELETE_ACCOUNT2": "Are you sure? This action cannot be undone",
+    "DUPLICATE_MENU_SECTION": "A section with the same name already exists",
+    "CONFIRM_CANCEL_CHANGES": "Are you sure you want to undo the changes?",
+    "CONFIRM_SAVE_CHANGES": "Are you sure you want to save the changes?",
+    "CONFIRM_DELETE_MENU_SECTION": "Are you sure you want to delete this section and all the products in it?"
+  }
+}
+
