@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {TranslocoService} from '@ngneat/transloco';
 
 @Component({
   selector: 'app-navbar',
@@ -6,6 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  items = ["home", "reservations", "menu", "aboutUs", "contact", "login"];
+  items = ['home', 'reservations', 'menu', 'aboutUs', 'contact', 'login'];
   showUserIcon = false;
+  private translateService: TranslocoService;
+
+  constructor(translateService: TranslocoService) {
+    this.translateService = translateService;
+  }
+
+  onChangeLanguage() {
+    this.translateService.setActiveLang(this.translateService.getActiveLang() === 'en' ? 'es' : 'en');
+  }
 }
