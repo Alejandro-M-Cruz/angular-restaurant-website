@@ -1,0 +1,46 @@
+<footer class="footer-section" *transloco="let t">
+    <div class="footer-container">
+        <ul class="social-list">
+            <li><h3>{{t('footerTexts.followUs')}}</h3></li>
+            <div class="social-icons">
+                <li>
+                    <div class="icons-size">
+                        <a class="twitter-button" href="https://twitter.com" target="_blank"> <img src="/assets/images/twitter.png"> </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="icons-size">
+                        <a class="instagram-button" href="https://instagram.com" target="_blank"> <img src="/assets/images/instagram.png"> </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="icons-size">
+                        <a class="uber-eats-button" href="https://ubereats.com" target="_blank"> <img src="/assets/images/uber-eats.png"> </a>
+                    </div>
+                </li>
+            </div>
+        </ul>
+        <hr/>
+        <ul class="contact-list">
+            <li><h3>{{t('footerTexts.contact')}}</h3></li>
+            <li>{{t('footerTexts.contactPhoneNumber')}}</li>
+            <li>{{t('footerTexts.email')}}</li>
+            <li>{{t('footerTexts.address')}}</li>
+            <li class="copyright"><b>{{t('footerTexts.copyright')}}</b></li>
+        </ul>
+        <hr/>
+        <ul class="hours">
+            <li>
+                <h3>{{t('footerTexts.timetableTitle')}}</h3>
+            </li>
+            <li>
+                <pre><span *ngFor="let dayLabel of t('footerTexts.dayLabels'); index as i">
+                    {{dayLabel+': '+timetable[i]}}
+                </span>
+                </pre>
+            </li>
+        </ul>
+
+
+    </div>
+</footer>
