@@ -8,11 +8,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@fir
 export class AuthenticationService {
     auth = getAuth();
 
-    constructor() {
-
-    }
-
-    async login(email: string, password: string) {
+    async logIn(email: string, password: string) {
         try {
             const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
             return userCredential.user;
@@ -22,7 +18,7 @@ export class AuthenticationService {
         }
     }
 
-    async signup(email: string, password: string) {
+    async signUp(email: string, password: string) {
         try {
             const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
             return userCredential.user;
@@ -31,4 +27,5 @@ export class AuthenticationService {
             return { error: "DUPLICATE_USER" }
         }
     }
+
 }

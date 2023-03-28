@@ -1,4 +1,4 @@
-<!-- <mat-toolbar>
+<!--<mat-toolbar>
     <mat-toolbar-row>
         <button mat-icon-button (click)="toggleSidenav()"><mat-icon>menu</mat-icon></button>
         <a>La Nostra Casa</a>
@@ -7,10 +7,10 @@
 
     </mat-toolbar-row>
 </mat-toolbar>
-<mat-sidenav-container autosize opened="true">
+<mat-sidenav-container autosize *ngIf="showSidenav">
     <mat-sidenav>
         <mat-nav-list>
-            <mat-list-item *ngIf="showSidenav"><a>Inicio</a></mat-list-item>
+            <mat-list-item><a>Inicio</a></mat-list-item>
             <mat-list-item><a>Menú</a></mat-list-item>
             <mat-list-item><a>Reservas</a></mat-list-item>
             <mat-list-item><a>Sobre nosotros</a></mat-list-item>
@@ -18,7 +18,7 @@
             <mat-list-item><a>Registrarse</a></mat-list-item>
         </mat-nav-list>
     </mat-sidenav>
-</mat-sidenav-container> -->
+</mat-sidenav-container>-->
 <header class="navbar-header" *transloco="let t">
 <nav id="nav-bar-container">
     <ul class = "navbar-list">
