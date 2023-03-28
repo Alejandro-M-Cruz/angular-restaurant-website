@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { getAuth } from '@angular/fire/auth';
-import { createUserWithEmailAndPassword } from '@firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,20 @@ export class AuthenticationService {
 
     }
 
+    async login(email: string, password: string) {
+        try {
+            const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+            return userCredential.user;
+        } catch (error) {
+            console.error(error);
+            return { error: "FAILED_LOGIN" }
+        }
+    }
+
     async signup(email: string, password: string) {
         try {
-            const response = await createUserWithEmailAndPassword(this.auth, email, password);
-            return response.user;
+            const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+            return userCredential.user;
         } catch (error) {
             console.error(error);
             return { error: "DUPLICATE_USER" }
