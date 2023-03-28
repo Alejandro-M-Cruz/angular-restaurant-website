@@ -1,0 +1,21 @@
+<button type="button" (click)="clear(); showContent();"> Click aqui </button>
+<title> {{signUp?.tabTitle}} </title>
+<h2> {{signUp?.title}} </h2>
+<form>
+    <div *ngFor="let item of signUp?.formFields">
+        <label> {{item.label}} </label>
+        <input  [type]="item.type" 
+                [name]="item.name"
+                [required]="item.properties.required"
+                [attr.minlength]="item.properties.minLength"
+                [attr.maxLength]="item.properties.maxLength">
+    </div>
+    <div>
+        <button> {{signUp?.cancelButtonLabel}} </button>
+        <button> {{signUp?.confirmButtonLabel}} </button>
+    </div>
+    <div>
+        <p> {{signUp?.already}} </p>
+        <a [routerLink]="signUp?.linkHref"> <b> {{signUp?.alreadyLink}} </b> </a>
+    </div>
+</form>
