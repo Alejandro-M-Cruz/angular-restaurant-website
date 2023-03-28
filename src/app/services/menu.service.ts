@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collection, deleteDoc, doc, getFirestore, setDoc} from "@angular/fire/firestore";
+import {addDoc, collection, deleteDoc, doc, getDocs, getFirestore, query, setDoc, where} from "@angular/fire/firestore";
 import {MenuSection} from "../model/menu-section.model";
 import {MenuItem} from "../model/menu-item.model";
 
@@ -17,6 +17,15 @@ export class MenuService {
     return setDoc(doc(this.firestore, 'menu_sections', id), menuSection)
   }
 
+  async deleteMenuSection(id: string) {
+    const menuItems = collection(this.firestore, 'menu_items')
+    const sectionItems = await getDocs(query(menuItems, where('sectionRef', '==', id)))
+    sectionItems.forEach(item => {
+      deleteDoc(doc(this.firestore, 'menu_items', item.id))
+    })
+    return deleteDoc(doc(this.firestore, 'menu_sections', id))
+  }
+
   addMenuItem(menuItem: MenuItem) {
     return addDoc(collection(this.firestore, 'menu_items'), menuItem)
   }
@@ -26,6 +35,6 @@ export class MenuService {
   }
 
   deleteMenuItem(id: string) {
-    return deleteDoc(doc(this.firestore, "menu_items", id))
+    return deleteDoc(doc(this.firestore, 'menu_items', id))
   }
 }

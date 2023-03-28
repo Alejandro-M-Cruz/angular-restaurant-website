@@ -1,4 +1,4 @@
 export interface Complaint {
-  creationDate: Date;
+  creationTimestamp: Date;
   content: string;
 }
