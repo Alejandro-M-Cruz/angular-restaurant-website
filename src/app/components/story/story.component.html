@@ -1,0 +1,11 @@
+<section [id]="aboutUsSectionId">
+    <h2> {{story?.title}} </h2>
+    <div [className]="aboutUsContentClass">
+        <div [className]="aboutUsDescriptionClass">
+            <p> {{story?.text}}</p>
+        </div>
+        <div [className]="aboutUsImageClass">
+            <img [src]="story?.image" [alt]="story?.alt_image">
+        </div>
+    </div>
+</section>

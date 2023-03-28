@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { StoryComponent } from './components/story/story.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     NavbarComponent,
     HomeComponent,
     SignUpComponent,
-    FooterComponent
+    FooterComponent,
+    StoryComponent
   ],
   imports: [
     BrowserModule,
