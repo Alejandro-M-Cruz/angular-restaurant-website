@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { getFirestore } from '@firebase/firestore';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-restaurant-website';
+    title = 'angular-restaurant-website';
+    store = getFirestore()
 }
