@@ -25,6 +25,8 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { LoginComponent } from './pages/login/login.component';
+import { EditMenuComponent } from './pages/edit-menu/edit-menu.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    EditMenuComponent
   ],
   imports: [
     BrowserModule,
