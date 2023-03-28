@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collection, getDocs, getFirestore} from "@angular/fire/firestore";
+import {addDoc, collection, deleteDoc, doc, getDocs, getFirestore} from "@angular/fire/firestore";
 import {Complaint} from "../model/complaint.model";
 
 @Injectable({
@@ -14,5 +14,9 @@ export class ComplaintsService {
 
   addComplaint(complaint: Complaint) {
     return addDoc(collection(this.firestore, 'complaints'), complaint);
+  }
+
+  deleteComplaint(id: string) {
+    return deleteDoc(doc(this.firestore, 'complaints', id));
   }
 }
