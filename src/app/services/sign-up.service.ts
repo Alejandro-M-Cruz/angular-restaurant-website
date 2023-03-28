@@ -12,6 +12,7 @@ export interface FormFields {
 	id: string;
 	label: string;
 	type: string;
+    abs: string;
 	name: string;
 	properties: FormFieldsProperties;
 }
@@ -33,9 +34,9 @@ export interface SignUp {
 
 export class SignUpService {
 	private signUpUrl = 'http://localhost:5000/signUpPage'
-	
+
 	constructor(private http: HttpClient) { }
-	
+
 	getContent() {
 		return this.http.get<SignUp>(this.signUpUrl);
 	}

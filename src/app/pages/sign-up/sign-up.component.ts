@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,  OnInit } from '@angular/core';
 import { SignUp, SignUpService } from '../../services/sign-up.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { SignUp, SignUpService } from '../../services/sign-up.service';
   styleUrls: ['./sign-up.component.css']
 })
 
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
   signUp: SignUp | undefined;
   constructor(private signUpService: SignUpService) {
   }
@@ -16,11 +16,11 @@ export class SignUpComponent {
     this.signUp = undefined;
   }
 
-  showContent() {
+  ngOnInit(): void {
     this.signUpService.getContent().subscribe(
       data => {
         this.signUp = data;
       }
-    );  
+    );
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ServicioService } from 'src/app/servicio.service';
 
 @Component({
   selector: 'app-edit-menu',
@@ -7,10 +8,11 @@ import { Component } from '@angular/core';
 })
 export class EditMenuComponent {
 
-    constructor(){
+    constructor(private ){
+
 
     }
 
-    
+
 
 }
