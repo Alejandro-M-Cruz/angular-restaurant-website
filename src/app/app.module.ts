@@ -24,7 +24,9 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    SignUpComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
