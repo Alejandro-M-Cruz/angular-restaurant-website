@@ -1,0 +1,46 @@
+.navbar-header {
+    grid-area: header;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--main-color);
+    z-index: 999;
+}
+
+.navbar-list {
+    list-style-type: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-list__logo {
+    flex-grow: 2;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hamburger-button {
+    background: none;
+    margin-right: 3rem;
+    display: none;
+}
+
+.navbar-list a {
+    display: block;
+}
+
+.navbar-list li:not(.navbar-list__logo) {
+    display: block;
+    text-align: center;
+}
+
+.navbar-list a:not(.navbar-list__logo a) {
+    color: black;
+    padding: 0 3rem;
+    font-size: 1.2rem;
+}

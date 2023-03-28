@@ -10,6 +10,7 @@ export class NavbarComponent {
   items = ['home', 'reservations', 'menu', 'aboutUs', 'contact', 'login'];
   showUserIcon = false;
   private translateService: TranslocoService;
+  showSidenav = false;
 
   constructor(translateService: TranslocoService) {
     this.translateService = translateService;
@@ -17,5 +18,9 @@ export class NavbarComponent {
 
   onChangeLanguage() {
     this.translateService.setActiveLang(this.translateService.getActiveLang() === 'en' ? 'es' : 'en');
+  }
+
+  toggleSidenav() {
+    this.showSidenav = !this.showSidenav;
   }
 }

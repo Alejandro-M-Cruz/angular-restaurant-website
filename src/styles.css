@@ -61,17 +61,8 @@ button:hover {
     grid-template-areas: "header" "main" "footer";
 }
 
-.navbar-header {
-    grid-area: header;
-}
-
 .grid-div main {
     grid-area: main;
-}
-
-.footer-section {
-    margin-top: 5rem;
-    grid-area: footer;
 }
 
 input, textarea, select {
@@ -85,52 +76,6 @@ input:focus, textarea:focus {
 
 
 /* -------------NAVBAR------------- */
-
-.navbar-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--main-color);
-    z-index: 999;
-}
-
-.navbar-list {
-    list-style-type: none;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar-list__logo {
-    flex-grow: 2;
-    padding: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.hamburger-button {
-    background: none;
-    margin-right: 3rem;
-    display: none;
-}
-
-.navbar-list a {
-    display: block;
-}
-
-.navbar-list li:not(.navbar-list__logo) {
-    display: block;
-    text-align: center;
-}
-
-.navbar-list a:not(.navbar-list__logo a) {
-    color: black;
-    padding: 0 3rem;
-    font-size: 1.2rem;
-}
 
 
 /* -------------SLIDE SHOW------------- */
@@ -366,94 +311,6 @@ input:focus, textarea:focus {
 
 /* -------------FOOTER------------- */
 
-#footer-container {
-    box-sizing: content-box;
-    background-color: var(--footer-background-color);
-    width: 100%;
-    height: 300px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items:center;
-    padding: 2rem 0 1.5rem 0;
-}
-
-#footer-container ul{
-    list-style-type:none;
-}
-
-.contact-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    align-items: center;
-    padding-bottom: 1em;
-}
-
-.contact-list .copyright{
-    font-size: 0.8em;
-}
-
-.hours {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    align-items:center;
-}
-
-.hours pre{
-    padding-top: 40%;
-}
-
-.social-list {
-
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom:1em;
-}
-
-.social-icons {
-    padding-top: 50%;
-}
-
-.social-icons img{
-    padding-bottom: 25%;
-}
-
-.social-media-icon {
-    transform: translateY(25%);
-}
-
-.social-media-icon img {
-    width: 3rem;
-}
-
-hr{
-    height:80%;
-    width:0.1%;
-    border-width:0;
-    color:black;
-    background-color:black;
-}
-
-.icons-size {
-    width: 3em;
-    height: 3em;
-    display: inline-block;
-    margin-left: 1em;
-}
-
-.icons-size a {
-    display: inline-block;
-}
-
-.icons-size img {
-    width: 100%;
-    height: 100%;
-}
 
 
 /* -------------ADMIN INDEX------------- */

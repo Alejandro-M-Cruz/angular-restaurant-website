@@ -33,6 +33,24 @@
     "contact": "Contact",
     "login": "Log in"
   },
+  "footerTexts": {
+    "followUs": "Follow us on",
+    "contact": "Contact",
+    "contactPhoneNumber": "Phone number: +34123456789",
+    "email": "Email: contact@lanostracasa.com",
+    "address": "Triana St. / 30, Las Palmas de Gran Canaria",
+    "copyright": "La Nostra Casa&#8482; all rights reserved",
+    "timetableTitle": "Timetable",
+    "dayLabels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+    ]
+  },
   "links":{
     "reservations": "MAKE YOUR RESERVATION HERE",
     "adminReservations": "RESERVATIONS",

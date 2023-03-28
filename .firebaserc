@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "restaurantwebsite-3b940": {
+      "hosting": {
+        "angular-restaurant-website": [
+          "la-nostra-casa"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "restaurantwebsite-3b940"
+  }
+}
