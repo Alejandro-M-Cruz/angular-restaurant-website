@@ -3,4 +3,5 @@ export interface MenuItem {
   ingredients: string;
   price: number;
   imageSrc: string;
+  sectionReference: string;
 }
