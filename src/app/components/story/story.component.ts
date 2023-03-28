@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Story, StoryService } from '../../services/story.service';
+import { StoryService } from '../../services/story.service';
+import { Story } from '../../model/story';
 
 @Component({
   selector: 'app-story',
