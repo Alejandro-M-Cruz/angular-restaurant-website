@@ -80,13 +80,13 @@
     "adminReservations": "No hay reservas en este momento"
   },
   "formLabels": {
-    "phoneNumber": "Número de teléfono: ",
-    "password": "Contraseña: ",
-    "passwordConfirmation": "Confirme la contraseña: ",
-    "date": "Fecha: ",
-    "time": "Hora: ",
-    "customers": "Número de comensales: ",
-    "name": "A nombre de: "
+    "phoneNumber": "Número de teléfono",
+    "password": "Contraseña",
+    "passwordConfirmation": "Confirme la contraseña",
+    "date": "Fecha ",
+    "time": "Hora",
+    "customers": "Número de comensales",
+    "name": "Nombre"
   },
   "formHints": {
     "menuItemName": "Nombre del producto",

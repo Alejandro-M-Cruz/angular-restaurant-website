@@ -20,6 +20,16 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { StoryComponent } from './components/story/story.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TimePickerComponent } from './components/form/time-picker/time-picker.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { DatePickerComponent } from './components/form/date-picker/date-picker.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+
 
 @NgModule({
   declarations: [
@@ -28,22 +38,32 @@ import { StoryComponent } from './components/story/story.component';
     HomeComponent,
     SignUpComponent,
     FooterComponent,
-    StoryComponent
+    StoryComponent,
+    TimePickerComponent,
+    DatePickerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatListModule,
     HttpClientModule,
     TranslocoRootModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    FormsModule,
+    NgbModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatListModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [
   ],

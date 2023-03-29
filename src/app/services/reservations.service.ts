@@ -19,8 +19,7 @@ export class ReservationsService {
 
   getUserCurrentReservations(userId: string) {
     const reservations = collection(this.firestore, 'reservations')
-    const q = query(reservations, where('userId', '==', userId), where('date', '>=', new Date()))
-    return getDocs(q)
+    return getDocs(query(reservations, where('userId', '==', userId), where('date', '>=', new Date())))
   }
 
   addReservation(reservation: Reservation) {
@@ -29,5 +28,9 @@ export class ReservationsService {
 
   deleteReservation(id: string) {
     return deleteDoc(doc(this.firestore, 'reservations', id))
+  }
+
+  getAvailableDates() {
+
   }
 }
