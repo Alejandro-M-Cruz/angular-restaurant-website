@@ -12,7 +12,7 @@ export class NavbarComponent {
     {name: 'menu', link: 'menu'},
     {name: 'aboutUs', link: 'aboutUs'},
     {name: 'contact', link: 'contact'},
-    {name: 'reservations', link: 'reservations'},
+    {name: 'reservations', link: 'user-reservations'},
     {name: 'login', link: 'log-in'}
   ]
   showUserIcon = false;

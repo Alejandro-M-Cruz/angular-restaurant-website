@@ -34,6 +34,8 @@ import { NewReservationComponent } from './pages/new-reservation/new-reservation
 import { EmailInputComponent } from './components/form/email-input/email-input.component';
 import { PasswordInputComponent } from './components/form/password-input/password-input.component';
 import { AlreadySignedUpLinkComponent } from './components/already-signed-up/already-signed-up-link.component';
+import { UserReservationsComponent } from './pages/user-reservations/user-reservations.component';
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import { AlreadySignedUpLinkComponent } from './components/already-signed-up/alr
     NewReservationComponent,
     EmailInputComponent,
     PasswordInputComponent,
-    AlreadySignedUpLinkComponent
+    AlreadySignedUpLinkComponent,
+    UserReservationsComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,8 @@ import { AlreadySignedUpLinkComponent } from './components/already-signed-up/alr
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
   providers: [
   ],

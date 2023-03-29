@@ -4,6 +4,7 @@ import {HomeComponent} from "./pages/home/home.component";
 import { LogInComponent } from "./pages/log-in/log-in.component";
 import { SignUpComponent} from "./pages/sign-up/sign-up.component";
 import {NewReservationComponent} from "./pages/new-reservation/new-reservation.component";
+import {UserReservationsComponent} from "./pages/user-reservations/user-reservations.component";
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'log-in', component: LogInComponent },
+  { path: 'user-reservations', component: UserReservationsComponent },
   { path: 'new-reservation', component: NewReservationComponent },
 ];
 

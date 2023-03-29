@@ -35,7 +35,7 @@ export class ReservationsService {
 
   getReservations() {
     const q = query(
-      collection(this.firestore, 'reservations'),
+      collection(this.firestore, 'user-reservations'),
       orderBy('date')
     )
     return getDocs(q)
@@ -43,7 +43,7 @@ export class ReservationsService {
 
   getCurrentReservations() {
     const q = query(
-      collection(this.firestore, 'reservations'),
+      collection(this.firestore, 'user-reservations'),
       where('date', '>=', new Date()),
       orderBy('date')
     )
@@ -52,7 +52,7 @@ export class ReservationsService {
 
   getUserCurrentReservations() {
     const q = query(
-      collection(this.firestore, 'reservations'),
+      collection(this.firestore, 'user-reservations'),
       where('userId', '==', this.auth.currentUser!.uid),
       where('date', '>=', new Date()),
       orderBy('date')
@@ -61,11 +61,11 @@ export class ReservationsService {
   }
 
   async addReservation(reservation: Reservation) {
-    return addDoc(collection(this.firestore, 'reservations'), reservation)
+    return addDoc(collection(this.firestore, 'user-reservations'), reservation)
   }
 
   deleteReservation(id: string) {
-    return deleteDoc(doc(this.firestore, 'reservations', id))
+    return deleteDoc(doc(this.firestore, 'user-reservations', id))
   }
 
   isDateAvailable(date: Date) {
