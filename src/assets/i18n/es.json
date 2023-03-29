@@ -80,6 +80,7 @@
     "adminReservations": "No hay reservas en este momento"
   },
   "formLabels": {
+    "email": "Correo electrónico",
     "phoneNumber": "Número de teléfono",
     "password": "Contraseña",
     "passwordConfirmation": "Confirme la contraseña",
@@ -89,6 +90,7 @@
     "name": "Nombre"
   },
   "formHints": {
+    "email": "direccion@email.com",
     "menuItemName": "Nombre del producto",
     "menuItemDescription": "Descripción del producto",
     "menuItemPrice": "Precio del producto",

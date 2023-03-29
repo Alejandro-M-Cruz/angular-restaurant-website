@@ -78,6 +78,7 @@
     "adminReservations": "There are no reservations for the moment"
   },
   "formLabels": {
+    "email": "Email",
     "phoneNumber": "Phone number",
     "password": "Password",
     "passwordConfirmation": "Repeat the password",
@@ -87,6 +88,7 @@
     "name": "In name of"
   },
   "formHints": {
+    "email": "email@adress.com",
     "menuItemName": "Nombre del producto",
     "menuItemDescription": "Descripción del producto",
     "menuItemPrice": "Precio del producto",

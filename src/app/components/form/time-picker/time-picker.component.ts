@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-time-picker',
@@ -6,9 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./time-picker.component.css']
 })
 export class TimePickerComponent {
-  time: string | undefined
+  @Input() timeInputDisabled!: boolean;
+  @Input() availableTimes!: string[];
+  @Output() selectedTime = new EventEmitter<string>();
 
-  timeValues = [
-    '12:00', '12:30', '13:00', '14:00'
-  ]
+  selectTime(time: string) {
+    this.selectedTime.emit(time)
+  }
 }

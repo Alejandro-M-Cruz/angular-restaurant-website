@@ -29,6 +29,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import { LogInComponent } from './pages/log-in/log-in.component';
+import { NewReservationComponent } from './pages/new-reservation/new-reservation.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import {MatSelectModule} from "@angular/material/select";
     FooterComponent,
     StoryComponent,
     TimePickerComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    LogInComponent,
+    NewReservationComponent
   ],
   imports: [
     BrowserModule,
