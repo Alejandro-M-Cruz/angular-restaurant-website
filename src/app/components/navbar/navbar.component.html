@@ -31,7 +31,7 @@
                 <img src="/assets/images/hamburger-button.png" alt="Button that opens menu" width="40">
             </button>
         </li>
-        <a *ngFor="let item of items" routerLink="item">{{t('navbarLinks.' + item)}}</a>
+        <a *ngFor="let item of items" [routerLink]="item">{{t('navbarLinks.' + item)}}</a>
         <li *ngIf="showUserIcon" class="navbar-list__user-icon">
             <a class="user-icon"><img src="/assets/images/user-icon.png" alt="User" width="50"></a>
         </li>

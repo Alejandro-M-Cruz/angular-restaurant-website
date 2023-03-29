@@ -9,6 +9,9 @@ import { SignUp, SignUpService } from '../../services/sign-up.service';
 
 export class SignUpComponent implements OnInit {
   signUp: SignUp | undefined;
+
+  
+  
   constructor(private signUpService: SignUpService) {
   }
 

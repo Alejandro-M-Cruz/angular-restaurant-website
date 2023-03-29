@@ -1,10 +1,10 @@
-<section [id]="aboutUsSectionId">
+<section id="{{aboutUsSectionId}}">
     <h2> {{story?.title}} </h2>
-    <div [className]="aboutUsContentClass">
-        <div [className]="aboutUsDescriptionClass">
+    <div class="{{aboutUsContentClass}}">
+        <div class="{{aboutUsDescriptionClass}}">
             <p> {{story?.text}}</p>
         </div>
-        <div [className]="aboutUsImageClass">
+        <div class="{{aboutUsImageClass}}">
             <img [src]="story?.image" [alt]="story?.alt_image">
         </div>
     </div>

@@ -7,7 +7,7 @@ import {TranslocoService} from '@ngneat/transloco';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  items = ['home', 'reservations', 'menu', 'aboutUs', 'contact', 'login'];
+  items = ['home', 'reservations', 'menu', 'aboutUs', 'contact', 'login', 'signUp'];
   showUserIcon = false;
   private translateService: TranslocoService;
   showSidenav = false;

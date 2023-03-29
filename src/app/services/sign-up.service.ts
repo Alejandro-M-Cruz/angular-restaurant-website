@@ -1,25 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-export interface FormFieldsProperties {
-	required: boolean;
-	minLength: number;
-	maxLength: number;
-}
-
-export interface FormFields {
-	id: string;
-	label: string;
-	type: string;
-    abs: string;
-	name: string;
-	properties: FormFieldsProperties;
-}
+import { Observable } from 'rxjs';
+import { InputLabelCombo } from '../model/input-label-combo.model';
 
 export interface SignUp {
 	tabTitle: string;
 	title: string;
-	formFields: FormFields[];
+	formFields: InputLabelCombo[];
 	cancelButtonLabel: string;
 	confirmButtonLabel: string;
 	already: string;
@@ -36,7 +23,7 @@ export class SignUpService {
 
 	constructor(private http: HttpClient) { }
 
-	getContent() {
+	getContent(): Observable<SignUp> {
 		return this.http.get<SignUp>(this.signUpUrl);
 	}
 }
