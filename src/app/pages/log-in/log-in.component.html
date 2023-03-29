@@ -1,11 +1,11 @@
 <ng-container *transloco="let t">
-  <mat-form-field>
-    <mat-label>{{t('formLabels.email')}}</mat-label>
-    <input matInput placeholder="{{t('formHints.email')}}">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>{{t('formLabels.password')}}</mat-label>
-    <input matInput>
-  </mat-form-field>
+  <h2 class="page-title">{{t('titles.login')}}</h2>
+  <form>
+    <app-email-input></app-email-input>
+    <app-password-input></app-password-input>
+    <app-already-signed-up link="sign-up" [alreadySignedUpText]="t('notSignedUp')" [linkText]="t('notSignedUpLink')"></app-already-signed-up>
+    <button class="management-button back-button" type="reset">{{t('buttons.back')}}</button>
+    <button class="management-button confirm-button" type="submit">{{t('buttons.login')}}</button>
+  </form>
 </ng-container>
 

@@ -23,17 +23,15 @@
 <nav id="nav-bar-container">
     <ul class = "navbar-list">
         <li class="navbar-list__logo">
-            <a id="la-nostra-casa-nav-logo" href="/"><img src="/assets/images/logo.png" alt="Logo" width="100"></a>
-            <button (click)="onChangeLanguage()">
-            <img src="{{t('oppositeFlag')}}" alt="Flag" width="50">
-            </button>
+            <a id="la-nostra-casa-nav-logo" routerLink="home"><img src="/assets/images/logo.png" alt="Logo" width="100"></a>
+            <button (click)="onChangeLanguage()"><img src="{{t('oppositeFlag')}}" alt="Flag" width="50"></button>
             <button class="hamburger-button">
                 <img src="/assets/images/hamburger-button.png" alt="Button that opens menu" width="40">
             </button>
         </li>
-        <a *ngFor="let item of items" [routerLink]="item">{{t('navbarLinks.' + item)}}</a>
+        <a *ngFor="let item of items" [routerLink]="item.link">{{t('navbarLinks.' + item.name)}}</a>
         <li *ngIf="showUserIcon" class="navbar-list__user-icon">
-            <a class="user-icon"><img src="/assets/images/user-icon.png" alt="User" width="50"></a>
+            <a class="user-icon" routerLink="log-in"><img src="/assets/images/user-icon.png" alt="User" width="50"></a>
         </li>
     </ul>
 </nav>

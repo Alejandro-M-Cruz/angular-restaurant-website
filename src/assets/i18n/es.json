@@ -66,6 +66,8 @@
     "cancel": "Cancelar",
     "newReservation": "Nueva reserva",
     "cancelReservation": "Cancelar reserva",
+    "login": "Iniciar sesión",
+    "signup": "Registrarse",
     "deleteAccount": "Eliminar cuenta",
     "logout": "Cerrar sesión",
     "deleteSection": "Eliminar sección",
@@ -96,6 +98,10 @@
     "menuItemPrice": "Precio del producto",
     "menuImageSrc": "Ruta de la imagen del producto"
   },
+  "alreadySignedUp": "Si ya se ha registrado, ",
+  "alreadySignedUpLink": "INICIE SESIÓN AQUÍ",
+  "notSignedUp": "Si aún no se ha registrado, ",
+  "notSignedUpLink": "REGÍSTRESE AQUÍ",
   "alerts": {
     "NOT_FOUND": "El recurso solicitado no está disponible",
     "UNKNOWN_ERROR": "Se ha producido un error, inténtelo de nuevo",

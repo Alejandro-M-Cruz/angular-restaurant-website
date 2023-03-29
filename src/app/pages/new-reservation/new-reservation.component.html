@@ -1,2 +1,12 @@
-<app-date-picker (dateChanged)="onDateChanged($event)" [dateFilter]="isDateValid"></app-date-picker>
-<app-time-picker [timeInputDisabled]="timeInputDisabled" [availableTimes]="availableTimes"></app-time-picker>
+<ng-container *transloco="let t">
+  <h2 class="page-title">{{t('titles.newReservation')}}</h2>
+  <form>
+    <app-date-picker (dateChanged)="onDateChanged($event)" [dateFilter]="isDateValid"></app-date-picker>
+    <app-time-picker [timeInputDisabled]="timeInputDisabled" [availableTimes]="availableTimes"></app-time-picker>
+    <button class="management-button back-button" type="reset">{{t('buttons.back')}}</button>
+    <button class="management-button confirm-button" type="submit">{{t('buttons.confirm')}}</button>
+  </form>
+</ng-container>
+
+
+

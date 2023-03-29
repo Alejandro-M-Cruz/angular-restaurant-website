@@ -31,6 +31,9 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { NewReservationComponent } from './pages/new-reservation/new-reservation.component';
+import { EmailInputComponent } from './components/form/email-input/email-input.component';
+import { PasswordInputComponent } from './components/form/password-input/password-input.component';
+import { AlreadySignedUpLinkComponent } from './components/already-signed-up/already-signed-up-link.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { NewReservationComponent } from './pages/new-reservation/new-reservation
     TimePickerComponent,
     DatePickerComponent,
     LogInComponent,
-    NewReservationComponent
+    NewReservationComponent,
+    EmailInputComponent,
+    PasswordInputComponent,
+    AlreadySignedUpLinkComponent
   ],
   imports: [
     BrowserModule,
