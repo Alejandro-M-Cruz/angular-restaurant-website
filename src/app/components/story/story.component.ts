@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Story, StoryService } from '../../services/story.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { StoryService } from '../../services/story.service';
+import { Story } from '../../model/story.model';
 
 @Component({
   selector: 'app-story',
@@ -8,12 +9,11 @@ import { Story, StoryService } from '../../services/story.service';
 })
 
 export class StoryComponent implements OnInit {
+  @Input() aboutUsSectionId: string | undefined;
+  @Input() aboutUsContentClass: string | undefined;
+  @Input() aboutUsDescriptionClass: string | undefined;
+  @Input() aboutUsImageClass: string | undefined;
   story: Story | undefined;
-
-  aboutUsSectionId: string = 'about-us-section';
-  aboutUsContentClass: string = 'about-us-content';
-  aboutUsDescriptionClass: string = 'about-us-description';
-  aboutUsImageClass: string = 'about-us-image';
 
 
   constructor(private storyService: StoryService) { }
