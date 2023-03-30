@@ -1,5 +1,5 @@
-import { Component ,  OnInit } from '@angular/core';
-import { SignUp, SignUpService } from '../../services/sign-up.service';
+import { Component } from '@angular/core';
+// import { SignUp, SignUpService } from '../../services/sign-up.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,23 +7,20 @@ import { SignUp, SignUpService } from '../../services/sign-up.service';
   styleUrls: ['./sign-up.component.css']
 })
 
-export class SignUpComponent implements OnInit {
-  signUp: SignUp | undefined;
+export class SignUpComponent {
+  // signUp: SignUp | undefined;
+  // constructor(private signUpService: SignUpService) {
+  // }
 
-  
-  
-  constructor(private signUpService: SignUpService) {
-  }
+  // clear() {
+  //   this.signUp = undefined;
+  // }
 
-  clear() {
-    this.signUp = undefined;
-  }
-
-  ngOnInit(): void {
-    this.signUpService.getContent().subscribe(
-      data => {
-        this.signUp = data;
-      }
-    );
-  }
+  // ngOnInit(): void {
+  //   this.signUpService.getContent().subscribe(
+  //     data => {
+  //       this.signUp = data;
+  //     }
+  //   );
+  // }
 }
