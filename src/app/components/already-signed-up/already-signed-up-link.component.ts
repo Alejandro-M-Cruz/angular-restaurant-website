@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-already-signed-up',
@@ -9,4 +10,10 @@ export class AlreadySignedUpLinkComponent {
   @Input() link!: string
   @Input() alreadySignedUpText!: string
   @Input() linkText!: string
+
+  constructor(private router: Router) { }
+
+  navigateToLink() {
+    this.router.navigateByUrl(this.link)
+  }
 }
