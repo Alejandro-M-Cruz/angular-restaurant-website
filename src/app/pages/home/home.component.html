@@ -1,38 +1,39 @@
-<main>
-    <section class="slide-image">
-        <button id="slide-image__left-arrow"> <img src="/assets/images/left-arrow.png" alt="left arrow"></button>
-        <div class="slide-image-thing">
-            <div class="dark-filter">
-                <div class="slide-image-thing-text">
-                    <h3 class = "slide-image-thing__center-text"></h3>
-                    <p class = "slide-image-thing__center-text-p"></p>
-                </div>
-            </div>
+<ng-container *transloco="let t">
+  <section class="slide-image">
+    <button id="slide-image__left-arrow"> <img src="/assets/images/left-arrow.png" alt="left arrow"></button>
+    <div class="slide-image-thing">
+      <div class="dark-filter">
+        <div class="slide-image-thing-text">
+          <h3 class = "slide-image-thing__center-text">{{t('slideShowTitle')}}</h3>
+          <p class = "slide-image-thing__center-text-p">{{t('slideShowAddress')}}</p>
         </div>
-        <button id="slide-image__right-arrow"> <img src="/assets/images/right_arrow.png" alt="right arrow"> </button>
-    </section>
+      </div>
+    </div>
+    <button id="slide-image__right-arrow"> <img src="/assets/images/right_arrow.png" alt="right arrow"> </button>
+  </section>
 
-    <section id="menu-section">
-        <h2></h2>
-        <div class="menu">
-            <div class="menu-left">
-            </div>
-            <div class="menu-right">
-            </div>
-        </div>
-    </section>
+  <section id="menu-section">
+    <h2>{{t('titles.menu')}}</h2>
+    <div class="menu">
+      <div class="menu-left">
+      </div>
+      <div class="menu-right">
+      </div>
+    </div>
+  </section>
 
-    <section class="reserva">
-        <a href="/logged-in/html/reservations.html"><b></b></a>
-    </section>
+  <section class="reserva">
+    <a href="/logged-in/html/reservations.html"><b></b></a>
+  </section>
 
-    <app-story aboutUsSectionId="about-us-test"
-               aboutUsContentClass="about-us-content"
-               aboutUsDescriptionClass="about-us-description"
-               aboutUsImageClass="about-us-image"> </app-story>
+  <app-story aboutUsSectionId="about-us-test"
+             aboutUsContentClass="about-us-content"
+             aboutUsDescriptionClass="about-us-description"
+             aboutUsImageClass="about-us-image"> </app-story>
 
-    <section class="complaints">
-        <a href="/html/complaints.html"><b></b></a>
-    </section>
-</main>
+  <section class="complaints">
+    <a href="/html/complaints.html"><b></b></a>
+  </section>
 
+
+</ng-container>

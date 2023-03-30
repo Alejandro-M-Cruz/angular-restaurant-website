@@ -75,6 +75,10 @@
     "undoChanges": "Undo changes",
     "saveChanges": "Save changes"
   },
+  "reservationsTable": {
+    "datetime": "Date and time",
+    "customers": "Customers"
+  },
   "tableEmptyRows": {
     "reservations": "You can create {{available}} more reservation/s",
     "adminReservations": "There are no reservations for the moment"
@@ -86,7 +90,7 @@
     "passwordConfirmation": "Repeat the password",
     "date": "Date",
     "time": "Time",
-    "customers": "Number of customers",
+    "customers": "Customers",
     "name": "In name of"
   },
   "formHints": {

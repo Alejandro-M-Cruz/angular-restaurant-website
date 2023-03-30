@@ -18,16 +18,17 @@ import {getAuth} from "@angular/fire/auth";
   providedIn: 'root'
 })
 export class ReservationsService {
-  private readonly openingHour = 12
-  private readonly closingHour = 22
-  private readonly reservationInterval = 30
+  private readonly MAX_RESERVATIONS = 5
+  private readonly OPENING_HOUR = 12
+  private readonly CLOSING_HOUR = 22
+  private readonly RESERVATION_INTERVAL = 30
   private readonly reservationTimes: string[] = []
   private readonly firestore = getFirestore()
   private readonly auth = getAuth()
 
   constructor() {
-    for (let hour = this.openingHour; hour <= this.closingHour; hour++) {
-      for (let minute = 0; minute < 60; minute += this.reservationInterval) {
+    for (let hour = this.OPENING_HOUR; hour <= this.CLOSING_HOUR; hour++) {
+      for (let minute = 0; minute < 60; minute += this.RESERVATION_INTERVAL) {
         this.reservationTimes.push(`${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`);
       }
     }
@@ -35,7 +36,7 @@ export class ReservationsService {
 
   getReservations() {
     const q = query(
-      collection(this.firestore, 'user-reservations'),
+      collection(this.firestore, 'reservations'),
       orderBy('date')
     )
     return getDocs(q)
@@ -43,7 +44,7 @@ export class ReservationsService {
 
   getCurrentReservations() {
     const q = query(
-      collection(this.firestore, 'user-reservations'),
+      collection(this.firestore, 'reservations'),
       where('date', '>=', new Date()),
       orderBy('date')
     )
@@ -52,7 +53,7 @@ export class ReservationsService {
 
   getUserCurrentReservations() {
     const q = query(
-      collection(this.firestore, 'user-reservations'),
+      collection(this.firestore, 'reservations'),
       where('userId', '==', this.auth.currentUser!.uid),
       where('date', '>=', new Date()),
       orderBy('date')
@@ -61,11 +62,11 @@ export class ReservationsService {
   }
 
   async addReservation(reservation: Reservation) {
-    return addDoc(collection(this.firestore, 'user-reservations'), reservation)
+    return addDoc(collection(this.firestore, 'reservations'), reservation)
   }
 
   deleteReservation(id: string) {
-    return deleteDoc(doc(this.firestore, 'user-reservations', id))
+    return deleteDoc(doc(this.firestore, 'reservations', id))
   }
 
   isDateAvailable(date: Date) {

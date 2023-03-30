@@ -1,32 +1,15 @@
-<table mat-table [dataSource]="reservations" class="mat-elevation-z8 demo-table">
-  <ng-container matColumnDef="date">
-    <th mat-header-cell *matHeaderCellDef>Fecha</th>
-    <td mat-cell *matCellDef="let reservation">{{reservation.date}}</td>
-  </ng-container>
+<ng-container *transloco="let t">
+  <h2 class="page-title">{{t('titles.reservations')}}</h2>
+  <section class="content-section">
+    <app-reservations-table
+      [displayedColumns]="displayedColumns"
+      [reservations]="userReservations"
+    ></app-reservations-table>
+    <div class="buttons-container">
+      <button class="management-button back-button" onclick="window.history.back()">{{t('buttons.back')}}</button>
+      <button class="management-button cancel-button">{{t('buttons.cancelReservation')}}</button>
+      <a routerLink="/new-reservation" class="management-button confirm-button">{{t('buttons.newReservation')}}</a>
+    </div>
+  </section>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="time">
-    <th mat-header-cell *matHeaderCellDef>Hora</th>
-    <td mat-cell *matCellDef="let reservation">{{reservation.time}}</td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="customers">
-    <th mat-header-cell *matHeaderCellDef>Comensales</th>
-    <td mat-cell *matCellDef="let reservation">{{reservation.customers}}</td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="userId">
-    <th mat-header-cell *matHeaderCellDef>Id del usuario</th>
-    <td mat-cell *matCellDef="let reservation">{{reservation.userId}}</td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr
-    mat-row
-    (click)="onRowClicked(row)"
-    [class.demo-row-is-clicked]="clickedRows.has(row)"
-    *matRowDef="let row; columns: displayedColumns;"
-  ></tr>
-</table>
+</ng-container>

@@ -77,6 +77,10 @@
     "undoChanges": "Deshacer cambios",
     "saveChanges": "Guardar cambios"
   },
+  "reservationsTable": {
+    "datetime": "Fecha y hora",
+    "customers": "Comensales"
+  },
   "tableEmptyRows": {
     "reservations": "Puede realizar {{available}} reserva/s más",
     "adminReservations": "No hay reservas en este momento"

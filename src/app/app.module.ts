@@ -36,6 +36,7 @@ import { PasswordInputComponent } from './components/form/password-input/passwor
 import { AlreadySignedUpLinkComponent } from './components/already-signed-up/already-signed-up-link.component';
 import { UserReservationsComponent } from './pages/user-reservations/user-reservations.component';
 import {MatTableModule} from "@angular/material/table";
+import { ReservationsTableComponent } from './components/reservations-table/reservations-table.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import {MatTableModule} from "@angular/material/table";
     EmailInputComponent,
     PasswordInputComponent,
     AlreadySignedUpLinkComponent,
-    UserReservationsComponent
+    UserReservationsComponent,
+    ReservationsTableComponent
   ],
   imports: [
     BrowserModule,
