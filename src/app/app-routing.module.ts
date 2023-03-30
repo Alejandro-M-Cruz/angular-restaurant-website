@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {HomeComponent} from "./pages/home/home.component";
+import { HomeComponent } from "./pages/home/home.component";
 import { LogInComponent } from "./pages/log-in/log-in.component";
 import { SignUpComponent} from "./pages/sign-up/sign-up.component";
-import {NewReservationComponent} from "./pages/new-reservation/new-reservation.component";
-import {UserReservationsComponent} from "./pages/user-reservations/user-reservations.component";
+import { NewReservationComponent} from "./pages/new-reservation/new-reservation.component";
+import { UserReservationsComponent} from "./pages/user-reservations/user-reservations.component";
 
 
 const routes: Routes = [
