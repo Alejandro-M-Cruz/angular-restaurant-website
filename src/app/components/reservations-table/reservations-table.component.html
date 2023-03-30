@@ -1,0 +1,19 @@
+<table class="data-table" *transloco="let t">
+  <tr class="title-row">
+    <th *ngFor="let header of displayedColumns">{{t('reservationsTable.' + header)}}</th>
+  </tr>
+  <ng-container *ngIf="reservations.length > 0; else emptyRow">
+    <tr
+      *ngFor="let reservation of reservations"
+      [class.selected-row]="reservation === selectedRow"
+      (click)="onRowClicked(reservation)"
+    >
+      <td *ngFor="let column of displayedColumns">{{reservation[column]}}</td>
+    </tr>
+  </ng-container>
+  <ng-template #emptyRow>
+    <tr>
+      <td colspan="2">{{t('tableEmptyRows.reservations')}}</td>
+    </tr>
+  </ng-template>
+</table>
