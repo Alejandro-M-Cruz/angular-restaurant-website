@@ -1,20 +1,11 @@
-<title> {{signUp?.tabTitle}} </title>
-<h2> {{signUp?.title}} </h2>
-<form>
-    <div *ngFor="let item of signUp?.formFields">
-        <label> {{item.label}} </label>
-        <input  [type]="item.type"
-                [name]="item.name"
-                [required]="item.properties.required"
-                [attr.minlength]="item.properties.minLength"
-                [attr.maxLength]="item.properties.maxLength">
-    </div>
-    <div>
-        <button> {{signUp?.cancelButtonLabel}} </button>
-        <button> {{signUp?.confirmButtonLabel}} </button>
-    </div>
-    <div>
-        <p> {{signUp?.already}} </p>
-        <a [attr.routerLink]="signUp?.linkHref"> <b> {{signUp?.alreadyLink}} </b> </a>
-    </div>
-</form>
+<ng-container *transloco="let t">
+    <h2 class="page-title">{{t('titles.signup')}} </h2>
+    <form class="needs-validation" novalidate>
+        <app-email-input> </app-email-input>
+        <app-password-input> </app-password-input>
+        <app-password-input> </app-password-input>
+        <app-already-signed-up link="log-in" [alreadySignedUpText]="t('alreadySignedUp')" [linkText]="t('alreadySignedUpLink')"> </app-already-signed-up>
+        <button class="management-button back-button" type="reset"> {{t('buttons.back')}} </button>
+        <button class="management-button confirm-button" type="submit"> {{t('buttons.signup')}} </button>
+    </form>
+</ng-container>
