@@ -1,6 +1,8 @@
 <table class="data-table" *transloco="let t">
   <tr class="title-row">
-    <th *ngFor="let header of displayedColumns">{{t('reservationsTable.' + header)}}</th>
+    <th>{{t('reservationsTable.date')}}</th>
+    <th>{{t('reservationsTable.time')}}</th>
+    <th>{{t('reservationsTable.customers')}}</th>
   </tr>
   <ng-container *ngIf="reservations.length > 0; else emptyRow">
     <tr
@@ -8,7 +10,9 @@
       [class.selected-row]="reservation === selectedRow"
       (click)="onRowClicked(reservation)"
     >
-      <td *ngFor="let column of displayedColumns">{{reservation[column]}}</td>
+      <td>{{reservation.date | date: t('dateFormat')}}</td>
+      <td>{{reservation.time}}</td>
+      <td>{{reservation.customers}}</td>
     </tr>
   </ng-container>
   <ng-template #emptyRow>

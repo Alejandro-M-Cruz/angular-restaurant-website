@@ -1,40 +1,36 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collection, deleteDoc, doc, getDocs, getFirestore, query, setDoc, where} from "@angular/fire/firestore";
+import {
+  addDoc, collection,
+  deleteDoc,
+  doc, Firestore, getDocs, orderBy, query,
+  setDoc
+} from "@angular/fire/firestore";
 import {MenuSection} from "../model/menu-section.model";
-import {MenuItem} from "../model/menu-item.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
-  private firestore = getFirestore()
+  constructor(private readonly firestore: Firestore) {}
 
-  addMenuSection(menuSection: MenuSection) {
-    return addDoc(collection(this.firestore, 'menu_sections'), menuSection)
+  async getMenu(): Promise<MenuSection[]> {
+    const q = query(
+      collection(this.firestore, 'menu'),
+      orderBy('name.es')
+    )
+    const querySnapshot = await getDocs(q)
+    return querySnapshot.docs.map(doc => doc.data() as MenuSection)
   }
 
-  updateMenuSection(id: string, menuSection: MenuSection) {
-    return setDoc(doc(this.firestore, 'menu_sections', id), menuSection)
+  async addMenuSection(menuSection: MenuSection) {
+    await addDoc(collection(this.firestore, 'menu'), menuSection)
+  }
+
+  async updateMenuSection(id: string, menuSection: MenuSection) {
+    await setDoc(doc(this.firestore, 'menu', id), menuSection)
   }
 
   async deleteMenuSection(id: string) {
-    const menuItems = collection(this.firestore, 'menu_items')
-    const sectionItems = await getDocs(query(menuItems, where('sectionRef', '==', id)))
-    sectionItems.forEach(item => {
-      deleteDoc(doc(this.firestore, 'menu_items', item.id))
-    })
-    return deleteDoc(doc(this.firestore, 'menu_sections', id))
-  }
-
-  addMenuItem(menuItem: MenuItem) {
-    return addDoc(collection(this.firestore, 'menu_items'), menuItem)
-  }
-
-  updateMenuItem(id: string, menuItem: MenuItem) {
-    return setDoc(doc(this.firestore, 'menu_items'), menuItem)
-  }
-
-  deleteMenuItem(id: string) {
-    return deleteDoc(doc(this.firestore, 'menu_items', id))
+    await deleteDoc(doc(this.firestore, 'menu', id))
   }
 }

@@ -6,14 +6,28 @@ import { SignUpComponent} from "./pages/sign-up/sign-up.component";
 import { NewReservationComponent} from "./pages/new-reservation/new-reservation.component";
 import { UserReservationsComponent} from "./pages/user-reservations/user-reservations.component";
 
-
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'sign-up', component: SignUpComponent },
-  { path: 'log-in', component: LogInComponent },
-  { path: 'user-reservations', component: UserReservationsComponent },
-  { path: 'new-reservation', component: NewReservationComponent },
+  {
+    path: 'home',
+    title: 'tabTitles.home',
+    component: HomeComponent,
+    children: [
+      {
+        path: 'menu',
+        component: HomeComponent
+      },
+      {
+        path: 'about-us',
+        component: HomeComponent
+      }
+    ]
+  },
+  { path: 'sign-up', title: 'tabTitles.signup', component: SignUpComponent },
+  { path: 'log-in', title: 'tabTitles.login', component: LogInComponent },
+  { path: 'user-reservations', title: 'tabTitles.reservations', component: UserReservationsComponent },
+  { path: 'new-reservation', title: 'tabTitles.newReservation', component: NewReservationComponent },
+  { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({

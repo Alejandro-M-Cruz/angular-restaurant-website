@@ -1,10 +1,7 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.reservations')}}</h2>
   <section class="content-section">
-    <app-reservations-table
-      [displayedColumns]="displayedColumns"
-      [reservations]="userReservations"
-    ></app-reservations-table>
+    <app-reservations-table [reservations]="userReservations"></app-reservations-table>
     <div class="buttons-container">
       <button class="management-button back-button" onclick="window.history.back()">{{t('buttons.back')}}</button>
       <button class="management-button cancel-button">{{t('buttons.cancelReservation')}}</button>

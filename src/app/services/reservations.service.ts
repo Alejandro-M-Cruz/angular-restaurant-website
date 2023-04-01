@@ -3,7 +3,7 @@ import {
   addDoc,
   collection,
   deleteDoc,
-  doc,
+  doc, Firestore,
   getDocs,
   getFirestore,
   orderBy,
@@ -12,7 +12,7 @@ import {
   where
 } from "@angular/fire/firestore"
 import {Reservation} from "../model/reservation.model"
-import {getAuth} from "@angular/fire/auth";
+import {Auth, getAuth} from "@angular/fire/auth";
 
 @Injectable({
   providedIn: 'root'
@@ -23,10 +23,8 @@ export class ReservationsService {
   private readonly CLOSING_HOUR = 22
   private readonly RESERVATION_INTERVAL = 30
   private readonly reservationTimes: string[] = []
-  private readonly firestore = getFirestore()
-  private readonly auth = getAuth()
 
-  constructor() {
+  constructor(private readonly firestore: Firestore, private readonly auth: Auth) {
     for (let hour = this.OPENING_HOUR; hour <= this.CLOSING_HOUR; hour++) {
       for (let minute = 0; minute < 60; minute += this.RESERVATION_INTERVAL) {
         this.reservationTimes.push(`${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`);
@@ -34,31 +32,35 @@ export class ReservationsService {
     }
   }
 
-  getReservations() {
+  async getReservations() {
     const q = query(
       collection(this.firestore, 'reservations'),
       orderBy('date')
     )
-    return getDocs(q)
+    const querySnapshot = await getDocs(q)
+    return querySnapshot.docs.map(doc => doc.data() as Reservation)
   }
 
-  getCurrentReservations() {
+  async getCurrentReservations() {
     const q = query(
       collection(this.firestore, 'reservations'),
       where('date', '>=', new Date()),
       orderBy('date')
     )
-    return getDocs(q)
+    const querySnapshot = await getDocs(q)
+    return querySnapshot.docs.map(doc => doc.data() as Reservation)
   }
 
-  getUserCurrentReservations() {
+  async getUserCurrentReservations(): Promise<Reservation[]> {
+    if (this.auth.currentUser === null) return Promise.resolve([])
     const q = query(
       collection(this.firestore, 'reservations'),
-      where('userId', '==', this.auth.currentUser!.uid),
+      where('userId', '==', this.auth.currentUser.uid),
       where('date', '>=', new Date()),
       orderBy('date')
     )
-    return getDocs(q)
+    const querySnapshot = await getDocs(q)
+    return querySnapshot.docs.map(doc => doc.data() as Reservation)
   }
 
   async addReservation(reservation: Reservation) {

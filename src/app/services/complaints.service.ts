@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collection, deleteDoc, doc, getDocs, getFirestore} from "@angular/fire/firestore";
+import {addDoc, collection, deleteDoc, doc, Firestore, getDocs} from "@angular/fire/firestore";
 import {Complaint} from "../model/complaint.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComplaintsService {
-  private firestore = getFirestore()
+  constructor(private readonly firestore: Firestore) {}
 
   getComplaints() {
     return getDocs(collection(this.firestore, 'complaints'));

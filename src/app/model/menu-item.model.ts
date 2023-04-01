@@ -1,7 +1,8 @@
+import {MultiLanguageString} from "./multi-language-string";
+
 export interface MenuItem {
-  name: string;
-  ingredients: string;
+  name: MultiLanguageString;
+  ingredients: MultiLanguageString;
   price: number;
-  imageSrc: string;
-  sectionRef: string;
+  imageSrc: string | null;
 }

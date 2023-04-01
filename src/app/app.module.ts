@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,10 +34,14 @@ import { NewReservationComponent } from './pages/new-reservation/new-reservation
 import { EmailInputComponent } from './components/form/email-input/email-input.component';
 import { PasswordInputComponent } from './components/form/password-input/password-input.component';
 import { AlreadySignedUpLinkComponent } from './components/already-signed-up/already-signed-up-link.component';
+import { MenuComponent } from './pages/home/components/menu/menu.component';
 import { UserReservationsComponent } from './pages/user-reservations/user-reservations.component';
 import {MatTableModule} from "@angular/material/table";
 import { ReservationsTableComponent } from './components/reservations-table/reservations-table.component';
 
+import es from '@angular/common/locales/es';
+import {registerLocaleData} from "@angular/common";
+registerLocaleData(es);
 
 @NgModule({
   declarations: [
@@ -55,7 +59,8 @@ import { ReservationsTableComponent } from './components/reservations-table/rese
     PasswordInputComponent,
     AlreadySignedUpLinkComponent,
     UserReservationsComponent,
-    ReservationsTableComponent
+    ReservationsTableComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +87,7 @@ import { ReservationsTableComponent } from './components/reservations-table/rese
     MatTableModule
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'es-ES' }
   ],
   bootstrap: [AppComponent]
 })

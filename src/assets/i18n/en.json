@@ -1,4 +1,5 @@
 {
+  "dateFormat": "MM/dd/yyyy",
   "oppositeFlag": "/assets/images/languages/spanish.svg",
   "slideShowTitle": "Restaurante de auténtica comida italiana",
   "slideShowAddress": "En calle Triana / 30, Las Palmas de Gran Canaria",
@@ -76,7 +77,8 @@
     "saveChanges": "Save changes"
   },
   "reservationsTable": {
-    "datetime": "Date and time",
+    "date": "Date",
+    "time": "Time",
     "customers": "Customers"
   },
   "tableEmptyRows": {

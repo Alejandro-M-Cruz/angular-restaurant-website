@@ -1,6 +1,6 @@
 export interface Reservation {
-  [key: string]: Date | number | string;
-  datetime: Date;
+  date: Date;
+  time: string;
   customers: number;
   userId: string;
 }

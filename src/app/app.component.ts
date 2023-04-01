@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {addDoc, collection, deleteDoc, Firestore, getDocs} from "@angular/fire/firestore";
+import {MenuItem} from "./model/menu-item.model";
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'angular-restaurant-website';
+  title = 'angular-restaurant-website';
 
   constructor(private modalService: NgbModal) {
   }

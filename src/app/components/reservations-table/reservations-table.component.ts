@@ -8,7 +8,6 @@ import {Reservation} from "../../model/reservation.model";
 })
 export class ReservationsTableComponent {
   @Input() reservations!: Reservation[];
-  @Input() displayedColumns!: string[];
   selectedRow: Reservation | null = null;
 
   onRowClicked(row: Reservation) {
