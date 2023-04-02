@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-time-picker',
@@ -8,9 +9,6 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class TimePickerComponent {
   @Input() timeInputDisabled!: boolean;
   @Input() availableTimes!: string[];
-  @Output() selectedTime = new EventEmitter<string>();
+  @Input() control!: FormControl;
 
-  selectTime(time: string) {
-    this.selectedTime.emit(time)
-  }
 }

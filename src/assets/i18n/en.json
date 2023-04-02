@@ -1,4 +1,5 @@
 {
+  "locale": "en-US",
   "dateFormat": "MM/dd/yyyy",
   "oppositeFlag": "/assets/images/languages/spanish.svg",
   "slideShowTitle": "Restaurante de auténtica comida italiana",
@@ -96,7 +97,7 @@
     "name": "In name of"
   },
   "formHints": {
-    "email": "email@adress.com",
+    "email": "email@example.com",
     "menuItemName": "Nombre del producto",
     "menuItemDescription": "Descripción del producto",
     "menuItemPrice": "Precio del producto",
@@ -106,6 +107,19 @@
   "alreadySignedUpLink": "LOG IN HERE",
   "notSignedUp": "If you do not have an account, ",
   "notSignedUpLink": "SIGN UP HERE",
+  "confirmationTitles": {
+    "cancelReservation": "Cancel reservation"
+  },
+  "confirmations": {
+    "cancelReservation": "Are you sure you want to cancel your reservation for {{date}} at {{time}}?"
+  },
+  "confirmationOptions": {
+    "yes": "Yes",
+    "no": "No"
+  },
+  "successAlerts": {
+    "languageChanged": "Language has been changed to English"
+  },
   "alerts": {
     "NOT_FOUND": "The requested resource is not available",
     "UNKNOWN_ERROR": "There has been an error, try again later",
@@ -120,7 +134,6 @@
     "MAX_RESERVATIONS_EXCEEDED": "You have reached the maximum number of reservations",
     "MAX_CUSTOMERS_EXCEEDED": "You have requested more seats than the available",
     "SELECT_RESERVATION_TO_CANCEL": "Select a reservation to be able to cancel it",
-    "CONFIRM_CANCEL_RESERVATION": "Are you sure you want to cancel your reservation?",
     "CONFIRM_DELETE_ACCOUNT": "Are you sure you want to delete your account? Your reservations will be deleted",
     "CONFIRM_DELETE_ACCOUNT2": "Are you sure? This action cannot be undone",
     "DUPLICATE_MENU_SECTION": "A section with the same name already exists",

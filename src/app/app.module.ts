@@ -41,6 +41,10 @@ import { ReservationsTableComponent } from './components/reservations-table/rese
 
 import es from '@angular/common/locales/es';
 import {registerLocaleData} from "@angular/common";
+import {MatDialogModule} from "@angular/material/dialog";
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { CustomersInputComponent } from './components/form/customers-input/customers-input.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -61,6 +65,9 @@ registerLocaleData(es);
     UserReservationsComponent,
     ReservationsTableComponent,
     MenuComponent,
+    ConfirmationDialogComponent,
+    AlertComponent,
+    CustomersInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,7 +91,8 @@ registerLocaleData(es);
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' }

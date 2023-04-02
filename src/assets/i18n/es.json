@@ -1,4 +1,5 @@
 {
+  "locale": "es-ES",
   "dateFormat": "dd/MM/yyyy",
   "oppositeFlag": "/assets/images/languages/english.png",
   "slideShowTitle": "Restaurante de auténtica comida italiana",
@@ -98,7 +99,7 @@
     "name": "Nombre"
   },
   "formHints": {
-    "email": "direccion@email.com",
+    "email": "email@ejemplo.com",
     "menuItemName": "Nombre del producto",
     "menuItemDescription": "Descripción del producto",
     "menuItemPrice": "Precio del producto",
@@ -108,6 +109,19 @@
   "alreadySignedUpLink": "INICIE SESIÓN AQUÍ",
   "notSignedUp": "Si aún no se ha registrado, ",
   "notSignedUpLink": "REGÍSTRESE AQUÍ",
+  "confirmationTitles": {
+    "cancelReservation": "Cancelar reserva"
+  },
+  "confirmations": {
+    "cancelReservation": "¿Está seguro de que desea cancelar su reserva para el {{date}} a las {{time}}?"
+  },
+  "confirmationOptions": {
+    "yes": "Sí",
+    "no": "No"
+  },
+  "successAlerts": {
+    "languageChanged": "El idioma ha cambiado al español"
+  },
   "alerts": {
     "NOT_FOUND": "El recurso solicitado no está disponible",
     "UNKNOWN_ERROR": "Se ha producido un error, inténtelo de nuevo",

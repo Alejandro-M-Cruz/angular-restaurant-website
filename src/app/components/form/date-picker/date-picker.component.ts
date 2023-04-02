@@ -8,12 +8,8 @@ import {FormControl} from "@angular/forms";
 })
 export class DatePickerComponent {
   @Input() dateFilter!:  (date: Date | null) => boolean;
-  @Output() dateChanged = new EventEmitter<Date | null>();
-  date = new FormControl(new Date())
+  @Input() control!: FormControl
 
   constructor() {
-    this.date.valueChanges.subscribe((date: Date | null) => {
-      this.dateChanged.emit(date)
-    })
   }
 }

@@ -1,7 +1,7 @@
 <mat-form-field appearance="fill" *transloco="let t">
   <mat-label>{{t('formLabels.time')}}</mat-label>
-  <mat-select [(ngModel)]="selectedTime" [disabled]="timeInputDisabled">
-    <mat-option *ngFor="let availableTime of availableTimes" [value]="availableTime" (change)="selectTime(availableTime)">
+  <mat-select [disabled]="timeInputDisabled" [formControl]="control">
+    <mat-option *ngFor="let availableTime of availableTimes" [value]="availableTime">
       {{availableTime}}
     </mat-option>
   </mat-select>

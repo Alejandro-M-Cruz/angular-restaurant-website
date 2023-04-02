@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
-  addDoc, collection,
+  addDoc, collection, collectionData,
   deleteDoc,
   doc, Firestore, getDocs, orderBy, query,
   setDoc
@@ -13,13 +13,15 @@ import {MenuSection} from "../model/menu-section.model";
 export class MenuService {
   constructor(private readonly firestore: Firestore) {}
 
-  async getMenu(): Promise<MenuSection[]> {
+  async getMenu() {
     const q = query(
       collection(this.firestore, 'menu'),
       orderBy('name.es')
     )
     const querySnapshot = await getDocs(q)
-    return querySnapshot.docs.map(doc => doc.data() as MenuSection)
+    return querySnapshot.docs.map(doc => {
+      return {id: doc.id, ...doc.data()} as MenuSection
+    })
   }
 
   async addMenuSection(menuSection: MenuSection) {
