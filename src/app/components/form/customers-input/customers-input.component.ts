@@ -7,6 +7,6 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./customers-input.component.css']
 })
 export class CustomersInputComponent {
-  @Input() maxCustomers = 30
+  @Input() maxCustomers!: number
   @Input() control!: FormControl
 }

@@ -1,7 +1,7 @@
 <mat-form-field class="example-full-width" appearance="fill" *transloco="let t">
   <mat-label>{{t('formLabels.date')}}</mat-label>
-  <input matInput [matDatepickerFilter]="dateFilter" [matDatepicker]="picker" [formControl]="control" required>
-  <mat-hint>MM/DD/YYYY</mat-hint>
+  <input matInput [matDatepickerFilter]="dateFilter" [matDatepicker]="picker" [formControl]="control">
+  <mat-hint>{{t('dateFormat')}}</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker ></mat-datepicker>
 </mat-form-field>

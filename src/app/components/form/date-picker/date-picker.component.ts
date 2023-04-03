@@ -9,7 +9,4 @@ import {FormControl} from "@angular/forms";
 export class DatePickerComponent {
   @Input() dateFilter!:  (date: Date | null) => boolean;
   @Input() control!: FormControl
-
-  constructor() {
-  }
 }
