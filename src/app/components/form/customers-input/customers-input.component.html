@@ -1,5 +1,5 @@
 <mat-form-field *transloco="let t">
   <mat-label>{{t('formLabels.customers')}}</mat-label>
-  <input matInput #customers [formControl]="control">
+  <input matInput #customers [formControl]="control" type="number">
   <mat-hint align="end">{{customers.value ? customers.value : 0}} / {{maxCustomers}}</mat-hint>
 </mat-form-field>

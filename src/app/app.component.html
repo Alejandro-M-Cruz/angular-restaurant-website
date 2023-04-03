@@ -1,6 +1,6 @@
-<app-alert [type]="alertType" [message]="alertMessage" [show]="showAlert"></app-alert>
 <div class="grid-div">
   <app-navbar (showAlert)="onShowAlert($event)"></app-navbar>
+  <app-alert [type]="alertType" [message]="alertMessage" [show]="showAlert"></app-alert>
   <main>
     <router-outlet></router-outlet>
   </main>

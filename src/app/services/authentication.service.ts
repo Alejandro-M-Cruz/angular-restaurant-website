@@ -2,32 +2,28 @@ import { Injectable } from '@angular/core';
 import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile} from '@angular/fire/auth';
 
 
+const PASSWORD_MIN_LENGTH = 4
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  constructor(private readonly auth: Auth) {
+  constructor(private readonly auth: Auth) {}
+
+  signUp(email: string, password: string) {
+    return createUserWithEmailAndPassword(this.auth, email, password);
+    // await updateProfile(userCredential.user, { displayName: username })
   }
 
-  async logIn(email: string, password: string) {
-      try {
-          const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
-          return userCredential.user;
-      } catch (error) {
-          console.error(error);
-          return { error: "FAILED_LOGIN" }
-      }
+  logIn(email: string, password: string) {
+    return signInWithEmailAndPassword(this.auth, email, password);
   }
 
-  async signUp(username:string, email: string, password: string) {
-      try {
-          const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
-          await updateProfile(userCredential.user, { displayName: username })
-          return userCredential.user;
-      } catch (error) {
-          console.error(error);
-          return { error: "DUPLICATE_USER" }
-      }
+  logOut() {
+    return this.auth.signOut()
   }
 
+  getPasswordMinLength() {
+    return PASSWORD_MIN_LENGTH
+  }
 }

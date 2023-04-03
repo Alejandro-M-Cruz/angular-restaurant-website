@@ -13,7 +13,11 @@
         [disabled]="selectedReservation === null"
         (click)="onCancelReservation()"
       >{{t('buttons.cancelReservation')}}</button>
-      <a routerLink="/new-reservation" class="management-button confirm-button">{{t('buttons.newReservation')}}</a>
+      <button
+        class="management-button confirm-button"
+        routerLink="/new-reservation"
+        [disabled]="userReservations.length >= maxReservations"
+      >{{t('buttons.newReservation')}}</button>
     </div>
   </section>
 

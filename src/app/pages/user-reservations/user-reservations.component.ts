@@ -11,7 +11,7 @@ import {formatDate} from "@angular/common";
   templateUrl: './user-reservations.component.html',
   styleUrls: ['./user-reservations.component.css']
 })
-export class UserReservationsComponent implements OnInit{
+export class UserReservationsComponent {
   userReservations: Reservation[] = []
   maxReservations = 5
   selectedReservation: Reservation | null = null
@@ -19,15 +19,10 @@ export class UserReservationsComponent implements OnInit{
   constructor(
     private readonly reservationsService: ReservationsService,
     private readonly dialog: MatDialog
-  ) {}
-
-  async ngOnInit() {
+  ) {
     this.reservationsService.getUserCurrentReservations().subscribe(reservations  => {
       this.userReservations = reservations
     })
-    /*this.userReservations = [
-      {date: new Date(), time: '13:00', id: 'algo', customers: 13, userId: 'algo'},
-    ]*/
   }
 
   onSelectedReservationChanged(reservation: Reservation | null) {

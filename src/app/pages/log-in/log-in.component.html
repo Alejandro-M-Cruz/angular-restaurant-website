@@ -1,11 +1,15 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.login')}}</h2>
-  <form>
-    <app-email-input></app-email-input>
-    <app-password-input></app-password-input>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <app-email-input [control]="form.controls.email"></app-email-input>
+    <app-password-input [control]="form.controls.password"></app-password-input>
     <app-already-signed-up link="sign-up" [alreadySignedUpText]="t('notSignedUp')" [linkText]="t('notSignedUpLink')"></app-already-signed-up>
-    <button class="management-button back-button" type="reset">{{t('buttons.back')}}</button>
-    <button class="management-button confirm-button" type="submit">{{t('buttons.login')}}</button>
+    <button class="management-button back-button" type="reset" onclick="window.location.back()">
+      {{t('buttons.back')}}
+    </button>
+    <button class="management-button confirm-button" type="submit" [disabled]="!this.form.valid">
+      {{t('buttons.login')}}
+    </button>
   </form>
 </ng-container>
 

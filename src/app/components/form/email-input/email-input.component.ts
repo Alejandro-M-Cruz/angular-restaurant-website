@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-email-input',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./email-input.component.css']
 })
 export class EmailInputComponent {
-
+  @Input() control!: FormControl
 }

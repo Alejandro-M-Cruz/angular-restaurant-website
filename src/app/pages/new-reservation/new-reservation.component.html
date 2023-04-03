@@ -7,7 +7,7 @@
     <button class="management-button back-button" type="reset" onclick="window.location.back()">
       {{t('buttons.back')}}
     </button>
-    <button class="management-button confirm-button" type="submit">
+    <button class="management-button confirm-button" type="submit" [disabled]="!form.valid">
       {{t('buttons.confirm')}}
     </button>
   </form>

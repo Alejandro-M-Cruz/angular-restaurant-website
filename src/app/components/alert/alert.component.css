@@ -1,7 +1,7 @@
 .alert-container {
   z-index: 999999;
   margin: 1rem;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);

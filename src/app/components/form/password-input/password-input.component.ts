@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-password-input',
@@ -6,5 +7,6 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./password-input.component.css']
 })
 export class PasswordInputComponent {
-  @Input() isPasswordConfirmation = false
+  @Input() isConfirmation = false
+  @Input() control!: FormControl
 }

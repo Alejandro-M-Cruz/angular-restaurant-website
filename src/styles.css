@@ -129,6 +129,12 @@ input:focus, textarea:focus {
   font-size: 1.2rem;
 }
 
+/* -------------WELCOME MESSAGE------------- */
+.welcome-section {
+  text-align: center;
+  margin: 3rem auto;
+}
+
 
 /* -------------SLIDE SHOW------------- */
 

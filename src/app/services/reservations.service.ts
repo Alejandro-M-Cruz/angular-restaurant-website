@@ -124,4 +124,8 @@ export class ReservationsService {
       .forEach(reservation => totalCustomers += reservation.customers)
     return MAX_CUSTOMERS - totalCustomers
   }
+
+  getMaxCustomers() {
+    return MAX_CUSTOMERS
+  }
 }

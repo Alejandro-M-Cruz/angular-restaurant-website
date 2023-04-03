@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
+import {AuthenticationService} from "../../services/authentication.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-log-in',
@@ -6,5 +9,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent {
+  readonly form = this.fb.group({
+    email: ['', Validators.compose([Validators.required, Validators.email])],
+    password: ['', Validators.compose([
+      Validators.required,
+      Validators.minLength(this.authService.getPasswordMinLength())
+    ])],
+  })
 
+  constructor(
+    private readonly authService: AuthenticationService,
+    private readonly fb: FormBuilder,
+    private readonly router: Router
+  ) {}
+
+  async onSubmit() {
+    if (this.form.valid) {
+      const { email, password } = this.form.value
+      try {
+        await this.authService.logIn(email!, password!)
+        await this.router.navigate(['/home'])
+      } catch (e) {
+        console.error(e)
+      }
+    }
+  }
 }

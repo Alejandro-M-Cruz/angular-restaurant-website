@@ -1,4 +1,8 @@
 <ng-container *transloco="let t">
+  <section class="welcome-section" *ngIf="userInfo">
+    <h2>{{t('welcomeMessage', { user: userInfo.email })}}</h2>
+  </section>
+
   <section class="slide-image">
     <button id="slide-image__left-arrow"> <img src="/assets/images/left-arrow.png" alt="left arrow"></button>
     <div class="slide-image-thing">

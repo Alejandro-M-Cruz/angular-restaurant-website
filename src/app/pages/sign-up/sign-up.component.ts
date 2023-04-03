@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-// import { SignUp, SignUpService } from '../../services/sign-up.service';
+import {AuthenticationService} from "../../services/authentication.service";
+import {FormBuilder, Validators} from "@angular/forms";
+import {passwordMatchingValidator} from "../../validators/password-matching.validator";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -8,19 +11,33 @@ import { Component } from '@angular/core';
 })
 
 export class SignUpComponent {
-  // signUp: SignUp | undefined;
-  // constructor(private signUpService: SignUpService) {
-  // }
+  private readonly passwordValidators = [
+    Validators.required,
+    Validators.minLength(this.authService.getPasswordMinLength())
+  ]
+  readonly form = this.fb.group({
+    email: ['', Validators.compose([Validators.required, Validators.email])],
+    password: ['', Validators.compose(this.passwordValidators)],
+    passwordConfirmation: ['', Validators.compose(this.passwordValidators)]
+  }, {
+    validators: passwordMatchingValidator
+  })
 
-  // clear() {
-  //   this.signUp = undefined;
-  // }
+  constructor(
+    private readonly authService: AuthenticationService,
+    private readonly fb: FormBuilder,
+    private readonly router: Router
+  ) {}
 
-  // ngOnInit(): void {
-  //   this.signUpService.getContent().subscribe(
-  //     data => {
-  //       this.signUp = data;
-  //     }
-  //   );
-  // }
+  async onSubmit() {
+    if (this.form.valid) {
+      const { email, password } = this.form.value
+      try {
+        await this.authService.signUp(email!, password!)
+        await this.router.navigate(['/home'])
+      } catch (e) {
+        console.error(e)
+      }
+    }
+  }
 }

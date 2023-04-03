@@ -1,4 +1,4 @@
 <mat-form-field *transloco="let t">
   <mat-label>{{t('formLabels.email')}}</mat-label>
-  <input matInput placeholder="{{t('formHints.email')}}">
+  <input matInput type="email" placeholder="{{t('formHints.email')}}" [formControl]="control">
 </mat-form-field>
