@@ -1,19 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {ReservationsService} from "../../services/reservations.service";
 import {Reservation} from "../../model/reservation.model";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-reservation',
   templateUrl: './new-reservation.component.html',
   styleUrls: ['./new-reservation.component.css']
 })
-export class NewReservationComponent implements OnInit {
+export class NewReservationComponent {
   reservations: Reservation[] = []
-  availableSeats = this.reservationsService.getMaxCustomers()
+  availableDates: Date[] = []
   availableTimes: string[] = []
+  availableSeats = this.reservationsService.getMaxCustomers()
   form = this.fb.group({
-    date: [new Date(), Validators.required],
+    date: new FormControl<Date | null>(null, Validators.required),
     time: ['', Validators.required],
     customers: [1, Validators.compose([
       Validators.required,
@@ -25,27 +27,37 @@ export class NewReservationComponent implements OnInit {
 
   constructor(
     private readonly reservationsService: ReservationsService,
-    private readonly fb: FormBuilder
+    private readonly fb: FormBuilder,
+    private readonly router: Router
   ) {
+    this.disableInputs()
+    this.reservationsService.getCurrentReservations().subscribe(reservations => {
+      this.onReservationsChanged(reservations)
+    })
+    this.form.controls.date.valueChanges.subscribe(date => {
+      this.onDateChanged(date)
+    })
+    this.form.controls.time.valueChanges.subscribe(time => {
+      this.onTimeChanged(time)
+    })
   }
 
-  ngOnInit() {
-    this.reservationsService.getCurrentReservations().subscribe(reservations => {
-      this.reservations = reservations
-    })
-    this.form.controls.date.valueChanges.subscribe(this.onDateChanged)
-    this.form.controls.time.valueChanges.subscribe(this.onTimeChanged)
+  onReservationsChanged(reservations: Reservation[]) {
+    this.reservations = reservations
+    this.availableDates = this.reservationsService.getAvailableDates()
   }
 
   onDateChanged(date: Date | null) {
-    this.availableTimes = this.reservationsService.getAvailableTimes(date!)
-    if (this.availableTimes.length > 0) {
-      this.form.controls.time.enable()
-    } else {
-      this.form.controls.time.disable()
-      window.location.reload()
+    if (date === null) {
+      this.disableInputs()
       return
     }
+    this.availableTimes = this.reservationsService.getAvailableTimes(date!)
+    if (this.availableTimes.length === 0) {
+      this.disableInputs()
+      return
+    }
+    this.enableInputs()
     if (!this.availableTimes.includes(this.form.controls.time.value!))
       this.form.controls.time.setValue(this.availableTimes[0])
   }
@@ -60,13 +72,20 @@ export class NewReservationComponent implements OnInit {
     this.form.controls.customers.addValidators([Validators.max(this.availableSeats = max)])
   }
 
-  isDateValid(date: Date | null) {
-    return date !== null && this.reservationsService.isDateAvailable(date)
+  private disableInputs() {
+    this.form.controls.time.disable()
+    this.form.controls.customers.disable()
+  }
+
+  private enableInputs() {
+    this.form.controls.time.enable()
+    this.form.controls.customers.enable()
   }
 
   async onSubmit() {
     try {
       await this.reservationsService.addReservation(this.form.value as Reservation)
+      await this.router.navigate(['/reservations'])
     } catch (e) {
       console.error(e)
     }

@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {translate, TranslocoService} from '@ngneat/transloco';
-import {Alert} from "../alert/alert.component";
+import {Component} from '@angular/core';
+import {TranslocoService} from '@ngneat/transloco';
 
 @Component({
   selector: 'app-navbar',
@@ -17,17 +16,13 @@ export class NavbarComponent {
     {name: 'login', link: '/log-in'}
   ]
   showUserIcon = false;
-  private translateService: TranslocoService;
   showSidenav = false;
-  @Output() showAlert = new EventEmitter<Alert>();
 
-  constructor(translateService: TranslocoService) {
-    this.translateService = translateService;
+  constructor(private readonly translateService: TranslocoService) {
   }
 
   onChangeLanguage() {
     this.translateService.setActiveLang(this.translateService.getActiveLang() === 'en' ? 'es' : 'en');
-    this.showAlert.emit({type: 'success', message: translate('successAlerts.languageChanged')});
   }
 
   toggleSidenav() {

@@ -1,9 +1,9 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.newReservation')}}</h2>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <app-date-picker [dateFilter]="isDateValid" [control]="form.controls.date"></app-date-picker>
+    <app-date-picker [availableDates]="availableDates" [control]="form.controls.date"></app-date-picker>
     <app-time-picker [availableTimes]="availableTimes" [control]="form.controls.time"></app-time-picker>
-    <app-customers-input [control]="form.controls.customers"></app-customers-input>
+    <app-customers-input [control]="form.controls.customers" [maxCustomers]="availableSeats"></app-customers-input>
     <button class="management-button back-button" type="reset" onclick="window.location.back()">
       {{t('buttons.back')}}
     </button>

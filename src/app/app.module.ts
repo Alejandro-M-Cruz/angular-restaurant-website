@@ -27,7 +27,6 @@ import { DatePickerComponent } from './components/form/date-picker/date-picker.c
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { NewReservationComponent } from './pages/new-reservation/new-reservation.component';
@@ -47,6 +46,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { CustomersInputComponent } from './components/form/customers-input/customers-input.component';
 import { ComplaintsComponent } from './pages/complaints/complaints.component';
 import { TextareaComponent } from './components/form/textarea/textarea.component';
+import {MatNativeDateModule} from "@angular/material/core";
 registerLocaleData(es);
 
 @NgModule({
@@ -89,14 +89,14 @@ registerLocaleData(es);
     MatSidenavModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule,
     MatListModule,
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatNativeDateModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' }

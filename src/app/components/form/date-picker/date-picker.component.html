@@ -1,7 +1,23 @@
-<mat-form-field class="example-full-width" appearance="fill" *transloco="let t">
+<mat-form-field appearance="fill" *transloco="let t">
   <mat-label>{{t('formLabels.date')}}</mat-label>
-  <input matInput [matDatepickerFilter]="dateFilter" [matDatepicker]="picker" [formControl]="control">
+  <mat-select [formControl]="control">
+    <mat-option *ngFor="let availableDate of availableDates" [value]="availableDate">
+      {{availableDate | date: t('dateFormat')}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<!--<mat-form-field class="example-full-width" appearance="fill" *transloco="let t">
+  <mat-label>{{t('formLabels.date')}}</mat-label>
+  <input
+    matInput
+    [min]="minDate"
+    [max]="maxDate"
+    [matDatepickerFilter]="dateFilter"
+    [matDatepicker]="picker"
+    [formControl]="control"
+  >
   <mat-hint>{{t('dateFormat')}}</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker ></mat-datepicker>
-</mat-form-field>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>-->

@@ -11,21 +11,11 @@ import {Alert} from "./components/alert/alert.component";
 })
 export class AppComponent {
   title = 'angular-restaurant-website';
-  alertType: string = 'success';
-  alertMessage: string = '';
-  showAlert = false
 
   constructor(private modalService: NgbModal) {
   }
 
   public open(modal: any): void {
     this.modalService.open(modal);
-  }
-
-  onShowAlert(alert: Alert) {
-    this.alertType = alert.type;
-    this.alertMessage = alert.message;
-    this.showAlert = true;
-    setTimeout(() => this.showAlert = false, 5000)
   }
 }

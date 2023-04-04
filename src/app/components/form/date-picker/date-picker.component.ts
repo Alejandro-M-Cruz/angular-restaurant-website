@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {ReservationsService} from "../../../services/reservations.service";
 
 @Component({
   selector: 'app-date-picker',
@@ -8,6 +7,6 @@ import {ReservationsService} from "../../../services/reservations.service";
   styleUrls: ['./date-picker.component.css']
 })
 export class DatePickerComponent {
-  @Input() dateFilter!:  (date: Date | null) => boolean;
+  @Input() availableDates!: Date[]
   @Input() control!: FormControl
 }

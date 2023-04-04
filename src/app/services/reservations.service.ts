@@ -1,17 +1,18 @@
-import { Injectable } from '@angular/core'
+import {Injectable} from "@angular/core";
+import {Reservation} from "../model/reservation.model";
 import {
   addDoc,
-  collection, collectionData,
+  collection,
+  collectionData,
   deleteDoc,
-  doc, Firestore,
+  doc,
+  Firestore,
   orderBy,
   query,
   where
-} from "@angular/fire/firestore"
-import {Reservation} from "../model/reservation.model"
+} from "@angular/fire/firestore";
 import {Auth} from "@angular/fire/auth";
 import {Observable} from "rxjs";
-
 
 const MIN_DAYS_BEFOREHAND = 2
 const MAX_DAYS_BEFOREHAND = 30
@@ -66,7 +67,7 @@ export class ReservationsService {
   }
 
   addReservation(reservation: Reservation) {
-    reservation.userId = this.auth.currentUser?.uid
+    reservation.userId = this.auth.currentUser!.uid
     return addDoc(collection(this.firestore, 'reservations'), reservation)
   }
 
@@ -74,47 +75,26 @@ export class ReservationsService {
     return deleteDoc(doc(this.firestore, 'reservations', id))
   }
 
-  isDateWithinRange(date: Date) {
+  getAvailableDates() {
+    const availableDates: Date[] = []
     const today = new Date()
     today.setHours(0, 0, 0, 0)
-    const min = today.getTime() + 1000 * 60 * 60 * 24 * MIN_DAYS_BEFOREHAND
-    const max = today.getTime() + 1000 * 60 * 60 * 24 * MAX_DAYS_BEFOREHAND
-    return date.getTime() >= min && date.getTime() <= max
-  }
-
-  /*getAvailableDates() {
-    const availableDates = []
-    const date = new Date()
-    date.setHours(0, 0, 0, 0)
-    const max = date.getTime() + 1000 * 60 * 60 * 24 * MAX_DAYS_BEFOREHAND
-    date.setTime(date.getTime() + 1000 * 60 * 60 * 24 * MIN_DAYS_BEFOREHAND)
-    while (date.getTime() <= max) {
-      let totalCustomers = 0
-      this.currentReservations.filter(r => r.date.getTime() === date.getTime()).forEach(reservation => {
-        totalCustomers += reservation.customers
-      })
-      if (totalCustomers < MAX_CUSTOMERS) availableDates.push(new Date(date.getTime()))
+    const date = new Date(today.getTime() + 1000 * 60 * 60 * 24 * MIN_DAYS_BEFOREHAND)
+    const maxTime = today.getTime() + 1000 * 60 * 60 * 24 * MAX_DAYS_BEFOREHAND
+    while (date.getTime() <= maxTime) {
+      if (this.getAvailableTimes(date).length > 0) availableDates.push(new Date(date.getTime()))
       date.setTime(date.getTime() + 1000 * 60 * 60 * 24)
     }
     return availableDates
-  }*/
-
-  getAvailableTimes(date: Date) {
-    const dateReservations = this.currentReservations
-      .filter(r => r.date.getTime() === date.getTime())
-    const availableTimes = [...RESERVATION_TIMES]
-    availableTimes.forEach(time => {
-      let totalCustomers = 0
-      dateReservations.filter(r => r.time === time).forEach(reservation => {
-        totalCustomers += reservation.customers
-      })
-      if (totalCustomers >= MAX_CUSTOMERS) availableTimes.splice(availableTimes.indexOf(time), 1)
-    })
-    return availableTimes
   }
 
-  isDateAvailable(date: Date) {
-    return this.isDateWithinRange(date) && this.getAvailableTimes(date).length > 0
+  getAvailableTimes(date: Date) {
+    const availableTimes = [...RESERVATION_TIMES]
+    availableTimes.forEach(time => {
+      if (this.getAvailableSeats(date, time) <= 0)
+        availableTimes.splice(availableTimes.indexOf(time), 1)
+    })
+    return availableTimes
   }
 
   getAvailableSeats(date: Date, time: string) {
