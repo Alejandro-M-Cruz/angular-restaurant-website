@@ -78,7 +78,8 @@
     "editSection": "Editar sección",
     "addProduct": "Añadir producto",
     "undoChanges": "Deshacer cambios",
-    "saveChanges": "Guardar cambios"
+    "saveChanges": "Guardar cambios",
+    "sendComplaint": "Enviar reclamación"
   },
   "reservationsTable": {
     "date": "Fecha",
@@ -97,7 +98,8 @@
     "date": "Fecha ",
     "time": "Hora",
     "customers": "Número de comensales",
-    "name": "Nombre"
+    "name": "Nombre",
+    "complaint": "Describa su queja o sugerencia"
   },
   "formHints": {
     "email": "email@ejemplo.com",

@@ -45,6 +45,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { CustomersInputComponent } from './components/form/customers-input/customers-input.component';
+import { ComplaintsComponent } from './pages/complaints/complaints.component';
+import { TextareaComponent } from './components/form/textarea/textarea.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -68,6 +70,8 @@ registerLocaleData(es);
     ConfirmationDialogComponent,
     AlertComponent,
     CustomersInputComponent,
+    ComplaintsComponent,
+    TextareaComponent,
   ],
   imports: [
     BrowserModule,

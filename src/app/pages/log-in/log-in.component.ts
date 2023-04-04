@@ -13,7 +13,8 @@ export class LogInComponent {
     email: ['', Validators.compose([Validators.required, Validators.email])],
     password: ['', Validators.compose([
       Validators.required,
-      Validators.minLength(this.authService.getPasswordMinLength())
+      Validators.minLength(this.authService.getPasswordMinLength()),
+      Validators.maxLength(this.authService.getPasswordMaxLength())
     ])],
   })
 

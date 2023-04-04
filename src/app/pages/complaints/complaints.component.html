@@ -1,0 +1,15 @@
+<section *transloco="let t">
+  <h2 class="page-title">{{t('titles.complaints')}}</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>{{t('formLabels.complaint')}}</mat-label>
+      <textarea matInput class="complaint-textarea" cols="55" rows="8" formControlName="content"></textarea>
+    </mat-form-field>
+    <button class="management-button back-button" type="reset" onclick="window.location.back()">
+      {{t('buttons.back')}}
+    </button>
+    <button class="management-button confirm-button" type="submit" [disabled]="!form.valid">
+      {{t('buttons.sendComplaint')}}
+    </button>
+  </form>
+</section>

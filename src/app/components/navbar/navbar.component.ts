@@ -9,12 +9,12 @@ import {Alert} from "../alert/alert.component";
 })
 export class NavbarComponent {
   items = [
-    {name: 'home', link: 'home'},
-    {name: 'menu', link: 'menu'},
-    {name: 'aboutUs', link: 'aboutUs'},
-    {name: 'contact', link: 'contact'},
-    {name: 'reservations', link: 'user-reservations'},
-    {name: 'login', link: 'log-in'}
+    {name: 'home', link: '/home'},
+    {name: 'menu', link: '/home/menu'},
+    {name: 'aboutUs', link: 'about-us'},
+    {name: 'contact', link: '/home/contact'},
+    {name: 'reservations', link: '/user-reservations'},
+    {name: 'login', link: '/log-in'}
   ]
   showUserIcon = false;
   private translateService: TranslocoService;

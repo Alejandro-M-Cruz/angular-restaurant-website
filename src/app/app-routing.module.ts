@@ -1,37 +1,69 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {Injectable, NgModule} from '@angular/core';
+import {RouterModule, RouterStateSnapshot, Routes, TitleStrategy} from '@angular/router';
 import { HomeComponent } from "./pages/home/home.component";
 import { LogInComponent } from "./pages/log-in/log-in.component";
 import { SignUpComponent} from "./pages/sign-up/sign-up.component";
 import { NewReservationComponent} from "./pages/new-reservation/new-reservation.component";
 import { UserReservationsComponent} from "./pages/user-reservations/user-reservations.component";
+import {MenuComponent} from "./pages/home/components/menu/menu.component";
+import {FooterComponent} from "./components/footer/footer.component";
+import {ComplaintsComponent} from "./pages/complaints/complaints.component";
+import {Title} from "@angular/platform-browser";
+import {translate, TranslocoService} from "@ngneat/transloco";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home',
-    title: 'tabTitles.home',
+    title: 'home',
     component: HomeComponent,
     children: [
       {
         path: 'menu',
-        component: HomeComponent
+        component: MenuComponent
       },
       {
         path: 'about-us',
         component: HomeComponent
+      },
+      {
+        path: 'contact',
+        component: FooterComponent
       }
     ]
   },
-  { path: 'sign-up', title: 'tabTitles.signup', component: SignUpComponent },
-  { path: 'log-in', title: 'tabTitles.login', component: LogInComponent },
-  { path: 'user-reservations', title: 'tabTitles.reservations', component: UserReservationsComponent },
-  { path: 'new-reservation', title: 'tabTitles.newReservation', component: NewReservationComponent },
-  { path: '**', redirectTo: 'home' }
+  { path: 'sign-up', title: 'signup', component: SignUpComponent },
+  { path: 'log-in', title: 'login', component: LogInComponent },
+  { path: 'user-reservations', title: 'reservations', component: UserReservationsComponent },
+  { path: 'new-reservation', title: 'newReservation', component: NewReservationComponent },
+  { path: 'complaints', title: 'complaints', component: ComplaintsComponent },
+  { path: '**', redirectTo: '/home' }
 ];
+
+@Injectable({providedIn: 'root'})
+export class MultiLanguageTitleStrategy extends TitleStrategy {
+  constructor(private readonly title: Title, private readonly translateService: TranslocoService) {
+    super();
+  }
+
+  override updateTitle(routerState: RouterStateSnapshot) {
+    const title = this.buildTitle(routerState);
+    if (title !== undefined) {
+      this.translateService.selectTranslate('tabTitles.' + title).subscribe((t: string) => {
+        this.title.setTitle(t)
+      })
+    } else {
+      this.title.setTitle('La Nostra Casa')
+    }
+  }
+}
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    {provide: TitleStrategy, useClass: MultiLanguageTitleStrategy},
+  ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

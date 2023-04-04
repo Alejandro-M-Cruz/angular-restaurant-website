@@ -76,7 +76,8 @@
     "editSection": "Edit section",
     "addProduct": "Add product",
     "undoChanges": "Undo changes",
-    "saveChanges": "Save changes"
+    "saveChanges": "Save changes",
+    "sendComplaint": "Send complaint"
   },
   "reservationsTable": {
     "date": "Date",
@@ -95,7 +96,8 @@
     "date": "Date",
     "time": "Time",
     "customers": "Customers",
-    "name": "In name of"
+    "name": "In name of",
+    "complaint": "Explain your complaint or suggestion"
   },
   "formHints": {
     "email": "email@example.com",

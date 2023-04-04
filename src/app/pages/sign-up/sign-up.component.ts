@@ -13,7 +13,8 @@ import {Router} from "@angular/router";
 export class SignUpComponent {
   private readonly passwordValidators = [
     Validators.required,
-    Validators.minLength(this.authService.getPasswordMinLength())
+    Validators.minLength(this.authService.getPasswordMinLength()),
+    Validators.maxLength(this.authService.getPasswordMaxLength())
   ]
   readonly form = this.fb.group({
     email: ['', Validators.compose([Validators.required, Validators.email])],

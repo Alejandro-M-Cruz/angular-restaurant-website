@@ -3,6 +3,7 @@ import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, update
 
 
 const PASSWORD_MIN_LENGTH = 4
+const PASSWORD_MAX_LENGTH = 16
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,9 @@ export class AuthenticationService {
 
   getPasswordMinLength() {
     return PASSWORD_MIN_LENGTH
+  }
+
+  getPasswordMaxLength() {
+    return PASSWORD_MAX_LENGTH
   }
 }
