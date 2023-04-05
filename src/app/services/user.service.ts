@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Auth, getAuth} from "@angular/fire/auth";
+import {Auth} from "@angular/fire/auth";
 import {UserInfo} from "../model/user-info.model";
 
 @Injectable({
@@ -9,11 +9,12 @@ export class UserService {
   constructor(private readonly auth: Auth) {}
 
   getUserInfo() {
-    if (this.auth.currentUser  === null) return null
+    const user = this.auth.currentUser
+    if (user === null) return null
     return {
-      email: this.auth.currentUser.email,
-      creationDate: new Date(this.auth.currentUser.metadata.creationTime ?? Date.now()),
-      lastLogInDate: new Date(this.auth.currentUser.metadata.lastSignInTime ?? Date.now())
+      email: user.email,
+      creationDate: user.metadata.creationTime ? new Date(user.metadata.creationTime) : undefined,
+      lastLogInDate: user.metadata.lastSignInTime ? new Date(user.metadata.lastSignInTime) : undefined
     } as UserInfo
   }
 

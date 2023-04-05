@@ -1,0 +1,26 @@
+<ng-container *transloco="let t">
+  <table class="data-table" *ngIf="userInfo">
+    <tr class="title-row">
+      <!--<th *ngFor="let piece of userInfo | keyvalue">{{t('userInfo.' + piece.key)}}</th>-->
+      <th>{{t('userInfo.email')}}</th>
+      <th>{{t('userInfo.creationDate')}}</th>
+      <th>{{t('userInfo.lastLogInDate')}}</th>
+    </tr>
+    <tr class="non-selectable-row">
+      <td>{{userInfo.email}}</td>
+      <td>{{userInfo.creationDate | date: t('dateFormat') + ', HH:mm'}}</td>
+      <td>{{userInfo.lastLogInDate | date: t('dateFormat') + ', HH:mm'}}</td>
+    </tr>
+  </table>
+  <div class="buttons-container">
+    <button class="management-button back-button" onclick="window.history.back()">
+      {{t('buttons.back')}}
+    </button>
+    <button class="management-button cancel-button" (click)="onDeleteAccountButtonClicked()">
+      {{t('buttons.deleteAccount')}}
+    </button>
+    <a class="management-button confirm-button" (click)="logOut()">
+      {{t('buttons.logout')}}
+    </a>
+  </div>
+</ng-container>

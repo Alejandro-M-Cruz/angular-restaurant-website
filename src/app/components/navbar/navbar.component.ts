@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {TranslocoService} from '@ngneat/transloco';
 
 @Component({
@@ -7,25 +7,20 @@ import {TranslocoService} from '@ngneat/transloco';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  @Input() showUserIcon!: boolean
   items = [
     {name: 'home', link: '/home'},
     {name: 'menu', link: '/home/menu'},
     {name: 'aboutUs', link: 'about-us'},
     {name: 'contact', link: '/home/contact'},
     {name: 'reservations', link: '/user-reservations'},
-    {name: 'login', link: '/log-in'}
+    // {name: 'login', link: '/log-in'}
   ]
-  showUserIcon = false;
-  showSidenav = false;
 
-  constructor(private readonly translateService: TranslocoService) {
-  }
+  constructor(private readonly translateService: TranslocoService) { }
 
   onChangeLanguage() {
     this.translateService.setActiveLang(this.translateService.getActiveLang() === 'en' ? 'es' : 'en');
   }
 
-  toggleSidenav() {
-    this.showSidenav = !this.showSidenav;
-  }
 }

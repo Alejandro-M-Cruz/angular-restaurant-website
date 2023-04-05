@@ -10,9 +10,10 @@ import {FooterComponent} from "./components/footer/footer.component";
 import {ComplaintsComponent} from "./pages/complaints/complaints.component";
 import {Title} from "@angular/platform-browser";
 import {translate, TranslocoService} from "@ngneat/transloco";
+import {MyAccountComponent} from "./pages/my-account/my-account.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'home',
     title: 'home',
@@ -32,6 +33,7 @@ const routes: Routes = [
       }
     ]
   },
+  { path: 'my-account', title: 'myAccount', component: MyAccountComponent },
   { path: 'sign-up', title: 'signup', component: SignUpComponent },
   { path: 'log-in', title: 'login', component: LogInComponent },
   { path: 'user-reservations', title: 'reservations', component: UserReservationsComponent },

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {addDoc, collection, deleteDoc, Firestore, getDocs} from "@angular/fire/firestore";
-import {MenuItem} from "./model/menu-item.model";
-import {Alert} from "./components/alert/alert.component";
+import {AuthenticationService} from "./services/authentication.service";
 
 @Component({
   selector: 'app-root',
@@ -12,10 +10,14 @@ import {Alert} from "./components/alert/alert.component";
 export class AppComponent {
   title = 'angular-restaurant-website';
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private readonly authService: AuthenticationService) {
   }
 
   public open(modal: any): void {
     this.modalService.open(modal);
+  }
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn()
   }
 }

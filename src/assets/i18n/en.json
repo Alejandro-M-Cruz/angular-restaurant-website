@@ -79,6 +79,11 @@
     "saveChanges": "Save changes",
     "sendComplaint": "Send complaint"
   },
+  "userInfo": {
+    "email": "Email",
+    "creationDate": "Account creation date",
+    "lastLogInDate": "Last log-in date"
+  },
   "reservationsTable": {
     "date": "Date",
     "time": "Time",
@@ -111,10 +116,13 @@
   "notSignedUp": "If you do not have an account, ",
   "notSignedUpLink": "SIGN UP HERE",
   "confirmationTitles": {
-    "cancelReservation": "Cancel reservation"
+    "cancelReservation": "Cancel reservation",
+    "deleteAccount": "Account deletion"
   },
   "confirmations": {
-    "cancelReservation": "Are you sure you want to cancel your reservation for {{date}} at {{time}}?"
+    "cancelReservation": "Are you sure you want to cancel your reservation for {{date}} at {{time}}?",
+    "deleteAccount": "Are you sure you want to delete your account? Your reservations will be deleted",
+    "deleteAccount2": "Are you sure? This action cannot be undone"
   },
   "confirmationOptions": {
     "yes": "Yes",

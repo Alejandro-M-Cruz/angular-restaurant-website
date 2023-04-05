@@ -20,6 +20,10 @@ export class AuthenticationService {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 
+  isLoggedIn() {
+    return !!this.auth.currentUser
+  }
+
   logOut() {
     return this.auth.signOut()
   }

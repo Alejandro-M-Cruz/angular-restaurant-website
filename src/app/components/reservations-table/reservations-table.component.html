@@ -4,7 +4,7 @@
     <th>{{t('reservationsTable.time')}}</th>
     <th>{{t('reservationsTable.customers')}}</th>
   </tr>
-  <ng-container *ngIf="reservations.length > 0">
+  <ng-container *ngIf="reservations ? reservations.length : 0 > 0">
     <tr
       *ngFor="let reservation of reservations"
       [class.selected-row]="reservation === selectedRow"
@@ -15,9 +15,9 @@
       <td>{{reservation.customers}}</td>
     </tr>
   </ng-container>
-  <tr class="empty-row" *ngFor="let i of [].constructor(maxReservations - reservations.length)">
+  <tr class="empty-row" *ngFor="let i of [].constructor(maxReservations - (reservations ? reservations.length : 0))">
     <td colspan="3">
-      {{t('tableEmptyRows.reservations', { available: maxReservations - reservations.length })}}
+      {{t('tableEmptyRows.reservations', { available: maxReservations - (reservations ? reservations.length : 0) })}}
     </td>
   </tr>
 </table>

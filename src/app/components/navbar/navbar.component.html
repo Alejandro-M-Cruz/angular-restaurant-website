@@ -30,9 +30,12 @@
             </button>
         </li>
         <a *ngFor="let item of items" [routerLink]="item.link">{{t('navbarLinks.' + item.name)}}</a>
-        <li *ngIf="showUserIcon" class="navbar-list__user-icon">
-            <a class="user-icon" routerLink="log-in"><img src="/assets/images/user-icon.png" alt="User" width="50"></a>
-        </li>
+        <a *ngIf="!showUserIcon; else userIcon" routerLink="log-in">{{t('navbarLinks.login')}}</a>
+        <ng-template #userIcon>
+          <li class="navbar-list__user-icon">
+            <a class="user-icon" routerLink="my-account"><img src="/assets/images/user-icon.png" alt="User" width="50"></a>
+          </li>
+        </ng-template>
     </ul>
 </nav>
 </header>

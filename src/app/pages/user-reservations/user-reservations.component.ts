@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Reservation} from "../../model/reservation.model";
 import {ReservationsService} from "../../services/reservations.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -11,17 +11,20 @@ import {formatDate} from "@angular/common";
   templateUrl: './user-reservations.component.html',
   styleUrls: ['./user-reservations.component.css']
 })
-export class UserReservationsComponent {
-  userReservations: Reservation[] = []
-  maxReservations = 5
+export class UserReservationsComponent implements OnInit {
+  userReservations$ = this.reservationsService.getUserCurrentReservations()
+  nReservations = 0
+  maxReservations = this.reservationsService.getMaxReservations()
   selectedReservation: Reservation | null = null
 
   constructor(
     private readonly reservationsService: ReservationsService,
     private readonly dialog: MatDialog
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.reservationsService.getUserCurrentReservations().subscribe(reservations  => {
-      this.userReservations = reservations
+      this.nReservations = reservations.length
     })
   }
 
@@ -62,7 +65,7 @@ export class UserReservationsComponent {
     try {
       await this.reservationsService.deleteReservation(this.selectedReservation!.id!)
     } catch(e) {
-
+      console.error(e)
     }
     this.selectedReservation = null
   }

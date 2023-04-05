@@ -6,7 +6,7 @@ import {
   collectionData,
   deleteDoc,
   doc,
-  Firestore,
+  Firestore, getDocs,
   orderBy,
   query,
   where
@@ -14,6 +14,7 @@ import {
 import {Auth} from "@angular/fire/auth";
 import {Observable} from "rxjs";
 
+const MAX_RESERVATIONS = 5
 const MIN_DAYS_BEFOREHAND = 2
 const MAX_DAYS_BEFOREHAND = 30
 const MAX_CUSTOMERS = 30
@@ -47,7 +48,7 @@ export class ReservationsService {
     today.setHours(0, 0, 0, 0)
     const q = query(
       collection(this.firestore, 'reservations'),
-      where('date', '>=', today),
+      where('date', '>=', today.getTime()),
       orderBy('date')
     )
     return collectionData(q, {idField: 'id'}) as Observable<Reservation[]>
@@ -60,10 +61,14 @@ export class ReservationsService {
     const q = query(
       collection(this.firestore, 'reservations'),
       where('userId', '==', this.auth.currentUser.uid),
-      where('date', '>=', today),
+      where('date', '>=', today.getTime()),
       orderBy('date')
     )
     return collectionData(q, {idField: 'id'}) as Observable<Reservation[]>
+  }
+
+  getMaxReservations() {
+    return MAX_RESERVATIONS
   }
 
   addReservation(reservation: Reservation) {
@@ -100,7 +105,7 @@ export class ReservationsService {
   getAvailableSeats(date: Date, time: string) {
     let totalCustomers = 0
     this.currentReservations
-      .filter(r => r.date.getTime() === date.getTime() && r.time === time)
+      .filter(r => r.date === date.getTime() && r.time === time)
       .forEach(reservation => totalCustomers += reservation.customers)
     return MAX_CUSTOMERS - totalCustomers
   }

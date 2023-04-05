@@ -9,13 +9,13 @@ import {Router} from "@angular/router";
   templateUrl: './new-reservation.component.html',
   styleUrls: ['./new-reservation.component.css']
 })
-export class NewReservationComponent {
+export class NewReservationComponent implements OnInit {
   reservations: Reservation[] = []
   availableDates: Date[] = []
   availableTimes: string[] = []
   availableSeats = this.reservationsService.getMaxCustomers()
   form = this.fb.group({
-    date: new FormControl<Date | null>(null, Validators.required),
+    date: new FormControl<number | null>(null, Validators.required),
     time: ['', Validators.required],
     customers: [1, Validators.compose([
       Validators.required,
@@ -29,13 +29,15 @@ export class NewReservationComponent {
     private readonly reservationsService: ReservationsService,
     private readonly fb: FormBuilder,
     private readonly router: Router
-  ) {
+  ) { }
+
+  ngOnInit() {
     this.disableInputs()
     this.reservationsService.getCurrentReservations().subscribe(reservations => {
       this.onReservationsChanged(reservations)
     })
     this.form.controls.date.valueChanges.subscribe(date => {
-      this.onDateChanged(date)
+      this.onDateChanged(date === null ? null : new Date(date))
     })
     this.form.controls.time.valueChanges.subscribe(time => {
       this.onTimeChanged(time)
@@ -63,7 +65,10 @@ export class NewReservationComponent {
   }
 
   onTimeChanged(time: string | null) {
-    const max = this.reservationsService.getAvailableSeats(this.form.controls.date.value!, time!)
+    const max = this.reservationsService.getAvailableSeats(
+      new Date(this.form.controls.date.value!),
+      time!
+    )
     if (max <= 0) {
       window.location.reload()
       return
@@ -85,7 +90,7 @@ export class NewReservationComponent {
   async onSubmit() {
     try {
       await this.reservationsService.addReservation(this.form.value as Reservation)
-      await this.router.navigate(['/reservations'])
+      await this.router.navigate(['/user-reservations'])
     } catch (e) {
       console.error(e)
     }

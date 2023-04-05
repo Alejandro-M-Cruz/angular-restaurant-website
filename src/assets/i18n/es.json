@@ -81,6 +81,11 @@
     "saveChanges": "Guardar cambios",
     "sendComplaint": "Enviar reclamación"
   },
+  "userInfo": {
+    "email": "Correo electrónico",
+    "creationDate": "Fecha de creación de la cuenta",
+    "lastLogInDate": "Último inicio de sesión"
+  },
   "reservationsTable": {
     "date": "Fecha",
     "time": "Hora",
@@ -113,10 +118,13 @@
   "notSignedUp": "Si aún no se ha registrado, ",
   "notSignedUpLink": "REGÍSTRESE AQUÍ",
   "confirmationTitles": {
-    "cancelReservation": "Cancelar reserva"
+    "cancelReservation": "Cancelar reserva",
+    "deleteAccount": "Borrado de cuenta"
   },
   "confirmations": {
-    "cancelReservation": "¿Está seguro de que desea cancelar su reserva para el {{date}} a las {{time}}?"
+    "cancelReservation": "¿Está seguro de que desea cancelar su reserva para el {{date}} a las {{time}}?",
+    "deleteAccount": "¿Está seguro de que desea eliminar su cuenta? Sus reservas serán canceladas",
+    "deleteAccount2": "¿Está seguro? Esta acción no se puede deshacer"
   },
   "confirmationOptions": {
     "yes": "Sí",

@@ -1,11 +1,13 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.reservations')}}</h2>
   <section class="content-section">
-    <app-reservations-table
-      [reservations]="userReservations"
-      [maxReservations]="maxReservations"
-      (selectedReservationChanged)="onSelectedReservationChanged($event)"
-    ></app-reservations-table>
+    <ng-container>
+      <app-reservations-table
+        [reservations]="userReservations$ | async"
+        [maxReservations]="maxReservations"
+        (selectedReservationChanged)="onSelectedReservationChanged($event)"
+      ></app-reservations-table>
+    </ng-container>
     <div class="buttons-container">
       <button class="management-button back-button" onclick="window.history.back()">{{t('buttons.back')}}</button>
       <button
@@ -16,7 +18,7 @@
       <button
         class="management-button confirm-button"
         routerLink="/new-reservation"
-        [disabled]="userReservations.length >= maxReservations"
+        [disabled]="nReservations >= maxReservations"
       >{{t('buttons.newReservation')}}</button>
     </div>
   </section>

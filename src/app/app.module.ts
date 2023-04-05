@@ -47,6 +47,7 @@ import { CustomersInputComponent } from './components/form/customers-input/custo
 import { ComplaintsComponent } from './pages/complaints/complaints.component';
 import { TextareaComponent } from './components/form/textarea/textarea.component';
 import {MatNativeDateModule} from "@angular/material/core";
+import { MyAccountComponent } from './pages/my-account/my-account.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -72,6 +73,7 @@ registerLocaleData(es);
     CustomersInputComponent,
     ComplaintsComponent,
     TextareaComponent,
+    MyAccountComponent,
   ],
   imports: [
     BrowserModule,
