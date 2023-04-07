@@ -1,34 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head include-html="/html/templates/head.html">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/javascript/utils.js"></script>
-</head>
-<body>
-<div class="grid-div">
-    <header class="navbar-header" include-html="/html/templates/navbar.html">
-    </header>
-    <main>
-        <h2 class="page-title"></h2>
-        <section class="cards-grid">
-        </section>
-        <button class="back-button back-button management-button" onclick="window.history.back()"></button>
-    </main>
-    <footer class="footer-section" include-html="/html/templates/footer.html"></footer>
-</div>
-
-<script src="/javascript/alert-messages.js"></script>
-<script src="/admin/javascript/complaints-admin.js"></script>
-<script src="/admin/javascript/api-requests/complaints.js"></script>
-<script>
-    includeHTML()
-        .then(() => {
-            initNavbar()
-            return loadJson("/admin/json/complaints-admin-page-content.json")
-        })
-        .then(data => loadPage(data))
-</script>
-</body>
-</html>
+<ng-container *transloco="let t">
+  <h2 class="page-title">{{t('titles.complaintsAdmin')}}</h2>
+  <section class="cards-grid">
+    <div class="card-div" *ngFor="let complaint of complaints | async">
+      <p class="card-title">{{complaint.creationTimestamp | date: t('dateFormat') + ' - HH:mm'}}</p>
+      <p class="card-content">{{complaint.content}}</p>
+    </div>
+  </section>
+  <button class="management-button back-button" onclick="window.history.back()"></button>
+</ng-container>

@@ -4,6 +4,9 @@
     <mat-form-field appearance="fill">
       <mat-label>{{t('formLabels.complaint')}}</mat-label>
       <textarea matInput class="complaint-textarea" cols="55" rows="8" formControlName="content"></textarea>
+      <mat-error *ngIf="form.controls.content.errors?.['maxlength']">
+        {{t('formErrors.complaintLong', {maxLength})}}
+      </mat-error>
     </mat-form-field>
     <button class="management-button back-button" type="reset" onclick="window.location.back()">
       {{t('buttons.back')}}

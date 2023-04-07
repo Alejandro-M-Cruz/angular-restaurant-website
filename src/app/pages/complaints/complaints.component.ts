@@ -10,10 +10,11 @@ import {Router} from "@angular/router";
   styleUrls: ['./complaints.component.css']
 })
 export class ComplaintsComponent {
+  maxLength = this.complaintsService.getComplaintMaxLength()
   form = this.fb.group({
     content: ['', Validators.compose([
       Validators.required,
-      Validators.maxLength(this.complaintsService.getComplaintMaxLength())
+      Validators.maxLength(this.maxLength)
     ])]
   })
 

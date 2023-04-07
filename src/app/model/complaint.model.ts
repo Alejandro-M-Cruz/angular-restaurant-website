@@ -1,5 +1,5 @@
 export interface Complaint {
   id?: string;
-  creationTimestamp?: Date;
+  creationTimestamp?: number;
   content: string;
 }

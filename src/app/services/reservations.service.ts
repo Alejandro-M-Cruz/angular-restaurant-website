@@ -6,7 +6,7 @@ import {
   collectionData,
   deleteDoc,
   doc,
-  Firestore, getDocs,
+  Firestore,
   orderBy,
   query,
   where

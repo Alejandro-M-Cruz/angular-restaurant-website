@@ -32,8 +32,10 @@ export class LogInComponent {
       try {
         await this.authService.logIn(email!, password!)
         await this.router.navigate(['/home'])
-      } catch (e) {
-        console.error(e)
+      } catch (e: any) {
+        if (e.name === 'wrongEmailOrPassword') {
+          this.form.setErrors({wrongEmailOrPassword: true})
+        }
       }
     }
   }

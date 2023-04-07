@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collection, deleteDoc, doc, Firestore, getDocs} from "@angular/fire/firestore";
+import {addDoc, collection, collectionData, deleteDoc, doc, Firestore, getDocs} from "@angular/fire/firestore";
 import {Complaint} from "../model/complaint.model";
+import {Observable} from "rxjs";
 
 
 const COMPLAINT_MAX_LENGTH = 2000
@@ -12,11 +13,14 @@ export class ComplaintsService {
   constructor(private readonly firestore: Firestore) {}
 
   getComplaints() {
-    return getDocs(collection(this.firestore, 'complaints'));
+    return collectionData(
+      collection(this.firestore, 'complaints'),
+      {idField: 'id'}
+    ) as Observable<Complaint[]>;
   }
 
   addComplaint(complaint: Complaint) {
-    complaint.creationTimestamp = new Date()
+    complaint.creationTimestamp = Date.now()
     return addDoc(collection(this.firestore, 'complaints'), complaint);
   }
 

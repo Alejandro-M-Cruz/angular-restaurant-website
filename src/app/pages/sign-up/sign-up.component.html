@@ -1,28 +1,29 @@
 <ng-container *transloco="let t">
-    <h2 class="page-title">{{t('titles.signup')}} </h2>
-    <form class="needs-validation" [formGroup]="form" (ngSubmit)="onSubmit()">
-        <app-email-input [control]="form.controls.email"> </app-email-input>
-        <app-password-input
-          [control]="form.controls.password"
-          [minLength]="passwordMinLength"
-          [maxLength]="passwordMaxLength"
-        ></app-password-input>
-        <app-password-input
-          [isConfirmation]="true"
-          [control]="form.controls.passwordConfirmation"
-          [minLength]="passwordMinLength"
-          [maxLength]="passwordMaxLength"
-        ></app-password-input>
-        <app-already-signed-up
-          link="log-in"
-          [alreadySignedUpText]="t('alreadySignedUp')"
-          [linkText]="t('alreadySignedUpLink')"
-        > </app-already-signed-up>
-        <button class="management-button back-button" type="reset" onclick="window.location.back()">
-          {{t('buttons.back')}}
-        </button>
-        <button class="management-button confirm-button" type="submit" [disabled]="!form.valid">
-          {{t('buttons.signup')}}
-        </button>
-    </form>
+  <h2 class="page-title">{{t('titles.signup')}} </h2>
+  <form class="needs-validation" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <app-email-input [control]="form.controls.email"> </app-email-input>
+    <app-password-input
+      [control]="form.controls.password"
+      [minLength]="passwordMinLength"
+      [maxLength]="passwordMaxLength"
+    ></app-password-input>
+    <app-password-input
+      [isConfirmation]="true"
+      [control]="form.controls.passwordConfirmation"
+      [minLength]="passwordMinLength"
+      [maxLength]="passwordMaxLength"
+    ></app-password-input>
+    <app-already-signed-up
+      link="log-in"
+      [alreadySignedUpText]="t('alreadySignedUp')"
+      [linkText]="t('alreadySignedUpLink')"
+    > </app-already-signed-up>
+    <button class="management-button back-button" type="reset" onclick="window.location.back()">
+      {{t('buttons.back')}}
+    </button>
+    <button class="management-button confirm-button" type="submit" [disabled]="!form.valid">
+      {{t('buttons.signup')}}
+    </button>
+    <mat-error *ngIf="form.errors?.['passwordMismatch']">{{t('formErrors.passwordConfirmation')}}</mat-error>
+  </form>
 </ng-container>

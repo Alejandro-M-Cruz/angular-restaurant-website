@@ -15,7 +15,6 @@ export class AuthenticationService {
   async signUp(email: string, password: string) {
     try {
       await createUserWithEmailAndPassword(this.auth, email, password);
-
     } catch (e: any) {
       if (e.code === 'auth/email-already-in-use') {
         const error = new Error('Email already in use')
@@ -26,8 +25,18 @@ export class AuthenticationService {
     }
   }
 
-  logIn(email: string, password: string) {
-    return signInWithEmailAndPassword(this.auth, email, password);
+  async logIn(email: string, password: string) {
+    try {
+      await signInWithEmailAndPassword(this.auth, email, password);
+
+    } catch (e: any) {
+      if (e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found') {
+        const error = new Error('Wrong password')
+        error.name = 'wrongEmailOrPassword'
+        throw error
+      }
+      throw new Error()
+    }
   }
 
   isLoggedIn() {

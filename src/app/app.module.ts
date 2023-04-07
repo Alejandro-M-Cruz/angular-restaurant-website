@@ -48,6 +48,7 @@ import { ComplaintsComponent } from './pages/complaints/complaints.component';
 import { TextareaComponent } from './components/form/textarea/textarea.component';
 import {MatNativeDateModule} from "@angular/material/core";
 import { MyAccountComponent } from './pages/my-account/my-account.component';
+import {ComplaintsAdminComponent} from "./pages/complaints-admin/complaints-admin.component";
 registerLocaleData(es);
 
 @NgModule({
@@ -72,6 +73,7 @@ registerLocaleData(es);
     AlertComponent,
     CustomersInputComponent,
     ComplaintsComponent,
+    ComplaintsAdminComponent,
     TextareaComponent,
     MyAccountComponent,
   ],
