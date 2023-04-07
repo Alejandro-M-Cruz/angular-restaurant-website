@@ -12,6 +12,7 @@
     "signup": "Registrarse",
     "myAccount": "Mi cuenta",
     "reservations": "Reservas",
+    "reservationsAdmin": "Reservas actuales",
     "newReservation": "Nueva reserva",
     "complaints": "Hoja de reclamaciones",
     "complaintsAdmin": "Reclamaciones"
@@ -89,7 +90,8 @@
   "reservationsTable": {
     "date": "Fecha",
     "time": "Hora",
-    "customers": "Comensales"
+    "customers": "Comensales",
+    "email": "Correo electrónico del usuario"
   },
   "tableEmptyRows": {
     "reservations": "Puede realizar {{available}} reserva/s más",
@@ -140,6 +142,7 @@
   },
   "confirmations": {
     "cancelReservation": "¿Está seguro de que desea cancelar su reserva para el {{date}} a las {{time}}?",
+    "cancelReservationAdmin": "¿Está seguro de que desea cancelar la reserva para el {{date}} a las {{time}}? Se enviará una notificación al correo electrónico {{email}}",
     "deleteAccount": "¿Está seguro de que desea eliminar su cuenta? Sus reservas serán canceladas",
     "deleteAccount2": "¿Está seguro? Esta acción no se puede deshacer",
     "logInBeforeDeleteAccount": "Para poder eliminar su cuenta, debe haber iniciado sesión recientemente"

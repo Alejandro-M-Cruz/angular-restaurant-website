@@ -49,6 +49,9 @@ import { TextareaComponent } from './components/form/textarea/textarea.component
 import {MatNativeDateModule} from "@angular/material/core";
 import { MyAccountComponent } from './pages/my-account/my-account.component';
 import {ComplaintsAdminComponent} from "./pages/complaints-admin/complaints-admin.component";
+import { AdminReservationsComponent } from './pages/reservations-admin/admin-reservations.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { AdminReservationsTableComponent } from './components/admin-reservations-table/admin-reservations-table.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -76,6 +79,8 @@ registerLocaleData(es);
     ComplaintsAdminComponent,
     TextareaComponent,
     MyAccountComponent,
+    AdminReservationsComponent,
+    AdminReservationsTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,7 +105,8 @@ registerLocaleData(es);
     ReactiveFormsModule,
     MatTableModule,
     MatDialogModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatPaginatorModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' }

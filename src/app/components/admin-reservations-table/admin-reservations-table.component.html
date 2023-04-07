@@ -1,0 +1,37 @@
+<table class="data-table" *transloco="let t">
+  <tr class="title-row">
+    <th>{{t('reservationsTable.date')}}</th>
+    <th>{{t('reservationsTable.time')}}</th>
+    <th>{{t('reservationsTable.customers')}}</th>
+    <th>{{t('reservationsTable.email')}}</th>
+  </tr>
+  <ng-container *ngIf="reservations ? reservations.length : 0 > 0">
+    <tr
+      *ngFor="let reservation of reservations!.slice(
+        pageIndex * pageSize,
+        (pageIndex + 1) * pageSize > reservations!.length ? reservations!.length : (pageIndex + 1) * pageSize
+      )"
+      [class.selected-row]="reservation === selectedRow"
+      (click)="onRowClicked(reservation)"
+    >
+      <td>{{reservation.date | date: t('dateFormat')}}</td>
+      <td>{{reservation.time}}</td>
+      <td>{{reservation.customers}}</td>
+      <td>{{reservation.userId}}</td>
+    </tr>
+  </ng-container>
+  <tr class="empty-row" *ngIf="reservations ? reservations.length === 0 : true">
+    <td colspan="4">
+      {{t('tableEmptyRows.adminReservations')}}
+    </td>
+  </tr>
+</table>
+
+<mat-paginator
+  (page)="onPageChanged($event)"
+  [length]="reservations ? reservations.length : 0"
+  [pageIndex]="pageIndex"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 15, 20]"
+  aria-label="Select page">
+</mat-paginator>

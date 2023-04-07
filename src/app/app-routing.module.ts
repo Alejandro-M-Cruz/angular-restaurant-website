@@ -11,6 +11,7 @@ import {ComplaintsComponent} from "./pages/complaints/complaints.component";
 import {Title} from "@angular/platform-browser";
 import {TranslocoService} from "@ngneat/transloco";
 import {MyAccountComponent} from "./pages/my-account/my-account.component";
+import {AdminReservationsComponent} from "./pages/reservations-admin/admin-reservations.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'my-account', title: 'myAccount', component: MyAccountComponent },
   { path: 'sign-up', title: 'signup', component: SignUpComponent },
   { path: 'log-in', title: 'login', component: LogInComponent },
-  { path: 'user-reservations', title: 'reservations', component: UserReservationsComponent },
+  { path: 'user-reservations', title: 'reservations', component: AdminReservationsComponent },
+  { path: 'new-reservation', title: 'admin', component: AdminReservationsComponent },
   { path: 'new-reservation', title: 'newReservation', component: NewReservationComponent },
   { path: 'complaints', title: 'complaints', component: ComplaintsComponent },
   { path: '**', redirectTo: '/home' }

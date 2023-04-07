@@ -12,6 +12,7 @@
     "signup": "Sign up",
     "myAccount": "My account",
     "reservations": "Reservations",
+    "reservationsAdmin": "Current reservations",
     "newReservation": "New reservation",
     "complaints": "Complaint form",
     "complaintsAdmin": "Complaints"
@@ -87,7 +88,8 @@
   "reservationsTable": {
     "date": "Date",
     "time": "Time",
-    "customers": "Customers"
+    "customers": "Customers",
+    "email": "User email"
   },
   "tableEmptyRows": {
     "reservations": "You can create {{available}} more reservation/s",
@@ -138,6 +140,7 @@
   },
   "confirmations": {
     "cancelReservation": "Are you sure you want to cancel your reservation for {{date}} at {{time}}?",
+    "cancelReservationAdmin": "Are you sure you want to cancel the reservation for {{date}} at {{time}}? A notification will be sent to the email {{email}}",
     "deleteAccount": "Are you sure you want to delete your account? Your reservations will be deleted",
     "deleteAccount2": "Are you sure? This action cannot be undone",
     "logInBeforeDeleteAccount": "In order to delete your account, you must have logged in recently"
