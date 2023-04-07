@@ -113,6 +113,22 @@
     "menuItemPrice": "Precio del producto",
     "menuImageSrc": "Ruta de la imagen del producto"
   },
+  "formErrors": {
+    "email": "El correo electrónico no es válido",
+    "emailAlreadyInUse": "Email is already in use",
+    "passwordShort": "La contraseña debe tener al menos {{minLength}} caracteres",
+    "passwordLong": "La contraseña no puede tener más de {{maxLength}} caracteres",
+    "passwordConfirmation": "Las contraseñas no coinciden",
+    "date": "La fecha no es válida",
+    "time": "La hora no es válida",
+    "customers": "El número de comensales no es válido",
+    "name": "El nombre no es válido",
+    "complaint": "La queja o sugerencia no es válida",
+    "menuItemName": "El nombre del producto no es válido",
+    "menuItemDescription": "La descripción del producto no es válida",
+    "menuItemPrice": "El precio del producto no es válido",
+    "menuImageSrc": "La ruta de la imagen del producto no es válida"
+  },
   "alreadySignedUp": "Si ya se ha registrado, ",
   "alreadySignedUpLink": "INICIE SESIÓN AQUÍ",
   "notSignedUp": "Si aún no se ha registrado, ",
@@ -124,11 +140,14 @@
   "confirmations": {
     "cancelReservation": "¿Está seguro de que desea cancelar su reserva para el {{date}} a las {{time}}?",
     "deleteAccount": "¿Está seguro de que desea eliminar su cuenta? Sus reservas serán canceladas",
-    "deleteAccount2": "¿Está seguro? Esta acción no se puede deshacer"
+    "deleteAccount2": "¿Está seguro? Esta acción no se puede deshacer",
+    "logInBeforeDeleteAccount": "Para poder eliminar su cuenta, debe haber iniciado sesión recientemente"
   },
   "confirmationOptions": {
     "yes": "Sí",
-    "no": "No"
+    "no": "No",
+    "cancel": "Cancelar",
+    "logIn": "Iniciar sesión"
   },
   "successAlerts": {
     "languageChanged": "El idioma ha cambiado al español"

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile} from '@angular/fire/auth';
+import firebase from "firebase/compat";
 
 
-const PASSWORD_MIN_LENGTH = 4
+const PASSWORD_MIN_LENGTH = 8
 const PASSWORD_MAX_LENGTH = 16
 
 @Injectable({
@@ -11,9 +12,18 @@ const PASSWORD_MAX_LENGTH = 16
 export class AuthenticationService {
   constructor(private readonly auth: Auth) {}
 
-  signUp(email: string, password: string) {
-    return createUserWithEmailAndPassword(this.auth, email, password);
-    // await updateProfile(userCredential.user, { displayName: username })
+  async signUp(email: string, password: string) {
+    try {
+      await createUserWithEmailAndPassword(this.auth, email, password);
+
+    } catch (e: any) {
+      if (e.code === 'auth/email-already-in-use') {
+        const error = new Error('Email already in use')
+        error.name = 'emailAlreadyInUse'
+        throw error
+      }
+      throw new Error()
+    }
   }
 
   logIn(email: string, password: string) {

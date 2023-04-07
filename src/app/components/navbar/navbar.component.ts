@@ -10,11 +10,10 @@ export class NavbarComponent {
   @Input() showUserIcon!: boolean
   items = [
     {name: 'home', link: '/home'},
-    {name: 'menu', link: '/home/menu'},
-    {name: 'aboutUs', link: 'about-us'},
+    {name: 'menu', link: '/home#menu-section'},
+    {name: 'aboutUs', link: '/home/about-us'},
     {name: 'contact', link: '/home/contact'},
-    {name: 'reservations', link: '/user-reservations'},
-    // {name: 'login', link: '/log-in'}
+    {name: 'reservations', link: '/user-reservations'}
   ]
 
   constructor(private readonly translateService: TranslocoService) { }

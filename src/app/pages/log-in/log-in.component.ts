@@ -9,12 +9,14 @@ import {Router} from "@angular/router";
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent {
+  passwordMinLength = this.authService.getPasswordMinLength()
+  passwordMaxLength = this.authService.getPasswordMaxLength()
   readonly form = this.fb.group({
     email: ['', Validators.compose([Validators.required, Validators.email])],
     password: ['', Validators.compose([
       Validators.required,
-      Validators.minLength(this.authService.getPasswordMinLength()),
-      Validators.maxLength(this.authService.getPasswordMaxLength())
+      Validators.minLength(this.passwordMinLength),
+      Validators.maxLength(this.passwordMaxLength)
     ])],
   })
 

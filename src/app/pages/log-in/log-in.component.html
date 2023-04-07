@@ -2,7 +2,11 @@
   <h2 class="page-title">{{t('titles.login')}}</h2>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <app-email-input [control]="form.controls.email"></app-email-input>
-    <app-password-input [control]="form.controls.password"></app-password-input>
+    <app-password-input
+      [control]="form.controls.password"
+      [minLength]="passwordMinLength"
+      [maxLength]="passwordMaxLength"
+    ></app-password-input>
     <app-already-signed-up link="sign-up" [alreadySignedUpText]="t('notSignedUp')" [linkText]="t('notSignedUpLink')"></app-already-signed-up>
     <button class="management-button back-button" type="reset" onclick="window.location.back()">
       {{t('buttons.back')}}

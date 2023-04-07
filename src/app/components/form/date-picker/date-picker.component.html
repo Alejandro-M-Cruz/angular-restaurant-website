@@ -1,4 +1,4 @@
-<mat-form-field appearance="fill" *transloco="let t">
+<mat-form-field appearance="outline" *transloco="let t">
   <mat-label>{{t('formLabels.date')}}</mat-label>
   <mat-select [formControl]="control">
     <mat-option *ngFor="let availableDate of availableDates" [value]="availableDate.getTime()">

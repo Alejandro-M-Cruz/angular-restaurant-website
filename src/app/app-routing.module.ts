@@ -9,16 +9,13 @@ import {MenuComponent} from "./pages/home/components/menu/menu.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {ComplaintsComponent} from "./pages/complaints/complaints.component";
 import {Title} from "@angular/platform-browser";
-import {translate, TranslocoService} from "@ngneat/transloco";
+import {TranslocoService} from "@ngneat/transloco";
 import {MyAccountComponent} from "./pages/my-account/my-account.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: 'home',
-    title: 'home',
-    component: HomeComponent,
-    children: [
+    path: 'home', title: 'home', component: HomeComponent, children: [
       {
         path: 'menu',
         component: MenuComponent

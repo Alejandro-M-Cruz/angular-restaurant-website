@@ -9,4 +9,6 @@ import {FormControl} from "@angular/forms";
 export class PasswordInputComponent {
   @Input() isConfirmation = false
   @Input() control!: FormControl
+  @Input() minLength!: number
+  @Input() maxLength!: number
 }

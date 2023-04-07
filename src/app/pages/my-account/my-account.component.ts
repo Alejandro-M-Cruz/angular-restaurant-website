@@ -5,7 +5,6 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 import {translate} from "@ngneat/transloco";
-import {formatDate} from "@angular/common";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({
@@ -40,8 +39,11 @@ export class MyAccountComponent {
     try {
       await this.userService.deleteUser()
       await this.router.navigate(['/log-in'])
-    } catch (e) {
-      console.error(e)
+    } catch (e: any) {
+      console.error(e.name + ': ' + e.message)
+      if (e.message === 'redirect-to-login') {
+        this.openLogInRedirectConfirmation()
+      }
     }
   }
 
@@ -59,6 +61,20 @@ export class MyAccountComponent {
         if (isSecondConfirmation) return await this.deleteAccount()
         this.openDeleteAccountConfirmation(true)
       }
+    })
+  }
+
+  openLogInRedirectConfirmation() {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        title: translate('confirmationTitles.deleteAccount'),
+        message: translate('confirmations.logInBeforeDeleteAccount'),
+        yes: translate('confirmationOptions.logIn'),
+        no: translate('confirmationOptions.cancel')
+      }
+    })
+    dialogRef.afterClosed().subscribe(async result => {
+      if (result) await this.logOut()
     })
   }
 }

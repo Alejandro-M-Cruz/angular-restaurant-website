@@ -111,6 +111,22 @@
     "menuItemPrice": "Precio del producto",
     "menuImageSrc": "Ruta de la imagen del producto"
   },
+  "formErrors": {
+    "email": "Email is not valid",
+    "emailAlreadyInUse": "Email is already in use",
+    "passwordShort": "Password must be at least {{minLength}} characters long",
+    "passwordLong": "Password must be at most {{maxLength}} characters long",
+    "passwordConfirmation": "Passwords do not match",
+    "date": "Date is not valid",
+    "time": "Time is not valid",
+    "customers": "Number of customers is not valid",
+    "name": "Name is not valid",
+    "complaint": "Complaint is not valid",
+    "menuItemName": "Nombre del producto no válido",
+    "menuItemDescription": "Descripción del producto no válida",
+    "menuItemPrice": "Precio del producto no válido",
+    "menuImageSrc": "Ruta de la imagen del producto no válida"
+  },
   "alreadySignedUp": "If you already have an account, ",
   "alreadySignedUpLink": "LOG IN HERE",
   "notSignedUp": "If you do not have an account, ",
@@ -122,11 +138,14 @@
   "confirmations": {
     "cancelReservation": "Are you sure you want to cancel your reservation for {{date}} at {{time}}?",
     "deleteAccount": "Are you sure you want to delete your account? Your reservations will be deleted",
-    "deleteAccount2": "Are you sure? This action cannot be undone"
+    "deleteAccount2": "Are you sure? This action cannot be undone",
+    "logInBeforeDeleteAccount": "In order to delete your account, you must have logged in recently"
   },
   "confirmationOptions": {
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "cancel": "Cancel",
+    "logIn": "Log in"
   },
   "successAlerts": {
     "languageChanged": "Language has been changed to English"

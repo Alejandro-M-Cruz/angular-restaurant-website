@@ -11,10 +11,12 @@ import {Router} from "@angular/router";
 })
 
 export class SignUpComponent {
+  passwordMinLength = this.authService.getPasswordMinLength()
+  passwordMaxLength = this.authService.getPasswordMaxLength()
   private readonly passwordValidators = [
     Validators.required,
-    Validators.minLength(this.authService.getPasswordMinLength()),
-    Validators.maxLength(this.authService.getPasswordMaxLength())
+    Validators.minLength(this.passwordMinLength),
+    Validators.maxLength(this.passwordMaxLength)
   ]
   readonly form = this.fb.group({
     email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -36,8 +38,9 @@ export class SignUpComponent {
       try {
         await this.authService.signUp(email!, password!)
         await this.router.navigate(['/home'])
-      } catch (e) {
-        console.error(e)
+      } catch (e: any) {
+        if (e.name === 'emailAlreadyInUse')
+          this.form.controls.email.setErrors({emailAlreadyInUse: true})
       }
     }
   }
