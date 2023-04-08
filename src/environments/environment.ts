@@ -7,4 +7,5 @@ export const environment = {
     authDomain: 'restaurantwebsite-3b940.firebaseapp.com',
     messagingSenderId: '869558618824',
     measurementId: 'G-JZ5NKYLG42',
-  },};
+  },
+};

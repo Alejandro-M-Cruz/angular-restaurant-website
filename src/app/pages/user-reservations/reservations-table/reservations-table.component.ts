@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {Reservation} from "../../model/reservation.model";
+import {Reservation} from "../../../model/reservation.model";
 import {Observable} from "rxjs";
 
 @Component({

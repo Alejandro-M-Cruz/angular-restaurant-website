@@ -36,7 +36,7 @@ import { AlreadySignedUpLinkComponent } from './components/already-signed-up/alr
 import { MenuComponent } from './pages/home/components/menu/menu.component';
 import { UserReservationsComponent } from './pages/user-reservations/user-reservations.component';
 import {MatTableModule} from "@angular/material/table";
-import { ReservationsTableComponent } from './components/reservations-table/reservations-table.component';
+import { ReservationsTableComponent } from './pages/user-reservations/reservations-table/reservations-table.component';
 
 import es from '@angular/common/locales/es';
 import {registerLocaleData} from "@angular/common";
@@ -51,7 +51,8 @@ import { MyAccountComponent } from './pages/my-account/my-account.component';
 import {ComplaintsAdminComponent} from "./pages/complaints-admin/complaints-admin.component";
 import { AdminReservationsComponent } from './pages/reservations-admin/admin-reservations.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
-import { AdminReservationsTableComponent } from './components/admin-reservations-table/admin-reservations-table.component';
+import { AdminReservationsTableComponent } from './pages/reservations-admin/admin-reservations-table/admin-reservations-table.component';
+import {getStorage, provideStorage} from "@angular/fire/storage";
 registerLocaleData(es);
 
 @NgModule({
@@ -91,6 +92,7 @@ registerLocaleData(es);
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
     FormsModule,
     NgbModule,
     MatToolbarModule,

@@ -5,27 +5,23 @@ import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 import {translate} from "@ngneat/transloco";
 import {formatDate} from "@angular/common";
+import {AdminService} from "../../services/admin/admin.service";
 
 @Component({
   selector: 'app-reservations-admin',
   templateUrl: './admin-reservations.component.html',
   styleUrls: ['./admin-reservations.component.css']
 })
-export class AdminReservationsComponent implements OnInit {
+export class AdminReservationsComponent {
   currentReservations$ = this.reservationsService.getCurrentReservations()
-  nReservations = 0
+  users$ = this.adminService.getUsers()
   selectedReservation: Reservation | null = null
 
   constructor(
+    private readonly adminService: AdminService,
     private readonly reservationsService: ReservationsService,
     private readonly dialog: MatDialog
   ) {}
-
-  ngOnInit() {
-    this.reservationsService.getUserCurrentReservations().subscribe(reservations  => {
-      this.nReservations = reservations.length
-    })
-  }
 
   onSelectedReservationChanged(reservation: Reservation | null) {
     this.selectedReservation = reservation

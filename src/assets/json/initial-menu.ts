@@ -11,7 +11,7 @@ const menuItem: MenuItem = {
     en: "Tomato sauce, cheese and oregano"
   },
   price: 8.99,
-  imageSrc: "/assets/images/menu/pizza-menu.jpg"
+  imageUrl: "/assets/images/menu/pizza-menu.jpg"
 }
 
 const menuSections: MenuSection[] = [

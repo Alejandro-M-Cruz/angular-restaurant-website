@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Reservation} from "../../model/reservation.model";
+import {Reservation} from "../../../model/reservation.model";
 import {PageEvent} from "@angular/material/paginator";
+import {UserInfo} from "../../../model/user-info.model";
 
 @Component({
   selector: 'app-admin-reservations-table',
@@ -9,6 +10,7 @@ import {PageEvent} from "@angular/material/paginator";
 })
 export class AdminReservationsTableComponent {
   @Input() reservations: Reservation[] | null = []
+  @Input() users: UserInfo[] | null = []
   selectedRow: Reservation | null = null;
   @Output() selectedReservationChanged = new EventEmitter<Reservation | null>()
   pageSize = 5
@@ -22,5 +24,9 @@ export class AdminReservationsTableComponent {
   onPageChanged(e: PageEvent) {
     this.pageSize = e.pageSize
     this.pageIndex = e.pageIndex
+  }
+
+  getUserEmail(uid: string) {
+    return this.users?.find(user => user.uid === uid)?.email ?? '-'
   }
 }

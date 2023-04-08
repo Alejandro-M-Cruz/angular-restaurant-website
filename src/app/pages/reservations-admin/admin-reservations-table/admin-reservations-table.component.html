@@ -17,7 +17,7 @@
       <td>{{reservation.date | date: t('dateFormat')}}</td>
       <td>{{reservation.time}}</td>
       <td>{{reservation.customers}}</td>
-      <td>{{reservation.userId}}</td>
+      <td>{{getUserEmail(reservation.userId!)}}</td>
     </tr>
   </ng-container>
   <tr class="empty-row" *ngIf="reservations ? reservations.length === 0 : true">

@@ -1,8 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {MenuSection} from "../../../../model/menu-section.model";
+import {Component, OnInit} from '@angular/core';
 import {TranslocoService} from "@ngneat/transloco";
-import {MenuItem} from "../../../../model/menu-item.model";
 import {MenuService} from "../../../../services/menu.service";
+import {MenuItem} from "../../../../model/menu-item.model";
+import {MenuSection} from "../../../../model/menu-section.model";
+
+interface DisplayableMenuSection extends MenuSection {
+  items: MenuItem[]
+}
 
 @Component({
   selector: 'app-menu',
@@ -10,15 +14,23 @@ import {MenuService} from "../../../../services/menu.service";
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  menu: MenuSection[] = []
-  menuLeft: MenuSection[] = []
-  menuRight: MenuSection[] = []
+  menu: DisplayableMenuSection[] = []
+  menuLeft: DisplayableMenuSection[] = []
+  menuRight: DisplayableMenuSection[] = []
 
   constructor(private readonly menuService: MenuService, private readonly translationService: TranslocoService) {
   }
 
   async ngOnInit() {
-    this.menu = await this.menuService.getMenu()
+    const menuSections = await this.menuService.getMenuSections()
+    const menuItems = await this.menuService.getMenuItems()
+    for (const menuSection of menuSections) {
+      const sectionItems = menuItems.filter(menuItem => menuItem.sectionId === menuSection.id)
+      this.menu.push({
+        ...menuSection,
+        items: sectionItems
+      } as DisplayableMenuSection)
+    }
     this.menuLeft = this.menu.slice(0, Math.round(this.menu.length / 2))
     this.menuRight = this.menu.slice(Math.round(this.menu.length / 2))
   }
@@ -27,76 +39,4 @@ export class MenuComponent implements OnInit {
     return this.translationService.getActiveLang()
   }
 
-  async storeMenuItems() {
-    const menuItem: MenuItem = {
-      name: {
-        es: "Margarita",
-        en: "Margarita"
-      },
-      ingredients: {
-        es: "Salsa de tomate, queso y orégano",
-        en: "Tomato sauce, cheese and oregano"
-      },
-      price: 8.99,
-      imageSrc: "/assets/images/menu/pizza-menu.jpg"
-    }
-
-    const menuSections: MenuSection[] = [
-      {
-        name: {
-          es: "Entrantes",
-          en: "Starters"
-        },
-        items: [
-          menuItem,
-          menuItem,
-          menuItem,
-          menuItem,
-          menuItem
-        ]
-      },
-      {
-        name: {
-          es: "Pizzas",
-          en: "Pizzas"
-        },
-        items: [
-          menuItem,
-          menuItem,
-          menuItem,
-          menuItem,
-          menuItem
-        ]
-      },
-      {
-        name: {
-          es: "Pasta",
-          en: "Pasta"
-        },
-        items: [
-          menuItem,
-          menuItem,
-          menuItem,
-          menuItem,
-          menuItem
-        ]
-      },
-      {
-        name: {
-          es: "Postres",
-          en: "Desserts"
-        },
-        items: [
-          menuItem,
-          menuItem,
-          menuItem,
-          menuItem,
-          menuItem
-        ]
-      }
-    ]
-    for (const menuSection of menuSections) {
-      await this.menuService.addMenuSection(menuSection)
-    }
-  }
 }

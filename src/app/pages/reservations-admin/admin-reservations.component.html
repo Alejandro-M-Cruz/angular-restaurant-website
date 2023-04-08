@@ -4,6 +4,7 @@
     <ng-container>
       <app-admin-reservations-table
         [reservations]="currentReservations$ | async"
+        [users]="users$ | async"
         (selectedReservationChanged)="onSelectedReservationChanged($event)"
       ></app-admin-reservations-table>
     </ng-container>
