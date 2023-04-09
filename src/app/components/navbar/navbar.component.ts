@@ -1,5 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {TranslocoService} from '@ngneat/transloco';
+import {Link, NavbarLinksService} from "../../services/navbar-links.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-navbar',
@@ -7,19 +9,15 @@ import {TranslocoService} from '@ngneat/transloco';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  @Input() showUserIcon!: boolean
-  items = [
-    {name: 'home', link: '/home'},
-    {name: 'menu', link: '/home#menu-section'},
-    {name: 'aboutUs', link: '/home/about-us'},
-    {name: 'contact', link: '/home/contact'},
-    {name: 'reservations', link: '/user-reservations'}
-  ]
+  links$: Observable<Link[]> = this.navbarLinksService.getLinks()
+  showUserIcon$: Observable<boolean> = this.navbarLinksService.showUserIcon()
 
-  constructor(private readonly translateService: TranslocoService) { }
+  constructor(
+    private readonly translateService: TranslocoService,
+    readonly navbarLinksService: NavbarLinksService
+  ) { }
 
   onChangeLanguage() {
     this.translateService.setActiveLang(this.translateService.getActiveLang() === 'en' ? 'es' : 'en');
   }
-
 }

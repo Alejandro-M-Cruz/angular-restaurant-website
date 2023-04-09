@@ -15,7 +15,9 @@
     "reservationsAdmin": "Reservas actuales",
     "newReservation": "Nueva reserva",
     "complaints": "Hoja de reclamaciones",
-    "complaintsAdmin": "Reclamaciones"
+    "complaintsAdmin": "Reclamaciones",
+    "menuSectionsAdmin": "Secciones del menú",
+    "contactInfo": "Información de contacto"
   },
   "titles": {
     "main": "La Nostra Casa",

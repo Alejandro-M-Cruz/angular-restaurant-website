@@ -53,6 +53,8 @@ import { AdminReservationsComponent } from './pages/reservations-admin/admin-res
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { AdminReservationsTableComponent } from './pages/reservations-admin/admin-reservations-table/admin-reservations-table.component';
 import {getStorage, provideStorage} from "@angular/fire/storage";
+import { MenuSectionsAdminComponent } from './pages/menu-sections-admin/menu-sections-admin.component';
+import { MenuItemsAdminComponent } from './pages/menu-items-admin/menu-items-admin.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -82,6 +84,8 @@ registerLocaleData(es);
     MyAccountComponent,
     AdminReservationsComponent,
     AdminReservationsTableComponent,
+    MenuSectionsAdminComponent,
+    MenuItemsAdminComponent,
   ],
   imports: [
     BrowserModule,

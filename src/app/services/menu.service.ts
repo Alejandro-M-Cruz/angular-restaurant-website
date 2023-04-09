@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
-  addDoc, collection, collectionData,
-  deleteDoc,
-  doc, Firestore, getDocs, orderBy, query,
-  setDoc
+  collection,
+  Firestore, getDocs, orderBy, query
 } from "@angular/fire/firestore";
 import {MenuSection} from "../model/menu-section.model";
 import {MenuItem} from "../model/menu-item.model";
@@ -26,21 +24,20 @@ export class MenuService {
   }
 
   async getMenuItems() {
-    const querySnapshot = await getDocs(collection(this.firestore, 'menu_items'))
+    const querySnapshot = await getDocs(
+      collection(this.firestore, 'menu_items')
+    )
     return querySnapshot.docs.map(doc => {
       return {id: doc.id, ...doc.data()}
     }) as MenuItem[]
   }
 
-  async addMenuSection(menuSection: MenuSection) {
-    await addDoc(collection(this.firestore, 'menu'), menuSection)
-  }
-
-  async updateMenuSection(id: string, menuSection: MenuSection) {
-    await setDoc(doc(this.firestore, 'menu', id), menuSection)
-  }
-
-  async deleteMenuSection(id: string) {
-    await deleteDoc(doc(this.firestore, 'menu', id))
+  async getMenuItemsBySectionId(sectionId: string) {
+    const querySnapshot = await getDocs(
+      collection(this.firestore, 'menu_items')
+    )
+    return querySnapshot.docs.map(doc => {
+      return {id: doc.id, ...doc.data()} as MenuItem
+    }).filter(item => item.sectionId === sectionId) as MenuItem[]
   }
 }

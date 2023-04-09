@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {AuthenticationService} from "./services/authentication.service";
 
 @Component({
   selector: 'app-root',
@@ -8,16 +7,12 @@ import {AuthenticationService} from "./services/authentication.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-restaurant-website';
+  title = 'La Nostra Casa';
 
-  constructor(private modalService: NgbModal, private readonly authService: AuthenticationService) {
+  constructor(private modalService: NgbModal) {
   }
 
   public open(modal: any): void {
     this.modalService.open(modal);
-  }
-
-  isLoggedIn() {
-    return this.authService.isLoggedIn()
   }
 }

@@ -15,18 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 const firebase_1 = require("../firebase");
-router.get('/sections', (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const querySnapshot = yield firebase_1.firestore.collection('menu_sections').get();
-    res.json(querySnapshot.docs.map(doc => {
-        return Object.assign({ id: doc.id }, doc.data());
-    }));
-}));
-router.get('/items', (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const querySnapshot = yield firebase_1.firestore.collection('menu_items').get();
-    res.json(querySnapshot.docs.map(doc => {
-        return Object.assign({ id: doc.id }, doc.data());
-    }));
-}));
 router.post('/sections/new', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const menuSection = {
         name: req.body.name
@@ -39,6 +27,39 @@ router.put('/sections/:id', (req, res) => __awaiter(void 0, void 0, void 0, func
         name: req.body.name
     };
     yield firebase_1.firestore.doc(`menu_sections/${req.params.id}`).set(menuSection);
+    res.json({});
+}));
+router.delete('/sections/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    yield firebase_1.firestore.doc(`menu_sections/${req.params.id}`).delete();
+    const querySnapshot = yield firebase_1.firestore.collection('menu_items')
+        .where('sectionId', '==', req.params.id).get();
+    querySnapshot.forEach(doc => doc.ref.delete());
+    res.json({});
+}));
+router.post('/items/new', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const menuItem = {
+        name: req.body.name,
+        ingredients: req.body.ingredients,
+        price: req.body.price,
+        sectionId: req.body.sectionId,
+        imageUrl: req.body.imageUrl
+    };
+    yield firebase_1.firestore.collection('menu_items').add(menuItem);
+    res.json({});
+}));
+router.put('/items/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const menuItem = {
+        name: req.body.name,
+        ingredients: req.body.ingredients,
+        price: req.body.price,
+        sectionId: req.body.sectionId,
+        imageUrl: req.body.imageUrl
+    };
+    yield firebase_1.firestore.collection('menu_items').add(menuItem);
+    res.json({});
+}));
+router.delete('/items/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    yield firebase_1.firestore.doc(`menu_items/${req.params.id}`).delete();
     res.json({});
 }));
 exports.default = router;

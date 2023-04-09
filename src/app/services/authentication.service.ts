@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile} from '@angular/fire/auth';
+import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from '@angular/fire/auth';
 import firebase from "firebase/compat";
 
 
@@ -37,10 +37,6 @@ export class AuthenticationService {
       }
       throw new Error()
     }
-  }
-
-  isLoggedIn() {
-    return !!this.auth.currentUser
   }
 
   logOut() {

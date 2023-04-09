@@ -15,7 +15,9 @@
     "reservationsAdmin": "Current reservations",
     "newReservation": "New reservation",
     "complaints": "Complaint form",
-    "complaintsAdmin": "Complaints"
+    "complaintsAdmin": "Complaints",
+    "menuSectionsAdmin": "Menu sections",
+    "contactInfo": "Contact information"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -35,7 +37,9 @@
     "menu": "Menu",
     "aboutUs": "About us",
     "contact": "Contact",
-    "login": "Log in"
+    "login": "Log in",
+    "editMenu": "Edit menu",
+    "complaints": "Complaints"
   },
   "footerTexts": {
     "followUs": "Follow us on",
