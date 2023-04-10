@@ -55,6 +55,7 @@ import { AdminReservationsTableComponent } from './pages/reservations-admin/admi
 import {getStorage, provideStorage} from "@angular/fire/storage";
 import { MenuSectionsAdminComponent } from './pages/menu-sections-admin/menu-sections-admin.component';
 import { MenuItemsAdminComponent } from './pages/menu-items-admin/menu-items-admin.component';
+import { TextInputDialogComponent } from './components/text-input-dialog/text-input-dialog.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -86,6 +87,7 @@ registerLocaleData(es);
     AdminReservationsTableComponent,
     MenuSectionsAdminComponent,
     MenuItemsAdminComponent,
+    TextInputDialogComponent,
   ],
   imports: [
     BrowserModule,

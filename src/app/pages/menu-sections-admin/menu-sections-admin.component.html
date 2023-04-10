@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.newReservation')}}</h2>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onEditSection()">
     <mat-select formControlName="menuSection">
       <mat-option *ngFor="let menuSection of menuSections" [value]="menuSection.id">
         {{menuSection.name[getActiveLanguage()]}}
@@ -10,13 +10,13 @@
       <button class="management-button back-button" type="reset" onclick="window.location.back()">
         {{t('buttons.back')}}
       </button>
-      <button class="management-button cancel-button" type="button" (click)="onDeleteSection()" [disabled]="form.invalid">
+      <button class="management-button cancel-button" type="button" (click)="onDeleteSectionClicked()" [disabled]="form.invalid">
         {{t('buttons.deleteSection')}}
       </button>
       <button class="management-button edit-button" type="submit" [disabled]="form.invalid">
         {{t('buttons.editSection')}}
       </button>
-      <button class="management-button confirm-button" type="button" [disabled]="form.invalid" (click)="onAddSection()">
+      <button class="management-button confirm-button" type="button" (click)="onAddSection()">
         {{t('buttons.addSection')}}
       </button>
     </div>

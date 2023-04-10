@@ -140,14 +140,16 @@
   "notSignedUpLink": "SIGN UP HERE",
   "confirmationTitles": {
     "cancelReservation": "Cancel reservation",
-    "deleteAccount": "Account deletion"
+    "deleteAccount": "Account deletion",
+    "deleteMenuSection": "Deleting menu section"
   },
   "confirmations": {
     "cancelReservation": "Are you sure you want to cancel your reservation for {{date}} at {{time}}?",
     "cancelReservationAdmin": "Are you sure you want to cancel the reservation for {{date}} at {{time}}? A notification will be sent to the email {{email}}",
     "deleteAccount": "Are you sure you want to delete your account? Your reservations will be deleted",
     "deleteAccount2": "Are you sure? This action cannot be undone",
-    "logInBeforeDeleteAccount": "In order to delete your account, you must have logged in recently"
+    "logInBeforeDeleteAccount": "In order to delete your account, you must have logged in recently",
+    "deleteMenuSection": "Are you sure you want to delete the section {{section}} from the menu and all the products that it contains?"
   },
   "confirmationOptions": {
     "yes": "Yes",

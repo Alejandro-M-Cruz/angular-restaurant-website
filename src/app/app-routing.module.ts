@@ -24,16 +24,18 @@ import {PermissionsService} from "./services/permissions.service";
 
 const canActivateLoggedIn: CanActivateFn = (_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot) => {
   const isLoggedIn = inject(PermissionsService).isLoggedIn()
+  const router = inject(Router)
   isLoggedIn.subscribe(async (isLoggedIn) => {
-    if (!isLoggedIn) await inject(Router).navigate(['/log-in'])
+    if (!isLoggedIn) await router.navigate(['log-in'])
   })
   return isLoggedIn
 }
 
 const canActivateAdmin: CanActivateFn = (_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot) => {
   const isAdmin = inject(PermissionsService).isAdmin()
+  const router = inject(Router)
   isAdmin.subscribe(async (isAdmin) => {
-    if (!isAdmin) await inject(Router).navigate(['/home'])
+    if (!isAdmin) await router.navigate(['/home'])
   })
   return isAdmin
 }

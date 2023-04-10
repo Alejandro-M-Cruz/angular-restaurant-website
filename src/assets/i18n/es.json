@@ -140,14 +140,16 @@
   "notSignedUpLink": "REGÍSTRESE AQUÍ",
   "confirmationTitles": {
     "cancelReservation": "Cancelar reserva",
-    "deleteAccount": "Borrado de cuenta"
+    "deleteAccount": "Borrado de cuenta",
+    "deleteMenuSection": "Eliminando sección del menú"
   },
   "confirmations": {
     "cancelReservation": "¿Está seguro de que desea cancelar su reserva para el {{date}} a las {{time}}?",
     "cancelReservationAdmin": "¿Está seguro de que desea cancelar la reserva para el {{date}} a las {{time}}? Se enviará una notificación al correo electrónico {{email}}",
     "deleteAccount": "¿Está seguro de que desea eliminar su cuenta? Sus reservas serán canceladas",
     "deleteAccount2": "¿Está seguro? Esta acción no se puede deshacer",
-    "logInBeforeDeleteAccount": "Para poder eliminar su cuenta, debe haber iniciado sesión recientemente"
+    "logInBeforeDeleteAccount": "Para poder eliminar su cuenta, debe haber iniciado sesión recientemente",
+    "deleteMenuSection": "¿Está seguro de que desea eliminar la sección de {{section}} del menú y todos los productos que contiene?"
   },
   "confirmationOptions": {
     "yes": "Sí",

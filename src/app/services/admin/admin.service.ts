@@ -23,4 +23,5 @@ export class AdminService {
   deleteSection(id: string) {
     return this.http.delete(`${this.API}/menu/sections/${id}`)
   }
+
 }
