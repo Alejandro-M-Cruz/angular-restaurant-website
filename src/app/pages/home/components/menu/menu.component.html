@@ -22,7 +22,7 @@
       <ng-container *ngFor="let sections of menuRight">
         <h3>{{sections.name[getActiveLanguage()]}}</h3>
         <div class="sides" *ngFor="let item of sections.items">
-          <div class="left-side-image" *ngIf="item.imageUrl !== null">
+          <div class="left-side-image" *ngIf="item.imageUrl">
             <img [src]="item.imageUrl" alt="food">
           </div>
           <div class="left-side-text">

@@ -21,15 +21,15 @@ export class MenuComponent implements OnInit {
   constructor(private readonly menuService: MenuService, private readonly translationService: TranslocoService) {}
 
   ngOnInit() {
-    const subscription = this.menuService.getMenuSections().subscribe(menuSections => {
-      const itemsSubscription = this.menuService.getMenuItems().pipe(map(menuItems => {
+    const sub = this.menuService.getMenuSections().subscribe(menuSections => {
+      const itemsSub = this.menuService.getMenuItems().pipe(map(menuItems => {
         return this.getDisplayableMenu(menuSections, menuItems)
       })).subscribe(menu => {
         this.menuLeft = menu.slice(0, Math.round(menu.length / 2))
         this.menuRight = menu.slice(Math.round(menu.length / 2))
-        itemsSubscription.unsubscribe()
+        itemsSub.unsubscribe()
       })
-      subscription.unsubscribe()
+      sub.unsubscribe()
     })
   }
 
