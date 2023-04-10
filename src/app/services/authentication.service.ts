@@ -28,7 +28,6 @@ export class AuthenticationService {
   async logIn(email: string, password: string) {
     try {
       await signInWithEmailAndPassword(this.auth, email, password);
-
     } catch (e: any) {
       if (e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found') {
         const error = new Error('Wrong password')

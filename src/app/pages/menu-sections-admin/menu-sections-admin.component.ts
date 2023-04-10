@@ -1,28 +1,29 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuService} from "../../services/menu.service";
 import {MenuSection} from "../../model/menu-section.model";
-import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {translate, TranslocoService} from "@ngneat/transloco";
-import {AdminService} from "../../services/admin/admin.service";
+import {UsersService} from "../../services/admin/users.service";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
-import {MultiLanguageString} from "../../model/multi-language-string";
 import {TextInputDialogComponent} from "../../components/text-input-dialog/text-input-dialog.component";
+import {MultiLanguageString} from "../../model/multi-language-string";
+import {MenuEditService} from "../../services/admin/menu-edit.service";
 
 @Component({
   selector: 'app-menu-sections-admin',
   templateUrl: './menu-sections-admin.component.html',
   styleUrls: ['./menu-sections-admin.component.css']
 })
-export class MenuSectionsAdminComponent implements OnInit {
-  menuSections: MenuSection[] = []
+export class MenuSectionsAdminComponent {
+  menuSections$ = this.menuService.getMenuSections()
   form = this.fb.group({
     menuSection: ['', Validators.required]
   })
 
   constructor(
-    private readonly adminService: AdminService,
+    private readonly menuEditService: MenuEditService,
     private readonly menuService: MenuService,
     private readonly fb: FormBuilder,
     private readonly translateService: TranslocoService,
@@ -30,30 +31,33 @@ export class MenuSectionsAdminComponent implements OnInit {
     private readonly router: Router
   ) { }
 
-  async ngOnInit() {
-    this.menuSections = await this.menuService.getMenuSections()
-  }
-
   getActiveLanguage() {
     return this.translateService.getActiveLang()
   }
 
   onDeleteSectionClicked() {
-    const menuSection = this.menuSections.find(section => section.id === this.form.controls.menuSection.value)
-    this.openDeleteSectionConfirmation(menuSection!)
+    const subscription = this.menuSections$.subscribe(menuSections => {
+      this.openDeleteSectionConfirmation(
+        menuSections.find(section => section.id === this.form.controls.menuSection.value)!
+      )
+      subscription.unsubscribe()
+    })
   }
 
   deleteSection(sectionId: string) {
-    this.adminService.deleteSection(sectionId)
+    this.menuEditService.deleteSection(sectionId).subscribe((result: any) => {
+      if (result.error) alert(translate('errors.standard'))
+    })
   }
 
-  onAddSection() {
-    /*
-    const newSectionForm = this.fb.group<string>({
-      es: ['', Validators.required],
-      en: ['', Validators.required]
+  onAddSectionClicked() {
+    this.openNewSectionFormDialog()
+  }
+
+  addSection(menuSection: MenuSection) {
+    this.menuEditService.addSection(menuSection).subscribe((result: any) => {
+      if (result.error) alert(translate('errors.standard'))
     })
-    */
   }
 
   onEditSection() {
@@ -79,11 +83,23 @@ export class MenuSectionsAdminComponent implements OnInit {
   openNewSectionFormDialog() {
     const dialogRef = this.dialog.open(TextInputDialogComponent, {
       data: {
-
+        title: translate('confirmationTitles.addMenuSection'),
+        labels: [
+          translate('formLabels.menuSectionName.es'),
+          translate('formLabels.menuSectionName.en')
+        ],
+        form: this.fb.group({
+          es: ['', Validators.required],
+          en: ['', Validators.required]
+        }),
+        yes: translate('confirmationOptions.confirm'),
+        no: translate('confirmationOptions.cancel')
       }
     })
     dialogRef.afterClosed().subscribe(result => {
-
+      if (!result) return
+      const menuSection = { name: result } as MenuSection
+      this.addSection(menuSection)
     })
   }
 }

@@ -18,6 +18,5 @@ export interface TextInputDialogData {
 export class TextInputDialogComponent {
   controlsKeys = Object.keys(this.data.form.controls)
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: TextInputDialogData) {
-  }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: TextInputDialogData) {}
 }

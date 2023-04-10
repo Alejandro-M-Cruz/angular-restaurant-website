@@ -108,7 +108,11 @@
     "time": "Hora",
     "customers": "Número de comensales",
     "name": "Nombre",
-    "complaint": "Describa su queja o sugerencia"
+    "complaint": "Describa su queja o sugerencia",
+    "menuSectionName": {
+      "es": "Nombre de la sección en español",
+      "en": "Nombre de la sección en inglés"
+    }
   },
   "formHints": {
     "email": "email@ejemplo.com",
@@ -141,7 +145,8 @@
   "confirmationTitles": {
     "cancelReservation": "Cancelar reserva",
     "deleteAccount": "Borrado de cuenta",
-    "deleteMenuSection": "Eliminando sección del menú"
+    "deleteMenuSection": "Eliminando sección del menú",
+    "addMenuSection": "Añadiendo sección al menú"
   },
   "confirmations": {
     "cancelReservation": "¿Está seguro de que desea cancelar su reserva para el {{date}} a las {{time}}?",
@@ -155,10 +160,14 @@
     "yes": "Sí",
     "no": "No",
     "cancel": "Cancelar",
-    "logIn": "Iniciar sesión"
+    "logIn": "Iniciar sesión",
+    "confirm": "Confirmar"
   },
   "successAlerts": {
     "languageChanged": "El idioma ha cambiado al español"
+  },
+  "errors": {
+    "standard": "Se ha producido un error, inténtelo de nuevo más tarde"
   },
   "alerts": {
     "NOT_FOUND": "El recurso solicitado no está disponible",

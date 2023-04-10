@@ -2,7 +2,7 @@
   <h2 class="page-title">{{t('titles.newReservation')}}</h2>
   <form [formGroup]="form" (ngSubmit)="onEditSection()">
     <mat-select formControlName="menuSection">
-      <mat-option *ngFor="let menuSection of menuSections" [value]="menuSection.id">
+      <mat-option *ngFor="let menuSection of menuSections$ | async" [value]="menuSection.id">
         {{menuSection.name[getActiveLanguage()]}}
       </mat-option>
     </mat-select>
@@ -16,7 +16,7 @@
       <button class="management-button edit-button" type="submit" [disabled]="form.invalid">
         {{t('buttons.editSection')}}
       </button>
-      <button class="management-button confirm-button" type="button" (click)="onAddSection()">
+      <button class="management-button confirm-button" type="button" (click)="onAddSectionClicked()">
         {{t('buttons.addSection')}}
       </button>
     </div>

@@ -5,7 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 import {translate} from "@ngneat/transloco";
 import {formatDate} from "@angular/common";
-import {AdminService} from "../../services/admin/admin.service";
+import {UsersService} from "../../services/admin/users.service";
 
 @Component({
   selector: 'app-reservations-admin',
@@ -18,7 +18,7 @@ export class AdminReservationsComponent {
   selectedReservation: Reservation | null = null
 
   constructor(
-    private readonly adminService: AdminService,
+    private readonly adminService: UsersService,
     private readonly reservationsService: ReservationsService,
     private readonly dialog: MatDialog
   ) {}

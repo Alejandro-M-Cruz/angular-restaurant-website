@@ -108,7 +108,11 @@
     "time": "Time",
     "customers": "Customers",
     "name": "In name of",
-    "complaint": "Explain your complaint or suggestion"
+    "complaint": "Explain your complaint or suggestion",
+    "menuSectionName": {
+      "es": "Section name in Spanish",
+      "en": "Section name in English"
+    }
   },
   "formHints": {
     "email": "email@example.com",
@@ -141,7 +145,8 @@
   "confirmationTitles": {
     "cancelReservation": "Cancel reservation",
     "deleteAccount": "Account deletion",
-    "deleteMenuSection": "Deleting menu section"
+    "deleteMenuSection": "Deleting menu section",
+    "addMenuSection": "Adding menu section"
   },
   "confirmations": {
     "cancelReservation": "Are you sure you want to cancel your reservation for {{date}} at {{time}}?",
@@ -155,10 +160,14 @@
     "yes": "Yes",
     "no": "No",
     "cancel": "Cancel",
-    "logIn": "Log in"
+    "logIn": "Log in",
+    "confirm": "Confirm"
   },
   "successAlerts": {
     "languageChanged": "Language has been changed to English"
+  },
+  "errors": {
+    "standard": "There has been an error, try again later"
   },
   "alerts": {
     "NOT_FOUND": "The requested resource is not available",

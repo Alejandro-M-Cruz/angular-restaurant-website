@@ -12,7 +12,7 @@ const COMPLAINT_MAX_LENGTH = 2000
 export class ComplaintsService {
   constructor(private readonly firestore: Firestore) {}
 
-  getComplaints() {
+  getComplaints(): Observable<Complaint[]> {
     return collectionData(
       collection(this.firestore, 'complaints'),
       {idField: 'id'}

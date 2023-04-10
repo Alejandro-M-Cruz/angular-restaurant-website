@@ -35,7 +35,7 @@ export class ReservationsService {
     })
   }
 
-  getReservations() {
+  getReservations(): Observable<Reservation[]> {
     const q = query(
       collection(this.firestore, 'reservations'),
       orderBy('date'),
@@ -43,7 +43,7 @@ export class ReservationsService {
     return collectionData(q, {idField: 'id'}) as Observable<Reservation[]>
   }
 
-  getCurrentReservations() {
+  getCurrentReservations(): Observable<Reservation[]> {
     const today = new Date()
     today.setHours(0, 0, 0, 0)
     const q = query(
@@ -54,7 +54,7 @@ export class ReservationsService {
     return collectionData(q, {idField: 'id'}) as Observable<Reservation[]>
   }
 
-  getUserCurrentReservations() {
+  getUserCurrentReservations(): Observable<Reservation[]> {
     if (!this.auth.currentUser) return new Observable() as Observable<Reservation[]>    // TODO: fix this
     const today = new Date()
     today.setHours(0, 0, 0, 0)

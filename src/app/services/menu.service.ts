@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {
-  collection,
-  Firestore, getDocs, orderBy, query
+  collection, collectionData,
+  Firestore, getDocs, orderBy, query, where
 } from "@angular/fire/firestore";
 import {MenuSection} from "../model/menu-section.model";
 import {MenuItem} from "../model/menu-item.model";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,32 +13,28 @@ import {MenuItem} from "../model/menu-item.model";
 export class MenuService {
   constructor(private readonly firestore: Firestore) {}
 
-  async getMenuSections() {
+  getMenuSections(): Observable<MenuSection[]> {
     const q = query(
       collection(this.firestore, 'menu_sections'),
       orderBy('name.es')
     )
-    const querySnapshot = await getDocs(q)
-    return querySnapshot.docs.map(doc => {
-      return {id: doc.id, ...doc.data()}
-    }) as MenuSection[]
+    return collectionData(q, {idField: 'id'}) as Observable<MenuSection[]>
   }
 
-  async getMenuItems() {
-    const querySnapshot = await getDocs(
-      collection(this.firestore, 'menu_items')
+  getMenuItems(): Observable<MenuItem[]> {
+    const q = query(
+      collection(this.firestore, 'menu_items'),
+      orderBy('name.es')
     )
-    return querySnapshot.docs.map(doc => {
-      return {id: doc.id, ...doc.data()}
-    }) as MenuItem[]
+    return collectionData(q, {idField: 'id'}) as Observable<MenuItem[]>
   }
 
-  async getMenuItemsBySectionId(sectionId: string) {
-    const querySnapshot = await getDocs(
-      collection(this.firestore, 'menu_items')
+  getMenuItemsBySectionId(sectionId: string): Observable<MenuItem[]> {
+    const q = query(
+      collection(this.firestore, 'menu_items'),
+      where('sectionId', '==', sectionId),
+      orderBy('name.es')
     )
-    return querySnapshot.docs.map(doc => {
-      return {id: doc.id, ...doc.data()} as MenuItem
-    }).filter(item => item.sectionId === sectionId) as MenuItem[]
+    return collectionData(q, {idField: 'id'}) as Observable<MenuItem[]>
   }
 }
