@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   collection, collectionData,
-  Firestore, getDocs, orderBy, query, where
+  Firestore, orderBy, query, where
 } from "@angular/fire/firestore";
 import {MenuSection} from "../model/menu-section.model";
 import {MenuItem} from "../model/menu-item.model";

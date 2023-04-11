@@ -29,7 +29,8 @@
     "complaints": "Hoja de reclamaciones",
     "complaintsAdmin": "Reclamaciones",
     "menu": "MENÚ",
-    "aboutUs": "SOBRE NOSOTROS"
+    "aboutUs": "SOBRE NOSOTROS",
+    "menuSectionsAdmin": "Modifique las secciones del menú mediante el desplegable"
   },
   "navbarLinks": {
     "home": "Inicio",
@@ -116,10 +117,16 @@
   },
   "formHints": {
     "email": "email@ejemplo.com",
-    "menuItemName": "Nombre del producto",
-    "menuItemDescription": "Descripción del producto",
-    "menuItemPrice": "Precio del producto",
-    "menuImageSrc": "Ruta de la imagen del producto"
+    "menuItemName": {
+      "es": "Nombre del producto en español",
+      "en": "Nombre del producto en inglés"
+    },
+    "menuItemIngredients": {
+      "es": "Ingredientes en español",
+      "en": "Ingredientes en inglés"
+    },
+    "menuItemPrice": "Precio",
+    "menuItemImage": "Imagen del producto"
   },
   "formErrors": {
     "email": "El correo electrónico no es válido",

@@ -29,7 +29,8 @@
     "complaints": "Complaint form",
     "complaintsAdmin": "Complaints",
     "menu": "MENÚ",
-    "aboutUs": "SOBRE NOSOTROS"
+    "aboutUs": "SOBRE NOSOTROS",
+    "menuSectionsAdmin": "Modify the menu sections using the drop-down"
   },
   "navbarLinks": {
     "home": "Home",
@@ -116,10 +117,16 @@
   },
   "formHints": {
     "email": "email@example.com",
-    "menuItemName": "Nombre del producto",
-    "menuItemDescription": "Descripción del producto",
-    "menuItemPrice": "Precio del producto",
-    "menuImageSrc": "Ruta de la imagen del producto"
+    "menuItemName": {
+      "es": "Product name in Spanish",
+      "en": "Product name in English"
+    },
+    "menuItemIngredients": {
+      "es": "Ingredients in Spanish",
+      "en": "Ingredients in English"
+    },
+    "menuItemPrice": "Price",
+    "menuItemImage": "Image of the product"
   },
   "formErrors": {
     "email": "Email is not valid",

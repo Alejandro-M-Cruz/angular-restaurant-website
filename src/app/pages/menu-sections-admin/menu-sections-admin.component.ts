@@ -3,12 +3,10 @@ import {MenuService} from "../../services/menu.service";
 import {MenuSection} from "../../model/menu-section.model";
 import {FormBuilder, Validators} from "@angular/forms";
 import {translate, TranslocoService} from "@ngneat/transloco";
-import {UsersService} from "../../services/admin/users.service";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {TextInputDialogComponent} from "../../components/text-input-dialog/text-input-dialog.component";
-import {MultiLanguageString} from "../../model/multi-language-string";
 import {MenuEditService} from "../../services/admin/menu-edit.service";
 
 @Component({
@@ -19,7 +17,7 @@ import {MenuEditService} from "../../services/admin/menu-edit.service";
 export class MenuSectionsAdminComponent {
   menuSections$ = this.menuService.getMenuSections()
   form = this.fb.group({
-    menuSection: ['', Validators.required]
+    menuSection: [null, Validators.required]
   })
 
   constructor(
@@ -36,12 +34,7 @@ export class MenuSectionsAdminComponent {
   }
 
   onDeleteSectionClicked() {
-    const subscription = this.menuSections$.subscribe(menuSections => {
-      this.openDeleteSectionConfirmation(
-        menuSections.find(section => section.id === this.form.controls.menuSection.value)!
-      )
-      subscription.unsubscribe()
-    })
+    this.openDeleteSectionConfirmation(this.form.controls.menuSection.value!)
   }
 
   deleteSection(sectionId: string) {
@@ -60,8 +53,9 @@ export class MenuSectionsAdminComponent {
     })
   }
 
-  onEditSection() {
-    this.router.navigate(['/home'])
+  async onEditSection() {
+    await this.router.navigate(['/menu-items-admin'])
+    this.menuEditService.editingSection(this.form.controls.menuSection.value!)
   }
 
   openDeleteSectionConfirmation(section: MenuSection) {
