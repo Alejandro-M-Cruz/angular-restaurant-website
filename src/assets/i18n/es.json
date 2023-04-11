@@ -96,6 +96,12 @@
     "customers": "Comensales",
     "email": "Correo electrónico del usuario"
   },
+  "reservationsPaginator": {
+    "itemsPerPageLabel": "Reservas por página",
+    "nextPageLabel": "Siguiente página",
+    "previousPageLabel": "Página anterior",
+    "of": "de"
+  },
   "tableEmptyRows": {
     "reservations": "Puede realizar {{available}} reserva/s más",
     "adminReservations": "No hay reservas en este momento"

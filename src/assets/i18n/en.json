@@ -96,6 +96,12 @@
     "customers": "Customers",
     "email": "User email"
   },
+  "reservationsPaginator": {
+    "itemsPerPageLabel": "Reservations per page",
+    "nextPageLabel": "Next page",
+    "previousPageLabel": "Previous page",
+    "of": "of"
+  },
   "tableEmptyRows": {
     "reservations": "You can create {{available}} more reservation/s",
     "adminReservations": "There are no reservations for the moment"
