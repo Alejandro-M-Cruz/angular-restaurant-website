@@ -2,12 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {TranslocoService} from "@ngneat/transloco";
 import {MenuService} from "../../../../services/menu.service";
 import {MenuItem} from "../../../../model/menu-item.model";
-import {MenuSection} from "../../../../model/menu-section.model";
-import {map, Observable} from "rxjs";
-
-interface DisplayableMenuSection extends MenuSection {
-  items: MenuItem[]
-}
+import {DisplayableMenuSection, MenuSection} from "../../../../model/menu-section.model";
+import {map} from "rxjs";
 
 @Component({
   selector: 'app-menu',

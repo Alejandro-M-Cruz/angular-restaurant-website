@@ -47,6 +47,6 @@ Thumbs.db
 .runtimeconfig.json
 
 # Backend
-/src/server/node_modules
-/src/server/firebase.json
-/src/server/.env
+server/node_modules
+server/firebase.json
+server/.env

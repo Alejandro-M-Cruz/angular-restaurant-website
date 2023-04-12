@@ -34,7 +34,7 @@ export class MenuSectionsAdminComponent {
   }
 
   onDeleteSectionClicked() {
-    this.openDeleteSectionConfirmation(this.form.controls.menuSection.value!)
+    this.openDeleteSectionConfirmationDialog(this.form.controls.menuSection.value!)
   }
 
   deleteSection(sectionId: string) {
@@ -54,11 +54,11 @@ export class MenuSectionsAdminComponent {
   }
 
   async onEditSection() {
-    await this.router.navigate(['/menu-items-admin'])
     this.menuEditService.editingSection(this.form.controls.menuSection.value!)
+    await this.router.navigate(['/menu-items-admin'])
   }
 
-  openDeleteSectionConfirmation(section: MenuSection) {
+  openDeleteSectionConfirmationDialog(section: MenuSection) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: {
         title: translate('confirmationTitles.deleteMenuSection'),

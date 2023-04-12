@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prestart": "tsc",
-    "start": "node build/server/index.js"
+    "start": "node build/server/src/index.js"
   },
   "keywords": [],
   "author": "",

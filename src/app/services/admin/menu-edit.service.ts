@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class MenuEditService {
-  editedSection?: MenuSection
+  editedSection: MenuSection | null = null
 
   constructor(private readonly http: HttpClient) {}
 
@@ -22,5 +22,9 @@ export class MenuEditService {
 
   editingSection(menuSection: MenuSection) {
     this.editedSection = menuSection
+  }
+
+  deleteItem(id: string): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/menu/items/${id}`)
   }
 }

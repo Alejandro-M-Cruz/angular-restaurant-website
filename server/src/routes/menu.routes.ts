@@ -1,8 +1,8 @@
 import express from 'express'
 const router = express.Router()
 import {firestore} from "../firebase";
-import {MenuSection} from "../../app/model/menu-section.model";
-import {MenuItem} from "../../app/model/menu-item.model";
+import {MenuSection} from "../../../src/app/model/menu-section.model";
+import {MenuItem} from "../../../src/app/model/menu-item.model";
 
 const extractMenuSection = (object: any): MenuSection => {
   return {

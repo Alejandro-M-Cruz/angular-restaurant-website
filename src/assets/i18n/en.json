@@ -17,6 +17,7 @@
     "complaints": "Complaint form",
     "complaintsAdmin": "Complaints",
     "menuSectionsAdmin": "Menu sections",
+    "menuItemsAdmin": "Menu items",
     "contactInfo": "Contact information"
   },
   "titles": {
@@ -90,6 +91,25 @@
     "creationDate": "Account creation date",
     "lastLogInDate": "Last log-in date"
   },
+  "menuSection": {
+    "name": {
+      "en": "Section name in English",
+      "es": "Section name in Spanish"
+    }
+  },
+  "menuItem": {
+    "name": {
+      "en": "Name in English",
+      "es": "Name in Spanish"
+    },
+    "ingredients": {
+      "en": "Ingredients in English",
+      "es": "Ingredients in Spanish"
+    },
+    "price": "Price",
+    "image": "Image of the product",
+    "noImage": "No image has been selected"
+  },
   "reservationsTable": {
     "date": "Date",
     "time": "Time",
@@ -159,7 +179,8 @@
     "cancelReservation": "Cancel reservation",
     "deleteAccount": "Account deletion",
     "deleteMenuSection": "Deleting menu section",
-    "addMenuSection": "Adding menu section"
+    "addMenuSection": "Adding menu section",
+    "deleteMenuItem": "Deleting menu item"
   },
   "confirmations": {
     "cancelReservation": "Are you sure you want to cancel your reservation for {{date}} at {{time}}?",
@@ -167,7 +188,8 @@
     "deleteAccount": "Are you sure you want to delete your account? Your reservations will be deleted",
     "deleteAccount2": "Are you sure? This action cannot be undone",
     "logInBeforeDeleteAccount": "In order to delete your account, you must have logged in recently",
-    "deleteMenuSection": "Are you sure you want to delete the section {{section}} from the menu and all the products that it contains?"
+    "deleteMenuSection": "Are you sure you want to delete the section {{section}} from the menu and all the products that it contains?",
+    "deleteMenuItem": "Are you sure you want to delete {{itemName}} from the menu?"
   },
   "confirmationOptions": {
     "yes": "Yes",

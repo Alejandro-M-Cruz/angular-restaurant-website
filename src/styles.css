@@ -79,6 +79,9 @@ input:focus, textarea:focus {
   background-color: var(--input-focus-color);
 }
 
+mat-icon {
+  transform: scale(2);
+}
 
 /* -------------NAVBAR------------- */
 

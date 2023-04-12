@@ -17,6 +17,7 @@
     "complaints": "Hoja de reclamaciones",
     "complaintsAdmin": "Reclamaciones",
     "menuSectionsAdmin": "Secciones del menú",
+    "menuItemsAdmin": "Productos del menú",
     "contactInfo": "Información de contacto"
   },
   "titles": {
@@ -90,6 +91,25 @@
     "creationDate": "Fecha de creación de la cuenta",
     "lastLogInDate": "Último inicio de sesión"
   },
+  "menuSection": {
+    "name": {
+      "en": "Nombre de la sección en inglés",
+      "es": "Nombre de la sección en español"
+    }
+  },
+  "menuItem": {
+    "price": "Precio",
+    "name": {
+      "en": "Nombre en inglés",
+      "es": "Nombre en español"
+    },
+    "ingredients": {
+      "en": "Ingredientes en inglés",
+      "es": "Ingredientes en español"
+    },
+    "image": "Imagen del producto",
+    "noImage": "No se ha seleccionado una imagen"
+  },
   "reservationsTable": {
     "date": "Fecha",
     "time": "Hora",
@@ -159,7 +179,8 @@
     "cancelReservation": "Cancelar reserva",
     "deleteAccount": "Borrado de cuenta",
     "deleteMenuSection": "Eliminando sección del menú",
-    "addMenuSection": "Añadiendo sección al menú"
+    "addMenuSection": "Añadiendo sección al menú",
+    "deleteMenuItem": "Eliminando producto del menú"
   },
   "confirmations": {
     "cancelReservation": "¿Está seguro de que desea cancelar su reserva para el {{date}} a las {{time}}?",
@@ -167,7 +188,8 @@
     "deleteAccount": "¿Está seguro de que desea eliminar su cuenta? Sus reservas serán canceladas",
     "deleteAccount2": "¿Está seguro? Esta acción no se puede deshacer",
     "logInBeforeDeleteAccount": "Para poder eliminar su cuenta, debe haber iniciado sesión recientemente",
-    "deleteMenuSection": "¿Está seguro de que desea eliminar la sección de {{section}} del menú y todos los productos que contiene?"
+    "deleteMenuSection": "¿Está seguro de que desea eliminar la sección de {{section}} del menú y todos los productos que contiene?",
+    "deleteMenuItem": "¿Está seguro de que desea eliminar {{itemName}} del menú?"
   },
   "confirmationOptions": {
     "yes": "Sí",
