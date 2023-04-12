@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Auth, onAuthStateChanged} from "@angular/fire/auth";
-import {collection, collectionData, Firestore, getDocs, query, where} from "@angular/fire/firestore";
-import {map, Observable} from "rxjs";
+import {collection, Firestore, getDocs, query, where} from "@angular/fire/firestore";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

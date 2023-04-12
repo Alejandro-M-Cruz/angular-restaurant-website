@@ -56,7 +56,7 @@ import {getStorage, provideStorage} from "@angular/fire/storage";
 import { MenuSectionsAdminComponent } from './pages/menu-sections-admin/menu-sections-admin.component';
 import { MenuItemsAdminComponent } from './pages/menu-items-admin/menu-items-admin.component';
 import { TextInputDialogComponent } from './components/text-input-dialog/text-input-dialog.component';
-import {getPaginatorIntl} from "./pages/reservations-admin/admin-reservations-table/reservations-paginator-intl";
+import { ReservationsPaginatorIntl } from "./pages/reservations-admin/admin-reservations-table/reservations-paginator-intl";
 import { MenuItemComponent } from './pages/menu-items-admin/components/menu-item/menu-item.component';
 import {MatCardModule} from "@angular/material/card";
 registerLocaleData(es);
@@ -123,7 +123,7 @@ registerLocaleData(es);
     ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' },
-    // { provide: MatPaginatorIntl, useValue: getPaginatorIntl() },
+    { provide: MatPaginatorIntl, useClass: ReservationsPaginatorIntl }
   ],
   bootstrap: [AppComponent]
 })
