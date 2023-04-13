@@ -3,13 +3,16 @@
   <section class="content-section">
     <ng-container>
       <app-admin-reservations-table
-        [reservations]="currentReservations$ | async"
+        [reservations]="showPastReservations ? (allReservations$ | async) : (currentReservations$ | async)"
         [users]="users$ | async"
         (selectedReservationChanged)="onSelectedReservationChanged($event)"
       ></app-admin-reservations-table>
     </ng-container>
     <div class="buttons-container">
       <button class="management-button back-button" onclick="window.history.back()">{{t('buttons.back')}}</button>
+      <button class="management-button confirm-button" (click)="toggleShowPastReservations()">
+        {{showPastReservations ? t('buttons.getCurrentReservations') : t('buttons.getAllReservations')}}
+      </button>
       <button
         class="management-button cancel-button"
         [disabled]="selectedReservation === null"
