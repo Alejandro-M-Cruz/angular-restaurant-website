@@ -1,5 +1,4 @@
 <ng-container *transloco="let t">
-  <!--<button class="btn btn-warning" (click)="storeMenuItems()">AÑADIR ITEMS AL MENÚ</button>-->
   <h2>{{t('titles.menu')}}</h2>
   <div class="menu">
     <div class="menu-left">
@@ -23,7 +22,7 @@
       <ng-container *ngFor="let sections of menuRight">
         <h3>{{sections.name[getActiveLanguage()]}}</h3>
         <div class="sides" *ngFor="let item of sections.items">
-          <div class="left-side-image" *ngIf="item.imageUrl !== null">
+          <div class="left-side-image" *ngIf="item.imageUrl">
             <img [src]="item.imageUrl" alt="food">
           </div>
           <div class="left-side-text">

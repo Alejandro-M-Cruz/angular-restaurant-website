@@ -50,11 +50,15 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { MyAccountComponent } from './pages/my-account/my-account.component';
 import {ComplaintsAdminComponent} from "./pages/complaints-admin/complaints-admin.component";
 import { AdminReservationsComponent } from './pages/reservations-admin/admin-reservations.component';
-import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatPaginatorIntl, MatPaginatorModule} from "@angular/material/paginator";
 import { AdminReservationsTableComponent } from './pages/reservations-admin/admin-reservations-table/admin-reservations-table.component';
 import {getStorage, provideStorage} from "@angular/fire/storage";
 import { MenuSectionsAdminComponent } from './pages/menu-sections-admin/menu-sections-admin.component';
 import { MenuItemsAdminComponent } from './pages/menu-items-admin/menu-items-admin.component';
+import { TextInputDialogComponent } from './components/text-input-dialog/text-input-dialog.component';
+import { ReservationsPaginatorIntl } from "./pages/reservations-admin/admin-reservations-table/reservations-paginator-intl";
+import { MenuItemComponent } from './pages/menu-items-admin/components/menu-item/menu-item.component';
+import {MatCardModule} from "@angular/material/card";
 registerLocaleData(es);
 
 @NgModule({
@@ -86,36 +90,40 @@ registerLocaleData(es);
     AdminReservationsTableComponent,
     MenuSectionsAdminComponent,
     MenuItemsAdminComponent,
+    TextInputDialogComponent,
+    MenuItemComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    TranslocoRootModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()),
-    FormsModule,
-    NgbModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatDatepickerModule,
-    MatListModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatDialogModule,
-    MatNativeDateModule,
-    MatPaginatorModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        TranslocoRootModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAuth(() => getAuth()),
+        provideFirestore(() => getFirestore()),
+        provideStorage(() => getStorage()),
+        FormsModule,
+        NgbModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatButtonModule,
+        MatDatepickerModule,
+        MatListModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatDialogModule,
+        MatNativeDateModule,
+        MatPaginatorModule,
+        MatCardModule
+    ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'es-ES' }
+    { provide: LOCALE_ID, useValue: 'es-ES' },
+    { provide: MatPaginatorIntl, useClass: ReservationsPaginatorIntl }
   ],
   bootstrap: [AppComponent]
 })

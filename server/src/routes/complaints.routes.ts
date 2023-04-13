@@ -1,6 +1,6 @@
 import express from 'express'
 const router = express.Router()
-import {Complaint} from "../../app/model/complaint.model";
+import {Complaint} from "../../../src/app/model/complaint.model";
 import {firestore} from "../firebase";
 
 router.get('/', async (_req, res) => {

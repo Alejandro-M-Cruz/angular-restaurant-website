@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router()
 import {auth} from '../firebase'
-import {UserInfo} from "../../app/model/user-info.model";
+import {UserInfo} from "../../../src/app/model/user-info.model";
 
 router.get('/', async (req, res) => {
   const usersList = await auth.listUsers()

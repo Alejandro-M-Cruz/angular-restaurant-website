@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Auth} from "@angular/fire/auth";
+import {Auth, onAuthStateChanged} from "@angular/fire/auth";
 import {UserInfo} from "../model/user-info.model";
 import {collection, deleteDoc, Firestore, getDocs, query, where} from "@angular/fire/firestore";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +10,25 @@ import {collection, deleteDoc, Firestore, getDocs, query, where} from "@angular/
 export class UserService {
   constructor(private readonly auth: Auth, private readonly firestore: Firestore) {}
 
-  getUserInfo() {
-    const user = this.auth.currentUser
-    if (user === null) return null
+  private extractUserInfo(user: any): UserInfo {
     return {
       email: user.email,
       creationDate: user.metadata.creationTime ? new Date(user.metadata.creationTime) : undefined,
       lastLogInDate: user.metadata.lastSignInTime ? new Date(user.metadata.lastSignInTime) : undefined
     } as UserInfo
+  }
+
+  getUserInfo(): UserInfo | null {
+    if (this.auth.currentUser === null) return null
+    return this.extractUserInfo(this.auth.currentUser)
+  }
+
+  getUserInfoObservable(): Observable<UserInfo> {
+    return new Observable<UserInfo>(subscriber => {
+      onAuthStateChanged(this.auth, user => {
+        if (user) subscriber.next(this.extractUserInfo(user))
+      })
+    })
   }
 
   async deleteUser() {

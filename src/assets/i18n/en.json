@@ -17,6 +17,7 @@
     "complaints": "Complaint form",
     "complaintsAdmin": "Complaints",
     "menuSectionsAdmin": "Menu sections",
+    "menuItemsAdmin": "Menu items",
     "contactInfo": "Contact information"
   },
   "titles": {
@@ -29,7 +30,8 @@
     "complaints": "Complaint form",
     "complaintsAdmin": "Complaints",
     "menu": "MENÚ",
-    "aboutUs": "SOBRE NOSOTROS"
+    "aboutUs": "SOBRE NOSOTROS",
+    "menuSectionsAdmin": "Modify the menu sections using the drop-down"
   },
   "navbarLinks": {
     "home": "Home",
@@ -89,11 +91,36 @@
     "creationDate": "Account creation date",
     "lastLogInDate": "Last log-in date"
   },
+  "menuSection": {
+    "name": {
+      "en": "Section name in English",
+      "es": "Section name in Spanish"
+    }
+  },
+  "menuItem": {
+    "name": {
+      "en": "Name in English",
+      "es": "Name in Spanish"
+    },
+    "ingredients": {
+      "en": "Ingredients in English",
+      "es": "Ingredients in Spanish"
+    },
+    "price": "Price",
+    "image": "Image of the product",
+    "noImage": "No image has been selected"
+  },
   "reservationsTable": {
     "date": "Date",
     "time": "Time",
     "customers": "Customers",
     "email": "User email"
+  },
+  "reservationsPaginator": {
+    "itemsPerPageLabel": "Reservations per page",
+    "nextPageLabel": "Next page",
+    "previousPageLabel": "Previous page",
+    "of": "of"
   },
   "tableEmptyRows": {
     "reservations": "You can create {{available}} more reservation/s",
@@ -108,14 +135,24 @@
     "time": "Time",
     "customers": "Customers",
     "name": "In name of",
-    "complaint": "Explain your complaint or suggestion"
+    "complaint": "Explain your complaint or suggestion",
+    "menuSectionName": {
+      "es": "Section name in Spanish",
+      "en": "Section name in English"
+    }
   },
   "formHints": {
     "email": "email@example.com",
-    "menuItemName": "Nombre del producto",
-    "menuItemDescription": "Descripción del producto",
-    "menuItemPrice": "Precio del producto",
-    "menuImageSrc": "Ruta de la imagen del producto"
+    "menuItemName": {
+      "es": "Product name in Spanish",
+      "en": "Product name in English"
+    },
+    "menuItemIngredients": {
+      "es": "Ingredients in Spanish",
+      "en": "Ingredients in English"
+    },
+    "menuItemPrice": "Price",
+    "menuItemImage": "Image of the product"
   },
   "formErrors": {
     "email": "Email is not valid",
@@ -140,23 +177,32 @@
   "notSignedUpLink": "SIGN UP HERE",
   "confirmationTitles": {
     "cancelReservation": "Cancel reservation",
-    "deleteAccount": "Account deletion"
+    "deleteAccount": "Account deletion",
+    "deleteMenuSection": "Deleting menu section",
+    "addMenuSection": "Adding menu section",
+    "deleteMenuItem": "Deleting menu item"
   },
   "confirmations": {
     "cancelReservation": "Are you sure you want to cancel your reservation for {{date}} at {{time}}?",
     "cancelReservationAdmin": "Are you sure you want to cancel the reservation for {{date}} at {{time}}? A notification will be sent to the email {{email}}",
     "deleteAccount": "Are you sure you want to delete your account? Your reservations will be deleted",
     "deleteAccount2": "Are you sure? This action cannot be undone",
-    "logInBeforeDeleteAccount": "In order to delete your account, you must have logged in recently"
+    "logInBeforeDeleteAccount": "In order to delete your account, you must have logged in recently",
+    "deleteMenuSection": "Are you sure you want to delete the section {{section}} from the menu and all the products that it contains?",
+    "deleteMenuItem": "Are you sure you want to delete {{itemName}} from the menu?"
   },
   "confirmationOptions": {
     "yes": "Yes",
     "no": "No",
     "cancel": "Cancel",
-    "logIn": "Log in"
+    "logIn": "Log in",
+    "confirm": "Confirm"
   },
   "successAlerts": {
     "languageChanged": "Language has been changed to English"
+  },
+  "errors": {
+    "standard": "There has been an error, try again later"
   },
   "alerts": {
     "NOT_FOUND": "The requested resource is not available",

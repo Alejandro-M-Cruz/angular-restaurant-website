@@ -17,6 +17,7 @@
     "complaints": "Hoja de reclamaciones",
     "complaintsAdmin": "Reclamaciones",
     "menuSectionsAdmin": "Secciones del menú",
+    "menuItemsAdmin": "Productos del menú",
     "contactInfo": "Información de contacto"
   },
   "titles": {
@@ -29,7 +30,8 @@
     "complaints": "Hoja de reclamaciones",
     "complaintsAdmin": "Reclamaciones",
     "menu": "MENÚ",
-    "aboutUs": "SOBRE NOSOTROS"
+    "aboutUs": "SOBRE NOSOTROS",
+    "menuSectionsAdmin": "Modifique las secciones del menú mediante el desplegable"
   },
   "navbarLinks": {
     "home": "Inicio",
@@ -89,11 +91,36 @@
     "creationDate": "Fecha de creación de la cuenta",
     "lastLogInDate": "Último inicio de sesión"
   },
+  "menuSection": {
+    "name": {
+      "en": "Nombre de la sección en inglés",
+      "es": "Nombre de la sección en español"
+    }
+  },
+  "menuItem": {
+    "price": "Precio",
+    "name": {
+      "en": "Nombre en inglés",
+      "es": "Nombre en español"
+    },
+    "ingredients": {
+      "en": "Ingredientes en inglés",
+      "es": "Ingredientes en español"
+    },
+    "image": "Imagen del producto",
+    "noImage": "No se ha seleccionado una imagen"
+  },
   "reservationsTable": {
     "date": "Fecha",
     "time": "Hora",
     "customers": "Comensales",
     "email": "Correo electrónico del usuario"
+  },
+  "reservationsPaginator": {
+    "itemsPerPageLabel": "Reservas por página",
+    "nextPageLabel": "Siguiente página",
+    "previousPageLabel": "Página anterior",
+    "of": "de"
   },
   "tableEmptyRows": {
     "reservations": "Puede realizar {{available}} reserva/s más",
@@ -108,14 +135,24 @@
     "time": "Hora",
     "customers": "Número de comensales",
     "name": "Nombre",
-    "complaint": "Describa su queja o sugerencia"
+    "complaint": "Describa su queja o sugerencia",
+    "menuSectionName": {
+      "es": "Nombre de la sección en español",
+      "en": "Nombre de la sección en inglés"
+    }
   },
   "formHints": {
     "email": "email@ejemplo.com",
-    "menuItemName": "Nombre del producto",
-    "menuItemDescription": "Descripción del producto",
-    "menuItemPrice": "Precio del producto",
-    "menuImageSrc": "Ruta de la imagen del producto"
+    "menuItemName": {
+      "es": "Nombre del producto en español",
+      "en": "Nombre del producto en inglés"
+    },
+    "menuItemIngredients": {
+      "es": "Ingredientes en español",
+      "en": "Ingredientes en inglés"
+    },
+    "menuItemPrice": "Precio",
+    "menuItemImage": "Imagen del producto"
   },
   "formErrors": {
     "email": "El correo electrónico no es válido",
@@ -140,23 +177,32 @@
   "notSignedUpLink": "REGÍSTRESE AQUÍ",
   "confirmationTitles": {
     "cancelReservation": "Cancelar reserva",
-    "deleteAccount": "Borrado de cuenta"
+    "deleteAccount": "Borrado de cuenta",
+    "deleteMenuSection": "Eliminando sección del menú",
+    "addMenuSection": "Añadiendo sección al menú",
+    "deleteMenuItem": "Eliminando producto del menú"
   },
   "confirmations": {
     "cancelReservation": "¿Está seguro de que desea cancelar su reserva para el {{date}} a las {{time}}?",
     "cancelReservationAdmin": "¿Está seguro de que desea cancelar la reserva para el {{date}} a las {{time}}? Se enviará una notificación al correo electrónico {{email}}",
     "deleteAccount": "¿Está seguro de que desea eliminar su cuenta? Sus reservas serán canceladas",
     "deleteAccount2": "¿Está seguro? Esta acción no se puede deshacer",
-    "logInBeforeDeleteAccount": "Para poder eliminar su cuenta, debe haber iniciado sesión recientemente"
+    "logInBeforeDeleteAccount": "Para poder eliminar su cuenta, debe haber iniciado sesión recientemente",
+    "deleteMenuSection": "¿Está seguro de que desea eliminar la sección de {{section}} del menú y todos los productos que contiene?",
+    "deleteMenuItem": "¿Está seguro de que desea eliminar {{itemName}} del menú?"
   },
   "confirmationOptions": {
     "yes": "Sí",
     "no": "No",
     "cancel": "Cancelar",
-    "logIn": "Iniciar sesión"
+    "logIn": "Iniciar sesión",
+    "confirm": "Confirmar"
   },
   "successAlerts": {
     "languageChanged": "El idioma ha cambiado al español"
+  },
+  "errors": {
+    "standard": "Se ha producido un error, inténtelo de nuevo más tarde"
   },
   "alerts": {
     "NOT_FOUND": "El recurso solicitado no está disponible",

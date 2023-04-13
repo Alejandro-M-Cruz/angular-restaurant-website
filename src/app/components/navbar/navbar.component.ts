@@ -14,7 +14,7 @@ export class NavbarComponent {
 
   constructor(
     private readonly translateService: TranslocoService,
-    readonly navbarLinksService: NavbarLinksService
+    private readonly navbarLinksService: NavbarLinksService
   ) { }
 
   onChangeLanguage() {

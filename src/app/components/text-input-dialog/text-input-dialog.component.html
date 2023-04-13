@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="data.form">
+    <mat-form-field *ngFor="let control of controlsKeys; let i = index" appearance="fill">
+      <mat-label>{{data.labels[i]}}</mat-label>
+      <input matInput [formControlName]="control">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="null">{{data.no}}</button>
+  <button mat-button [mat-dialog-close]="data.form.value" cdkFocusInitial>{{data.yes}}</button>
+</div>

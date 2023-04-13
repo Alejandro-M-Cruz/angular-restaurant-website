@@ -27,6 +27,6 @@ export class AdminReservationsTableComponent {
   }
 
   getUserEmail(uid: string) {
-    return this.users?.find(user => user.uid === uid)?.email ?? '-'
+    return this.users?.find(user => user.uid === uid)?.email ?? '...'
   }
 }

@@ -1,0 +1,29 @@
+<mat-card class="container" *transloco="let t">
+  <mat-card-header class="flex-column">
+    <ng-container *ngFor="let lang of availableLanguages">
+      <mat-card-subtitle class="d-block">{{t('menuItem.name.' + lang)}}</mat-card-subtitle>
+      <mat-card-title class="d-block pb-3">{{menuItem.name[lang]}}</mat-card-title>
+    </ng-container>
+  </mat-card-header>
+  <mat-card-content class="pb-3">
+    <ng-container *ngFor="let lang of availableLanguages">
+      <mat-card-subtitle>{{t('menuItem.ingredients.' + lang)}}</mat-card-subtitle>
+      <p>{{menuItem.ingredients[lang]}}</p>
+    </ng-container>
+    <mat-card-subtitle>{{t('menuItem.price')}}</mat-card-subtitle>
+    <p>{{menuItem.price | currency: 'EUR'}}</p>
+    <mat-card-subtitle>{{t('menuItem.image')}}</mat-card-subtitle>
+    <img *ngIf="menuItem.imageUrl; else noImage" [src]="menuItem.imageUrl" [alt]="t('menuItem.image')">
+    <ng-template #noImage>
+      <p>{{t('menuItem.noImage')}}</p>
+    </ng-template>
+  </mat-card-content>
+  <mat-card-actions class="justify-content-between">
+    <button mat-icon-button class="p-2" (click)="deleteItem()">
+      <mat-icon [ngStyle]="{color: 'var(--cancel-button-color)'}">delete_forever</mat-icon>
+    </button>
+    <button mat-icon-button class="p-2" (click)="editItem()">
+      <mat-icon [ngStyle]="{color: 'var(--edit-button-color)'}">edit</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
