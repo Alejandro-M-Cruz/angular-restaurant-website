@@ -1,0 +1,27 @@
+<ng-container *transloco="let t">
+  <h1 mat-dialog-title>{{t('formDialogTitles.' + data.menuItem ? 'updateMenuItem' : 'addMenuItem')}}</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="form">
+      <div formGroupName="name">
+        <mat-form-field appearance="outline" *ngFor="let lang of availableLanguages">
+          <mat-label>{{t('menuItem.name.' + lang)}}</mat-label>
+          <input matInput type="text" [formControlName]="lang">
+        </mat-form-field>
+      </div>
+      <div formGroupName="ingredients">
+        <mat-form-field appearance="outline" *ngFor="let lang of availableLanguages">
+          <mat-label>{{t('menuItem.ingredients.' + lang)}}</mat-label>
+        </mat-form-field>
+      </div>
+    </form>
+    <img *ngIf="data.menuItem?.imageUrl" [src]="data.menuItem!.imageUrl">
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="null">
+      {{t('confirmationOptions.cancel')}}
+    </button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+      {{t('confirmationOptions.confirm')}}
+    </button>
+  </div>
+</ng-container>

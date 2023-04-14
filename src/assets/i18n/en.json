@@ -200,6 +200,10 @@
     "logIn": "Log in",
     "confirm": "Confirm"
   },
+  "formDialogTitles": {
+    "updateMenuItem": "Updating menu item",
+    "addMenuItem": "Creating menu item"
+  },
   "successAlerts": {
     "languageChanged": "Language has been changed to English"
   },

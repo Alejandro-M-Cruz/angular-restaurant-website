@@ -200,6 +200,10 @@
     "logIn": "Iniciar sesión",
     "confirm": "Confirmar"
   },
+  "formDialogTitles": {
+    "updateMenuItem": "Actualizando producto del menú",
+    "addMenuItem": "Añadiendo producto al menú"
+  },
   "successAlerts": {
     "languageChanged": "El idioma ha cambiado al español"
   },

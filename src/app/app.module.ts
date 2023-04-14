@@ -59,6 +59,7 @@ import { TextInputDialogComponent } from './components/text-input-dialog/text-in
 import { ReservationsPaginatorIntl } from "./pages/reservations-admin/admin-reservations-table/reservations-paginator-intl";
 import { MenuItemComponent } from './pages/menu-items-admin/components/menu-item/menu-item.component';
 import {MatCardModule} from "@angular/material/card";
+import { MenuItemFormDialogComponent } from './pages/menu-items-admin/components/menu-item-form-dialog/menu-item-form-dialog.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -92,6 +93,7 @@ registerLocaleData(es);
     MenuItemsAdminComponent,
     TextInputDialogComponent,
     MenuItemComponent,
+    MenuItemFormDialogComponent,
   ],
     imports: [
         BrowserModule,
