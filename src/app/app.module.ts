@@ -60,6 +60,7 @@ import { ReservationsPaginatorIntl } from "./pages/reservations-admin/admin-rese
 import { MenuItemComponent } from './pages/menu-items-admin/components/menu-item/menu-item.component';
 import {MatCardModule} from "@angular/material/card";
 import { MenuItemFormDialogComponent } from './pages/menu-items-admin/components/menu-item-form-dialog/menu-item-form-dialog.component';
+import { PasswordConfirmationComponent } from './components/form/password-confirmation/password-confirmation.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -94,6 +95,7 @@ registerLocaleData(es);
     TextInputDialogComponent,
     MenuItemComponent,
     MenuItemFormDialogComponent,
+    PasswordConfirmationComponent,
   ],
     imports: [
         BrowserModule,

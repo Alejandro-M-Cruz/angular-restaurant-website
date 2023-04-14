@@ -22,4 +22,5 @@ export class MenuImagesService implements OnInit {
       this.imageUrls.push(imageUrl)
     }
   }
+
 }

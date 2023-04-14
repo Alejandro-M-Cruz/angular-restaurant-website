@@ -15,6 +15,4 @@ export class MultiLanguagePropertiesService {
       formGroup.addControl(lang, new FormControl(object ? object[property][lang] : ''))
     return formGroup
   }
-
-
 }

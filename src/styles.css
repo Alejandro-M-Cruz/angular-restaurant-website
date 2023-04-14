@@ -79,7 +79,7 @@ input:focus, textarea:focus {
   background-color: var(--input-focus-color);
 }
 
-mat-icon {
+.scale-2 {
   transform: scale(2);
 }
 

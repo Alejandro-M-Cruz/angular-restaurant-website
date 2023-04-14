@@ -83,7 +83,7 @@
     "deleteSection": "Eliminar sección",
     "addSection": "Añadir sección",
     "editSection": "Editar sección",
-    "addProduct": "Añadir producto",
+    "addMenuItem": "Añadir producto a {{section}}",
     "undoChanges": "Deshacer cambios",
     "saveChanges": "Guardar cambios",
     "sendComplaint": "Enviar reclamación"

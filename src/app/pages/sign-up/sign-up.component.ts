@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 })
 
 export class SignUpComponent {
+  hidePassword = true
   passwordMinLength = this.authService.getPasswordMinLength()
   passwordMaxLength = this.authService.getPasswordMaxLength()
   private readonly passwordValidators = [
@@ -43,5 +44,9 @@ export class SignUpComponent {
           this.form.controls.email.setErrors({emailAlreadyInUse: true})
       }
     }
+  }
+
+  onPasswordVisibilityChanged(hidePassword: boolean) {
+    this.hidePassword = hidePassword
   }
 }

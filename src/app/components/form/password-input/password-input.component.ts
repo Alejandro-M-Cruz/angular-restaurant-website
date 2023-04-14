@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl} from "@angular/forms";
 
 @Component({
@@ -7,8 +7,14 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./password-input.component.css']
 })
 export class PasswordInputComponent {
-  @Input() isConfirmation = false
   @Input() control!: FormControl
   @Input() minLength!: number
   @Input() maxLength!: number
+  @Output() hidePasswordChanged = new EventEmitter<boolean>()
+  hidePassword = true
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword
+    this.hidePasswordChanged.emit(this.hidePassword)
+  }
 }

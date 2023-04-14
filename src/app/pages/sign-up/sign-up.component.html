@@ -6,13 +6,13 @@
       [control]="form.controls.password"
       [minLength]="passwordMinLength"
       [maxLength]="passwordMaxLength"
+      (hidePasswordChanged)="onPasswordVisibilityChanged($event)"
     ></app-password-input>
-    <app-password-input
-      [isConfirmation]="true"
+    <app-password-confirmation
       [control]="form.controls.passwordConfirmation"
-      [minLength]="passwordMinLength"
-      [maxLength]="passwordMaxLength"
-    ></app-password-input>
+      [hidePassword]="hidePassword"
+    ></app-password-confirmation>
+    <mat-error *ngIf="form.errors?.['passwordMismatch']">{{t('formErrors.passwordConfirmation')}}</mat-error>
     <app-already-signed-up
       link="log-in"
       [alreadySignedUpText]="t('alreadySignedUp')"
@@ -24,6 +24,5 @@
     <button class="management-button confirm-button" type="submit" [disabled]="!form.valid">
       {{t('buttons.signup')}}
     </button>
-    <mat-error *ngIf="form.errors?.['passwordMismatch']">{{t('formErrors.passwordConfirmation')}}</mat-error>
   </form>
 </ng-container>

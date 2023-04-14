@@ -83,7 +83,7 @@
     "deleteSection": "Delete section",
     "addSection": "Add section",
     "editSection": "Edit section",
-    "addProduct": "Add product",
+    "addMenuItem": "Add an item to {{section}}",
     "undoChanges": "Undo changes",
     "saveChanges": "Save changes",
     "sendComplaint": "Send complaint"

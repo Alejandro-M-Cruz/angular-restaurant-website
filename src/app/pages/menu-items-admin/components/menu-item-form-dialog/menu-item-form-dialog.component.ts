@@ -4,9 +4,10 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {TranslocoService} from "@ngneat/transloco";
 import {MultiLanguagePropertiesService} from "../../../../services/multi-language-properties.service";
+import {MenuImagesService} from "../../../../services/menu-images.service";
 
 export interface MenuItemFormDialogData {
-  menuItem: MenuItem | null
+  menuItem?: MenuItem
 }
 
 @Component({
@@ -32,7 +33,17 @@ export class MenuItemFormDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: MenuItemFormDialogData,
     private readonly fb: FormBuilder,
     private readonly translateService: TranslocoService,
-    private readonly multiLanguageService: MultiLanguagePropertiesService
+    private readonly multiLanguageService: MultiLanguagePropertiesService,
+    private readonly menuImagesService: MenuImagesService
   ) {
+  }
+
+  onImageFileInputChanged(imageFile: File | null) {
+    console.log(imageFile)
+    this.form.controls.imageUrl.setValue(imageFile?.name)
+  }
+
+  discardSelectedImage() {
+    this.form.controls.imageUrl.setValue(null)
   }
 }
