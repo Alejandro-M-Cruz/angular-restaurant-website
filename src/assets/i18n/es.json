@@ -74,6 +74,8 @@
     "cancel": "Cancelar",
     "newReservation": "Nueva reserva",
     "cancelReservation": "Cancelar reserva",
+    "getAllReservations": "Ver historial general de reservas",
+    "getCurrentReservations": "Ver reservas actuales",
     "login": "Iniciar sesión",
     "signup": "Registrarse",
     "deleteAccount": "Eliminar cuenta",

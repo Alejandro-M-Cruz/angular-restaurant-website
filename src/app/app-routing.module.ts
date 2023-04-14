@@ -5,7 +5,7 @@ import {
   RouterModule,
   RouterStateSnapshot,
   Routes,
-  TitleStrategy, UrlTree
+  TitleStrategy
 } from '@angular/router';
 import { HomeComponent } from "./pages/home/home.component";
 import { LogInComponent } from "./pages/log-in/log-in.component";
@@ -31,6 +31,15 @@ const canActivateLoggedIn: CanActivateFn = (_route: ActivatedRouteSnapshot, _sta
   return isLoggedIn
 }
 
+const canActivateLoggedOut: CanActivateFn = (_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot) => {
+  const isLoggedOut = inject(PermissionsService).isLoggedOut()
+  const router = inject(Router)
+  isLoggedOut.subscribe(async (isLoggedOut) => {
+    if (!isLoggedOut) await router.navigate(['/home'])
+  })
+  return isLoggedOut
+}
+
 const canActivateAdmin: CanActivateFn = (_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot) => {
   const isAdmin = inject(PermissionsService).isAdmin()
   const router = inject(Router)
@@ -41,12 +50,14 @@ const canActivateAdmin: CanActivateFn = (_route: ActivatedRouteSnapshot, _state:
 }
 
 const routes: Routes = [
-  // NOT LOGGED IN
+  // ALL
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', title: 'home', component: HomeComponent },
-  { path: 'sign-up', title: 'signup', component: SignUpComponent },
-  { path: 'log-in', title: 'login', component: LogInComponent },
   { path: 'complaints', title: 'complaints', component: ComplaintsComponent },
+
+  // LOGGED OUT
+  { path: 'sign-up', title: 'signup', component: SignUpComponent, canActivate: [canActivateLoggedOut] },
+  { path: 'log-in', title: 'login', component: LogInComponent, canActivate: [canActivateLoggedOut] },
 
   // LOGGED IN
   { path: 'my-account', title: 'myAccount', component: MyAccountComponent, canActivate: [canActivateLoggedIn] },

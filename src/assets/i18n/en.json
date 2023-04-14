@@ -74,6 +74,8 @@
     "cancel": "Cancel",
     "newReservation": "New reservation",
     "cancelReservation": "Cancel reservation",
+    "getAllReservations": "See general reservations history",
+    "getCurrentReservations": "See current reservations",
     "login": "Log In",
     "signup": "Sign Up",
     "deleteAccount": "Delete account",
