@@ -109,6 +109,7 @@
       "en": "Ingredientes en inglés",
       "es": "Ingredientes en español"
     },
+    "sectionId": "Sección a la que pertenece",
     "image": "Imagen del producto",
     "noImage": "No se ha seleccionado una imagen"
   },

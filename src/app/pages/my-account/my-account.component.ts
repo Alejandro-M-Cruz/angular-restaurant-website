@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {UserInfo} from "../../model/user-info.model";
 import {AuthenticationService} from "../../services/authentication.service";
@@ -6,14 +6,16 @@ import {Router} from "@angular/router";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 import {translate} from "@ngneat/transloco";
 import {MatDialog} from "@angular/material/dialog";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.css']
 })
-export class MyAccountComponent {
-  userInfo: UserInfo = this.userService.getUserInfo()!
+export class MyAccountComponent implements OnInit, OnDestroy {
+  userInfo: UserInfo | null = null
+  userInfoSubscription?: Subscription
 
   constructor(
     private readonly userService: UserService,
@@ -21,6 +23,12 @@ export class MyAccountComponent {
     private readonly router: Router,
     private readonly dialog: MatDialog
   ) { }
+
+  ngOnInit() {
+    this.userInfoSubscription = this.userService.getUserInfo().subscribe(userInfo => {
+      this.userInfo = userInfo
+    })
+  }
 
   async logOut() {
     try {
@@ -76,5 +84,9 @@ export class MyAccountComponent {
     dialogRef.afterClosed().subscribe(async result => {
       if (result) await this.logOut()
     })
+  }
+
+  ngOnDestroy() {
+    this.userInfoSubscription?.unsubscribe()
   }
 }

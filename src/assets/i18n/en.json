@@ -109,6 +109,7 @@
       "es": "Ingredients in Spanish"
     },
     "price": "Price",
+    "sectionId": "Section that the item belongs to",
     "image": "Image of the product",
     "noImage": "No image has been selected"
   },

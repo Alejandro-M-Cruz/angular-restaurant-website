@@ -55,6 +55,7 @@ router.delete('/sections/:id', async (req, res) => {
 
 router.post('/items/new', async (req, res) => {
   try {
+    console.log(req.body)
     const docRef = await firestore.collection('menu_items').add(extractMenuItem(req.body))
     res.json({id: docRef.id})
   } catch (e: any) {

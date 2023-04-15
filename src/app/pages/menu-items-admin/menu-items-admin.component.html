@@ -5,7 +5,7 @@
     </ng-container>
   </h2>
 
-  <section class="container">
+  <section class="container flex-row">
     <app-menu-item
       *ngFor="let item of sectionItems$ | async"
       [availableLanguages]="availableLanguages"
@@ -19,7 +19,7 @@
       <button class="management-button back-button" onclick="window.history.back()">
         {{t('buttons.back')}}
       </button>
-      <button class="management-button confirm-button">
+      <button class="management-button confirm-button" (click)="onAddItemClicked()">
         {{t('buttons.addMenuItem', { section: sectionBeingEdited.name[getActiveLanguage()] })}}
       </button>
     </div>

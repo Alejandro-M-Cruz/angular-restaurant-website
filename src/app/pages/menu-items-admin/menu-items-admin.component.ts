@@ -43,8 +43,12 @@ export class MenuItemsAdminComponent {
     this.openDeleteItemConfirmationDialog(item)
   }
 
+  onAddItemClicked() {
+    this.openItemEditFormDialog()
+  }
+
   onEditItemClicked(item: MenuItem) {
-    this.openEditItemFormDialog(item)
+    this.openItemEditFormDialog(item)
   }
 
   deleteItem(id: string) {
@@ -64,11 +68,16 @@ export class MenuItemsAdminComponent {
     })
   }
 
-  openEditItemFormDialog(item: MenuItem) {
+  openItemEditFormDialog(item?: MenuItem) {
     this.dialog.open(MenuItemFormDialogComponent, {
-      data: { menuItem: item }
+      data: { menuItem: item, menuSection: this.sectionBeingEdited }
     }).afterClosed().subscribe(async result => {
-      if (result) await this.menuEditService.updateItem(item.id!, result)
+      console.log(result)
+      if (result) {
+        item ?
+          await this.menuEditService.updateItem(item.id!, result) :
+          await this.menuEditService.addItem(result)
+      }
     })
   }
 }
