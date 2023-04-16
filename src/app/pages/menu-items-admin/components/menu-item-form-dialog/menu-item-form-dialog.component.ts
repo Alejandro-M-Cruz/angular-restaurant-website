@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {MenuItem} from "../../../../model/menu-item.model";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
@@ -30,10 +30,15 @@ export class MenuItemFormDialogComponent {
       Validators.min(0),
       Validators.max(9999)
     ])],
-    sectionId: [this.data.menuItem ? this.data.menuItem.sectionId : this.data.menuSection.id, Validators.required],
-    imageUrl: [this.data.menuItem ? this.data.menuItem.imageUrl : '']
+    sectionId: [this.data.menuItem ? this.data.menuItem.sectionId : this.data.menuSection.id, Validators.required]
   })
-  imageFile: File | null = null
+  imageNameControl = new FormControl(
+    this.data.menuItem?.imageUrl ?
+      this.menuImagesService.getImageNameFromUrl(this.data.menuItem.imageUrl) :
+      ''
+  )
+  @ViewChild('fileInput') fileInput!: ElementRef
+  selectedImageFile: File | null = null
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: MenuItemFormDialogData,
@@ -46,37 +51,41 @@ export class MenuItemFormDialogComponent {
   ) { }
 
   onImageFileInputChanged(imageFile: File | null) {
-    this.imageFile = imageFile
-    this.form.controls.imageUrl.setValue(imageFile?.name)
+    this.selectedImageFile = imageFile
+    this.imageNameControl.setValue(imageFile?.name ?? null)
   }
 
   discardSelectedImage() {
-    this.form.controls.imageUrl.setValue(this.imageFile = null)
+    this.imageNameControl.setValue(null)
+    this.fileInput.nativeElement.value = ''
+    this.selectedImageFile = null
   }
 
   async onSubmit() {
-    this.form.controls.imageUrl.disable()
-    if (this.imageFile) await this.uploadImage(this.imageFile)
+    console.log('submitting form dialog', this.form.value)
+    const imageUrl = this.selectedImageFile ?
+      await this.uploadImage(this.selectedImageFile) :
+      null
+    const menuItem = (imageUrl ? {...this.form.value, imageUrl } : this.form.value) as MenuItem
     this.data.menuItem ?
-      this.editMenuItem(this.data.menuItem!.id!, this.form.value as MenuItem) :
-      this.addMenuItem(this.form.value as MenuItem)
+      await this.editMenuItem(this.data.menuItem!.id!, menuItem) :
+      await this.addMenuItem(menuItem)
   }
 
-  private addMenuItem(menuItem: MenuItem) {
-    this.menuEditService.addItem(menuItem)
+  private async addMenuItem(menuItem: MenuItem) {
+    await this.menuEditService.addItem(menuItem)
   }
 
-  private editMenuItem(id: string, menuItem: MenuItem) {
-    this.menuEditService.updateItem(id, menuItem)
+  private async editMenuItem(id: string, menuItem: MenuItem) {
+    await this.menuEditService.updateItem(id, menuItem)
   }
 
   private async uploadImage(imageFile: File) {
     try {
-      const imageUrl = await this.menuImagesService.uploadImage(imageFile)
-      this.form.controls.imageUrl.setValue(imageUrl)
+      return this.menuImagesService.uploadImage(imageFile)
     } catch (e: any) {
       console.error(e)
-
+      return null
     }
   }
 }

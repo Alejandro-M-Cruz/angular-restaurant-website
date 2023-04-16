@@ -1,7 +1,7 @@
 <ng-container *transloco="let t">
   <h1 mat-dialog-title>{{t('formDialogTitles.' + (data.menuItem ? 'updateMenuItem' : 'addMenuItem'))}}</h1>
-  <div mat-dialog-content>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex-column">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex-column">
+    <div mat-dialog-content>
       <div formGroupName="name">
         <mat-form-field appearance="outline" *ngFor="let lang of availableLanguages">
           <mat-label>{{t('menuItem.name.' + lang)}}</mat-label>
@@ -29,10 +29,11 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>{{t('menuItem.image')}}</mat-label>
-        <input matInput type="text" readonly formControlName="imageUrl">
+        <input matInput type="text" readonly [formControl]="imageNameControl">
         <button
           *ngIf="fileInput.files ? fileInput.files.length > 0 : false"
-          mat-icon-button matIconSuffix
+          mat-icon-button
+          matIconSuffix
           type="button"
           (click)="discardSelectedImage()"
         >
@@ -46,18 +47,25 @@
           type="file"
           accept="image/*"
           hidden
-          (change)="onImageFileInputChanged(fileInput.files![0])"
+          (change)="onImageFileInputChanged(fileInput.files?.item(0) ?? null)"
         >
       </mat-form-field>
-    </form>
-    <img *ngIf="data.menuItem?.imageUrl" [src]="data.menuItem!.imageUrl">
-  </div>
-  <div mat-dialog-actions class="justify-content-around">
-    <button mat-raised-button [mat-dialog-close]="null" type="reset">
-      {{t('confirmationOptions.cancel')}}
-    </button>
-    <button mat-raised-button [mat-dialog-close]="form.value" type="submit">
-      {{t('confirmationOptions.confirm')}}
-    </button>
-  </div>
+      <div class="text-center">
+        <img
+          *ngIf="data.menuItem?.imageUrl"
+          [src]="data.menuItem!.imageUrl"
+          [alt]="t('menuItem.image')"
+          class="img-fluid img-thumbnail"
+        >
+      </div>
+    </div>
+    <div mat-dialog-actions class="justify-content-around">
+      <button mat-raised-button [mat-dialog-close]="null" type="reset">
+        {{t('confirmationOptions.cancel')}}
+      </button>
+      <button mat-raised-button [mat-dialog-close]="form.value" [disabled]="form.invalid" type="submit">
+        {{t('confirmationOptions.confirm')}}
+      </button>
+    </div>
+  </form>
 </ng-container>

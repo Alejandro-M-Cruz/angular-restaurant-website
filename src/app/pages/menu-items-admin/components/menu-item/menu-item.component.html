@@ -1,4 +1,4 @@
-<mat-card class="container col-xl-4 col-md-6" *transloco="let t">
+<mat-card class="m-2" *transloco="let t">
   <mat-card-header class="flex-column">
     <ng-container *ngFor="let lang of availableLanguages">
       <mat-card-subtitle class="d-block">{{t('menuItem.name.' + lang)}}</mat-card-subtitle>
@@ -13,7 +13,12 @@
     <mat-card-subtitle>{{t('menuItem.price')}}</mat-card-subtitle>
     <p>{{menuItem.price | currency: 'EUR'}}</p>
     <mat-card-subtitle>{{t('menuItem.image')}}</mat-card-subtitle>
-    <img *ngIf="menuItem.imageUrl; else noImage" [src]="menuItem.imageUrl" [alt]="t('menuItem.image')">
+    <img
+      *ngIf="menuItem.imageUrl; else noImage"
+      [src]="menuItem.imageUrl"
+      [alt]="t('menuItem.image')"
+      class="img-fluid img-thumbnail"
+    >
     <ng-template #noImage>
       <p>{{t('menuItem.noImage')}}</p>
     </ng-template>

@@ -44,15 +44,15 @@ export class MenuItemsAdminComponent {
   }
 
   onAddItemClicked() {
-    this.openItemEditFormDialog()
+    this.openItemFormDialog()
   }
 
   onEditItemClicked(item: MenuItem) {
-    this.openItemEditFormDialog(item)
+    this.openItemFormDialog(item)
   }
 
-  deleteItem(id: string) {
-    this.menuEditService.deleteItem(id)
+  async deleteItem(id: string) {
+    await this.menuEditService.deleteItem(id)
   }
 
   openDeleteItemConfirmationDialog(item: MenuItem) {
@@ -63,16 +63,16 @@ export class MenuItemsAdminComponent {
         }),
         yes: translate('confirmationOptions.yes'),
         no: translate('confirmationOptions.no')
-      }}).afterClosed().subscribe(result => {
-        if (result) this.deleteItem(item.id!)
+      }}).afterClosed().subscribe(async result => {
+        if (result) await this.deleteItem(item.id!)
     })
   }
 
-  openItemEditFormDialog(item?: MenuItem) {
+  openItemFormDialog(item?: MenuItem) {
     this.dialog.open(MenuItemFormDialogComponent, {
       data: { menuItem: item, menuSection: this.sectionBeingEdited }
     }).afterClosed().subscribe(async result => {
-      console.log(result)
+      console.log('dialog closed with result: ', result)
       if (result) {
         item ?
           await this.menuEditService.updateItem(item.id!, result) :

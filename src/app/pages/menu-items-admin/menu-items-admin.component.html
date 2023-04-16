@@ -5,16 +5,17 @@
     </ng-container>
   </h2>
 
-  <section class="container flex-row">
-    <app-menu-item
-      *ngFor="let item of sectionItems$ | async"
-      [availableLanguages]="availableLanguages"
-      [menuItem]="item"
-      (menuItemDeleted)="onDeleteItemClicked($event)"
-      (menuItemEdited)="onEditItemClicked($event)"
-    >
-    </app-menu-item>
-
+  <section class="container">
+    <div class="cards-grid">
+      <app-menu-item
+        *ngFor="let item of sectionItems$ | async"
+        [availableLanguages]="availableLanguages"
+        [menuItem]="item"
+        (menuItemDeleted)="onDeleteItemClicked($event)"
+        (menuItemEdited)="onEditItemClicked($event)"
+      >
+      </app-menu-item>
+    </div>
     <div class="buttons-container">
       <button class="management-button back-button" onclick="window.history.back()">
         {{t('buttons.back')}}
