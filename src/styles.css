@@ -1146,6 +1146,17 @@ app-already-signed-up {
     width: 75%;
   }
 
+  /* ----- LOG IN ----- */
+
+  app-log-in form {
+    width: 50%;
+    margin-left: 14%;
+  }
+
+  .already-paragraph {
+    margin-left: 24%;
+  }
+
   /* ----- BUTTONS ----- */
 
   .management-button {
