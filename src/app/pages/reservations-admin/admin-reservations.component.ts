@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Reservation} from "../../model/reservation.model";
 import {ReservationsService} from "../../services/reservations.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -6,6 +6,8 @@ import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/
 import {translate} from "@ngneat/transloco";
 import {formatDate} from "@angular/common";
 import {UsersService} from "../../services/admin/users.service";
+import {find} from "rxjs";
+import {UserInfo} from "../../model/user-info.model";
 
 @Component({
   selector: 'app-reservations-admin',
@@ -14,8 +16,11 @@ import {UsersService} from "../../services/admin/users.service";
 })
 export class AdminReservationsComponent {
   currentReservations$ = this.reservationsService.getCurrentReservations()
+  allReservations$ = this.reservationsService.getReservations()
   users$ = this.adminService.getUsers()
   selectedReservation: Reservation | null = null
+  selectedReservationUser: UserInfo | null = null
+  showPastReservations = false
 
   constructor(
     private readonly adminService: UsersService,
@@ -23,8 +28,15 @@ export class AdminReservationsComponent {
     private readonly dialog: MatDialog
   ) {}
 
+  toggleShowPastReservations() {
+    this.showPastReservations = !this.showPastReservations
+  }
+
   onSelectedReservationChanged(reservation: Reservation | null) {
     this.selectedReservation = reservation
+    this.users$.subscribe(users => {
+      this.selectedReservationUser = users.find(user => user.uid === reservation?.userId)!
+    })
   }
 
   openCancelConfirmation() {
@@ -40,7 +52,7 @@ export class AdminReservationsComponent {
               translate('locale')
             ),
             time: this.selectedReservation!.time,
-            email: this.selectedReservation!.userId
+            email: this.selectedReservationUser?.email
           }
         ),
         yes: translate('confirmationOptions.yes'),

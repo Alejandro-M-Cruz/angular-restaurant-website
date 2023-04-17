@@ -1,25 +1,29 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {getDownloadURL, listAll, ref, Storage, uploadBytes} from "@angular/fire/storage";
+import {BehaviorSubject, Observable, tap} from "rxjs";
+
+const MENU_IMAGES_STORAGE = 'menu_images'
 
 @Injectable({
   providedIn: 'root'
 })
-export class MenuImagesService implements OnInit {
-  imageUrls: string[] = []
+export class MenuImagesService {
 
-  constructor(private readonly storage: Storage) {}
-
-  async ngOnInit() {
-    await this.getImages()
+  constructor(private readonly storage: Storage) {
   }
 
-  async getImages() {
-    const imagesRef = ref(this.storage, 'menu_images')
-    const imagesList = await listAll(imagesRef)
-    this.imageUrls = []
-    for (const imageRef of imagesList.items) {
-      const imageUrl = await getDownloadURL(imageRef)
-      this.imageUrls.push(imageUrl)
+  getImageNameFromUrl(url: string): string {
+    return ref(this.storage, url).name
+  }
+
+  async uploadImage(imageFile: File): Promise<string | null> {
+    const imageRef = ref(this.storage, `${MENU_IMAGES_STORAGE}/${imageFile.name}`)
+    try {
+      const snapshot = await uploadBytes(imageRef, imageFile)
+      return getDownloadURL(snapshot.ref)
+    } catch (e: any) {
+      console.error(e)
+      throw new Error(e)
     }
   }
 }

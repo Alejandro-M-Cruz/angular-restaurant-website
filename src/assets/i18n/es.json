@@ -74,6 +74,8 @@
     "cancel": "Cancelar",
     "newReservation": "Nueva reserva",
     "cancelReservation": "Cancelar reserva",
+    "getAllReservations": "Ver historial general de reservas",
+    "getCurrentReservations": "Ver reservas actuales",
     "login": "Iniciar sesión",
     "signup": "Registrarse",
     "deleteAccount": "Eliminar cuenta",
@@ -81,7 +83,7 @@
     "deleteSection": "Eliminar sección",
     "addSection": "Añadir sección",
     "editSection": "Editar sección",
-    "addProduct": "Añadir producto",
+    "addMenuItem": "Añadir producto a {{section}}",
     "undoChanges": "Deshacer cambios",
     "saveChanges": "Guardar cambios",
     "sendComplaint": "Enviar reclamación"
@@ -107,6 +109,7 @@
       "en": "Ingredientes en inglés",
       "es": "Ingredientes en español"
     },
+    "sectionId": "Sección a la que pertenece",
     "image": "Imagen del producto",
     "noImage": "No se ha seleccionado una imagen"
   },
@@ -198,6 +201,10 @@
     "logIn": "Iniciar sesión",
     "confirm": "Confirmar"
   },
+  "formDialogTitles": {
+    "updateMenuItem": "Actualizando producto del menú",
+    "addMenuItem": "Añadiendo producto al menú"
+  },
   "successAlerts": {
     "languageChanged": "El idioma ha cambiado al español"
   },
@@ -225,5 +232,11 @@
     "CONFIRM_CANCEL_CHANGES": "¿Está seguro de que desea cancelar los cambios?",
     "CONFIRM_SAVE_CHANGES": "¿Está seguro de que desea guardar los cambios?",
     "CONFIRM_DELETE_MENU_SECTION": "¿Está seguro de que desea eliminar esta sección del menú y todos los productos que contiene?"
+  },
+  "storyContainer": {
+    "title": "SOBRE NOSOTROS",
+    "text": "No somos tu pizza de una noche.",
+    "image": "./assets/images/carousel/restaurante-1.jpg",
+    "alt_image": "restaurante"
   }
 }

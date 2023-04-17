@@ -1,90 +1,29 @@
-<h2 class="page-title">
-  <ng-container *ngFor="let lang of availableLanguages">
-    <p>{{sectionBeingEdited.name[lang]}}</p>
-  </ng-container>
-</h2>
+<ng-container *transloco="let t">
+  <h2 class="page-title">
+    <ng-container *ngFor="let lang of availableLanguages">
+      <p>{{sectionBeingEdited.name[lang]}}</p>
+    </ng-container>
+  </h2>
 
-<section class="container">
-  <app-menu-item
-    *ngFor="let item of sectionItems$ | async"
-    [availableLanguages]="availableLanguages"
-    [menuItem]="item"
-    (menuItemDeleted)="onDeleteItemClicked($event)"
-    (menuItemEdited)="onEditItemClicked($event)"
-  >
-  </app-menu-item>
-</section>
-
-
-
-<!--
-<form [formGroup]="form" (ngSubmit)="saveChanges()" *transloco="let t">
-  <div formGroupName="name">
-    <h2 *ngFor="let lang of availableLanguages" class="page-title">
-      <input
-        type="text"
-        [formControlName]="lang"
-        [value]="sectionBeingEdited ? sectionBeingEdited.name[lang] : ''"
+  <section class="container">
+    <div class="cards-grid">
+      <app-menu-item
+        *ngFor="let item of sectionItems$ | async"
+        [availableLanguages]="availableLanguages"
+        [menuItem]="item"
+        (menuItemDeleted)="onDeleteItemClicked($event)"
+        (menuItemEdited)="onEditItemClicked($event)"
       >
-    </h2>
-  </div>
-  <div class="card-grid" formArrayName="items">
-    <div *ngFor="let item of form.controls.items.controls; let i = index" class="menu-card-div" [formGroupName]="i">
-      <div formGroupName="name">
-        <input
-          *ngFor="let lang of availableLanguages"
-          class="card-title name-input"
-          type="text"
-          [placeholder]="t('formHints.menuItemName.' + lang)"
-          [formControlName]="lang"
-        >
-      </div>
-      <button class="delete-item-button" type="button" (click)="deleteItem()">
-        <mat-icon>delete_forever</mat-icon>
-      </button>
-      <div formGroupName="ingredients">
-        <textarea
-          *ngFor="let lang of availableLanguages"
-          class="ingredients-textarea"
-          [placeholder]="t('formHints.menuItemIngredients.' + lang)"
-          [formControlName]="lang"
-        ></textarea>
-      </div>
-      <input
-        class="price-input"
-        type="number"
-        [placeholder]="t('formHints.menuItemPrice')"
-        formControlName="price"
-        step="0.01"
-      >
-      <p class="euro-label">€</p>
-      <select class="section-select" formControlName="sectionId">
-        <option *ngFor="let section of menuSections$ | async" [value]="section.id">
-          {{section.name[getActiveLanguage()]}}
-        </option>
-      </select>
-      <input
-        class="image-input"
-        type="file"
-        [placeholder]="t('formHints.menuItemImage')"
-        formControlName="imageUrl"
-      >
+      </app-menu-item>
     </div>
-  </div>
-  <div class="buttons-container">
-    <button class="management-button back-button" onclick="window.history.back()" type="button">
-      {{t('buttons.back')}}
-    </button>
-    <button class="management-button cancel-button" type="reset" (click)="onUndoChangesClicked()">
-      {{t('buttons.undoChanges')}}
-    </button>
-    <button class="management-button edit-button" type="button" (click)="newItem()">
-      {{t('buttons.addProduct')}}
-    </button>
-    <button class="management-button confirm-button" type="submit">
-      {{t('buttons.saveChanges')}}
-    </button>
-  </div>
-</form>
+    <div class="buttons-container">
+      <button class="management-button back-button" onclick="window.history.back()">
+        {{t('buttons.back')}}
+      </button>
+      <button class="management-button confirm-button" (click)="onAddItemClicked()">
+        {{t('buttons.addMenuItem', { section: sectionBeingEdited.name[getActiveLanguage()] })}}
+      </button>
+    </div>
+  </section>
 
--->
+</ng-container>

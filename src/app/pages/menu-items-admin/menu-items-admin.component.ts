@@ -8,6 +8,7 @@ import {MenuItem} from "../../model/menu-item.model";
 import {MenuSection} from "../../model/menu-section.model";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
+import {MenuItemFormDialogComponent} from "./components/menu-item-form-dialog/menu-item-form-dialog.component";
 
 @Component({
   selector: 'app-menu-items-admin',
@@ -34,16 +35,24 @@ export class MenuItemsAdminComponent {
     this.sectionItems$ = this.menuService.getMenuItemsBySectionId(this.sectionBeingEdited.id!)
   }
 
+  getActiveLanguage(): string {
+    return this.translateService.getActiveLang()
+  }
+
   onDeleteItemClicked(item: MenuItem) {
     this.openDeleteItemConfirmationDialog(item)
   }
 
-  onEditItemClicked(item: MenuItem) {
-    this.openEditItemFormDialog(item)
+  onAddItemClicked() {
+    this.openItemFormDialog()
   }
 
-  deleteItem(id: string) {
-    this.menuEditService.deleteItem(id)
+  onEditItemClicked(item: MenuItem) {
+    this.openItemFormDialog(item)
+  }
+
+  async deleteItem(id: string) {
+    await this.menuEditService.deleteItem(id)
   }
 
   openDeleteItemConfirmationDialog(item: MenuItem) {
@@ -54,101 +63,21 @@ export class MenuItemsAdminComponent {
         }),
         yes: translate('confirmationOptions.yes'),
         no: translate('confirmationOptions.no')
-      }}).afterClosed().subscribe(result => {
-        if (result) this.deleteItem(item.id!)
+      }}).afterClosed().subscribe(async result => {
+        if (result) await this.deleteItem(item.id!)
     })
   }
 
-  openEditItemFormDialog(item: MenuItem) {
-
-  }
-
-  /*sectionBeingEdited = this.menuEditService.editedSection
-  availableLanguages = this.translateService.getAvailableLangs() as string[]
-  menuSections$!: Observable<MenuSection[]>
-  sectionItems$!: Observable<MenuItem[]>
-  form = this.fb.group({
-    name: this.sectionBeingEdited ?
-      this.getMultiLanguagePropertyFormGroup(this.sectionBeingEdited, 'name')
-      : new FormGroup({}),
-    items: this.fb.array([])
-  })
-  initialValue!: DisplayableMenuSection
-
-  constructor(
-    private readonly menuEditService: MenuEditService,
-    private readonly menuService: MenuService,
-    private readonly translateService: TranslocoService,
-    private readonly router: Router,
-    private readonly fb: FormBuilder
-  ) {}
-
-  ngOnInit() {
-    if (!this.sectionBeingEdited) {
-      this.router.navigate(['/menu-sections-admin'])
-      return
-    }
-    this.menuSections$ = this.menuService.getMenuSections()
-    this.sectionItems$ = this.menuService.getMenuItemsBySectionId(this.sectionBeingEdited!.id!)
-    this.sectionItems$.subscribe(items => this.initFormControls(items))
-    this.initialValue = this.form.value as DisplayableMenuSection
-    this.detectFormValueChanges()
-  }
-
-  private getMultiLanguagePropertyFormGroup(sectionOrItem: MenuSection | MenuItem, property: string): FormGroup {
-    const formGroup = this.fb.nonNullable.group({})
-    for (const lang of this.availableLanguages) {
-      formGroup.addControl(
-        lang,
-        new FormControl(sectionOrItem[property][lang], Validators.required)
-      )
-    }
-    return formGroup
-  }
-
-  private getMenuItemFormGroup(item: MenuItem): FormGroup {
-    return this.fb.group({
-      name: this.getMultiLanguagePropertyFormGroup(item, 'name'),
-      ingredients: this.getMultiLanguagePropertyFormGroup(item, 'ingredients'),
-      price: [item.price, Validators.compose([
-        Validators.required,
-        Validators.min(0),
-        Validators.max(99999)
-      ])],
-      sectionId: [item.sectionId, Validators.required],
-      imageUrl: [item.imageUrl]
+  openItemFormDialog(item?: MenuItem) {
+    this.dialog.open(MenuItemFormDialogComponent, {
+      data: { menuItem: item, menuSection: this.sectionBeingEdited }
+    }).afterClosed().subscribe(async result => {
+      console.log('dialog closed with result: ', result)
+      if (result) {
+        item ?
+          await this.menuEditService.updateItem(item.id!, result) :
+          await this.menuEditService.addItem(result)
+      }
     })
   }
-
-  private initFormControls(items: MenuItem[]) {
-    for (const item of items)
-      (this.form.get('items') as FormArray).push(this.getMenuItemFormGroup(item))
-  }
-
-  private detectFormValueChanges() {
-    this.form.valueChanges.subscribe(value => {
-      if (this.initialValue === value as DisplayableMenuSection) return
-      console.log('Form value changed', value)
-    })
-  }
-
-  getActiveLanguage(): string {
-    return this.translateService.getActiveLang()
-  }
-
-  onUndoChangesClicked() {
-
-  }
-
-  newItem() {
-
-  }
-
-  deleteItem() {
-
-  }
-
-  saveChanges() {
-
-  }*/
 }

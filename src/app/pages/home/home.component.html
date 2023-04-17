@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <section class="welcome-section" *ngIf="userInfo$ | async">
-    <h2>{{t('welcomeMessage', { user: userInfo!.email })}}</h2>
+    <h2>{{t('welcomeMessage', { user: (userInfo$ | async)!.email })}}</h2>
   </section>
 
   <section class="slide-image">

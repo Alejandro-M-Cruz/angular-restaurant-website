@@ -12,7 +12,7 @@ import {
   where
 } from "@angular/fire/firestore";
 import {Auth} from "@angular/fire/auth";
-import {Observable} from "rxjs";
+import {BehaviorSubject, map, Observable} from "rxjs";
 
 const MAX_RESERVATIONS = 5
 const MIN_DAYS_BEFOREHAND = 2
@@ -27,44 +27,38 @@ const RESERVATION_TIMES = [
   providedIn: 'root'
 })
 export class ReservationsService {
-  private currentReservations: Reservation[] = []
+  private readonly currentReservations$ = new BehaviorSubject<Reservation[]>([])
 
   constructor(private readonly firestore: Firestore, private readonly auth: Auth) {
-    this.getCurrentReservations().subscribe(currentReservations => {
-      this.currentReservations = currentReservations
-    })
+    this.getCurrentReservationsFromFirestore().subscribe(this.currentReservations$)
   }
 
   getReservations(): Observable<Reservation[]> {
     const q = query(
       collection(this.firestore, 'reservations'),
-      orderBy('date'),
+      orderBy('date', 'desc')
+    )
+    return collectionData(q, {idField: 'id'}) as Observable<Reservation[]>
+  }
+
+  private getCurrentReservationsFromFirestore(): Observable<Reservation[]> {
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    const q = query(
+      collection(this.firestore, 'reservations'),
+      where('date', '>=', today.getTime()),
+      orderBy('date')
     )
     return collectionData(q, {idField: 'id'}) as Observable<Reservation[]>
   }
 
   getCurrentReservations(): Observable<Reservation[]> {
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
-    const q = query(
-      collection(this.firestore, 'reservations'),
-      where('date', '>=', today.getTime()),
-      orderBy('date')
-    )
-    return collectionData(q, {idField: 'id'}) as Observable<Reservation[]>
+    return this.currentReservations$
   }
 
   getUserCurrentReservations(): Observable<Reservation[]> {
-    if (!this.auth.currentUser) return new Observable() as Observable<Reservation[]>    // TODO: fix this
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
-    const q = query(
-      collection(this.firestore, 'reservations'),
-      where('userId', '==', this.auth.currentUser.uid),
-      where('date', '>=', today.getTime()),
-      orderBy('date')
-    )
-    return collectionData(q, {idField: 'id'}) as Observable<Reservation[]>
+    return this.currentReservations$.pipe(map(reservations =>
+      reservations.filter(r => r.userId === this.auth.currentUser!.uid)))
   }
 
   getMaxReservations() {
@@ -104,9 +98,11 @@ export class ReservationsService {
 
   getAvailableSeats(date: Date, time: string) {
     let totalCustomers = 0
-    this.currentReservations
-      .filter(r => r.date === date.getTime() && r.time === time)
-      .forEach(reservation => totalCustomers += reservation.customers)
+    const subscription = this.currentReservations$.subscribe(reservations => {
+      reservations.filter(r => r.date === date.getTime() && r.time === time)
+        .forEach(reservation => totalCustomers += reservation.customers)
+      subscription.unsubscribe()
+    })
     return MAX_CUSTOMERS - totalCustomers
   }
 

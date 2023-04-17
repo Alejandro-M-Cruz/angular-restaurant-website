@@ -64,6 +64,7 @@ router.delete('/sections/:id', (req, res) => __awaiter(void 0, void 0, void 0, f
 }));
 router.post('/items/new', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log(req.body);
         const docRef = yield firebase_1.firestore.collection('menu_items').add(extractMenuItem(req.body));
         res.json({ id: docRef.id });
     }

@@ -74,6 +74,8 @@
     "cancel": "Cancel",
     "newReservation": "New reservation",
     "cancelReservation": "Cancel reservation",
+    "getAllReservations": "See general reservations history",
+    "getCurrentReservations": "See current reservations",
     "login": "Log In",
     "signup": "Sign Up",
     "deleteAccount": "Delete account",
@@ -81,7 +83,7 @@
     "deleteSection": "Delete section",
     "addSection": "Add section",
     "editSection": "Edit section",
-    "addProduct": "Add product",
+    "addMenuItem": "Add an item to {{section}}",
     "undoChanges": "Undo changes",
     "saveChanges": "Save changes",
     "sendComplaint": "Send complaint"
@@ -107,6 +109,7 @@
       "es": "Ingredients in Spanish"
     },
     "price": "Price",
+    "sectionId": "Section that the item belongs to",
     "image": "Image of the product",
     "noImage": "No image has been selected"
   },
@@ -198,6 +201,10 @@
     "logIn": "Log in",
     "confirm": "Confirm"
   },
+  "formDialogTitles": {
+    "updateMenuItem": "Updating menu item",
+    "addMenuItem": "Creating menu item"
+  },
   "successAlerts": {
     "languageChanged": "Language has been changed to English"
   },
@@ -224,6 +231,11 @@
     "CONFIRM_CANCEL_CHANGES": "Are you sure you want to undo the changes?",
     "CONFIRM_SAVE_CHANGES": "Are you sure you want to save the changes?",
     "CONFIRM_DELETE_MENU_SECTION": "Are you sure you want to delete this section and all the products in it?"
+  },
+  "storyContainer": {
+    "title": "ABOUT US",
+    "text": "We are not your one night pizza.",
+    "alt_image": "restaurant"
   }
 }
 
