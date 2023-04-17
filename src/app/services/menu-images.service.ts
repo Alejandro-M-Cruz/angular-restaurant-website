@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {getDownloadURL, listAll, ref, Storage, uploadBytes} from "@angular/fire/storage";
-import {BehaviorSubject, Observable, tap} from "rxjs";
+import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
 
 const MENU_IMAGES_STORAGE = 'menu_images'
 
@@ -16,7 +15,7 @@ export class MenuImagesService {
     return ref(this.storage, url).name
   }
 
-  async uploadImage(imageFile: File): Promise<string | null> {
+  async uploadImage(imageFile: File): Promise<string> {
     const imageRef = ref(this.storage, `${MENU_IMAGES_STORAGE}/${imageFile.name}`)
     try {
       const snapshot = await uploadBytes(imageRef, imageFile)

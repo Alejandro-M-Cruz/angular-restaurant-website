@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <h1 mat-dialog-title>{{t('formDialogTitles.' + (data.menuItem ? 'updateMenuItem' : 'addMenuItem'))}}</h1>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex-column">
+  <form [formGroup]="form" (ngSubmit)="updateImageUrl()" class="flex-column">
     <div mat-dialog-content>
       <div formGroupName="name">
         <mat-form-field appearance="outline" *ngFor="let lang of availableLanguages">
@@ -27,29 +27,10 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>{{t('menuItem.image')}}</mat-label>
-        <input matInput type="text" readonly [formControl]="imageNameControl">
-        <button
-          *ngIf="fileInput.files ? fileInput.files.length > 0 : false"
-          mat-icon-button
-          matIconSuffix
-          type="button"
-          (click)="discardSelectedImage()"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <button mat-icon-button matIconSuffix type="button" (click)="fileInput.click()">
-          <mat-icon>image</mat-icon>
-        </button>
-        <input
-          #fileInput
-          type="file"
-          accept="image/*"
-          hidden
-          (change)="onImageFileInputChanged(fileInput.files?.item(0) ?? null)"
-        >
-      </mat-form-field>
+      <app-image-file-input
+        [imageName]="imageName"
+        (imageFileChanged)="onImageFileInputChanged($event)"
+      ></app-image-file-input>
       <div class="text-center">
         <img
           *ngIf="data.menuItem?.imageUrl"
@@ -63,7 +44,12 @@
       <button mat-raised-button [mat-dialog-close]="null" type="reset">
         {{t('confirmationOptions.cancel')}}
       </button>
-      <button mat-raised-button [mat-dialog-close]="form.value" [disabled]="form.invalid" type="submit">
+      <button
+        mat-raised-button
+        [mat-dialog-close]="getNewOrUpdatedMenuItem() | async"
+        [disabled]="form.invalid"
+        type="button"
+      >
         {{t('confirmationOptions.confirm')}}
       </button>
     </div>
