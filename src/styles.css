@@ -416,8 +416,14 @@ input:focus, textarea:focus {
   align-items:center;
 }
 
-.hours pre{
-  padding-top: 40%;
+.hours-list{
+  white-space: normal;
+  flex-direction: column;
+  margin-top: 20%;
+}
+
+.hours-list div{
+  margin-top: 5%;
 }
 
 .social-list {

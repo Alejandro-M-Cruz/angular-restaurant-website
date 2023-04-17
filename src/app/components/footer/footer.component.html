@@ -34,10 +34,10 @@
                 <h3>{{t('footerTexts.timetableTitle')}}</h3>
             </li>
             <li>
-                <pre><span *ngFor="let dayLabel of t('footerTexts.dayLabels'); index as i">
+                <div class="hours-list"><div *ngFor="let dayLabel of t('footerTexts.dayLabels'); index as i">
                     {{dayLabel+': '+timetable[i]}}
-                </span>
-                </pre>
+                </div>
+                </div>
             </li>
         </ul>
 
