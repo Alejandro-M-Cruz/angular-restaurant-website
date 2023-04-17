@@ -21,6 +21,9 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use(API + '/users', users_routes_1.default);
 app.use(API + '/complaints', complaints_routes_1.default);
 app.use(API + '/menu', menu_routes_1.default);
+app.get('/', (_req, res) => {
+    res.send('Welcome, admin...');
+});
 app.get('*', (_req, res) => {
     res.sendStatus(404);
 });

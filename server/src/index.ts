@@ -20,6 +20,10 @@ app.use(API + '/users', usersRoutes)
 app.use(API + '/complaints', complaintsRoutes)
 app.use(API + '/menu', menuRoutes)
 
+app.get('/', (_req, res) => {
+  res.send('Welcome, admin')
+})
+
 app.get('*', (_req, res) => {
   res.sendStatus(404)
 })
