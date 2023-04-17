@@ -417,7 +417,6 @@ input:focus, textarea:focus {
 }
 
 .hours-list{
-  white-space: normal;
   flex-direction: column;
   margin-top: 20%;
 }
@@ -930,6 +929,15 @@ hr{
 
   .contact-list li {
     font-size: 0.9em;
+  }
+
+  .hours-list{
+    flex-direction: column;
+    margin-top: 50%;
+  }
+  
+  .hours-list div{
+    margin-top: 10%;
   }
 
 
