@@ -416,8 +416,13 @@ input:focus, textarea:focus {
   align-items:center;
 }
 
-.hours pre{
-  padding-top: 40%;
+.hours-list{
+  flex-direction: column;
+  margin-top: 20%;
+}
+
+.hours-list div{
+  margin-top: 5%;
 }
 
 .social-list {
@@ -926,6 +931,15 @@ hr{
     font-size: 0.9em;
   }
 
+  .hours-list{
+    flex-direction: column;
+    margin-top: 50%;
+  }
+  
+  .hours-list div{
+    margin-top: 10%;
+  }
+
 
   /* ----- BUTTONS ----- */
 
@@ -1142,7 +1156,7 @@ hr{
     height: 40rem;
   }
 
-  #footer-container {
+  .footer-container {
     flex-direction: column;
     height: 100%;
     width: 100%;
@@ -1151,6 +1165,7 @@ hr{
   .social-list {
     height: 100%;
     flex-direction: column;
+    padding-bottom: 0%;
   }
 
   .social-icons {
@@ -1160,20 +1175,18 @@ hr{
     width: 100%;
     flex-wrap: nowrap;
     justify-content: center;
-    padding: 2em;
+    padding: 5%;
   }
 
   .contact-list {
     line-height: 1.8em;
   }
 
-  .hours li h3 {
-    padding: 2em 0;
+  .hours-list{
+    flex-direction: column;
+    margin-top: 10%;
   }
-
-  .hours pre {
-    padding-top: 0%;
-  }
+  
 
   .cards-grid {
     grid-template-columns: 1fr;
