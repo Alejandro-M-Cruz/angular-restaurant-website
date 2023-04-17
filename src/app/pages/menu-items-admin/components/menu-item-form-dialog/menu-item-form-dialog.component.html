@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <h1 mat-dialog-title>{{t('formDialogTitles.' + (data.menuItem ? 'updateMenuItem' : 'addMenuItem'))}}</h1>
-  <form [formGroup]="form" (ngSubmit)="updateImageUrl()" class="flex-column">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex-column">
     <div mat-dialog-content>
       <div formGroupName="name">
         <mat-form-field appearance="outline" *ngFor="let lang of availableLanguages">
@@ -23,12 +23,12 @@
         <mat-label>{{t('menuItem.sectionId')}}</mat-label>
         <mat-select formControlName="sectionId">
           <mat-option *ngFor="let section of menuSections$ | async" [value]="section.id">
-            {{section.name[translateService.getActiveLang()]}}
+            {{section.name[getActiveLanguage()]}}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <app-image-file-input
-        [imageName]="imageName"
+        [initialImageName]="initialImageName"
         (imageFileChanged)="onImageFileInputChanged($event)"
       ></app-image-file-input>
       <div class="text-center">
@@ -44,12 +44,7 @@
       <button mat-raised-button [mat-dialog-close]="null" type="reset">
         {{t('confirmationOptions.cancel')}}
       </button>
-      <button
-        mat-raised-button
-        [mat-dialog-close]="getNewOrUpdatedMenuItem() | async"
-        [disabled]="form.invalid"
-        type="button"
-      >
+      <button mat-raised-button [disabled]="form.invalid" type="submit">
         {{t('confirmationOptions.confirm')}}
       </button>
     </div>
