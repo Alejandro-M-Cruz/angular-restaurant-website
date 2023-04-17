@@ -18,11 +18,13 @@
       [alreadySignedUpText]="t('alreadySignedUp')"
       [linkText]="t('alreadySignedUpLink')"
     > </app-already-signed-up>
-    <button class="management-button back-button" type="reset" onclick="window.location.back()">
-      {{t('buttons.back')}}
-    </button>
-    <button class="management-button confirm-button" type="submit" [disabled]="!form.valid">
-      {{t('buttons.signup')}}
-    </button>
+    <div class="buttons-container">
+      <button class="management-button back-button" type="reset" onclick="window.location.back()">
+        {{t('buttons.back')}}
+      </button>
+      <button class="management-button confirm-button" type="submit" [disabled]="form.invalid">
+        {{t('buttons.signup')}}
+      </button>
+    </div>
   </form>
 </ng-container>

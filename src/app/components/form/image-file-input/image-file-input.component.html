@@ -1,13 +1,7 @@
 <mat-form-field appearance="outline" *transloco="let t">
   <mat-label>{{t('menuItem.image')}}</mat-label>
   <input matInput type="text" readonly [value]="imageName">
-  <button
-    *ngIf="fileInput.files ? fileInput.files.length > 0 : false"
-    mat-icon-button
-    matIconSuffix
-    type="button"
-    (click)="discardSelectedImage()"
-  >
+  <button *ngIf="imageFile" mat-icon-button matIconSuffix type="button" (click)="discardSelectedImage()">
     <mat-icon>close</mat-icon>
   </button>
   <button mat-icon-button matIconSuffix type="button" (click)="fileInput.click()">
@@ -18,6 +12,6 @@
     type="file"
     accept="image/*"
     hidden
-    (change)="onImageFileChanged(fileInput.files?.item(0) ?? null)"
+    (change)="onImageFileInputChanged(fileInput.files?.item(0) ?? null)"
   >
 </mat-form-field>

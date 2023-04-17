@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
 router.get('/:uid', async (req, res) => {
   const user = await auth.getUser(req.params.uid)
   res.json({
+    uid: req.params.uid,
     email: user.email,
     creationDate: new Date(user.metadata.creationTime),
     lastLogInDate: new Date(user.metadata.lastSignInTime)
