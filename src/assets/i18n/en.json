@@ -3,9 +3,9 @@
   "dateFormat": "MM/dd/yyyy",
   "oppositeFlag": "/assets/images/languages/spanish.svg",
   "welcomeMessage": "Welcome to La Nostra Casa, {{user}}",
-  "slideShowTitle": "Restaurante de auténtica comida italiana",
-  "slideShowAddress": "En calle Triana / 30, Las Palmas de Gran Canaria",
-  "aboutUsText": "No somos tu <b> pizza de una noche </b>. <br>Queremos calidad, aunque te la comas en el coche. <br>No es purisimo, <b>no inventamos las pizzas</b>.<br>Somos los guardianes de su verdadera esencia. <br><br>Amantes del <b>BACK TO PIZZA</b>. <br>La que te deja lleno, <b>la que nutre</b>. <br>La textura de la pizza, la suavidad del queso... <br><b>Sentimos cada Bocado como un primer BESO</b> <br><br>La que viene con su masa fina e ingredientes sabrosos...<br><b> De la que no te arrepientes </b>. <br><b>LA QUE NOS HACE SENTIR ORGULLOSOS</b>",
+  "slideShowTitle": "Authentic Italian restaurant",
+  "slideShowAddress": "Located in calle Triana / 30, Las Palmas de Gran Canaria",
+  "aboutUsText": "We are not your <b> one night pizza </b>. <br>We want quality, althought you eat that pizza in your car <br>It is not pure, <b>we didn't invent the pizzas </b>.<br>We are the guardians of their true essence <br><br>Lovers of <b>BACK TO PIZZA</b>. <br>That one that leaves you full, <b>That one that keeps yourself up</b>. <br>The pizza's texture and the cheese quality <br><b> We feel every bite like a kiss in your head </b> <br><br>That one that brings with fine texture...<br><b> That one that you don't gonna regret </b>. <br><b> THAT ONE THAT KEEPS US PROUD </b>",
   "tabTitles": {
     "home": "La Nostra Casa",
     "login": "Log in",

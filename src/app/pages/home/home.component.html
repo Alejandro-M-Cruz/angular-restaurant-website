@@ -1,10 +1,10 @@
 <ng-container *transloco="let t">
-  <section class="welcome-section" *ngIf="userInfo">
+  <!-- <section class="welcome-section" *ngIf="userInfo">
     <h2>{{t('welcomeMessage', { user: userInfo.username })}}</h2>
-  </section>
+  </section> -->
 
-  <section class="slide-image">
-    <app-carousel></app-carousel>
+  <section class="slide-image" *ngIf="userInfo">
+    <app-carousel [username]="userInfo.username"></app-carousel>
   </section>
 
   <section id="menu-section">

@@ -207,8 +207,9 @@ input:focus, textarea:focus {
 } */
 
 ngb-carousel {
-  max-width: 80vw;
-  margin: 50px auto;
+  /* max-width: 70vw; */
+  margin: 0 auto;
+  width: 100%;
 }
 
 ngb-carousel img {
@@ -216,6 +217,22 @@ ngb-carousel img {
   outline: none;
   filter: brightness(0.6);
 }
+
+.carousel-welcome-user {
+  position: absolute;
+  right: 15%;
+  top: 1.25rem;
+  left: 15%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+  text-align: center;
+}
+
+.carousel-welcome-user h3 {
+  font-size: 3rem;
+}
+
 
 /* -------------MENU------------- */
 
@@ -872,15 +889,28 @@ app-new-reservation form {
     margin-bottom: 0.5rem;
   }
 
+  /* ----- CAROUSEL ----- */
 
+  ngb-carousel {
+    /* max-width: 70vw; */
+    margin: 50px auto;
+    width: 100%;
+  }
+  
+  ngb-carousel img {
+    width: 100%;
+    outline: none;
+    filter: brightness(0.6);
+  }
 
+  /* 
   .slide-image-thing__center-text {
     font-size: 1em;
   }
 
   .slide-image-thing__center-text-p {
     font-size: 12px;
-  }
+  } */
 
   /* ----- ABOUT US ----- */
 
@@ -1051,7 +1081,17 @@ app-new-reservation form {
 
   /* ----- CARRUSEL DE IMAGENES ----- */
 
-
+  ngb-carousel {
+    /* max-width: 70vw; */
+    margin: 18rem auto;
+    width: 100%;
+  }
+  
+  ngb-carousel img {
+    width: 100%;
+    outline: none;
+    filter: brightness(0.6);
+  }
 
 
   /* ----- MENU ----- */
