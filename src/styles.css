@@ -543,6 +543,10 @@ hr{
   background-color: var(--hover-row-color);
 }
 
+.title-row {
+  text-align: center;
+}
+
 .selected-row {
   background-color: var(--selected-row-color);
 }
