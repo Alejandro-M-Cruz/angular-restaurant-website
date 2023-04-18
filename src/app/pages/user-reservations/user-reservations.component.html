@@ -3,7 +3,7 @@
   <section class="content-section">
     <ng-container>
       <app-reservations-table
-        [reservations]="userReservations$ | async"
+        [reservations]="userReservations"
         [maxReservations]="maxReservations"
         (selectedReservationChanged)="onSelectedReservationChanged($event)"
       ></app-reservations-table>
