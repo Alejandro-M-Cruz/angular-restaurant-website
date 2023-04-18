@@ -29,16 +29,10 @@
     "newReservation": "Fill in the form to make a reservation",
     "complaints": "Complaint form",
     "complaintsAdmin": "Complaints",
-<<<<<<< HEAD
-    "menu": "MENÚ",
-    "aboutUs": "SOBRE NOSOTROS",
-    "menuSectionsAdmin": "Modify the menu sections using the drop-down",
-    "orderUser" : "Place your Order"
-=======
     "menu": "MENU",
     "aboutUs": "ABOUT US",
-    "menuSectionsAdmin": "Modify the menu sections using the drop-down"
->>>>>>> 0c21db3950b975edb47764fc0db096b9b1a868db
+    "menuSectionsAdmin": "Modify the menu sections using the drop-down",
+    "orderUser": "Reserve your order"
   },
   "navbarLinks": {
     "home": "Home",
