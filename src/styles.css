@@ -214,6 +214,7 @@ ngb-carousel {
 ngb-carousel img {
   width: 100%;
   outline: none;
+  filter: brightness(0.6);
 }
 
 /* -------------MENU------------- */
