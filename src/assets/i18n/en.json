@@ -31,7 +31,8 @@
     "complaintsAdmin": "Complaints",
     "menu": "MENU",
     "aboutUs": "ABOUT US",
-    "menuSectionsAdmin": "Modify the menu sections using the drop-down"
+    "menuSectionsAdmin": "Modify the menu sections using the drop-down",
+    "orderUser": "Reserve your order"
   },
   "navbarLinks": {
     "home": "Home",
@@ -49,7 +50,7 @@
     "contactPhoneNumber": "Phone number: +34123456789",
     "email": "Email: contact@lanostracasa.com",
     "address": "Triana St. / 30, Las Palmas de Gran Canaria",
-    "copyright": "La Nostra Casa&#8482; all rights reserved",
+    "copyright": "La Nostra Casa™; all rights reserved",
     "timetableTitle": "Timetable",
     "dayLabels": [
         "Mon",
@@ -63,6 +64,7 @@
   },
   "links":{
     "reservations": "MAKE YOUR RESERVATION HERE",
+    "order": "MAKE YOUR ORDER",
     "adminReservations": "RESERVATIONS",
     "complaints": "COMPLAINT FORM",
     "adminComplaints": "COMPLAINTS AND SUGGESTIONS",
@@ -128,6 +130,15 @@
   "tableEmptyRows": {
     "reservations": "You can create {{available}} more reservation/s",
     "adminReservations": "There are no reservations for the moment"
+  },
+  "orderForms": {
+    "optionLabel": "Select an option (Required)",
+    "homeDelivery" :"Home Delivery",
+    "pickUpOrder" : "Pick Up Order",
+    "directionLabelRequest" : "Enter your order address (Required)",
+    "askLabel" : "Do you want to taste again?",
+    "previousOrderButton" : "See previous orders",
+    "selectLabel": "See previous orders"
   },
   "formLabels": {
     "username": "Username",
@@ -221,6 +232,10 @@
       "imageUpload": {
         "title": "Error",
         "text": "There has been an error uploading the image"
+      },
+      "recentLoginRequired": {
+        "title": "Error",
+        "text": "Log in again to confirm your identity"
       }
     },
     "NOT_FOUND": "The requested resource is not available",

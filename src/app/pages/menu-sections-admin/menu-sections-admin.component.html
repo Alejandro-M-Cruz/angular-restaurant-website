@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.menuSectionsAdmin')}}</h2>
-  <form [formGroup]="form" (ngSubmit)="onEditSection()">
+  <form [formGroup]="form" (ngSubmit)="onSubmitEditSection()">
     <mat-select formControlName="menuSection">
       <mat-option *ngFor="let menuSection of menuSections$ | async" [value]="menuSection">
         {{menuSection.name[getActiveLanguage()]}}

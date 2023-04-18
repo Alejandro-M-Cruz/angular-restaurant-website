@@ -1,17 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ReservationsService} from "../../services/reservations.service";
 import {Reservation} from "../../model/reservation.model";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AlertsService} from "../../services/alerts.service";
 import {ActionErrorName} from "../../errors/action-error.errors";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-new-reservation',
   templateUrl: './new-reservation.component.html',
   styleUrls: ['./new-reservation.component.css']
 })
-export class NewReservationComponent implements OnInit {
+export class NewReservationComponent implements OnInit, OnDestroy {
+  reservationsSubscription?: Subscription
   reservations: Reservation[] = []
   availableDates: Date[] = []
   availableTimes: string[] = []
@@ -36,9 +38,14 @@ export class NewReservationComponent implements OnInit {
 
   ngOnInit() {
     this.disableInputs()
-    this.reservationsService.getCurrentReservations().subscribe(reservations => {
-      this.onReservationsChanged(reservations)
-    })
+    this.initObservers()
+  }
+
+  private initObservers() {
+    this.reservationsSubscription = this.reservationsService.getCurrentReservations()
+      .subscribe(reservations => {
+        this.onReservationsChanged(reservations)
+      })
     this.form.controls.date.valueChanges.subscribe(date => {
       this.onDateChanged(date === null ? null : new Date(date))
     })
@@ -47,12 +54,12 @@ export class NewReservationComponent implements OnInit {
     })
   }
 
-  onReservationsChanged(reservations: Reservation[]) {
+  private onReservationsChanged(reservations: Reservation[]) {
     this.reservations = reservations
     this.availableDates = this.reservationsService.getAvailableDates()
   }
 
-  onDateChanged(date: Date | null) {
+  private onDateChanged(date: Date | null) {
     if (date === null) {
       this.disableInputs()
       return
@@ -67,7 +74,7 @@ export class NewReservationComponent implements OnInit {
       this.form.controls.time.setValue(this.availableTimes[0])
   }
 
-  onTimeChanged(time: string | null) {
+  private onTimeChanged(time: string | null) {
     const max = this.reservationsService.getAvailableSeats(
       new Date(this.form.controls.date.value!),
       time!
@@ -97,4 +104,7 @@ export class NewReservationComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.reservationsSubscription?.unsubscribe()
+  }
 }

@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {TranslocoService} from "@ngneat/transloco";
 import {MenuService} from "../../../../services/menu.service";
 import {MenuItem} from "../../../../model/menu-item.model";
 import {DisplayableMenuSection, MenuSection} from "../../../../model/menu-section.model";
 import {map} from "rxjs";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -13,8 +14,10 @@ import {map} from "rxjs";
 export class MenuComponent implements OnInit {
   menuLeft?: DisplayableMenuSection[]
   menuRight?: DisplayableMenuSection[]
+  page?:string;
+  @Output() messageEvent = new EventEmitter<MenuItem>();
 
-  constructor(private readonly menuService: MenuService, private readonly translationService: TranslocoService) {}
+  constructor(private readonly menuService: MenuService, private readonly translationService: TranslocoService,private activeRoute:ActivatedRoute) {}
 
   ngOnInit() {
     const sub = this.menuService.getMenuSections().subscribe(menuSections => {
@@ -27,6 +30,8 @@ export class MenuComponent implements OnInit {
       })
       sub.unsubscribe()
     })
+    this.page =this.activeRoute.snapshot.routeConfig?.title as string;
+
   }
 
   getDisplayableMenu(menuSections: MenuSection[], menuItems: MenuItem[]) {
@@ -43,5 +48,9 @@ export class MenuComponent implements OnInit {
 
   getActiveLanguage() {
     return this.translationService.getActiveLang()
+  }
+
+  sendMessage(item:MenuItem) {
+    this.messageEvent.emit(item);
   }
 }

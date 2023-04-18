@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Reservation} from "../../model/reservation.model";
 import {ReservationsService} from "../../services/reservations.service";
 import {MatDialog} from "@angular/material/dialog";
