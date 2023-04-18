@@ -6,7 +6,6 @@ import {
   updateProfile
 } from '@angular/fire/auth';
 import {FormErrorName} from "../errors/form-error.errors";
-import {ActionErrorName} from "../errors/action-error.errors";
 
 const USERNAME_MAX_LENGTH = 32
 const PASSWORD_MIN_LENGTH = 8

@@ -232,6 +232,10 @@
       "imageUpload": {
         "title": "Error",
         "text": "There has been an error uploading the image"
+      },
+      "recentLoginRequired": {
+        "title": "Error",
+        "text": "Log in again to confirm your identity"
       }
     },
     "NOT_FOUND": "The requested resource is not available",

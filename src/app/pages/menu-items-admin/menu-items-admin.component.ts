@@ -79,4 +79,8 @@ export class MenuItemsAdminComponent {
       }
     })
   }
+
+  openSectionEditFormDialog() {
+
+  }
 }

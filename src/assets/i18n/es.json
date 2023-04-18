@@ -233,6 +233,10 @@
       "imageUpload": {
         "title": "Error",
         "text": "Se ha producido un error al subir la imagen"
+      },
+      "recentLoginRequired": {
+        "title": "Error",
+        "text": "Inicie sesión nuevamente para confirmar su identidad"
       }
     },
     "NOT_FOUND": "El recurso solicitado no está disponible",
