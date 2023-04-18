@@ -130,6 +130,7 @@
     "adminReservations": "There are no reservations for the moment"
   },
   "formLabels": {
+    "username": "Username",
     "email": "Email",
     "phoneNumber": "Phone number",
     "password": "Password",
@@ -158,6 +159,8 @@
     "menuItemImage": "Image of the product"
   },
   "formErrors": {
+    "usernameLong": "The username cannot exceed {{maxLength}} characters",
+    "usernameAlreadyTaken": "Another user has already chosen this user name",
     "email": "Email is not valid",
     "emailAlreadyInUse": "Email is already in use",
     "passwordShort": "Password must be at least {{minLength}} characters long",
@@ -168,6 +171,7 @@
     "time": "Time is not valid",
     "customers": "Number of customers is not valid",
     "name": "Name is not valid",
+    "complaintShort": "Complaint must be at least {{minLength}} characters long",
     "complaintLong": "Complaint must be at most {{maxLength}} characters long",
     "menuItemName": "Nombre del producto no válido",
     "menuItemDescription": "Descripción del producto no válida",
@@ -204,12 +208,6 @@
   "formDialogTitles": {
     "updateMenuItem": "Updating menu item",
     "addMenuItem": "Creating menu item"
-  },
-  "successAlerts": {
-    "languageChanged": "Language has been changed to English"
-  },
-  "errors": {
-    "stand  ard": "There has been an error, try again later"
   },
   "alerts": {
     "confirmButtonTexts": {

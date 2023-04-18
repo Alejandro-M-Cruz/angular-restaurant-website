@@ -12,7 +12,7 @@ import {
   where
 } from "@angular/fire/firestore";
 import {Auth} from "@angular/fire/auth";
-import {BehaviorSubject, map, Observable} from "rxjs";
+import {BehaviorSubject, first, map, Observable} from "rxjs";
 
 const MAX_RESERVATIONS = 5
 const MIN_DAYS_BEFOREHAND = 2
@@ -98,10 +98,9 @@ export class ReservationsService {
 
   getAvailableSeats(date: Date, time: string) {
     let totalCustomers = 0
-    const subscription = this.currentReservations$.subscribe(reservations => {
+    this.currentReservations$.pipe(first()).subscribe(reservations => {
       reservations.filter(r => r.date === date.getTime() && r.time === time)
         .forEach(reservation => totalCustomers += reservation.customers)
-      subscription.unsubscribe()
     })
     return MAX_CUSTOMERS - totalCustomers
   }

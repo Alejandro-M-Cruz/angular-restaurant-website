@@ -3,7 +3,7 @@ import {addDoc, collection, collectionData, deleteDoc, doc, Firestore, getDocs} 
 import {Complaint} from "../model/complaint.model";
 import {Observable} from "rxjs";
 
-
+const COMPLAINT_MIN_LENGTH = 20
 const COMPLAINT_MAX_LENGTH = 2000
 
 @Injectable({
@@ -26,6 +26,10 @@ export class ComplaintsService {
 
   deleteComplaint(id: string) {
     return deleteDoc(doc(this.firestore, 'complaints', id));
+  }
+
+  getComplaintMinLength() {
+    return COMPLAINT_MIN_LENGTH
   }
 
   getComplaintMaxLength() {
