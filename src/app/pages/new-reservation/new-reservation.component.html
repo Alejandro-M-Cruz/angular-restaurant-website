@@ -4,12 +4,14 @@
     <app-date-picker [availableDates]="availableDates" [control]="form.controls.date"></app-date-picker>
     <app-time-picker [availableTimes]="availableTimes" [control]="form.controls.time"></app-time-picker>
     <app-customers-input [control]="form.controls.customers" [maxCustomers]="availableSeats"></app-customers-input>
-    <button class="management-button back-button" type="reset" onclick="window.history.back()">
-      {{t('buttons.back')}}
-    </button>
-    <button class="management-button confirm-button" type="submit" [disabled]="!form.valid">
-      {{t('buttons.confirm')}}
-    </button>
+    <div class="buttons-container">
+      <button class="form-button back-button" type="reset" onclick="window.location.back()">
+        {{t('buttons.back')}}
+      </button>
+      <button class="form-button confirm-button" type="submit" [disabled]="!form.valid">
+        {{t('buttons.confirm')}}
+      </button>
+    </div>
   </form>
 </ng-container>
 
