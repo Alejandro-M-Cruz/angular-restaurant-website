@@ -615,11 +615,21 @@ hr{
 .management-button {
   display: block;
   font-size: 1.2rem;
-  width: 120%;
+  width: 15%;
   padding: 0.3rem;
   text-align: center;
   text-decoration: none;
   margin: 0 1rem;
+}
+
+.form-button {
+  display: block;
+  font-size: 1.2rem;
+  width: 50%;
+  padding: 0.3rem;
+  text-align: center;
+  text-decoration: none;
+  margin: 1rem 1rem 1rem;
 }
 
 .management-button:hover {
@@ -662,9 +672,28 @@ app-log-in form {
   justify-content: center;
 }
 
+/* -------------SIGN UP------------- */
+
+app-sign-up form {
+  display: grid;
+  justify-items: left;
+  width: 100%;
+  justify-content: center;
+}
+
+/* -------------BOTH------------- */
+
 app-email-input,
 app-password-input {
   margin-bottom: 11px;
+  margin-left: 10%;
+}
+
+.already-signed-up-text {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 mat-error {
@@ -674,16 +703,7 @@ mat-error {
   font-size: 8px;
 }
 
-app-already-signed-up {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-/* -------------SIGN UP------------- */
-
-app-sign-up form {
+app-new-reservation form {
   display: grid;
   justify-items: left;
   width: 100%;
@@ -942,7 +962,7 @@ app-sign-up form {
 
   .management-button {
     font-size: 1rem;
-    width: 100%;
+    width: 20%;
     justify-content: center;
   }
 
@@ -969,9 +989,13 @@ app-sign-up form {
   .cards-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  /* ----- LOG IN / SIGN UP ----- */
+  app-email-input,
+  app-password-input {
+    margin-left: 0%;
+  }
 }
-
-
 
 
 /* ------------- MOBILE PHONE ------------- */
@@ -1126,7 +1150,15 @@ app-sign-up form {
     font-size: 7px;
   }
 
+  /* ----- LOG IN / SIGN UP ----- */
+  app-email-input,
+  app-password-input {
+    margin-left: 0%;
+  }
 
+  .already-signed-up-text {
+    margin-left: 13%;
+  }
 
   /* ----- TABLE ----- */
 
