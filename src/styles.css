@@ -653,55 +653,13 @@ hr{
 
 /* -------------FORM PAGE------------- */
 
-/* -------------FORM------------- */
-
-/*.user-form {
-  font-size: 1.6rem;
-  text-align: center;
-}
-
-.user-form label, .user-form input {
-  display: block;
-  margin: 0.5rem 0;
-}
-
-.user-form input, .user-form textarea, .user-form select {
-  display: block;
-  font-size: 1.4rem;
-}
-
-.user-form input, .user-form select {
-  height: 2rem;
-  width: 25rem;
-}
-
-.user-form textarea {
-  margin: 1rem auto;
-}
-
-.user-form input:focus, .user-form textarea:focus {
-  background-color: var(--input-focus-color);
-}
-
-.form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 0;
-}
-
-.label-input-combo {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  margin: 0.8rem;
-}*/
+/* -------------LOG IN------------- */
 
 app-log-in form {
   display: grid;
   justify-items: left;
-  width: 50%;
-  margin-left: 43%;
+  width: 100%;
+  justify-content: center;
 }
 
 app-email-input,
@@ -718,6 +676,8 @@ mat-error {
 }
 
 app-already-signed-up {
+  display: flex;
+  justify-content: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -726,7 +686,6 @@ app-already-signed-up {
 
 .already-paragraph {
   display: inline;
-  margin-left: 40%;
 }
 
 .already-div {
@@ -955,18 +914,6 @@ app-already-signed-up {
     padding-bottom: 5%;
   }
 
-  /* ----- LOG IN ----- */
-
-  app-log-in form {
-    width: 50%;
-    margin-left: 36%;
-  }
-
-  .already-paragraph {
-    margin-left: 36%;
-  }
-  
-
   /* ----- FOOTER ----- */
 
   .contact-list li {
@@ -1148,17 +1095,6 @@ app-already-signed-up {
 
   #complaint {
     width: 75%;
-  }
-
-  /* ----- LOG IN ----- */
-
-  app-log-in form {
-    width: 50%;
-    margin-left: 14%;
-  }
-
-  .already-paragraph {
-    margin-left: 24%;
   }
 
   /* ----- BUTTONS ----- */
