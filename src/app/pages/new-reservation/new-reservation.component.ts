@@ -3,6 +3,8 @@ import {ReservationsService} from "../../services/reservations.service";
 import {Reservation} from "../../model/reservation.model";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {AlertsService} from "../../services/alerts.service";
+import {ActionErrorName} from "../../errors/action-error.errors";
 
 @Component({
   selector: 'app-new-reservation',
@@ -28,7 +30,8 @@ export class NewReservationComponent implements OnInit {
   constructor(
     private readonly reservationsService: ReservationsService,
     private readonly fb: FormBuilder,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly alertsService: AlertsService
   ) { }
 
   ngOnInit() {
@@ -69,10 +72,7 @@ export class NewReservationComponent implements OnInit {
       new Date(this.form.controls.date.value!),
       time!
     )
-    if (max <= 0) {
-      window.location.reload()
-      return
-    }
+    if (max <= 0) return
     this.form.controls.customers.removeValidators([Validators.max(this.availableSeats)])
     this.form.controls.customers.addValidators([Validators.max(this.availableSeats = max)])
   }
@@ -93,6 +93,7 @@ export class NewReservationComponent implements OnInit {
       await this.router.navigate(['/user-reservations'])
     } catch (e) {
       console.error(e)
+      await this.alertsService.showErrorAlert(ActionErrorName.UNKNOWN)
     }
   }
 

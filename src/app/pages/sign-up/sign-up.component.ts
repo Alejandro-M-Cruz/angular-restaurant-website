@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthenticationService} from "../../services/authentication.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {passwordMatchingValidator} from "../../validators/password-matching.validator";
 import {Router} from "@angular/router";
+import {FormErrorName} from "../../errors/form-error.errors";
+import {AlertsService} from "../../services/alerts.service";
+import {ActionErrorName} from "../../errors/action-error.errors";
 
 @Component({
   selector: 'app-sign-up',
@@ -12,6 +15,7 @@ import {Router} from "@angular/router";
 
 export class SignUpComponent {
   hidePassword = true
+  usernameMaxLength = this.authService.getUsernameMaxLength()
   passwordMinLength = this.authService.getPasswordMinLength()
   passwordMaxLength = this.authService.getPasswordMaxLength()
   private readonly passwordValidators = [
@@ -19,10 +23,11 @@ export class SignUpComponent {
     Validators.minLength(this.passwordMinLength),
     Validators.maxLength(this.passwordMaxLength)
   ]
-  readonly form = this.fb.group({
-    email: ['', Validators.compose([Validators.required, Validators.email])],
-    password: ['', Validators.compose(this.passwordValidators)],
-    passwordConfirmation: ['', Validators.compose(this.passwordValidators)]
+  readonly form = this.fb.nonNullable.group({
+    username: ['', [Validators.required, Validators.maxLength(this.usernameMaxLength)]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', this.passwordValidators],
+    passwordConfirmation: ['', this.passwordValidators]
   }, {
     validators: passwordMatchingValidator
   })
@@ -30,19 +35,22 @@ export class SignUpComponent {
   constructor(
     private readonly authService: AuthenticationService,
     private readonly fb: FormBuilder,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly alertsService: AlertsService
   ) {}
 
   async onSubmit() {
-    if (this.form.valid) {
-      const { email, password } = this.form.value
-      try {
-        await this.authService.signUp(email!, password!)
-        await this.router.navigate(['/home'])
-      } catch (e: any) {
-        if (e.name === 'emailAlreadyInUse')
-          this.form.controls.email.setErrors({emailAlreadyInUse: true})
+    try {
+      const { username, email, password } = this.form.value
+      await this.authService.signUp(username!, email!, password!)
+      await this.router.navigate(['/home'])
+    } catch (e: any) {
+      console.error(e)
+      if (e.name === FormErrorName.EMAIL_ALREADY_IN_USE) {
+        this.form.controls.email.setErrors({emailAlreadyInUse: true})
+        return
       }
+      await this.alertsService.showErrorAlert(ActionErrorName.UNKNOWN)
     }
   }
 

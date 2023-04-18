@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Auth, authState} from "@angular/fire/auth";
 import {UserInfo} from "../model/user-info.model";
 import {Firestore} from "@angular/fire/firestore";
-import {BehaviorSubject, map, Observable} from "rxjs";
+import {BehaviorSubject, first, map, Observable} from "rxjs";
 import {ReservationsService} from "./reservations.service";
 
 @Injectable({
@@ -21,6 +21,7 @@ export class UserService {
 
   private extractUserInfo(user: any): UserInfo | null {
     return user ? {
+      username: user.displayName,
       email: user.email,
       creationDate: user.metadata.creationTime ? new Date(user.metadata.creationTime) : undefined,
       lastLogInDate: user.metadata.lastSignInTime ? new Date(user.metadata.lastSignInTime) : undefined
@@ -32,13 +33,11 @@ export class UserService {
   }
 
   private deleteUserReservations() {
-    const subscription = this.reservationsService.getUserCurrentReservations()
-      .subscribe(reservations => {
-        reservations.forEach(async reservation => {
-          await this.reservationsService.deleteReservation(reservation.id!)
-        })
-        subscription.unsubscribe()
+    this.reservationsService.getUserCurrentReservations().pipe(first()).subscribe(reservations => {
+      reservations.forEach(async reservation => {
+        await this.reservationsService.deleteReservation(reservation.id!)
       })
+    })
   }
 
   async deleteUser() {

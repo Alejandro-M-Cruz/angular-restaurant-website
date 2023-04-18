@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import {translate} from "@ngneat/transloco";
-import {CustomError} from "../model/custom-error.model";
+import {ActionErrorName} from "../errors/action-error.errors";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlertsService {
-  async showErrorAlert(errorName: CustomError) {
+  async showErrorAlert(errorName: ActionErrorName) {
     await Swal.fire({
       icon: 'error',
       title: translate(errorName + '.title'),
