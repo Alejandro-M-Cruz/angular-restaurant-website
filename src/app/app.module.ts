@@ -63,6 +63,7 @@ import { MenuItemFormDialogComponent } from './pages/menu-items-admin/components
 import { PasswordConfirmationComponent } from './components/form/password-confirmation/password-confirmation.component';
 import { ImageFileInputComponent } from './components/form/image-file-input/image-file-input.component';
 import { UsernameInputComponent } from './components/form/username-input/username-input.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -100,6 +101,7 @@ registerLocaleData(es);
     PasswordConfirmationComponent,
     ImageFileInputComponent,
     UsernameInputComponent,
+    CarouselComponent,
   ],
     imports: [
         BrowserModule,
