@@ -130,6 +130,7 @@
     "adminReservations": "No hay reservas en este momento"
   },
   "formLabels": {
+    "username": "Nombre de usuario",
     "email": "Correo electrónico",
     "phoneNumber": "Número de teléfono",
     "password": "Contraseña",
@@ -158,8 +159,11 @@
     "menuItemImage": "Imagen del producto"
   },
   "formErrors": {
+    "usernameShort": "El nombre de usuario debe tener al menos {{minLength}} caracteres",
+    "usernameLong": "El nombre de usuario no puede exceder los {{maxLength}} caracteres",
+    "usernameAlreadyTaken": "Otra persona ya ha seleccionado este nombre de usuario",
     "email": "El correo electrónico no es válido",
-    "emailAlreadyInUse": "Email is already in use",
+    "emailAlreadyInUse": "Esta dirección ya ha sido registrada",
     "passwordShort": "La contraseña debe tener al menos {{minLength}} caracteres",
     "passwordLong": "La contraseña no puede tener más de {{maxLength}} caracteres",
     "wrongEmailOrPassword": "El email o la contraseña no son correctos",
@@ -168,6 +172,7 @@
     "time": "La hora no es válida",
     "customers": "El número de comensales no es válido",
     "name": "El nombre no es válido",
+    "complaintShort": "La reclamación debe superar los {{minLength}} caracteres",
     "complaintLong": "La reclamación no puede superar los {{maxLength}} caracteres",
     "menuItemName": "El nombre del producto no es válido",
     "menuItemDescription": "La descripción del producto no es válida",
@@ -204,12 +209,6 @@
   "formDialogTitles": {
     "updateMenuItem": "Actualizando producto del menú",
     "addMenuItem": "Añadiendo producto al menú"
-  },
-  "successAlerts": {
-    "languageChanged": "El idioma ha cambiado al español"
-  },
-  "errors": {
-    "standard": "Se ha producido un error, inténtelo de nuevo más tarde"
   },
   "alerts": {
     "confirmButtonTexts": {

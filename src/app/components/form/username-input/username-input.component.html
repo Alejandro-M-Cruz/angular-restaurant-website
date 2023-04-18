@@ -1,0 +1,7 @@
+<mat-form-field appearance="outline" *transloco="let t">
+  <mat-label>{{t('formLabels.username')}}</mat-label>
+  <input matInput type="email" [formControl]="control">
+  <mat-error *ngIf="control.errors?.['maxlength']">
+    {{t('formErrors.usernameLong', {maxLength})}}
+  </mat-error>
+</mat-form-field>
