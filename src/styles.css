@@ -609,14 +609,14 @@ hr{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2rem 0 2rem 0;
+  margin: 0 0 2rem 0;
 }
 
 .management-button {
   display: block;
   font-size: 1.2rem;
-  width: 20%;
-  padding: 1.2rem;
+  width: 120%;
+  padding: 0.3rem;
   text-align: center;
   text-decoration: none;
   margin: 0 1rem;
@@ -942,7 +942,7 @@ app-sign-up form {
 
   .management-button {
     font-size: 1rem;
-    width: 20%;
+    width: 100%;
     justify-content: center;
   }
 
