@@ -13,8 +13,7 @@
       [hidePassword]="hidePassword"
     ></app-password-confirmation>
     <mat-error *ngIf="form.errors?.['passwordMismatch']">{{t('formErrors.passwordConfirmation')}}</mat-error>
-  </form>
-  <app-already-signed-up
+    <app-already-signed-up
       link="log-in"
       [alreadySignedUpText]="t('alreadySignedUp')"
       [linkText]="t('alreadySignedUpLink')"
@@ -27,4 +26,5 @@
         {{t('buttons.signup')}}
       </button>
     </div>
+  </form>
 </ng-container>

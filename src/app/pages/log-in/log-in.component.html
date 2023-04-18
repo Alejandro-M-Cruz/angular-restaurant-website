@@ -8,9 +8,7 @@
       [maxLength]="passwordMaxLength"
     ></app-password-input>
     <mat-error *ngIf="form.errors?.['wrongEmailOrPassword']">{{t('formErrors.wrongEmailOrPassword')}}</mat-error>
-    
-  </form>
-  <app-already-signed-up
+    <app-already-signed-up
       link="sign-up"
       [alreadySignedUpText]="t('notSignedUp')"
       [linkText]="t('notSignedUpLink')"
@@ -23,5 +21,7 @@
         {{t('buttons.login')}}
       </button>
     </div>
+  </form>
+  
 </ng-container>
 
