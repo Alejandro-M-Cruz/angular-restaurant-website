@@ -31,7 +31,8 @@
     "complaintsAdmin": "Reclamaciones",
     "menu": "MENÚ",
     "aboutUs": "SOBRE NOSOTROS",
-    "menuSectionsAdmin": "Modifique las secciones del menú mediante el desplegable"
+    "menuSectionsAdmin": "Modifique las secciones del menú mediante el desplegable",
+    "orderUser" : "Reserva tu pedido"
   },
   "navbarLinks": {
     "home": "Inicio",
@@ -49,7 +50,7 @@
     "contactPhoneNumber": "Número de teléfono: +34123456789",
     "email": "Correo electrónico: contact@lanostracasa.com",
     "address": "Calle Triana / 30, Las Palmas de Gran Canaria",
-    "copyright": "La Nostra Casa&#8482; todos los derechos reservados",
+    "copyright": "La Nostra Casa™; todos los derechos reservados",
     "timetableTitle": "Horario",
     "dayLabels": [
         "lun",
@@ -63,6 +64,7 @@
   },
   "links":{
     "reservations": "HAGA SU RESERVA AQUÍ",
+    "order": "HAGA SU PEDIDO",
     "adminReservations": "RESERVAS",
     "complaints": "HOJA DE RECLAMACIONES",
     "adminComplaints": "RECLAMACIONES Y SUGERENCIAS",
@@ -128,6 +130,15 @@
   "tableEmptyRows": {
     "reservations": "Puede realizar {{available}} reserva/s más",
     "adminReservations": "No hay reservas en este momento"
+  },
+  "orderForms": {
+    "optionLabel": "Seleccione una opción (Obligatoria)",
+    "homeDelivery" :"A Domicilio",
+    "pickUpOrder" : "A Recoger",
+    "directionLabelRequest" : "Introduzca su dirección (Obligatoria)",
+    "askLabel" : "¿Quieres volver a probar?",
+    "previousOrderButton" : "Ver pedidos anteriores",
+    "selectLabel": "Seleccione sus opciones"
   },
   "formLabels": {
     "username": "Nombre de usuario",
@@ -255,4 +266,6 @@
     "image": "./assets/images/carousel/restaurante-1.jpg",
     "alt_image": "restaurante"
   }
+
+
 }

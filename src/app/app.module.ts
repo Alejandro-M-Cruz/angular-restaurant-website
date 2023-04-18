@@ -35,6 +35,7 @@ import { PasswordInputComponent } from './components/form/password-input/passwor
 import { AlreadySignedUpLinkComponent } from './components/already-signed-up/already-signed-up-link.component';
 import { MenuComponent } from './pages/home/components/menu/menu.component';
 import { UserReservationsComponent } from './pages/user-reservations/user-reservations.component';
+import { UserOrderComponent } from './pages/user-order/user-order.component';
 import {MatTableModule} from "@angular/material/table";
 import { ReservationsTableComponent } from './pages/user-reservations/reservations-table/reservations-table.component';
 
@@ -82,6 +83,7 @@ registerLocaleData(es);
     PasswordInputComponent,
     AlreadySignedUpLinkComponent,
     UserReservationsComponent,
+    UserOrderComponent,
     ReservationsTableComponent,
     MenuComponent,
     ConfirmationDialogComponent,

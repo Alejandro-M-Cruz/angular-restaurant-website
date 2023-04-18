@@ -21,6 +21,7 @@ import {MenuSectionsAdminComponent} from "./pages/menu-sections-admin/menu-secti
 import {ComplaintsAdminComponent} from "./pages/complaints-admin/complaints-admin.component";
 import {MenuItemsAdminComponent} from "./pages/menu-items-admin/menu-items-admin.component";
 import {PermissionsService} from "./services/permissions.service";
+import { UserOrderComponent } from './pages/user-order/user-order.component';
 
 const canActivateLoggedIn: CanActivateFn = (_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot) => {
   const isLoggedIn = inject(PermissionsService).isLoggedIn()
@@ -63,6 +64,7 @@ const routes: Routes = [
   { path: 'my-account', title: 'myAccount', component: MyAccountComponent, canActivate: [canActivateLoggedIn] },
   { path: 'user-reservations', title: 'reservations', component: UserReservationsComponent, canActivate: [canActivateLoggedIn] },
   { path: 'new-reservation', title: 'newReservation', component: NewReservationComponent, canActivate: [canActivateLoggedIn] },
+  { path: 'user-order', title: 'order', component: UserOrderComponent, canActivate: [canActivateLoggedIn] },
 
   // ADMIN
   { path: 'reservations-admin', title: 'reservationsAdmin', component: AdminReservationsComponent, canActivate: [canActivateAdmin] },
