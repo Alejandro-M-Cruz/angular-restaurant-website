@@ -143,16 +143,16 @@ input:focus, textarea:focus {
 
 /* -------------SLIDE SHOW------------- */
 
-.slide-image {
+/* .slide-image {
   width: 35rem;
   height: 20rem;
   z-index: 1;
   display: flex;
   align-items: center;
   margin: 0 auto;
-}
+} */
 
-.slide-image-thing {
+/* .slide-image-thing {
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -204,9 +204,17 @@ input:focus, textarea:focus {
 #slide-image__right-arrow img {
   width: 100%;
   height: 100%;
+} */
+
+ngb-carousel {
+  max-width: 80vw;
+  margin: 50px auto;
 }
 
-
+ngb-carousel img {
+  width: 100%;
+  outline: none;
+}
 
 /* -------------MENU------------- */
 
