@@ -11,16 +11,12 @@ const cors_1 = __importDefault(require("cors"));
 const API = '/api/v1';
 const PORT = 3000;
 const users_routes_1 = __importDefault(require("./routes/users.routes"));
-const complaints_routes_1 = __importDefault(require("./routes/complaints.routes"));
-const menu_routes_1 = __importDefault(require("./routes/menu.routes"));
 app.use((0, cors_1.default)({
     origin: 'http://localhost:4200'
 }));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(API + '/users', users_routes_1.default);
-app.use(API + '/complaints', complaints_routes_1.default);
-app.use(API + '/menu', menu_routes_1.default);
 app.get('/', (_req, res) => {
     res.send('Welcome, admin');
 });

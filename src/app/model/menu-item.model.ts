@@ -7,5 +7,5 @@ export interface MenuItem {
   ingredients: MultiLanguageString;
   price: number;
   sectionId: string;
-  imageUrl?: string;
+  imageUrl: string | null;
 }

@@ -27,6 +27,7 @@ router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 router.get('/:uid', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield firebase_1.auth.getUser(req.params.uid);
     res.json({
+        uid: req.params.uid,
         email: user.email,
         creationDate: new Date(user.metadata.creationTime),
         lastLogInDate: new Date(user.metadata.lastSignInTime)

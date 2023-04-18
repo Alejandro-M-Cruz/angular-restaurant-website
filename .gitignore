@@ -50,4 +50,4 @@ Thumbs.db
 server/node_modules
 server/firebase.json
 server/.env
-
+/server/.env
