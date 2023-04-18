@@ -209,11 +209,24 @@
     "languageChanged": "Language has been changed to English"
   },
   "errors": {
-    "standard": "There has been an error, try again later"
+    "stand  ard": "There has been an error, try again later"
   },
   "alerts": {
+    "confirmButtonTexts": {
+      "accept": "Accept"
+    },
+    "errors": {
+      "unknown": {
+        "title": "Error",
+        "text": "There has been an error, try again later"
+      },
+      "imageUpload": {
+        "title": "Error",
+        "text": "There has been an error uploading the image"
+      }
+    },
     "NOT_FOUND": "The requested resource is not available",
-    "UNKNOWN_ERROR": "There has been an error, try again later",
+
     "PASSWORDS_DONT_MATCH": "The passwords don't match",
     "DUPLICATE_USER": "The phone number is already registered",
     "FAILED_LOGIN": "The phone number or password is incorrect",

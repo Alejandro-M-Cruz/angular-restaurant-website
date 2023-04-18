@@ -72,11 +72,10 @@ export class MenuItemsAdminComponent {
     this.dialog.open(MenuItemFormDialogComponent, {
       data: { menuItem: item, menuSection: this.sectionBeingEdited }
     }).afterClosed().subscribe(async result => {
-      console.log('dialog closed with result: ', result)
       if (result) {
         item ?
-          await this.menuEditService.updateItem(item.id!, result) :
-          await this.menuEditService.addItem(result)
+          await this.menuEditService.updateItem(item.id!, await result) :
+          await this.menuEditService.addItem(await result)
       }
     })
   }
