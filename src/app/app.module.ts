@@ -62,6 +62,7 @@ import {MatCardModule} from "@angular/material/card";
 import { MenuItemFormDialogComponent } from './pages/menu-items-admin/components/menu-item-form-dialog/menu-item-form-dialog.component';
 import { PasswordConfirmationComponent } from './components/form/password-confirmation/password-confirmation.component';
 import { ImageFileInputComponent } from './components/form/image-file-input/image-file-input.component';
+import { UsernameInputComponent } from './components/form/username-input/username-input.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -98,6 +99,7 @@ registerLocaleData(es);
     MenuItemFormDialogComponent,
     PasswordConfirmationComponent,
     ImageFileInputComponent,
+    UsernameInputComponent,
   ],
     imports: [
         BrowserModule,

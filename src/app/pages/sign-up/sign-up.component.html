@@ -1,6 +1,10 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.signup')}} </h2>
   <form class="needs-validation" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <app-username-input
+      [control]="form.controls.username"
+      [maxLength]="usernameMaxLength"
+    ></app-username-input>
     <app-email-input [control]="form.controls.email"> </app-email-input>
     <app-password-input
       [control]="form.controls.password"
@@ -17,9 +21,9 @@
       link="log-in"
       [alreadySignedUpText]="t('alreadySignedUp')"
       [linkText]="t('alreadySignedUpLink')"
-    > </app-already-signed-up>
+    ></app-already-signed-up>
     <div class="buttons-container">
-      <button class="management-button back-button" type="reset" onclick="window.location.back()">
+      <button class="management-button back-button" type="reset" onclick="window.history.back()">
         {{t('buttons.back')}}
       </button>
       <button class="management-button confirm-button" type="submit" [disabled]="form.invalid">

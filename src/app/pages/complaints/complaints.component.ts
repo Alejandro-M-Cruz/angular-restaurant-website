@@ -10,12 +10,14 @@ import {Router} from "@angular/router";
   styleUrls: ['./complaints.component.css']
 })
 export class ComplaintsComponent {
-  maxLength = this.complaintsService.getComplaintMaxLength()
-  form = this.fb.group({
-    content: ['', Validators.compose([
+  complaintMinLength = this.complaintsService.getComplaintMinLength()
+  complaintMaxLength = this.complaintsService.getComplaintMaxLength()
+  form = this.fb.nonNullable.group({
+    content: ['', [
       Validators.required,
-      Validators.maxLength(this.maxLength)
-    ])]
+      Validators.minLength(this.complaintMinLength),
+      Validators.maxLength(this.complaintMaxLength)
+    ]]
   })
 
   constructor(

@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
-import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from '@angular/fire/auth';
-import firebase from "firebase/compat";
+import {
+  Auth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile
+} from '@angular/fire/auth';
+import {FormErrorName} from "../errors/form-error.errors";
+import {ActionErrorName} from "../errors/action-error.errors";
 
-
+const USERNAME_MAX_LENGTH = 32
 const PASSWORD_MIN_LENGTH = 8
 const PASSWORD_MAX_LENGTH = 16
 
@@ -12,16 +18,17 @@ const PASSWORD_MAX_LENGTH = 16
 export class AuthenticationService {
   constructor(private readonly auth: Auth) {}
 
-  async signUp(email: string, password: string) {
+  async signUp(username: string, email: string, password: string) {
     try {
-      await createUserWithEmailAndPassword(this.auth, email, password);
+      const result = await createUserWithEmailAndPassword(this.auth, email, password)
+      await updateProfile(result.user, { displayName: username })
     } catch (e: any) {
+      console.error(e)
       if (e.code === 'auth/email-already-in-use') {
-        const error = new Error('Email already in use')
-        error.name = 'emailAlreadyInUse'
-        throw error
+        const emailAlreadyInUseError = new Error()
+        emailAlreadyInUseError.name = FormErrorName.EMAIL_ALREADY_IN_USE
+        throw emailAlreadyInUseError
       }
-      throw new Error()
     }
   }
 
@@ -30,11 +37,10 @@ export class AuthenticationService {
       await signInWithEmailAndPassword(this.auth, email, password);
     } catch (e: any) {
       if (e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found') {
-        const error = new Error('Wrong password')
-        error.name = 'wrongEmailOrPassword'
-        throw error
+        const wrongEmailOrPasswordError = new Error()
+        wrongEmailOrPasswordError.name = FormErrorName.WRONG_EMAIL_OR_PASSWORD as string
+        throw wrongEmailOrPasswordError
       }
-      throw new Error()
     }
   }
 
@@ -42,11 +48,15 @@ export class AuthenticationService {
     return this.auth.signOut()
   }
 
-  getPasswordMinLength() {
+  getUsernameMaxLength(): number {
+    return USERNAME_MAX_LENGTH
+  }
+
+  getPasswordMinLength(): number {
     return PASSWORD_MIN_LENGTH
   }
 
-  getPasswordMaxLength() {
+  getPasswordMaxLength(): number {
     return PASSWORD_MAX_LENGTH
   }
 }
