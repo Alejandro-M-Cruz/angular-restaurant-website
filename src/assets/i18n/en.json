@@ -31,7 +31,8 @@
     "complaintsAdmin": "Complaints",
     "menu": "MENÚ",
     "aboutUs": "SOBRE NOSOTROS",
-    "menuSectionsAdmin": "Modify the menu sections using the drop-down"
+    "menuSectionsAdmin": "Modify the menu sections using the drop-down",
+    "orderUser" : "Place your Order"
   },
   "navbarLinks": {
     "home": "Home",
@@ -63,6 +64,7 @@
   },
   "links":{
     "reservations": "MAKE YOUR RESERVATION HERE",
+    "order": "MAKE YOUR ORDER",
     "adminReservations": "RESERVATIONS",
     "complaints": "COMPLAINT FORM",
     "adminComplaints": "COMPLAINTS AND SUGGESTIONS",
@@ -128,6 +130,15 @@
   "tableEmptyRows": {
     "reservations": "You can create {{available}} more reservation/s",
     "adminReservations": "There are no reservations for the moment"
+  },
+  "orderForms": {
+    "optionLabel": "Select an option (Required)",
+    "homeDelivery" :"Home Delivery",
+    "pickUpOrder" : "Pick Up Order",
+    "directionLabelRequest" : "Enter your order address (Required)",
+    "askLabel" : "Do you want to taste again?",
+    "previousOrderButton" : "See previous orders",
+    "selectLabel": "See previous orders"
   },
   "formLabels": {
     "email": "Email",
