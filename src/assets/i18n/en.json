@@ -91,6 +91,7 @@
     "sendComplaint": "Send complaint"
   },
   "userInfo": {
+    "username": "Username",
     "email": "Email",
     "creationDate": "Account creation date",
     "lastLogInDate": "Last log-in date"
@@ -218,7 +219,9 @@
   },
   "formDialogTitles": {
     "updateMenuItem": "Updating menu item",
-    "addMenuItem": "Creating menu item"
+    "addMenuItem": "Creating menu item",
+    "updateMenuSection": "Updating menu section",
+    "addMenuSection": "Creating menu section"
   },
   "alerts": {
     "confirmButtonTexts": {
@@ -236,6 +239,10 @@
       "recentLoginRequired": {
         "title": "Error",
         "text": "Log in again to confirm your identity"
+      },
+      "tooManyLoginRequests": {
+        "title": "Error",
+        "text": "There have been too many log-in attempts in this account, try again later"
       }
     },
     "NOT_FOUND": "The requested resource is not available",

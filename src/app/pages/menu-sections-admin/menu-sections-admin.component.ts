@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {MenuService} from "../../services/menu.service";
 import {MenuSection} from "../../model/menu-section.model";
 import {FormBuilder, Validators} from "@angular/forms";
@@ -8,6 +8,9 @@ import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {TextInputDialogComponent} from "../../components/text-input-dialog/text-input-dialog.component";
 import {MenuEditService} from "../../services/admin/menu-edit.service";
+import {
+  MenuSectionFormDialogComponent
+} from "../../components/form-dialogs/menu-section-form-dialog/menu-section-form-dialog.component";
 
 @Component({
   selector: 'app-menu-sections-admin',
@@ -15,6 +18,7 @@ import {MenuEditService} from "../../services/admin/menu-edit.service";
   styleUrls: ['./menu-sections-admin.component.css']
 })
 export class MenuSectionsAdminComponent {
+  getActiveLanguage = (): string => this.translateService.getActiveLang()
   menuSections$ = this.menuService.getMenuSections()
   form = this.fb.group({
     menuSection: [null, Validators.required]
@@ -28,10 +32,6 @@ export class MenuSectionsAdminComponent {
     private readonly dialog: MatDialog,
     private readonly router: Router
   ) { }
-
-  getActiveLanguage() {
-    return this.translateService.getActiveLang()
-  }
 
   onDeleteSectionClicked() {
     this.openDeleteSectionConfirmationDialog(this.form.controls.menuSection.value!)
@@ -54,7 +54,7 @@ export class MenuSectionsAdminComponent {
   }
 
   async onSubmitEditSection() {
-    this.menuEditService.editingSection(this.form.controls.menuSection.value!)
+    this.menuEditService.sectionIsBeingEdited(this.form.controls.menuSection.value!)
     await this.router.navigate(['/menu-items-admin'])
   }
 
@@ -75,25 +75,11 @@ export class MenuSectionsAdminComponent {
   }
 
   private openNewSectionFormDialog() {
-    const dialogRef = this.dialog.open(TextInputDialogComponent, {
-      data: {
-        title: translate('confirmationTitles.addMenuSection'),
-        labels: [
-          translate('formLabels.menuSectionName.es'),
-          translate('formLabels.menuSectionName.en')
-        ],
-        form: this.fb.group({
-          es: ['', Validators.required],
-          en: ['', Validators.required]
-        }),
-        yes: translate('confirmationOptions.confirm'),
-        no: translate('confirmationOptions.cancel')
-      }
-    })
-    dialogRef.afterClosed().subscribe(result => {
-      if (!result) return
-      const menuSection = { name: result } as MenuSection
-      this.addSection(menuSection)
-    })
+    this.dialog
+      .open(MenuSectionFormDialogComponent, {data: {}})
+      .afterClosed()
+      .subscribe((result: MenuSection | null) => {
+        if (result) this.addSection(result)
+      })
   }
 }

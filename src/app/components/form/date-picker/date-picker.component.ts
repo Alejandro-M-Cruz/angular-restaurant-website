@@ -7,6 +7,6 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./date-picker.component.css']
 })
 export class DatePickerComponent {
-  @Input() availableDates!: Date[]
+  @Input() availableDates: Date[] | null = null
   @Input() control!: FormControl
 }

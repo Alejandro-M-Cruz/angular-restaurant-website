@@ -91,6 +91,7 @@
     "sendComplaint": "Enviar reclamación"
   },
   "userInfo": {
+    "username": "Nombre de usuario",
     "email": "Correo electrónico",
     "creationDate": "Fecha de creación de la cuenta",
     "lastLogInDate": "Último inicio de sesión"
@@ -219,7 +220,9 @@
   },
   "formDialogTitles": {
     "updateMenuItem": "Actualizando producto del menú",
-    "addMenuItem": "Añadiendo producto al menú"
+    "addMenuItem": "Añadiendo producto al menú",
+    "updateMenuSection": "Updating menu section",
+    "addMenuSection": "Creating menu section"
   },
   "alerts": {
     "confirmButtonTexts": {
@@ -237,6 +240,10 @@
       "recentLoginRequired": {
         "title": "Error",
         "text": "Inicie sesión nuevamente para confirmar su identidad"
+      },
+      "tooManyLoginRequests": {
+        "title": "Error",
+        "text": "Ha habido demasiados intentos de inicio de sesión en esta cuenta, inténtelo de nuevo más tarde"
       }
     },
     "NOT_FOUND": "El recurso solicitado no está disponible",

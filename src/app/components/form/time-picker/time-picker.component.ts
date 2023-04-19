@@ -7,6 +7,6 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./time-picker.component.css']
 })
 export class TimePickerComponent {
-  @Input() availableTimes: string[] = [];
+  @Input() availableTimes: string[] | null = null;
   @Input() control!: FormControl;
 }

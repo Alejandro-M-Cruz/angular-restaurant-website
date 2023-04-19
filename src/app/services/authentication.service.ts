@@ -5,7 +5,8 @@ import {
   signInWithEmailAndPassword,
   updateProfile
 } from '@angular/fire/auth';
-import {FormErrorName} from "../errors/form-error.errors";
+import {FormErrorCode} from "../errors/form-error.errors";
+import {AlertErrorCode} from "../errors/alert-error.errors";
 
 const USERNAME_MAX_LENGTH = 32
 const PASSWORD_MIN_LENGTH = 8
@@ -22,12 +23,16 @@ export class AuthenticationService {
       const result = await createUserWithEmailAndPassword(this.auth, email, password)
       await updateProfile(result.user, { displayName: username })
     } catch (e: any) {
-      console.error(e)
-      if (e.code === 'auth/email-already-in-use') {
-        const emailAlreadyInUseError = new Error()
-        emailAlreadyInUseError.name = FormErrorName.EMAIL_ALREADY_IN_USE
-        throw emailAlreadyInUseError
+      const error = new Error()
+      switch(e.code) {
+        case 'auth/email-already-in-use':
+          error.name = FormErrorCode.EMAIL_ALREADY_IN_USE
+          break
+        default:
+          error.name = AlertErrorCode.UNKNOWN
+          break
       }
+      throw error
     }
   }
 
@@ -35,11 +40,22 @@ export class AuthenticationService {
     try {
       await signInWithEmailAndPassword(this.auth, email, password);
     } catch (e: any) {
-      if (e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found') {
-        const wrongEmailOrPasswordError = new Error()
-        wrongEmailOrPasswordError.name = FormErrorName.WRONG_EMAIL_OR_PASSWORD as string
-        throw wrongEmailOrPasswordError
+      const error = new Error()
+      switch(e.code) {
+        case 'auth/wrong-password':
+          error.name = FormErrorCode.WRONG_EMAIL_OR_PASSWORD
+          break
+        case 'auth/user-not-found':
+          error.name = FormErrorCode.WRONG_EMAIL_OR_PASSWORD
+          break
+        case 'auth/too-many-requests':
+          error.name = AlertErrorCode.TOO_MANY_LOGIN_REQUESTS
+          break
+        default:
+          error.name = AlertErrorCode.UNKNOWN
+          break
       }
+      throw error
     }
   }
 

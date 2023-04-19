@@ -1,4 +1,4 @@
-export enum FormErrorName {
+export enum FormErrorCode {
   INVALID_EMAIL = 'formErrors.email',
   EMAIL_ALREADY_IN_USE = 'formErrors.emailAlreadyInUse',
   PASSWORD_TOO_SHORT = 'formErrors.passwordShort',

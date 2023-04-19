@@ -9,6 +9,9 @@ import {MenuSection} from "../../model/menu-section.model";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 import {MenuItemFormDialogComponent} from "./components/menu-item-form-dialog/menu-item-form-dialog.component";
+import {
+  MenuSectionFormDialogComponent
+} from "../../components/form-dialogs/menu-section-form-dialog/menu-section-form-dialog.component";
 
 @Component({
   selector: 'app-menu-items-admin',
@@ -16,9 +19,9 @@ import {MenuItemFormDialogComponent} from "./components/menu-item-form-dialog/me
   styleUrls: ['./menu-items-admin.component.css']
 })
 export class MenuItemsAdminComponent {
+  sectionBeingEdited: MenuSection
+  sectionItems$: Observable<MenuItem[]>
   availableLanguages = this.translateService.getAvailableLangs() as string[]
-  sectionBeingEdited!: MenuSection
-  sectionItems$!: Observable<MenuItem[]>
 
   constructor(
     private readonly menuEditService: MenuEditService,
@@ -27,11 +30,12 @@ export class MenuItemsAdminComponent {
     private readonly dialog: MatDialog,
     private readonly translateService: TranslocoService
   ) {
-    if (!this.menuEditService.editedSection) {
+    const section = this.menuEditService.getSectionBeingEdited()
+    if (!section) {
       this.router.navigate(['/menu-sections-admin'])
       return
     }
-    this.sectionBeingEdited = this.menuEditService.editedSection
+    this.sectionBeingEdited = section
     this.sectionItems$ = this.menuService.getMenuItemsBySectionId(this.sectionBeingEdited.id!)
   }
 
@@ -80,7 +84,18 @@ export class MenuItemsAdminComponent {
     })
   }
 
-  openSectionEditFormDialog() {
+  async updateSection(id: string, menuSection: MenuSection) {
+    await this.menuEditService.updateSection(id, menuSection)
+  }
 
+  openSectionEditFormDialog() {
+    this.dialog.open(MenuSectionFormDialogComponent, {
+      data: { menuSection: this.sectionBeingEdited }
+    }).afterClosed().subscribe(async (result: MenuSection | null) => {
+      if (result) {
+        await this.updateSection(this.sectionBeingEdited.id!, result)
+        this.sectionBeingEdited = result
+      }
+    })
   }
 }
