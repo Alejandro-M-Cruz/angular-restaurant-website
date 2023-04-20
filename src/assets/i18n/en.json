@@ -88,7 +88,8 @@
     "addMenuItem": "Add an item to {{section}}",
     "undoChanges": "Undo changes",
     "saveChanges": "Save changes",
-    "sendComplaint": "Send complaint"
+    "sendComplaint": "Send complaint",
+    "deleteCart": "Delete cart"
   },
   "userInfo": {
     "username": "Username",

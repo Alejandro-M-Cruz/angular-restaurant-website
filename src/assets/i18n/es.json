@@ -88,7 +88,8 @@
     "addMenuItem": "Añadir producto a {{section}}",
     "undoChanges": "Deshacer cambios",
     "saveChanges": "Guardar cambios",
-    "sendComplaint": "Enviar reclamación"
+    "sendComplaint": "Enviar reclamación",
+    "deleteCart" : "Delete cart"
   },
   "userInfo": {
     "username": "Nombre de usuario",
