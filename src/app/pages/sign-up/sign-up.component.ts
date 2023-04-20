@@ -3,9 +3,9 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {passwordMatchingValidator} from "../../validators/password-matching.validator";
 import {Router} from "@angular/router";
-import {FormErrorName} from "../../errors/form-error.errors";
+import {FormErrorCode} from "../../errors/form-error.errors";
 import {AlertsService} from "../../services/alerts.service";
-import {ActionErrorName} from "../../errors/action-error.errors";
+import {AlertErrorCode} from "../../errors/alert-error.errors";
 
 @Component({
   selector: 'app-sign-up',
@@ -46,11 +46,9 @@ export class SignUpComponent {
       await this.router.navigate(['/home'])
     } catch (e: any) {
       console.error(e)
-      if (e.name === FormErrorName.EMAIL_ALREADY_IN_USE) {
-        this.form.controls.email.setErrors({emailAlreadyInUse: true})
-        return
-      }
-      await this.alertsService.showErrorAlert(ActionErrorName.UNKNOWN)
+      if (e.name === FormErrorCode.EMAIL_ALREADY_IN_USE)
+        return this.form.controls.email.setErrors({emailAlreadyInUse: true})
+      await this.alertsService.showErrorAlert(e.name)
     }
   }
 

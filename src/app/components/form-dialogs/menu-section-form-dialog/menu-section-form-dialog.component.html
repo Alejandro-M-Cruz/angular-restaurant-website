@@ -1,0 +1,23 @@
+<ng-container *transloco="let t">
+  <h1 mat-dialog-title>
+    {{t('formDialogTitles.' + (data.menuSection ? 'updateMenuSection' : 'addMenuSection'))}}
+  </h1>
+  <form [formGroup]="form" class="flex-column">
+    <div mat-dialog-content>
+      <div formGroupName="name">
+        <mat-form-field appearance="outline" *ngFor="let lang of availableLanguages" class="w-100">
+          <mat-label>{{t('menuSection.name.' + lang)}}</mat-label>
+          <input matInput type="text" [formControlName]="lang">
+        </mat-form-field>
+      </div>
+    </div>
+    <div mat-dialog-actions class="justify-content-around">
+      <button mat-raised-button [mat-dialog-close]="null" type="reset">
+        {{t('confirmationOptions.cancel')}}
+      </button>
+      <button mat-raised-button [disabled]="form.invalid" [mat-dialog-close]="form.value" type="submit">
+        {{t('confirmationOptions.confirm')}}
+      </button>
+    </div>
+  </form>
+</ng-container>

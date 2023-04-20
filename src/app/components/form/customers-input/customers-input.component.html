@@ -1,7 +1,6 @@
 <mat-form-field appearance="outline" *transloco="let t">
   <mat-label>{{t('formLabels.customers')}}</mat-label>
   <input matInput #customers [formControl]="control" type="number">
-  <mat-hint align="start">Max {{maxCustomers}}</mat-hint>
-  <mat-hint align="end">{{customers.value ? customers.value : 0}} / {{maxCustomers}}</mat-hint>
+  <mat-hint *ngIf="control.enabled" align="end">{{customers.value}} / {{maxCustomers}}</mat-hint>
   <mat-error *ngIf="control.invalid">{{t('formErrors.customers')}}</mat-error>
 </mat-form-field>

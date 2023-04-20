@@ -14,7 +14,7 @@
       [linkText]="t('notSignedUpLink')"
     ></app-already-signed-up></div>
     <div class="buttons-container">
-      <button class="form-button back-button" type="reset" onclick="window.location.back()">
+      <button class="form-button back-button" type="reset" onclick="window.history.back()">
         {{t('buttons.back')}}
       </button>
       <button class="form-button confirm-button" type="submit" [disabled]="form.invalid">

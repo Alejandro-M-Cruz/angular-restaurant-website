@@ -8,7 +8,7 @@ import {MenuImagesService} from "../../../../services/menu-images.service";
 import {MenuService} from "../../../../services/menu.service";
 import {MenuSection} from "../../../../model/menu-section.model";
 import {AlertsService} from "../../../../services/alerts.service";
-import {ActionErrorName} from "../../../../errors/action-error.errors";
+import {AlertErrorCode} from "../../../../errors/alert-error.errors";
 
 export interface MenuItemFormDialogData {
   menuSection: MenuSection
@@ -27,11 +27,11 @@ export class MenuItemFormDialogComponent {
   form = this.fb.group({
     name: this.multiLanguageService.getMultiLanguagePropertyFormGroup(this.data.menuItem, 'name'),
     ingredients: this.multiLanguageService.getMultiLanguagePropertyFormGroup(this.data.menuItem, 'ingredients'),
-    price: [this.data.menuItem?.price, Validators.compose([
+    price: [this.data.menuItem?.price, [
       Validators.required,
       Validators.min(0),
       Validators.max(9999)
-    ])],
+    ]],
     sectionId: [this.data.menuItem ? this.data.menuItem.sectionId : this.data.menuSection.id, Validators.required]
   })
   readonly initialImageName: string | undefined = this.getInitialImageName()
@@ -83,7 +83,7 @@ export class MenuItemFormDialogComponent {
       return this.menuImagesService.uploadImage(imageFile)
     } catch (e: any) {
       console.error(e)
-      await this.alertsService.showErrorAlert(ActionErrorName.IMAGE_UPLOAD)
+      await this.alertsService.showErrorAlert(AlertErrorCode.IMAGE_UPLOAD)
       return null
     }
   }

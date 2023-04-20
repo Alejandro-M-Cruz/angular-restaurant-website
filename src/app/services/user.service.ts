@@ -4,6 +4,7 @@ import {UserInfo} from "../model/user-info.model";
 import {Firestore} from "@angular/fire/firestore";
 import {BehaviorSubject, first, map, Observable} from "rxjs";
 import {ReservationsService} from "./reservations.service";
+import {AlertErrorCode} from "../errors/alert-error.errors";
 
 @Injectable({
   providedIn: 'root'
@@ -32,21 +33,25 @@ export class UserService {
     return this.authState$.pipe(map(user => this.extractUserInfo(user)))
   }
 
-  private deleteUserReservations() {
-    this.reservationsService.getUserCurrentReservations().pipe(first()).subscribe(reservations => {
-      reservations.forEach(async reservation => {
-        await this.reservationsService.deleteReservation(reservation.id!)
+  private deleteUserAndTheirReservations() {
+    this.reservationsService.getUserCurrentReservations().pipe(first()).subscribe(async reservations => {
+      reservations.forEach(reservation => {
+        this.reservationsService.deleteReservation(reservation.id!)
       })
+      await this.auth.currentUser!.delete()
     })
   }
 
   async deleteUser() {
-    if (this.auth.currentUser === null) return
+    if (!this.auth.currentUser) return
     try {
-      await this.auth.currentUser.delete()
-      this.deleteUserReservations()
+      this.deleteUserAndTheirReservations()
     } catch (e: any) {
-      if (e.code === 'auth/requires-recent-login') throw Error('redirect-to-login')
+      if (e.code === 'auth/requires-recent-login') {
+        const recentLoginRequiredError = new Error()
+        recentLoginRequiredError.name = AlertErrorCode.RECENT_LOGIN_REQUIRED
+        throw recentLoginRequiredError
+      }
     }
   }
 }

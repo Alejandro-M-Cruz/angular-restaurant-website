@@ -1,10 +1,15 @@
-<button id="slide-image__left-arrow"> <img src="../../../assets/images/left-arrow.png" alt="left arrow"></button>
-    <div class="slide-image-thing" *transloco="let t">
-      <div class="dark-filter">
-        <div class="slide-image-thing-text">
-          <h3 class = "slide-image-thing__center-text"> {{t('slideShowTitle')}} </h3>
-          <p class = "slide-image-thing__center-text-p"> {{t('slideShowAddress')}} </p>
-        </div>
-      </div>
+<ngb-carousel *transloco="let t">
+    <h2> </h2>
+  <ng-template ngbSlide *ngFor="let image of images">
+    <div class="picsum-img-wrapper">
+      <img [src] = "image" alt="Angular Carousel" >
     </div>
-<button id="slide-image__right-arrow"> <img src="../../../assets/images/right_arrow.png" alt="right arrow"> </button>
+    <div class="carousel-welcome-user">
+      <h3> {{t('welcomeMessage')}}  {{username}} </h3>
+    </div>
+    <div class="carousel-caption">
+      <h3> {{t('slideShowTitle')}} </h3>
+      <p> {{t('slideShowAddress')}} </p>
+    </div>
+  </ng-template>
+</ngb-carousel>

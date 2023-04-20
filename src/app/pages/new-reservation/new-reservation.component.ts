@@ -1,30 +1,26 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ReservationsService} from "../../services/reservations.service";
 import {Reservation} from "../../model/reservation.model";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AlertsService} from "../../services/alerts.service";
-import {ActionErrorName} from "../../errors/action-error.errors";
+import {AlertErrorCode} from "../../errors/alert-error.errors";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-new-reservation',
   templateUrl: './new-reservation.component.html',
   styleUrls: ['./new-reservation.component.css']
 })
-export class NewReservationComponent implements OnInit {
-  reservations: Reservation[] = []
-  availableDates: Date[] = []
-  availableTimes: string[] = []
-  availableSeats = this.reservationsService.getMaxCustomers()
+export class NewReservationComponent implements OnInit, OnDestroy {
+  availableDates$: Observable<Date[]> = this.reservationsService.getAvailableDatesObservable()
+  availableTimesForSelectedDate$?: Observable<string[]>
+  availableSeatsForSelectedDateAndTime$?: Observable<number>
+  availableSeatsSubscription?: Subscription
   form = this.fb.group({
     date: new FormControl<number | null>(null, Validators.required),
     time: ['', Validators.required],
-    customers: [1, Validators.compose([
-      Validators.required,
-      Validators.min(1),
-      Validators.max(this.availableSeats),
-      Validators.maxLength(this.availableSeats.toString().length)
-    ])]
+    customers: [1]
   })
 
   constructor(
@@ -35,10 +31,20 @@ export class NewReservationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.disableInputs()
-    this.reservationsService.getCurrentReservations().subscribe(reservations => {
-      this.onReservationsChanged(reservations)
-    })
+    this.disableTimeAndCustomersInputs()
+    this.setDateAndTimeChangeObservers()
+  }
+
+  private getCustomersInputValidators(maxCustomers: number) {
+    return [
+      Validators.required,
+      Validators.min(1),
+      Validators.max(maxCustomers),
+      Validators.maxLength(maxCustomers.toString().length)
+    ]
+  }
+
+  private setDateAndTimeChangeObservers() {
     this.form.controls.date.valueChanges.subscribe(date => {
       this.onDateChanged(date === null ? null : new Date(date))
     })
@@ -47,44 +53,32 @@ export class NewReservationComponent implements OnInit {
     })
   }
 
-  onReservationsChanged(reservations: Reservation[]) {
-    this.reservations = reservations
-    this.availableDates = this.reservationsService.getAvailableDates()
-  }
-
-  onDateChanged(date: Date | null) {
-    if (date === null) {
-      this.disableInputs()
-      return
-    }
-    this.availableTimes = this.reservationsService.getAvailableTimes(date!)
-    if (this.availableTimes.length === 0) {
-      this.disableInputs()
-      return
-    }
-    this.enableInputs()
-    if (!this.availableTimes.includes(this.form.controls.time.value!))
-      this.form.controls.time.setValue(this.availableTimes[0])
-  }
-
-  onTimeChanged(time: string | null) {
-    const max = this.reservationsService.getAvailableSeats(
-      new Date(this.form.controls.date.value!),
-      time!
-    )
-    if (max <= 0) return
-    this.form.controls.customers.removeValidators([Validators.max(this.availableSeats)])
-    this.form.controls.customers.addValidators([Validators.max(this.availableSeats = max)])
-  }
-
-  private disableInputs() {
+  private disableTimeAndCustomersInputs() {
     this.form.controls.time.disable()
     this.form.controls.customers.disable()
   }
 
-  private enableInputs() {
+  private enableTimeAndCustomersInputs() {
     this.form.controls.time.enable()
     this.form.controls.customers.enable()
+  }
+
+  private onDateChanged(date: Date | null) {
+    if (date === null)
+      return this.disableTimeAndCustomersInputs()
+    this.availableTimesForSelectedDate$ = this.reservationsService.getAvailableTimesObservable(date)
+    this.enableTimeAndCustomersInputs()
+  }
+
+  private onTimeChanged(time: string | null) {
+    this.availableSeatsSubscription?.unsubscribe()
+    this.availableSeatsForSelectedDateAndTime$ = this.reservationsService
+      .getAvailableSeatsObservable(new Date(this.form.controls.date.value!),time!)
+    this.availableSeatsSubscription = this.availableSeatsForSelectedDateAndTime$
+      .subscribe(availableSeats => {
+        this.form.controls.customers.clearValidators()
+        this.form.controls.customers.setValidators(this.getCustomersInputValidators(availableSeats))
+      })
   }
 
   async onSubmit() {
@@ -93,8 +87,11 @@ export class NewReservationComponent implements OnInit {
       await this.router.navigate(['/user-reservations'])
     } catch (e) {
       console.error(e)
-      await this.alertsService.showErrorAlert(ActionErrorName.UNKNOWN)
+      await this.alertsService.showErrorAlert(AlertErrorCode.UNKNOWN)
     }
   }
 
+  ngOnDestroy() {
+
+  }
 }

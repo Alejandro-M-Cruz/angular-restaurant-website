@@ -35,6 +35,7 @@ import { PasswordInputComponent } from './components/form/password-input/passwor
 import { AlreadySignedUpLinkComponent } from './components/already-signed-up/already-signed-up-link.component';
 import { MenuComponent } from './pages/home/components/menu/menu.component';
 import { UserReservationsComponent } from './pages/user-reservations/user-reservations.component';
+import { UserOrderComponent } from './pages/user-order/user-order.component';
 import {MatTableModule} from "@angular/material/table";
 import { ReservationsTableComponent } from './pages/user-reservations/reservations-table/reservations-table.component';
 
@@ -64,6 +65,7 @@ import { PasswordConfirmationComponent } from './components/form/password-confir
 import { ImageFileInputComponent } from './components/form/image-file-input/image-file-input.component';
 import { UsernameInputComponent } from './components/form/username-input/username-input.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { MenuSectionFormDialogComponent } from './components/form-dialogs/menu-section-form-dialog/menu-section-form-dialog.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -82,6 +84,7 @@ registerLocaleData(es);
     PasswordInputComponent,
     AlreadySignedUpLinkComponent,
     UserReservationsComponent,
+    UserOrderComponent,
     ReservationsTableComponent,
     MenuComponent,
     ConfirmationDialogComponent,
@@ -102,6 +105,7 @@ registerLocaleData(es);
     ImageFileInputComponent,
     UsernameInputComponent,
     CarouselComponent,
+    MenuSectionFormDialogComponent,
   ],
     imports: [
         BrowserModule,

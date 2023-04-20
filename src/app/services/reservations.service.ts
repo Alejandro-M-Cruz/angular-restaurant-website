@@ -74,35 +74,49 @@ export class ReservationsService {
     return deleteDoc(doc(this.firestore, 'reservations', id))
   }
 
-  getAvailableDates() {
+  private getAvailableDates(reservations: Reservation[]): Date[] {
     const availableDates: Date[] = []
     const today = new Date()
     today.setHours(0, 0, 0, 0)
     const date = new Date(today.getTime() + 1000 * 60 * 60 * 24 * MIN_DAYS_BEFOREHAND)
     const maxTime = today.getTime() + 1000 * 60 * 60 * 24 * MAX_DAYS_BEFOREHAND
     while (date.getTime() <= maxTime) {
-      if (this.getAvailableTimes(date).length > 0) availableDates.push(new Date(date.getTime()))
+      if (this.getAvailableTimes(reservations, date).length > 0)
+        availableDates.push(new Date(date.getTime()))
       date.setTime(date.getTime() + 1000 * 60 * 60 * 24)
     }
     return availableDates
   }
 
-  getAvailableTimes(date: Date) {
+  getAvailableDatesObservable(): Observable<Date[]> {
+    return this.currentReservations$.pipe(map(reservations =>
+      this.getAvailableDates(reservations)))
+  }
+
+  private getAvailableTimes(reservations: Reservation[], date: Date): string[] {
     const availableTimes = [...RESERVATION_TIMES]
     availableTimes.forEach(time => {
-      if (this.getAvailableSeats(date, time) <= 0)
+      if (this.getAvailableSeats(reservations, date, time) <= 0)
         availableTimes.splice(availableTimes.indexOf(time), 1)
     })
     return availableTimes
   }
 
-  getAvailableSeats(date: Date, time: string) {
+  getAvailableTimesObservable(date: Date): Observable<string[]> {
+    return this.currentReservations$.pipe(map(reservations =>
+      this.getAvailableTimes(reservations, date)))
+  }
+
+  private getAvailableSeats(reservations: Reservation[], date: Date, time: string): number {
     let totalCustomers = 0
-    this.currentReservations$.pipe(first()).subscribe(reservations => {
-      reservations.filter(r => r.date === date.getTime() && r.time === time)
-        .forEach(reservation => totalCustomers += reservation.customers)
-    })
+    reservations.filter(r => r.date === date.getTime() && r.time === time)
+      .forEach(reservation => totalCustomers += reservation.customers)
     return MAX_CUSTOMERS - totalCustomers
+  }
+
+  getAvailableSeatsObservable(date: Date, time: string): Observable<number> {
+    return this.currentReservations$.pipe(map(reservations =>
+      this.getAvailableSeats(reservations, date, time)))
   }
 
   getMaxCustomers() {

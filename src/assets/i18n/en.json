@@ -3,9 +3,9 @@
   "dateFormat": "MM/dd/yyyy",
   "oppositeFlag": "/assets/images/languages/spanish.svg",
   "welcomeMessage": "Welcome to La Nostra Casa, {{user}}",
-  "slideShowTitle": "Restaurante de auténtica comida italiana",
-  "slideShowAddress": "En calle Triana / 30, Las Palmas de Gran Canaria",
-  "aboutUsText": "No somos tu <b> pizza de una noche </b>. <br>Queremos calidad, aunque te la comas en el coche. <br>No es purisimo, <b>no inventamos las pizzas</b>.<br>Somos los guardianes de su verdadera esencia. <br><br>Amantes del <b>BACK TO PIZZA</b>. <br>La que te deja lleno, <b>la que nutre</b>. <br>La textura de la pizza, la suavidad del queso... <br><b>Sentimos cada Bocado como un primer BESO</b> <br><br>La que viene con su masa fina e ingredientes sabrosos...<br><b> De la que no te arrepientes </b>. <br><b>LA QUE NOS HACE SENTIR ORGULLOSOS</b>",
+  "slideShowTitle": "Authentic Italian restaurant",
+  "slideShowAddress": "Located in calle Triana / 30, Las Palmas de Gran Canaria",
+  "aboutUsText": "We are not your <b> one night pizza </b>. <br>We want quality, althought you eat that pizza in your car <br>It is not pure, <b>we didn't invent the pizzas </b>.<br>We are the guardians of their true essence <br><br>Lovers of <b>BACK TO PIZZA</b>. <br>That one that leaves you full, <b>That one that keeps yourself up</b>. <br>The pizza's texture and the cheese quality <br><b> We feel every bite like a kiss in your head </b> <br><br>That one that brings with fine texture...<br><b> That one that you don't gonna regret </b>. <br><b> THAT ONE THAT KEEPS US PROUD </b>",
   "tabTitles": {
     "home": "La Nostra Casa",
     "login": "Log in",
@@ -31,7 +31,8 @@
     "complaintsAdmin": "Complaints",
     "menu": "MENU",
     "aboutUs": "ABOUT US",
-    "menuSectionsAdmin": "Modify the menu sections using the drop-down"
+    "menuSectionsAdmin": "Modify the menu sections using the drop-down",
+    "orderUser": "Reserve your order"
   },
   "navbarLinks": {
     "home": "Home",
@@ -49,7 +50,7 @@
     "contactPhoneNumber": "Phone number: +34123456789",
     "email": "Email: contact@lanostracasa.com",
     "address": "Triana St. / 30, Las Palmas de Gran Canaria",
-    "copyright": "La Nostra Casa&#8482; all rights reserved",
+    "copyright": "La Nostra Casa™; all rights reserved",
     "timetableTitle": "Timetable",
     "dayLabels": [
         "Mon",
@@ -63,6 +64,7 @@
   },
   "links":{
     "reservations": "MAKE YOUR RESERVATION HERE",
+    "order": "MAKE YOUR ORDER",
     "adminReservations": "RESERVATIONS",
     "complaints": "COMPLAINT FORM",
     "adminComplaints": "COMPLAINTS AND SUGGESTIONS",
@@ -89,6 +91,7 @@
     "sendComplaint": "Send complaint"
   },
   "userInfo": {
+    "username": "Username",
     "email": "Email",
     "creationDate": "Account creation date",
     "lastLogInDate": "Last log-in date"
@@ -128,6 +131,15 @@
   "tableEmptyRows": {
     "reservations": "You can create {{available}} more reservation/s",
     "adminReservations": "There are no reservations for the moment"
+  },
+  "orderForms": {
+    "optionLabel": "Select an option (Required)",
+    "homeDelivery" :"Home Delivery",
+    "pickUpOrder" : "Pick Up Order",
+    "directionLabelRequest" : "Enter your order address (Required)",
+    "askLabel" : "Do you want to taste again?",
+    "previousOrderButton" : "See previous orders",
+    "selectLabel": "See previous orders"
   },
   "formLabels": {
     "username": "Username",
@@ -207,7 +219,9 @@
   },
   "formDialogTitles": {
     "updateMenuItem": "Updating menu item",
-    "addMenuItem": "Creating menu item"
+    "addMenuItem": "Creating menu item",
+    "updateMenuSection": "Updating menu section",
+    "addMenuSection": "Creating menu section"
   },
   "alerts": {
     "confirmButtonTexts": {
@@ -221,6 +235,14 @@
       "imageUpload": {
         "title": "Error",
         "text": "There has been an error uploading the image"
+      },
+      "recentLoginRequired": {
+        "title": "Error",
+        "text": "Log in again to confirm your identity"
+      },
+      "tooManyLoginRequests": {
+        "title": "Error",
+        "text": "There have been too many log-in attempts in this account, try again later"
       }
     },
     "NOT_FOUND": "The requested resource is not available",

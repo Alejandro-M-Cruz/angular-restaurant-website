@@ -7,6 +7,7 @@ import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/
 import {translate} from "@ngneat/transloco";
 import {MatDialog} from "@angular/material/dialog";
 import {Subscription} from "rxjs";
+import {AlertErrorCode} from "../../errors/alert-error.errors";
 
 @Component({
   selector: 'app-my-account',
@@ -48,8 +49,8 @@ export class MyAccountComponent implements OnInit, OnDestroy {
       await this.userService.deleteUser()
       await this.router.navigate(['/log-in'])
     } catch (e: any) {
-      console.error(e.name + ': ' + e.message)
-      if (e.message === 'redirect-to-login') {
+      console.error(e)
+      if (e.name === AlertErrorCode.RECENT_LOGIN_REQUIRED) {
         this.openLogInRedirectConfirmation()
       }
     }
