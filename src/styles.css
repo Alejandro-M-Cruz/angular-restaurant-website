@@ -734,8 +734,8 @@ app-sign-up form {
 
 /* -------------BOTH------------- */
 
-app-email-input,
-app-password-input {
+app-username-input, app-email-input,
+app-password-input, app-password-confirmation {
   margin-bottom: 11px;
   margin-left: 10%;
 }
