@@ -15,7 +15,8 @@ export class NavbarLinksService {
     {name: 'home', route: '/home'},
     {name: 'menu', route: '/home/menu'},
     {name: 'reservations', route: '/user-reservations'},
-    {name: 'aboutUs', route: '/home/about-us'}
+    {name: 'aboutUs', route: '/home/about-us'},
+    {name: 'cart', route: '/cart'}
   ]
 
   adminLinks: Link[] = [
