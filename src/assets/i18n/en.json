@@ -120,7 +120,8 @@
     "date": "Date",
     "time": "Time",
     "customers": "Customers",
-    "email": "User email"
+    "email": "User email",
+    "noUser": "This user has deleted their account"
   },
   "reservationsPaginator": {
     "itemsPerPageLabel": "Reservations per page",

@@ -120,7 +120,8 @@
     "date": "Fecha",
     "time": "Hora",
     "customers": "Comensales",
-    "email": "Correo electrónico del usuario"
+    "email": "Correo electrónico del usuario",
+    "noUser": "Este usuario ha eliminado su cuenta"
   },
   "reservationsPaginator": {
     "itemsPerPageLabel": "Reservas por página",

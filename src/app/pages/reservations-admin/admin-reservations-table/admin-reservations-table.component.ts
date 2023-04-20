@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Reservation} from "../../../model/reservation.model";
 import {PageEvent} from "@angular/material/paginator";
 import {UserInfo} from "../../../model/user-info.model";
+import {translate} from "@ngneat/transloco";
 
 @Component({
   selector: 'app-admin-reservations-table',
@@ -27,6 +28,6 @@ export class AdminReservationsTableComponent {
   }
 
   getUserEmail(uid: string) {
-    return this.users?.find(user => user.uid === uid)?.email ?? '...'
+    return this.users?.find(user => user.uid === uid)?.email ?? translate('reservationsTable.noUser')
   }
 }
