@@ -680,7 +680,7 @@ hr{
   padding: 0.3rem;
   text-align: center;
   text-decoration: none;
-  margin: 1rem 1rem 1rem;
+  margin: 1.2rem 0.3rem 0;
 }
 
 .management-button:hover {
@@ -734,8 +734,8 @@ app-sign-up form {
 
 /* -------------BOTH------------- */
 
-app-email-input,
-app-password-input {
+app-username-input, app-email-input,
+app-password-input, app-password-confirmation {
   margin-bottom: 11px;
   margin-left: 10%;
 }
@@ -753,12 +753,20 @@ mat-error {
   margin-bottom: 10px;
   font-size: 8px;
 }
+/* -------------NEW RESERVATION------------- */
 
 app-new-reservation form {
   display: grid;
   justify-items: left;
   width: 100%;
   justify-content: center;
+}
+
+/* -------------COMPLAINTS------------- */
+
+app-complaints form {
+  display: grid;
+  margin: 0 20% 0 20%;
 }
 
 /* -------------LINK TO LOGIN / SIGNUP------------- */

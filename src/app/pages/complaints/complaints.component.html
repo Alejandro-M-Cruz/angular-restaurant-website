@@ -11,11 +11,13 @@
         {{t('formErrors.complaintLong', {maxLength: complaintMaxLength})}}
       </mat-error>
     </mat-form-field>
-    <button class="management-button back-button" type="reset" onclick="window.history.back()">
-      {{t('buttons.back')}}
-    </button>
-    <button class="management-button confirm-button" type="submit" [disabled]="form.invalid">
-      {{t('buttons.sendComplaint')}}
-    </button>
+    <div class="buttons-container">
+      <button class="form-button back-button" type="reset" onclick="window.history.back()">
+        {{t('buttons.back')}}
+      </button>
+      <button class="form-button confirm-button" type="submit" [disabled]="form.invalid">
+        {{t('buttons.sendComplaint')}}
+      </button>
+    </div>
   </form>
 </section>
