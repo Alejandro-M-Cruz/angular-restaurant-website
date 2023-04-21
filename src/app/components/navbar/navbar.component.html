@@ -11,6 +11,7 @@
         <a *ngFor="let link of links$ | async" [routerLink]="link.route">{{t('navbarLinks.' + link.name)}}</a>
         <li *ngIf="showUserIcon$ | async; else logInLink" class="navbar-list__user-icon">
           <a class="user-icon" routerLink="my-account"><img src="/assets/images/user-icon.png" alt="User" width="50"></a>
+
         </li>
         <ng-template #logInLink>
           <a routerLink="log-in">{{t('navbarLinks.login')}}</a>

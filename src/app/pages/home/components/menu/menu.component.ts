@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private readonly menuService: MenuService, 
+    private readonly menuService: MenuService,
     private readonly translationService: TranslocoService,
     private activeRoute:ActivatedRoute
   ) { }
@@ -56,13 +56,13 @@ export class MenuComponent implements OnInit {
     return this.translationService.getActiveLang()
   }
 
-  sendMessage(item:MenuItem) {
-    this.messageEvent.emit(item);
-  }
-  
   addToCart(item:MenuItem){
     this.cartService.addToCart(item);
-    window.alert('Your product has been added to the cart!');
+    //window.alert('Your product has been added to the cart!');
+  }
+
+  deleteToCart(item:MenuItem){
+    this.cartService.deleteToCart(item)
   }
 
 }

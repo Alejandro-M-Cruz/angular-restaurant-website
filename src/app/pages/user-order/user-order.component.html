@@ -1,8 +1,34 @@
 <ng-container *transloco="let t">
     <h2 class="page-title">{{t('titles.orderUser')}}</h2>
-    <p>{{t('orderForms.optionLabel')}}</p>
-    
-    <app-menu (messageEvent)="receiveMessage($event)"></app-menu>
+    <div>
+      <h2>{{t('orderForms.optionLabel')}}</h2>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">{{t('orderForms.homeDelivery')}}</mat-radio-button>
+        <mat-radio-button value="2">{{t('orderForms.pickUpOrder')}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div>
+      <h2>
+        {{t('orderForms.directionLabelRequest')}}
+      </h2>
+      <input type="text">
+    </div>
+
+    <div>
+      <h2>
+        {{t('orderForms.askLabel')}}
+      </h2>
+      <button>{{t('orderForms.previousOrderButton')}}</button>
+    </div>
+
+    <app-menu></app-menu>
+    <app-cart></app-cart>
+
+    <div>
+      <button class="management-button back-button">{{t('buttons.back')}}</button>
+      <button class="management-button cancel-button" (click)="clearCart()">{{t('buttons.deleteCart')}}</button>
+    </div>
 
 </ng-container>
 
