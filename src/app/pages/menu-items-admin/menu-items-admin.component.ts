@@ -8,7 +8,10 @@ import {MenuItem} from "../../model/menu-item.model";
 import {MenuSection} from "../../model/menu-section.model";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
-import {MenuItemFormDialogComponent} from "./components/menu-item-form-dialog/menu-item-form-dialog.component";
+import {
+  MenuItemFormDialogComponent,
+  MenuItemFormDialogData
+} from "./components/menu-item-form-dialog/menu-item-form-dialog.component";
 import {
   MenuSectionFormDialogComponent
 } from "../../components/form-dialogs/menu-section-form-dialog/menu-section-form-dialog.component";
@@ -74,7 +77,7 @@ export class MenuItemsAdminComponent {
 
   openItemFormDialog(item?: MenuItem) {
     this.dialog.open(MenuItemFormDialogComponent, {
-      data: { menuItem: item, menuSection: this.sectionBeingEdited }
+      data: { menuItemBeingUpdated: item, menuSectionBeingUpdated: this.sectionBeingEdited } as MenuItemFormDialogData
     }).afterClosed().subscribe(async result => {
       if (result) {
         item ?

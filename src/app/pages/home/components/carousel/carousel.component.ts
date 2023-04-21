@@ -7,8 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 
 export class CarouselComponent {
-  @Input() welcomeMessage: string;
-  @Input() username: string;
+  @Input() username?: string;
 
   images: string[] = [
     "../../assets/images/carousel/restaurante-1.jpg",

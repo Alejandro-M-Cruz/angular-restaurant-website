@@ -11,8 +11,8 @@ import {AlertsService} from "../../../../services/alerts.service";
 import {AlertErrorCode} from "../../../../errors/alert-error.errors";
 
 export interface MenuItemFormDialogData {
-  menuSection: MenuSection
-  menuItem?: MenuItem
+  menuSectionBeingUpdated: MenuSection
+  menuItemBeingUpdated?: MenuItem
 }
 
 @Component({
@@ -25,19 +25,19 @@ export class MenuItemFormDialogComponent {
   getActiveLanguage = (): string => this.translateService.getActiveLang()
   menuSections$ = this.menuService.getMenuSections()
   form = this.fb.group({
-    name: this.multiLanguageService.getMultiLanguagePropertyFormGroup(this.data.menuItem, 'name'),
-    ingredients: this.multiLanguageService.getMultiLanguagePropertyFormGroup(this.data.menuItem, 'ingredients'),
-    price: [this.data.menuItem?.price, [
+    name: this.multiLanguageService.getMultiLanguagePropertyFormGroup(this.data.menuItemBeingUpdated, 'name'),
+    ingredients: this.multiLanguageService.getMultiLanguagePropertyFormGroup(this.data.menuItemBeingUpdated, 'ingredients'),
+    price: [this.data.menuItemBeingUpdated?.price, [
       Validators.required,
       Validators.min(0),
       Validators.max(9999)
     ]],
-    sectionId: [this.data.menuItem ? this.data.menuItem.sectionId : this.data.menuSection.id, Validators.required]
+    sectionId: [this.data.menuSectionBeingUpdated.id, Validators.required]
   })
   readonly initialImageName: string | undefined = this.getInitialImageName()
   selectedImageFile: File | null = null
-  shouldUnSelectImage = false
-  imageUrl: string | null = this.data.menuItem?.imageUrl ?? null
+  shouldUnselectImage = false
+  imageUrl: string | null = this.data.menuItemBeingUpdated?.imageUrl ?? null
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: MenuItemFormDialogData,
@@ -51,13 +51,13 @@ export class MenuItemFormDialogComponent {
   ) {}
 
   onImageFileInputChanged(imageFile: File | null) {
-    if (!imageFile) this.shouldUnSelectImage = true
+    this.shouldUnselectImage = !imageFile
     this.selectedImageFile = imageFile
   }
 
   private getInitialImageName(): string | undefined {
-    return this.data.menuItem?.imageUrl ?
-      this.menuImagesService.getImageNameFromUrl(this.data.menuItem.imageUrl) :
+    return this.data.menuItemBeingUpdated?.imageUrl ?
+      this.menuImagesService.getImageNameFromUrl(this.data.menuItemBeingUpdated.imageUrl) :
       undefined
   }
 
@@ -73,7 +73,7 @@ export class MenuItemFormDialogComponent {
   private async updateImageUrl() {
     if (this.selectedImageFile) {
       this.imageUrl = await this.uploadMenuItemImage(this.selectedImageFile)
-    } else if (this.shouldUnSelectImage) {
+    } else if (this.shouldUnselectImage) {
       this.imageUrl = null
     }
   }
@@ -86,5 +86,9 @@ export class MenuItemFormDialogComponent {
       await this.alertsService.showErrorAlert(AlertErrorCode.IMAGE_UPLOAD)
       return null
     }
+  }
+
+  getPreviewImageUrl(): string | null {
+    return this.selectedImageFile ? URL.createObjectURL(this.selectedImageFile) : this.imageUrl
   }
 }

@@ -1,10 +1,9 @@
 <ngb-carousel *transloco="let t">
-    <h2> </h2>
   <ng-template ngbSlide *ngFor="let image of images">
     <div class="picsum-img-wrapper">
       <img [src] = "image" alt="Angular Carousel" >
     </div>
-    <div class="carousel-welcome-user">
+    <div class="carousel-welcome-user" *ngIf="username">
       <h3> {{t('welcomeMessage')}}  {{username}} </h3>
     </div>
     <div class="carousel-caption">
