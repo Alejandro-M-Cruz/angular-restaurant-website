@@ -143,69 +143,6 @@ input:focus, textarea:focus {
 
 /* -------------SLIDE SHOW------------- */
 
-/* .slide-image {
-  width: 35rem;
-  height: 20rem;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-} */
-
-/* .slide-image-thing {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-}
-
-.dark-filter {
-  display: flex;
-  align-items: center;
-  align-content: center;
-}
-
-.slide-image-thing-text {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  align-content: center;
-}
-
-.slide-image-thing__center-text {
-  color: white;
-  font-size: 1em;
-}
-
-.slide-image-thing__center-text-p {
-  color: white;
-  font-size: 0.8em;
-}
-
-#slide-image__left-arrow, #slide-image__right-arrow {
-  width: 5vw;
-  height: 5vw;
-  display: block;
-}
-
-#slide-image__left-arrow {
-  background-color: white;
-}
-
-#slide-image__right-arrow {
-  background-color: white;
-}
-
-#slide-image__left-arrow img {
-  width: 100%;
-  height: 100%;
-}
-
-#slide-image__right-arrow img {
-  width: 100%;
-  height: 100%;
-} */
-
 ngb-carousel {
   /* max-width: 70vw; */
   margin: 0 auto;
@@ -312,6 +249,16 @@ ngb-carousel img {
   margin-right: 2em;
 }
 
+
+/* -------------MENU ORDERING------------- */
+
+.buttons-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 2em;
+  width: 3rem;
+}
 
 /* -------------LINKS TO RESERVATIONS------------- */
 
@@ -424,6 +371,23 @@ ngb-carousel img {
   width: 100%;
 }
 
+/* -------------SHOPPING CART------------- */
+
+#shopping-cart-title{
+  margin-left: 1rem;
+}
+
+.cart-item-lang {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 1rem;
+  background-color: lightgray;
+  width: 30%;
+  height: 5rem;
+  padding: 1rem;
+}
 
 /* -------------FOOTER------------- */
 
@@ -680,7 +644,7 @@ hr{
   padding: 0.3rem;
   text-align: center;
   text-decoration: none;
-  margin: 1rem 1rem 1rem;
+  margin: 1.2rem 0.3rem 0;
 }
 
 .management-button:hover {
@@ -734,8 +698,8 @@ app-sign-up form {
 
 /* -------------BOTH------------- */
 
-app-email-input,
-app-password-input {
+app-username-input, app-email-input,
+app-password-input, app-password-confirmation {
   margin-bottom: 11px;
   margin-left: 10%;
 }
@@ -753,12 +717,20 @@ mat-error {
   margin-bottom: 10px;
   font-size: 8px;
 }
+/* -------------NEW RESERVATION------------- */
 
 app-new-reservation form {
   display: grid;
   justify-items: left;
   width: 100%;
   justify-content: center;
+}
+
+/* -------------COMPLAINTS------------- */
+
+app-complaints form {
+  display: grid;
+  margin: 0 20% 0 20%;
 }
 
 /* -------------LINK TO LOGIN / SIGNUP------------- */

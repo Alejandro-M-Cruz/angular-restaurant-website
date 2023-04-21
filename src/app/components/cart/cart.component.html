@@ -1,0 +1,7 @@
+<h3 *transloco="let t" id="shopping-cart-title"> {{t('shoppingCart')}} </h3>
+
+<div class="cart-item-lang"*ngFor="let item of items">
+    <span> {{ item.name.es }} </span>
+    <span> {{ item.ingredients.es }} </span>
+    <span> {{ item.price | currency: 'EUR'}} </span>
+</div>

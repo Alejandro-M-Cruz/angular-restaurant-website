@@ -5,6 +5,7 @@ import {MenuItem} from "../../../../model/menu-item.model";
 import {DisplayableMenuSection, MenuSection} from "../../../../model/menu-section.model";
 import {map} from "rxjs";
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-menu',
@@ -17,7 +18,12 @@ export class MenuComponent implements OnInit {
   page?:string;
   @Output() messageEvent = new EventEmitter<MenuItem>();
 
-  constructor(private readonly menuService: MenuService, private readonly translationService: TranslocoService,private activeRoute:ActivatedRoute) {}
+  constructor(
+    private cartService: CartService,
+    private readonly menuService: MenuService, 
+    private readonly translationService: TranslocoService,
+    private activeRoute:ActivatedRoute
+  ) { }
 
   ngOnInit() {
     const sub = this.menuService.getMenuSections().subscribe(menuSections => {
@@ -53,4 +59,10 @@ export class MenuComponent implements OnInit {
   sendMessage(item:MenuItem) {
     this.messageEvent.emit(item);
   }
+  
+  addToCart(item:MenuItem){
+    this.cartService.addToCart(item);
+    window.alert('Your product has been added to the cart!');
+  }
+
 }

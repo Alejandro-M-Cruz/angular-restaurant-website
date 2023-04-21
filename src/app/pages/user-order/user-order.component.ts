@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MenuItem } from 'src/app/model/menu-item.model';
+
 
 @Component({
   selector: 'app-user-order',
@@ -7,8 +9,12 @@ import { Component } from '@angular/core';
 })
 export class UserOrderComponent {
 
-  receiveMessage($event:any){
-    console.log($event);
+  constructor() { }
+
+  
+
+  receiveMessage(item:MenuItem){
+    console.log(item);
   }
 
 }

@@ -17,13 +17,13 @@ import {UserInfo} from "../../model/user-info.model";
 export class AdminReservationsComponent {
   currentReservations$ = this.reservationsService.getCurrentReservations()
   allReservations$ = this.reservationsService.getReservations()
-  users$ = this.adminService.getUsers()
+  users$ = this.usersService.getUsers()
   selectedReservation: Reservation | null = null
   selectedReservationUser: UserInfo | null = null
   showPastReservations = false
 
   constructor(
-    private readonly adminService: UsersService,
+    private readonly usersService: UsersService,
     private readonly reservationsService: ReservationsService,
     private readonly dialog: MatDialog
   ) {}
