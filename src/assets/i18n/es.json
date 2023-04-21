@@ -91,7 +91,7 @@
     "undoChanges": "Deshacer cambios",
     "saveChanges": "Guardar cambios",
     "sendComplaint": "Enviar reclamación",
-    "deleteCart" : "Delete cart"
+    "deleteCart" : "Borrar carrito"
   },
   "userInfo": {
     "username": "Nombre de usuario",

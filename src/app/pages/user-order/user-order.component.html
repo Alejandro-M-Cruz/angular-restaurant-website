@@ -22,11 +22,12 @@
       <button>{{t('orderForms.previousOrderButton')}}</button>
     </div>
 
-    <app-menu (messageEvent)="receiveMessage($event)"></app-menu>
+    <app-menu></app-menu>
+    <app-cart></app-cart>
 
     <div>
       <button class="management-button back-button">{{t('buttons.back')}}</button>
-      <button class="management-button cancel-button">{{t('buttons.deleteCart')}}</button>
+      <button class="management-button cancel-button" (click)="clearCart()">{{t('buttons.deleteCart')}}</button>
     </div>
 
 </ng-container>

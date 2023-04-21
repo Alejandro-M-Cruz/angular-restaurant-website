@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'src/app/model/menu-item.model';
+import { CartService } from 'src/app/services/cart.service';
 
 
 @Component({
@@ -9,12 +10,10 @@ import { MenuItem } from 'src/app/model/menu-item.model';
 })
 export class UserOrderComponent {
 
-  constructor() { }
+  constructor(private cart:CartService) { }
 
-  
-
-  receiveMessage(item:MenuItem){
-    console.log(item);
+  clearCart(){
+    this.cart.clearCart()
   }
 
 }
