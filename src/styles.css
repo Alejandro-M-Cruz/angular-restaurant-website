@@ -324,7 +324,7 @@ ngb-carousel img {
   display: flex;
   width: 50%;
   height: 3%;
-  margin: 3em auto 10em;
+  margin: 9em auto 3em;
 }
 
 .reserva b {
@@ -982,9 +982,6 @@ app-complaints form {
 
   /* ----- RESERVE HERE ----- */
 
-  .reserva {
-    width: 40%;
-  }
 
   .reserva a {
     width: 100%;
@@ -1159,10 +1156,6 @@ app-complaints form {
   }
 
   /* ----- RESERVE HERE ----- */
-
-  .reserva {
-    width: 60%;
-  }
 
   .reserva a {
     width: 100%;
