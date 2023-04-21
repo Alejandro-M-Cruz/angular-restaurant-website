@@ -38,6 +38,7 @@ import { UserReservationsComponent } from './pages/user-reservations/user-reserv
 import { UserOrderComponent } from './pages/user-order/user-order.component';
 import {MatTableModule} from "@angular/material/table";
 import { ReservationsTableComponent } from './pages/user-reservations/reservations-table/reservations-table.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 import es from '@angular/common/locales/es';
 import {registerLocaleData} from "@angular/common";
@@ -135,7 +136,8 @@ registerLocaleData(es);
         MatDialogModule,
         MatNativeDateModule,
         MatPaginatorModule,
-        MatCardModule
+        MatCardModule,
+        MatRadioModule
     ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' },
