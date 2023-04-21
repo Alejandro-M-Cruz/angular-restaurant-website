@@ -1,13 +1,13 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">
     <mat-card class="p-2">
-      <mat-card-title *ngFor="let lang of availableLanguages">
+      <mat-card-title *ngFor="let lang of availableLanguages" class="me-5">
         <p>
           <span class="fw-light">{{t('menuSection.name.' + lang) + ': '}}</span>
           {{sectionBeingEdited.name[lang]}}
         </p>
       </mat-card-title>
-      <button mat-icon-button class="p-2 position-absolute top-0 end-0 m-2 ms-5" (click)="openSectionEditFormDialog()">
+      <button mat-icon-button class="position-absolute top-0 end-0 p-2" (click)="openSectionEditFormDialog()">
         <mat-icon class="scale-2" [ngStyle]="{color: 'var(--edit-button-color)'}">edit</mat-icon>
       </button>
     </mat-card>

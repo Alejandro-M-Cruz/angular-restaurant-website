@@ -66,6 +66,7 @@ import { ImageFileInputComponent } from './components/form/image-file-input/imag
 import { UsernameInputComponent } from './components/form/username-input/username-input.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { MenuSectionFormDialogComponent } from './components/form-dialogs/menu-section-form-dialog/menu-section-form-dialog.component';
+import { CartComponent } from './components/cart/cart.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -106,6 +107,7 @@ registerLocaleData(es);
     UsernameInputComponent,
     CarouselComponent,
     MenuSectionFormDialogComponent,
+    CartComponent,
   ],
     imports: [
         BrowserModule,
