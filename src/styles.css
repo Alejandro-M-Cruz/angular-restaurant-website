@@ -211,6 +211,16 @@ ngb-carousel img {
   margin-bottom: 1rem;
 }
 
+.buy-image-food {
+  position: relative;
+  box-sizing: content-box;
+  min-width: 5vw;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 5em;
+  display: block;
+}
+
 .left-side-image {
   position: relative;
   box-sizing: content-box;
@@ -384,7 +394,7 @@ ngb-carousel img {
   align-items: center;
   margin: 1rem 1rem;
   background-color: lightgray;
-  width: 30%;
+  width: 40%;
   height: 5rem;
   padding: 1rem;
 }
