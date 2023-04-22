@@ -710,7 +710,6 @@ hr{
 
 app-log-in form {
   display: grid;
-  justify-items: left;
   width: 100%;
   justify-content: center;
 }
