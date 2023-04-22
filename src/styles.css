@@ -385,6 +385,7 @@ ngb-carousel img {
 
 #shopping-cart-title{
   margin-left: 1rem;
+  margin-top: 5%;
 }
 
 .cart-item-lang {
@@ -397,6 +398,19 @@ ngb-carousel img {
   width: 40%;
   height: 5rem;
   padding: 1rem;
+}
+
+app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted):not(.cart-buttons), h2.ng-star-inserted:not(.page-title.ng-star-inserted) {
+  margin-left: 1rem;
+}
+
+app-menu h2{
+  margin-top: 5%;
+}
+
+.cart-buttons {
+  display: flex;
+  flex-direction: row;
 }
 
 /* -------------FOOTER------------- */
@@ -861,7 +875,6 @@ app-complaints form {
 }
 
 
-
 /* ------------- TABLET ------------- */
 
 @media screen and (max-width: 1268px) and (min-width: 601px) {
@@ -1037,6 +1050,11 @@ app-complaints form {
   app-email-input,
   app-password-input {
     margin-left: 0%;
+  }
+
+  /* ----- SHOPPING CART ----- */
+  .cart-buttons {
+    width: 90%;
   }
 }
 
@@ -1274,5 +1292,15 @@ app-complaints form {
     height: auto;
     max-height: 20rem;
   }
-}
 
+  /* ----- SHOPPING CART ----- */
+  .cart-buttons {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .cart-item-lang {
+    width: 95%;
+  }
+}
