@@ -1,29 +1,18 @@
 <ng-container *transloco="let t">
-  <!-- <section class="welcome-section" *ngIf="userInfo">
-    <h2>{{t('welcomeMessage', { user: userInfo.username })}}</h2>
-  </section> -->
-
-  <section class="slide-image" *ngIf="userInfo">
-    <app-carousel [username]="userInfo.username"></app-carousel>
+  <section class="slide-image">
+    <app-carousel [username]="userInfo?.username"></app-carousel>
   </section>
-
   <section id="menu-section">
     <app-menu></app-menu>
   </section>
-
   <section class="reserva">
     <a routerLink="/user-reservations"><b>{{t('links.reservations')}}</b></a>
   </section>
-
   <section class="pedido">
     <a routerLink="/user-order"><b>{{t('links.order')}}</b></a>
   </section>
-
   <app-story> </app-story>
-
   <section class="complaints">
     <a routerLink="/complaints"><b>{{t('links.complaints')}}</b></a>
   </section>
-
-
 </ng-container>

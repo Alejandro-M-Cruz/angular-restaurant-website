@@ -65,7 +65,7 @@ import { MenuItemFormDialogComponent } from './pages/menu-items-admin/components
 import { PasswordConfirmationComponent } from './components/form/password-confirmation/password-confirmation.component';
 import { ImageFileInputComponent } from './components/form/image-file-input/image-file-input.component';
 import { UsernameInputComponent } from './components/form/username-input/username-input.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
+import { CarouselComponent } from './pages/home/components/carousel/carousel.component';
 import { MenuSectionFormDialogComponent } from './components/form-dialogs/menu-section-form-dialog/menu-section-form-dialog.component';
 import { CartComponent } from './components/cart/cart.component';
 registerLocaleData(es);
