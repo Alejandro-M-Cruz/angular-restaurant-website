@@ -400,8 +400,12 @@ ngb-carousel img {
   padding: 1rem;
 }
 
-app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted):not(.cart-buttons), h2.ng-star-inserted:not(.page-title.ng-star-inserted) {
+app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons), h2.ng-star-inserted:not(.page-title.ng-star-inserted) {
   margin-left: 1rem;
+}
+
+app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons) {
+  margin-bottom: 2%;
 }
 
 app-menu h2{
@@ -715,7 +719,6 @@ app-log-in form {
 
 app-sign-up form {
   display: grid;
-  justify-items: left;
   width: 100%;
   justify-content: center;
 }
@@ -725,7 +728,7 @@ app-sign-up form {
 app-username-input, app-email-input,
 app-password-input, app-password-confirmation {
   margin-bottom: 11px;
-  margin-left: 10%;
+  margin-left: 30px;
 }
 
 .already-signed-up-text {
@@ -1046,11 +1049,11 @@ app-complaints form {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* ----- LOG IN / SIGN UP ----- */
-  app-email-input,
-  app-password-input {
-    margin-left: 0%;
-  }
+  /* ----- LOG-IN / SIGN-UP ----- */
+  app-username-input, app-email-input,
+  app-password-input, app-password-confirmation {
+  margin-left: 0px;
+}
 
   /* ----- SHOPPING CART ----- */
   .cart-buttons {
@@ -1218,14 +1221,10 @@ app-complaints form {
   }
 
   /* ----- LOG IN / SIGN UP ----- */
-  app-email-input,
-  app-password-input {
-    margin-left: 0%;
-  }
-
-  .already-signed-up-text {
-    margin-left: 13%;
-  }
+  app-username-input, app-email-input,
+  app-password-input, app-password-confirmation {
+  margin-left: 0px;
+}
 
   /* ----- TABLE ----- */
 
