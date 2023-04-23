@@ -1,4 +1,40 @@
-<header class="navbar-header" *transloco="let t">
+<ng-container *transloco="let t">
+  <header>
+    <mat-toolbar style="background-color: var(--main-color);">
+      <mat-toolbar-row>
+        <button class="p-2 me-2" mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon class="scale-1-5">menu</mat-icon>
+        </button>
+        <h2 class="flex-fill"><a routerLink="/home" class="text-decoration-none text-white">La Nostra Casa</a></h2>
+        <button class="p-2 mx-sm-2 d-flex justify-content-center align-items-center" mat-icon-button (click)="changeLanguage()">
+          <img class="scale-1-5" [src]="t('oppositeFlag')" alt="Language">
+        </button>
+        <a class="p-2 mx-sm-2 text-black text-decoration-none" mat-icon-button>
+          <mat-icon class="scale-1-5">shopping_cart</mat-icon>
+        </a>
+        <a routerLink="/my-account" class="p-2 mx-sm-2 text-black text-decoration-none" mat-icon-button>
+          <mat-icon class="scale-1-5">account_circle</mat-icon>
+        </a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </header>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav [mode]="(mobileQueryMatches$ | async) ? 'over' : 'side'">
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let link of links$ | async" [routerLink]="link.route">
+          <span class="py-5 mx-2">{{t(link.name)}}</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>
+
+
+<!--<header class="navbar-header" *transloco="let t">
 <nav id="nav-bar-container">
     <ul class = "navbar-list">
         <li class="navbar-list__logo">
@@ -18,26 +54,27 @@
         </ng-template>
     </ul>
 </nav>
-</header>
-
-<!--<mat-toolbar>
-    <mat-toolbar-row>
-        <button mat-icon-button (click)="toggleSidenav()"><mat-icon>menu</mat-icon></button>
-        <a>La Nostra Casa</a>
-        <button mat-icon-button><mat-icon>shopping_cart</mat-icon></button>
-        <button mat-icon-button><mat-icon>account_circle</mat-icon></button>
-
-    </mat-toolbar-row>
+</header>-->
+<!--
+<mat-toolbar style="background-color: var(&#45;&#45;main-color); z-index: 1000;" class="position-fixed">
+  <mat-toolbar-row class="d-flex align-items-center flex-row">
+    <button class="p-2 me-2" mat-icon-button (click)="toggleSidenav()">
+      <mat-icon class="scale-1-5">menu</mat-icon>
+    </button>
+    <h2 class="flex-fill"><a routerLink="/home" class="text-decoration-none text-white">La Nostra Casa</a></h2>
+    <a class="p-2 text-black text-decoration-none" mat-icon-button>
+      <mat-icon class="scale-1-5">shopping_cart</mat-icon>
+    </a>
+    <a class="p-2 text-black text-decoration-none" mat-icon-button>
+      <mat-icon class="scale-1-5">account_circle</mat-icon>
+    </a>
+  </mat-toolbar-row>
 </mat-toolbar>
-<mat-sidenav-container autosize *ngIf="showSidenav">
-    <mat-sidenav>
-        <mat-nav-list>
-            <mat-list-item><a>Inicio</a></mat-list-item>
-            <mat-list-item><a>Menú</a></mat-list-item>
-            <mat-list-item><a>Reservas</a></mat-list-item>
-            <mat-list-item><a>Sobre nosotros</a></mat-list-item>
-            <mat-list-item><a>Iniciar sesión</a></mat-list-item>
-            <mat-list-item><a>Registrarse</a></mat-list-item>
-        </mat-nav-list>
-    </mat-sidenav>
+<mat-sidenav-container class="position-fixed d-flex flex-column">
+  <mat-sidenav [mode]="mobileQueryMatches() ? 'over' : 'side'" [fixedInViewport]="mobileQueryMatches()">
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let link of links$ | async" [routerLink]="link.route">{{link.name}}</a>
+      <a href="">ESTO ES UN LINK</a>
+    </mat-nav-list>
+  </mat-sidenav>
 </mat-sidenav-container>-->

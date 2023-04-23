@@ -68,6 +68,7 @@ import { UsernameInputComponent } from './components/form/username-input/usernam
 import { CarouselComponent } from './pages/home/components/carousel/carousel.component';
 import { MenuSectionFormDialogComponent } from './components/form-dialogs/menu-section-form-dialog/menu-section-form-dialog.component';
 import { CartComponent } from './components/cart/cart.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 registerLocaleData(es);
 
 @NgModule({
@@ -110,35 +111,36 @@ registerLocaleData(es);
     MenuSectionFormDialogComponent,
     CartComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        TranslocoRootModule,
-        provideFirebaseApp(() => initializeApp(environment.firebase)),
-        provideAuth(() => getAuth()),
-        provideFirestore(() => getFirestore()),
-        provideStorage(() => getStorage()),
-        FormsModule,
-        NgbModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatSidenavModule,
-        MatButtonModule,
-        MatDatepickerModule,
-        MatListModule,
-        MatSelectModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatTableModule,
-        MatDialogModule,
-        MatNativeDateModule,
-        MatPaginatorModule,
-        MatCardModule,
-        MatRadioModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    TranslocoRootModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    FormsModule,
+    NgbModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatListModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatDialogModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatRadioModule,
+    MatButtonToggleModule
+  ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' },
     { provide: MatPaginatorIntl, useClass: ReservationsPaginatorIntl }

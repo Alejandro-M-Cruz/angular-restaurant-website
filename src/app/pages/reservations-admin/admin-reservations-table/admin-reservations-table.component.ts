@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Reservation} from "../../../model/reservation.model";
 import {PageEvent} from "@angular/material/paginator";
-import {UserInfo} from "../../../model/user-info.model";
+import {User} from "../../../model/user";
 import {translate} from "@ngneat/transloco";
 
 @Component({
@@ -11,7 +11,7 @@ import {translate} from "@ngneat/transloco";
 })
 export class AdminReservationsTableComponent {
   @Input() reservations: Reservation[] | null = []
-  @Input() users: UserInfo[] | null = []
+  @Input() users: User[] | null = []
   selectedRow: Reservation | null = null;
   @Output() selectedReservationChanged = new EventEmitter<Reservation | null>()
   pageSize = 5

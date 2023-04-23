@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
-import {UserInfo} from "../../model/user-info.model";
+import {User} from "../../model/user";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
@@ -15,7 +15,7 @@ import {AlertErrorCode} from "../../errors/alert-error.errors";
   styleUrls: ['./my-account.component.css']
 })
 export class MyAccountComponent implements OnInit, OnDestroy {
-  userInfo: UserInfo | null = null
+  userInfo: User | null = null
   userInfoSubscription?: Subscription
 
   constructor(

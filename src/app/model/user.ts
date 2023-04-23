@@ -1,4 +1,4 @@
-export interface UserInfo {
+export interface User {
   [key: string]: string | Date | undefined
   uid: string
   username: string

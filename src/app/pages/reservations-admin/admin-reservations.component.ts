@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Reservation} from "../../model/reservation.model";
 import {ReservationsService} from "../../services/reservations.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -7,7 +7,7 @@ import {translate} from "@ngneat/transloco";
 import {formatDate} from "@angular/common";
 import {UsersService} from "../../services/admin/users.service";
 import {find} from "rxjs";
-import {UserInfo} from "../../model/user-info.model";
+import {User} from "../../model/user";
 
 @Component({
   selector: 'app-reservations-admin',
@@ -15,11 +15,11 @@ import {UserInfo} from "../../model/user-info.model";
   styleUrls: ['./admin-reservations.component.css']
 })
 export class AdminReservationsComponent {
-  currentReservations$ = this.reservationsService.getCurrentReservations()
-  allReservations$ = this.reservationsService.getReservations()
+  currentReservations$ = this.reservationsService.getActiveReservations()
+  allReservations$ = this.reservationsService.getAllReservations()
   users$ = this.usersService.getUsers()
   selectedReservation: Reservation | null = null
-  selectedReservationUser: UserInfo | null = null
+  selectedReservationUser: User | null = null
   showPastReservations = false
 
   constructor(
@@ -71,7 +71,7 @@ export class AdminReservationsComponent {
 
   private async cancelReservation() {
     try {
-      await this.reservationsService.deleteReservation(this.selectedReservation!.id!)
+      await this.reservationsService.cancelReservation(this.selectedReservation!.id!)
     } catch(e) {
       console.error(e)
     }

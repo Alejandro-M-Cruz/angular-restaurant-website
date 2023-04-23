@@ -9,6 +9,7 @@ import {MenuService} from "../../../../services/menu.service";
 import {MenuSection} from "../../../../model/menu-section.model";
 import {AlertsService} from "../../../../services/alerts.service";
 import {AlertErrorCode} from "../../../../errors/alert-error.errors";
+import {DomSanitizer} from "@angular/platform-browser";
 
 export interface MenuItemFormDialogData {
   menuSectionBeingUpdated: MenuSection
@@ -25,8 +26,10 @@ export class MenuItemFormDialogComponent {
   getActiveLanguage = (): string => this.translateService.getActiveLang()
   menuSections$ = this.menuService.getMenuSections()
   form = this.fb.group({
-    name: this.multiLanguageService.getMultiLanguagePropertyFormGroup(this.data.menuItemBeingUpdated, 'name'),
-    ingredients: this.multiLanguageService.getMultiLanguagePropertyFormGroup(this.data.menuItemBeingUpdated, 'ingredients'),
+    name: this.multiLanguageService
+      .getMultiLanguagePropertyFormGroup(this.data.menuItemBeingUpdated, 'name'),
+    ingredients: this.multiLanguageService
+      .getMultiLanguagePropertyFormGroup(this.data.menuItemBeingUpdated, 'ingredients'),
     price: [this.data.menuItemBeingUpdated?.price, [
       Validators.required,
       Validators.min(0),
@@ -34,10 +37,13 @@ export class MenuItemFormDialogComponent {
     ]],
     sectionId: [this.data.menuSectionBeingUpdated.id, Validators.required]
   })
-  readonly initialImageName: string | undefined = this.getInitialImageName()
+  uploadedImageUrl: string | null = this.data.menuItemBeingUpdated?.imageUrl ?? null
+  readonly initialImageName?: string = this.uploadedImageUrl ?
+    this.menuImagesService.getImageNameFromUrl(this.uploadedImageUrl) :
+    undefined
   selectedImageFile: File | null = null
+  selectedImageUrl: string | null = this.uploadedImageUrl
   shouldUnselectImage = false
-  imageUrl: string | null = this.data.menuItemBeingUpdated?.imageUrl ?? null
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: MenuItemFormDialogData,
@@ -53,12 +59,8 @@ export class MenuItemFormDialogComponent {
   onImageFileInputChanged(imageFile: File | null) {
     this.shouldUnselectImage = !imageFile
     this.selectedImageFile = imageFile
-  }
-
-  private getInitialImageName(): string | undefined {
-    return this.data.menuItemBeingUpdated?.imageUrl ?
-      this.menuImagesService.getImageNameFromUrl(this.data.menuItemBeingUpdated.imageUrl) :
-      undefined
+    if (this.selectedImageUrl) this.menuImagesService.revokeImageUrl(this.selectedImageUrl)
+    this.selectedImageUrl = imageFile ? this.menuImagesService.getNotYetUploadedImageUrl(imageFile) : null
   }
 
   async onSubmit() {
@@ -67,14 +69,14 @@ export class MenuItemFormDialogComponent {
 
   private async getNewOrUpdatedMenuItem(): Promise<MenuItem> {
     await this.updateImageUrl()
-    return (this.imageUrl ? { ...this.form.value, imageUrl: this.imageUrl } : this.form.value) as MenuItem
+    return (this.uploadedImageUrl ? { ...this.form.value, imageUrl: this.uploadedImageUrl } : this.form.value) as MenuItem
   }
 
   private async updateImageUrl() {
     if (this.selectedImageFile) {
-      this.imageUrl = await this.uploadMenuItemImage(this.selectedImageFile)
+      this.uploadedImageUrl = await this.uploadMenuItemImage(this.selectedImageFile)
     } else if (this.shouldUnselectImage) {
-      this.imageUrl = null
+      this.uploadedImageUrl = null
     }
   }
 
@@ -86,9 +88,5 @@ export class MenuItemFormDialogComponent {
       await this.alertsService.showErrorAlert(AlertErrorCode.IMAGE_UPLOAD)
       return null
     }
-  }
-
-  getPreviewImageUrl(): string | null {
-    return this.selectedImageFile ? URL.createObjectURL(this.selectedImageFile) : this.imageUrl
   }
 }

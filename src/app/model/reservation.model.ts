@@ -4,4 +4,5 @@ export interface Reservation {
   time: string;
   customers: number;
   userId?: string;
+  isCancelled?: boolean;
 }

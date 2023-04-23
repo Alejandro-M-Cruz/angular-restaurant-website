@@ -1,7 +1,7 @@
 {
   "locale": "en-US",
   "dateFormat": "MM/dd/yyyy",
-  "oppositeFlag": "/assets/images/languages/spanish.svg",
+  "oppositeFlag": "/assets/images/languages/spanish.png",
   "welcomeMessage": "Welcome to La Nostra Casa, {{user}}",
   "slideShowTitle": "Authentic Italian restaurant",
   "slideShowAddress": "Located in calle Triana / 30, Las Palmas de Gran Canaria",
