@@ -83,8 +83,8 @@ input:focus, textarea:focus {
   transform: scale(2);
 }
 
-.scale-1-5 {
-  transform: scale(1.5);
+.scale-150 {
+  transform: scale(150%);
 }
 
 /* -------------NAVBAR------------- */
@@ -888,6 +888,14 @@ app-complaints form {
     font-size: 12px;
   }
 
+  .scale-2 {
+    transform: scale(1.8);
+  }
+
+  .scale-150 {
+    transform: scale(125%);
+  }
+
   .grid-div {
     grid-template-rows: 100px 1fr 360px;
   }
@@ -1070,6 +1078,14 @@ app-complaints form {
 @media screen and (max-width: 600px) {
   html {
     font-size: 9px;
+  }
+
+  .scale-2 {
+    transform: scale(1.5);
+  }
+
+  .scale-150 {
+    transform: scale(1);
   }
 
   .page-title {

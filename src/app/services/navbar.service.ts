@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {PermissionsService} from "./permissions.service";
 import {map, Observable} from "rxjs";
-import {BreakpointObserver, MediaMatcher} from "@angular/cdk/layout";
+import {BreakpointObserver} from "@angular/cdk/layout";
 import {TranslocoService} from "@ngneat/transloco";
 
 export interface Link {

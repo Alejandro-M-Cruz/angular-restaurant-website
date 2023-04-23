@@ -3,24 +3,24 @@
     <mat-toolbar style="background-color: var(--main-color);">
       <mat-toolbar-row>
         <button class="p-2 me-2" mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon class="scale-1-5">menu</mat-icon>
+          <mat-icon class="scale-150">menu</mat-icon>
         </button>
         <h2 class="flex-fill"><a routerLink="/home" class="text-decoration-none text-white">La Nostra Casa</a></h2>
         <button class="p-2 mx-sm-2 d-flex justify-content-center align-items-center" mat-icon-button (click)="changeLanguage()">
-          <img class="scale-1-5" [src]="t('oppositeFlag')" alt="Language">
+          <img class="scale-150" [src]="t('oppositeFlag')" alt="Language">
         </button>
         <a class="p-2 mx-sm-2 text-black text-decoration-none" mat-icon-button>
-          <mat-icon class="scale-1-5">shopping_cart</mat-icon>
+          <mat-icon class="scale-150">shopping_cart</mat-icon>
         </a>
         <a routerLink="/my-account" class="p-2 mx-sm-2 text-black text-decoration-none" mat-icon-button>
-          <mat-icon class="scale-1-5">account_circle</mat-icon>
+          <mat-icon class="scale-150">account_circle</mat-icon>
         </a>
       </mat-toolbar-row>
     </mat-toolbar>
   </header>
 
   <mat-sidenav-container>
-    <mat-sidenav #sidenav [mode]="(mobileQueryMatches$ | async) ? 'over' : 'side'">
+    <mat-sidenav #sidenav [mode]="(mobileQueryMatches$ | async) ? 'over' : 'side'" [class.w-100]="mobileQueryMatches$ | async">
       <mat-nav-list>
         <a mat-list-item *ngFor="let link of links$ | async" [routerLink]="link.route">
           <span class="py-5 mx-2">{{t(link.name)}}</span>
