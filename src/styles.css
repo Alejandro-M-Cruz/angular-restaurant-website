@@ -648,6 +648,20 @@ hr{
   color: white;
 }
 
+app-reservations-admin app-admin-reservations-table .mat-mdc-paginator-container {
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding-bottom: 3%;
+}
+
+app-reservations-admin app-admin-reservations-table .mat-mdc-paginator {
+  background: none;
+}
+
+app-reservations-admin .buttons-container .management-button{
+  width: 25%;
+}
+
 
 /* -------------BUTTONS------------- */
 
@@ -761,6 +775,11 @@ app-new-reservation form {
 app-complaints form {
   display: grid;
   margin: 0 20% 0 20%;
+}
+
+app-complaints-admin .complaints-button {
+  display: flex;
+  justify-content: center;
 }
 
 /* -------------LINK TO LOGIN / SIGNUP------------- */
@@ -988,11 +1007,6 @@ app-complaints form {
     width: 100%;
   }
 
-  .reserva b {
-    padding-top: 5%;
-    padding-bottom: 5%;
-  }
-
   /* ----- HOJA DE RECLAMACIONES BOTON ----- */
   .complaints {
     width: 40%;
@@ -1180,7 +1194,24 @@ app-complaints form {
   }
 
   .reserva b {
-    padding: 10%;
+    padding: 5%;
+  }
+
+  /* ----- ADMIN RESERVATIONS ----- */
+
+  app-admin-reservations-table .mat-mdc-paginator-container {
+    flex-wrap: nowrap;
+  }
+
+  app-admin-reservations-table .mat-mdc-paginator-container .mat-mdc-paginator-page-size-label {
+    margin: 0%;
+  }
+  app-admin-reservations-table .mat-mdc-paginator-container .mat-mdc-paginator-page-size {
+    margin-right: 5px;
+  }
+
+  app-admin-reservations-table .mat-mdc-paginator-container .mat-mdc-paginator-range-actions .mat-mdc-paginator-range-label {
+    margin: 0%;
   }
 
   /* ----- ABOUT US ----- */
@@ -1230,6 +1261,10 @@ app-complaints form {
     margin-top: 1rem;
   }
 
+  app-reservations-admin .buttons-container .management-button{
+    width: 75%;
+  }
+
   .buttons-container {
     flex-direction: column-reverse;
     width: 100%;
@@ -1241,6 +1276,10 @@ app-complaints form {
 
   .complaints-admin-link {
     font-size: 7px;
+  }
+
+  .pedido b {
+    padding: 5%;
   }
 
   /* ----- LOG IN / SIGN UP ----- */
