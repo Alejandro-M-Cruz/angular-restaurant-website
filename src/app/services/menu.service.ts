@@ -11,27 +11,24 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class MenuService {
+  private readonly itemsCollection = collection(this.firestore, 'menu_items')
+  private readonly sectionsCollection = collection(this.firestore, 'menu_sections')
+
   constructor(private readonly firestore: Firestore) {}
 
   getMenuSections(): Observable<MenuSection[]> {
-    const q = query(
-      collection(this.firestore, 'menu_sections'),
-      orderBy('name.es')
-    )
+    const q = query(this.sectionsCollection, orderBy('name.es'))
     return collectionData(q, {idField: 'id'}) as Observable<MenuSection[]>
   }
 
   getMenuItems(): Observable<MenuItem[]> {
-    const q = query(
-      collection(this.firestore, 'menu_items'),
-      orderBy('name.es')
-    )
+    const q = query(this.itemsCollection, orderBy('name.es'))
     return collectionData(q, {idField: 'id'}) as Observable<MenuItem[]>
   }
 
   getMenuItemsBySectionId(sectionId: string): Observable<MenuItem[]> {
     const q = query(
-      collection(this.firestore, 'menu_items'),
+      this.itemsCollection,
       where('sectionId', '==', sectionId),
       orderBy('name.es')
     )

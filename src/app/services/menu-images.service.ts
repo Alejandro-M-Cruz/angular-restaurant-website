@@ -2,12 +2,11 @@ import {Injectable} from '@angular/core';
 import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
 import {DomSanitizer} from "@angular/platform-browser";
 
-const MENU_IMAGES_STORAGE = 'menu_images'
-
 @Injectable({
   providedIn: 'root'
 })
 export class MenuImagesService {
+  private readonly menuImagesStorage = 'menu_images'
 
   constructor(private readonly storage: Storage, private readonly domSanitizer: DomSanitizer) {}
 
@@ -25,7 +24,7 @@ export class MenuImagesService {
   }
 
   async uploadImage(imageFile: File): Promise<string> {
-    const imageRef = ref(this.storage, `${MENU_IMAGES_STORAGE}/${imageFile.name}`)
+    const imageRef = ref(this.storage, `${this.menuImagesStorage}/${imageFile.name}`)
     try {
       const snapshot = await uploadBytes(imageRef, imageFile)
       return getDownloadURL(snapshot.ref)

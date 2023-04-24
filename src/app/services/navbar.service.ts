@@ -5,8 +5,8 @@ import {BreakpointObserver} from "@angular/cdk/layout";
 import {TranslocoService} from "@ngneat/transloco";
 
 export interface NavbarLink {
-  name: string,
-  route: string
+  name: string;
+  route: string;
 }
 
 @Injectable({
