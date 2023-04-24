@@ -361,6 +361,12 @@ app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons) {
   margin-bottom: 2%;
 }
 
+app-user-order div.ng-star-inserted .previous-order-button {
+  padding: 2%;
+  margin-top: 1rem;
+  background-color: #ffd232;
+}
+
 app-menu h2{
   margin-top: 5%;
 }
@@ -1012,11 +1018,20 @@ app-complaints-admin .complaints-button {
 
   /* ----- SHOPPING CART ----- */
   .cart-buttons {
-    width: 90%;
+    width: 100%;
+  }
+
+  .cart-buttons .back-button, .cancel-button{
+    width: 25%;
+    padding: 1%;
   }
 
   app-user-order div h2 {
     font-size: 20px;
+  }
+
+  .cart-item-lang {
+    width: 60%;
   }
 }
 
@@ -1046,7 +1061,7 @@ app-complaints-admin .complaints-button {
 
   ngb-carousel {
     /* max-width: 70vw; */
-    margin: 18rem auto;
+    margin: 25px auto;
     width: 100%;
   }
 
@@ -1109,6 +1124,8 @@ app-complaints-admin .complaints-button {
   }
   app-admin-reservations-table .mat-mdc-paginator-container .mat-mdc-paginator-page-size {
     margin-right: 5px;
+    align-items: center;
+    font-size: 8px;
   }
 
   app-admin-reservations-table .mat-mdc-paginator-container .mat-mdc-paginator-range-actions .mat-mdc-paginator-range-label {

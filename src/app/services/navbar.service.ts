@@ -16,8 +16,8 @@ export class NavbarService {
   private readonly links: NavbarLink[] = [
     {name: 'navbarLinks.home', route: '/home'},
     {name: 'navbarLinks.menu', route: '/home/menu'},
-    {name: 'navbarLinks.aboutUs', route: '/home/about-us'},
     {name: 'navbarLinks.reservations', route: '/user-reservations'},
+    {name: 'navbarLinks.order', route: '/user-order'},
     {name: 'navbarLinks.complaintForm', route: '/complaints'},
     {name: 'navbarLinks.cart', route: '/cart'},
     {name: 'navbarLinks.myAccount', route: '/my-account'}
