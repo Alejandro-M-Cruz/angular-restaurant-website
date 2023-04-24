@@ -10,10 +10,9 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class UserOrderComponent {
 
-  constructor(private cart:CartService) { }
+  constructor(private cartService: CartService) { }
 
   clearCart(){
-    this.cart.clearCart()
+    this.cartService.clearCart()
   }
-
 }

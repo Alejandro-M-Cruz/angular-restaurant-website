@@ -16,7 +16,7 @@
             <p>{{item.price | currency: 'EUR'}}</p>
           </div>
           <div class = "buttons-items" *ngIf="page=='order'">
-            <button (click)="deleteToCart(item)">-</button>
+            <button (click)="deleteFromCart(item)">-</button>
             <button (click)="addToCart(item)"> Buy </button>
           </div>
         </div>

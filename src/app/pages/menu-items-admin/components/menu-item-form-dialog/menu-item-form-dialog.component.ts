@@ -9,7 +9,6 @@ import {MenuService} from "../../../../services/menu.service";
 import {MenuSection} from "../../../../model/menu-section.model";
 import {AlertsService} from "../../../../services/alerts.service";
 import {AlertErrorCode} from "../../../../errors/alert-error.errors";
-import {DomSanitizer} from "@angular/platform-browser";
 
 export interface MenuItemFormDialogData {
   menuSectionBeingUpdated: MenuSection
