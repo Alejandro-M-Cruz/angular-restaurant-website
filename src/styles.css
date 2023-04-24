@@ -32,7 +32,7 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a:hover {
@@ -1070,6 +1070,10 @@ app-complaints form {
   .cart-buttons {
     width: 90%;
   }
+
+  app-user-order div h2 {
+    font-size: 20px;
+  }
 }
 
 
@@ -1316,6 +1320,10 @@ app-complaints form {
     flex-direction: column;
     width: 100%;
     align-items: center;
+  }
+
+  app-user-order div h2 {
+    font-size: 14px;
   }
 
   .cart-item-lang {
