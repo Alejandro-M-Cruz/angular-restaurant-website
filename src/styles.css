@@ -1208,6 +1208,8 @@ app-complaints-admin .complaints-button {
   }
   app-admin-reservations-table .mat-mdc-paginator-container .mat-mdc-paginator-page-size {
     margin-right: 5px;
+    align-items: center;
+    font-size: 8px;
   }
 
   app-admin-reservations-table .mat-mdc-paginator-container .mat-mdc-paginator-range-actions .mat-mdc-paginator-range-label {
