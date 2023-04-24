@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collection, collectionData, deleteDoc, doc, Firestore, getDocs} from "@angular/fire/firestore";
+import {addDoc, collection, collectionData, deleteDoc, doc, Firestore} from "@angular/fire/firestore";
 import {Complaint} from "../model/complaint.model";
 import {Observable} from "rxjs";
 
@@ -7,29 +7,28 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class ComplaintsService {
+  private readonly complaintsCollection = collection(this.firestore, 'complaints')
+
   constructor(private readonly firestore: Firestore) {}
 
   getComplaints(): Observable<Complaint[]> {
-    return collectionData(
-      collection(this.firestore, 'complaints'),
-      {idField: 'id'}
-    ) as Observable<Complaint[]>;
+    return collectionData(this.complaintsCollection, {idField: 'id'}) as Observable<Complaint[]>;
   }
 
-  addComplaint(complaint: Complaint) {
+  async addComplaint(complaint: Complaint): Promise<void> {
     complaint.creationTimestamp = Date.now()
-    return addDoc(collection(this.firestore, 'complaints'), complaint);
+    await addDoc(this.complaintsCollection, complaint);
   }
 
-  deleteComplaint(id: string) {
-    return deleteDoc(doc(this.firestore, 'complaints', id));
+  deleteComplaint(id: string): Promise<void> {
+    return deleteDoc(doc(this.complaintsCollection, id));
   }
 
-  getComplaintMinLength() {
+  getComplaintMinLength(): number {
     return Complaint.MIN_LENGTH
   }
 
-  getComplaintMaxLength() {
+  getComplaintMaxLength(): number {
     return Complaint.MAX_LENGTH
   }
 }

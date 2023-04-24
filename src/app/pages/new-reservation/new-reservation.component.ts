@@ -4,7 +4,7 @@ import {Reservation} from "../../model/reservation.model";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AlertsService} from "../../services/alerts.service";
-import {AlertErrorCode} from "../../errors/alert-error.errors";
+import {AlertError} from "../../errors/alert-error.errors";
 import {Observable, Subscription} from "rxjs";
 
 @Component({
@@ -87,7 +87,7 @@ export class NewReservationComponent implements OnInit, OnDestroy {
       await this.router.navigate(['/user-reservations'])
     } catch (e) {
       console.error(e)
-      await this.alertsService.showErrorAlert(AlertErrorCode.UNKNOWN)
+      await this.alertsService.showErrorAlert(AlertError.UNKNOWN)
     }
   }
 

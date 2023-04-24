@@ -7,7 +7,8 @@ import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/
 import {translate} from "@ngneat/transloco";
 import {MatDialog} from "@angular/material/dialog";
 import {Subscription} from "rxjs";
-import {AlertErrorCode} from "../../errors/alert-error.errors";
+import {AlertError} from "../../errors/alert-error.errors";
+import {AlertsService} from "../../services/alerts.service";
 
 @Component({
   selector: 'app-my-account',
@@ -22,7 +23,8 @@ export class MyAccountComponent implements OnInit, OnDestroy {
     private readonly userService: UserService,
     private readonly authService: AuthenticationService,
     private readonly router: Router,
-    private readonly dialog: MatDialog
+    private readonly dialog: MatDialog,
+    private readonly alertsService: AlertsService
   ) { }
 
   ngOnInit() {
@@ -44,15 +46,15 @@ export class MyAccountComponent implements OnInit, OnDestroy {
     this.openDeleteAccountConfirmation()
   }
 
-  async deleteAccount() {
+  async deleteAccount(): Promise<void> {
     try {
       await this.userService.deleteUser()
       await this.router.navigate(['/log-in'])
     } catch (e: any) {
       console.error(e)
-      if (e.name === AlertErrorCode.RECENT_LOGIN_REQUIRED) {
-        this.openLogInRedirectConfirmation()
-      }
+      if (e.name === AlertError.RECENT_LOGIN_REQUIRED)
+        return this.openLogInRedirectConfirmation()
+      await this.alertsService.showErrorAlert(e.name)
     }
   }
 
