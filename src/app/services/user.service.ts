@@ -4,7 +4,7 @@ import {User} from "../model/user";
 import {Firestore} from "@angular/fire/firestore";
 import {BehaviorSubject, first, map, Observable} from "rxjs";
 import {ReservationsService} from "./reservations.service";
-import {AlertErrorCode} from "../errors/alert-error.errors";
+import {AlertError} from "../errors/alert-error.errors";
 
 @Injectable({
   providedIn: 'root'
@@ -47,11 +47,15 @@ export class UserService {
     try {
       this.deleteUserAndTheirReservations()
     } catch (e: any) {
-      if (e.code === 'auth/requires-recent-login') {
-        const recentLoginRequiredError = new Error()
-        recentLoginRequiredError.name = AlertErrorCode.RECENT_LOGIN_REQUIRED
-        throw recentLoginRequiredError
+      const error = new Error()
+      switch(e.code) {
+        case 'auth/requires':
+          error.name = AlertError.RECENT_LOGIN_REQUIRED
+          break
+        default:
+          error.name = AlertError.UNKNOWN
       }
+      throw error
     }
   }
 }

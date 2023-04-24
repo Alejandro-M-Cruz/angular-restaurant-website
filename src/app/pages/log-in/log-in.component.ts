@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
-import {FormErrorCode} from "../../errors/form-error.errors";
+import {FormError} from "../../errors/form-error.errors";
 import {AlertsService} from "../../services/alerts.service";
-import {AlertErrorCode} from "../../errors/alert-error.errors";
+import {AlertError} from "../../errors/alert-error.errors";
 
 @Component({
   selector: 'app-log-in',
@@ -37,7 +37,7 @@ export class LogInComponent {
       await this.router.navigate(['/home'])
     } catch (e: any) {
       console.error(e)
-      if (e.name === FormErrorCode.WRONG_EMAIL_OR_PASSWORD)
+      if (e.name === FormError.WRONG_EMAIL_OR_PASSWORD)
         return this.form.setErrors({wrongEmailOrPassword: true})
       await this.alertsService.showErrorAlert(e.name)
     }

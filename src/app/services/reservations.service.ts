@@ -25,10 +25,7 @@ export class ReservationsService {
   }
 
   getAllReservations(): Observable<Reservation[]> {
-    const q = query(
-      this.reservationsCollection,
-      orderBy('date', 'desc')
-    )
+    const q = query(this.reservationsCollection, orderBy('date', 'desc'))
     return collectionData(q, {idField: 'id'}) as Observable<Reservation[]>
   }
 
@@ -53,17 +50,16 @@ export class ReservationsService {
       reservations.filter(r => r.userId === this.auth.currentUser!.uid)))
   }
 
-  getMaxReservations() {
+  getMaxReservations(): number {
     return Reservation.MAX_RESERVATIONS
   }
 
-  addReservation(reservation: Reservation) {
+  async addReservation(reservation: Reservation): Promise<void> {
     reservation.userId = this.auth.currentUser!.uid
-    reservation.isCancelled = false
-    return addDoc(collection(this.firestore, 'reservations'), reservation)
+    await addDoc(collection(this.firestore, 'reservations'), reservation)
   }
 
-  cancelReservation(id: string) {
+  cancelReservation(id: string): Promise<void> {
     return updateDoc(doc(this.firestore, 'reservations', id), {isCancelled: true})
   }
 
