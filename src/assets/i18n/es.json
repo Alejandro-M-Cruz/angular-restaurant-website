@@ -45,7 +45,9 @@
     "contact": "Contacto",
     "login": "Iniciar sesión",
     "editMenu": "Editar menú",
-    "complaints": "Reclamaciones"
+    "complaints": "Reclamaciones",
+    "complaintForm": "Hoja de reclamaciones",
+    "myAccount": "Mi cuenta"
   },
   "footerTexts": {
     "followUs": "Síguenos en",

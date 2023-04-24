@@ -16,6 +16,8 @@ export class NewReservationComponent implements OnInit, OnDestroy {
   availableDates$: Observable<Date[]> = this.reservationsService.getAvailableDatesObservable()
   availableTimesForSelectedDate$?: Observable<string[]>
   availableSeatsForSelectedDateAndTime$?: Observable<number>
+  dateInputSubscription?: Subscription
+  timeInputSubscription?: Subscription
   availableSeatsSubscription?: Subscription
   form = this.fb.group({
     date: new FormControl<number | null>(null, Validators.required),
@@ -31,8 +33,16 @@ export class NewReservationComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.disableTimeAndCustomersInputs()
+    this.disableInputs('time', 'customers')
     this.setDateAndTimeChangeObservers()
+  }
+
+  private disableInputs(...inputs: string[]) {
+    inputs.forEach(input => this.form.get(input)?.disable())
+  }
+
+  private enableInputs(...inputs: string[]) {
+    inputs.forEach(input => this.form.get(input)?.enable())
   }
 
   private getCustomersInputValidators(maxCustomers: number) {
@@ -45,32 +55,24 @@ export class NewReservationComponent implements OnInit, OnDestroy {
   }
 
   private setDateAndTimeChangeObservers() {
-    this.form.controls.date.valueChanges.subscribe(date => {
-      this.onDateChanged(date === null ? null : new Date(date))
+    this.dateInputSubscription = this.form.controls.date.valueChanges.subscribe(date => {
+      this.onDateChanged(date ? new Date(date) : null)
     })
-    this.form.controls.time.valueChanges.subscribe(time => {
+    this.timeInputSubscription = this.form.controls.time.valueChanges.subscribe(time => {
       this.onTimeChanged(time)
     })
   }
 
-  private disableTimeAndCustomersInputs() {
-    this.form.controls.time.disable()
-    this.form.controls.customers.disable()
-  }
-
-  private enableTimeAndCustomersInputs() {
-    this.form.controls.time.enable()
-    this.form.controls.customers.enable()
-  }
-
   private onDateChanged(date: Date | null) {
-    if (date === null)
-      return this.disableTimeAndCustomersInputs()
+    if (!date)
+      return this.disableInputs('time', 'customers')
     this.availableTimesForSelectedDate$ = this.reservationsService.getAvailableTimesObservable(date)
-    this.enableTimeAndCustomersInputs()
+    this.enableInputs('time')
   }
 
   private onTimeChanged(time: string | null) {
+    if (!time)
+      return this.disableInputs('customers')
     this.availableSeatsSubscription?.unsubscribe()
     this.availableSeatsForSelectedDateAndTime$ = this.reservationsService
       .getAvailableSeatsObservable(new Date(this.form.controls.date.value!),time!)
@@ -79,6 +81,7 @@ export class NewReservationComponent implements OnInit, OnDestroy {
         this.form.controls.customers.clearValidators()
         this.form.controls.customers.setValidators(this.getCustomersInputValidators(availableSeats))
       })
+    this.enableInputs('customers')
   }
 
   async onSubmit() {
@@ -92,6 +95,8 @@ export class NewReservationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-
+    this.dateInputSubscription?.unsubscribe()
+    this.timeInputSubscription?.unsubscribe()
+    this.availableSeatsSubscription?.unsubscribe()
   }
 }
