@@ -17,6 +17,7 @@ export class NavbarService {
     {name: 'navbarLinks.home', route: '/home'},
     {name: 'navbarLinks.menu', route: '/home/menu'},
     {name: 'navbarLinks.reservations', route: '/user-reservations'},
+    {name: 'navbarLinks.order', route: '/user-order'},
     {name: 'navbarLinks.aboutUs', route: '/home/about-us'},
     {name: 'navbarLinks.cart', route: '/cart'}
   ]

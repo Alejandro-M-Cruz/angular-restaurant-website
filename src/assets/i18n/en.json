@@ -45,7 +45,8 @@
     "contact": "Contact",
     "login": "Log in",
     "editMenu": "Edit menu",
-    "complaints": "Complaints"
+    "complaints": "Complaints",
+    "order": "Orders"
   },
   "footerTexts": {
     "followUs": "Follow us on",
