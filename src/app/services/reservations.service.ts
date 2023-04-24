@@ -10,8 +10,8 @@ import {
   query, updateDoc,
   where
 } from "@angular/fire/firestore";
-import {Auth} from "@angular/fire/auth";
 import {BehaviorSubject, map, Observable} from "rxjs";
+import {Auth} from "@angular/fire/auth";
 
 @Injectable({
   providedIn: 'root'
