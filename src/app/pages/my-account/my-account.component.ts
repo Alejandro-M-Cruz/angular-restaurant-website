@@ -28,7 +28,7 @@ export class MyAccountComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.userInfoSubscription = this.userService.getUserInfo().subscribe(userInfo => {
+    this.userInfoSubscription = this.userService.getCurrentUserObservable().subscribe(userInfo => {
       this.userInfo = userInfo
     })
   }
@@ -48,7 +48,7 @@ export class MyAccountComponent implements OnInit, OnDestroy {
 
   async deleteAccount(): Promise<void> {
     try {
-      await this.userService.deleteUser()
+      await this.userService.deleteCurrentUser()
       await this.router.navigate(['/log-in'])
     } catch (e: any) {
       console.error(e)
