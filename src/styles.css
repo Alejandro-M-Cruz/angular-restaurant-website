@@ -412,6 +412,12 @@ app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons) {
   margin-bottom: 2%;
 }
 
+app-user-order div.ng-star-inserted .previous-order-button {
+  padding: 2%;
+  margin-top: 1rem;
+  background-color: #ffd232;
+}
+
 app-menu h2{
   margin-top: 5%;
 }
