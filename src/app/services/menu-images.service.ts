@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
+import {DomSanitizer} from "@angular/platform-browser";
 
 const MENU_IMAGES_STORAGE = 'menu_images'
 
@@ -8,7 +9,15 @@ const MENU_IMAGES_STORAGE = 'menu_images'
 })
 export class MenuImagesService {
 
-  constructor(private readonly storage: Storage) {
+  constructor(private readonly storage: Storage, private readonly domSanitizer: DomSanitizer) {}
+
+  getNotYetUploadedImageUrl(imageFile: File): string {
+    const url = URL.createObjectURL(imageFile)
+    return this.domSanitizer.bypassSecurityTrustUrl(url) as string
+  }
+
+  revokeImageUrl(imageUrl: string) {
+    URL.revokeObjectURL(imageUrl)
   }
 
   getImageNameFromUrl(url: string): string {

@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router()
 import {auth} from '../firebase'
-import {UserInfo} from "../../../src/app/model/user-info.model";
+import {User} from "../../../src/app/model/user";
 
 router.get('/', async (req, res) => {
   const usersList = await auth.listUsers()
@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     email: user.email,
     creationDate: new Date(user.metadata.creationTime),
     lastLogInDate: new Date(user.metadata.lastSignInTime)
-  })) as UserInfo[])
+  })) as User[])
 })
 
 router.get('/:uid', async (req, res) => {
@@ -20,7 +20,7 @@ router.get('/:uid', async (req, res) => {
     email: user.email,
     creationDate: new Date(user.metadata.creationTime),
     lastLogInDate: new Date(user.metadata.lastSignInTime)
-  } as UserInfo)
+  } as User)
 })
 
 export default router

@@ -22,7 +22,7 @@ export class UserReservationsComponent implements OnInit, OnDestroy {
   constructor(private readonly reservationsService: ReservationsService, private readonly dialog: MatDialog) {}
 
   ngOnInit() {
-    this.reservationsSubscription = this.reservationsService.getUserCurrentReservations()
+    this.reservationsSubscription = this.reservationsService.getUserActiveReservations()
       .subscribe(reservations  => {
         this.onReservationsChange(reservations)
       })
@@ -68,7 +68,7 @@ export class UserReservationsComponent implements OnInit, OnDestroy {
 
   private async cancelReservation() {
     try {
-      await this.reservationsService.deleteReservation(this.selectedReservation!.id!)
+      await this.reservationsService.cancelReservation(this.selectedReservation!.id!)
     } catch(e) {
       console.error(e)
     }

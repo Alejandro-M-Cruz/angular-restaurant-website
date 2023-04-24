@@ -4,11 +4,10 @@ import {
   addDoc,
   collection,
   collectionData,
-  deleteDoc,
   doc,
   Firestore,
   orderBy,
-  query,
+  query, updateDoc,
   where
 } from "@angular/fire/firestore";
 import {Auth} from "@angular/fire/auth";
@@ -27,37 +26,39 @@ const RESERVATION_TIMES = [
   providedIn: 'root'
 })
 export class ReservationsService {
-  private readonly currentReservations$ = new BehaviorSubject<Reservation[]>([])
+  private readonly reservationsCollection = collection(this.firestore, 'reservations')
+  private readonly activeReservations$ = new BehaviorSubject<Reservation[]>([])
 
   constructor(private readonly firestore: Firestore, private readonly auth: Auth) {
-    this.getCurrentReservationsFromFirestore().subscribe(this.currentReservations$)
+    this.loadActiveReservationsFromFirestore().subscribe(this.activeReservations$)
   }
 
-  getReservations(): Observable<Reservation[]> {
+  getAllReservations(): Observable<Reservation[]> {
     const q = query(
-      collection(this.firestore, 'reservations'),
+      this.reservationsCollection,
       orderBy('date', 'desc')
     )
     return collectionData(q, {idField: 'id'}) as Observable<Reservation[]>
   }
 
-  private getCurrentReservationsFromFirestore(): Observable<Reservation[]> {
+  private loadActiveReservationsFromFirestore(): Observable<Reservation[]> {
     const today = new Date()
     today.setHours(0, 0, 0, 0)
     const q = query(
-      collection(this.firestore, 'reservations'),
+      this.reservationsCollection,
       where('date', '>=', today.getTime()),
+      where('isCancelled', '==', false),
       orderBy('date')
     )
     return collectionData(q, {idField: 'id'}) as Observable<Reservation[]>
   }
 
-  getCurrentReservations(): Observable<Reservation[]> {
-    return this.currentReservations$
+  getActiveReservations(): Observable<Reservation[]> {
+    return this.activeReservations$
   }
 
-  getUserCurrentReservations(): Observable<Reservation[]> {
-    return this.currentReservations$.pipe(map(reservations =>
+  getUserActiveReservations(): Observable<Reservation[]> {
+    return this.activeReservations$.pipe(map(reservations =>
       reservations.filter(r => r.userId === this.auth.currentUser!.uid)))
   }
 
@@ -67,11 +68,12 @@ export class ReservationsService {
 
   addReservation(reservation: Reservation) {
     reservation.userId = this.auth.currentUser!.uid
+    reservation.isCancelled = false
     return addDoc(collection(this.firestore, 'reservations'), reservation)
   }
 
-  deleteReservation(id: string) {
-    return deleteDoc(doc(this.firestore, 'reservations', id))
+  cancelReservation(id: string) {
+    return updateDoc(doc(this.firestore, 'reservations', id), {isCancelled: true})
   }
 
   private getAvailableDates(reservations: Reservation[]): Date[] {
@@ -89,7 +91,7 @@ export class ReservationsService {
   }
 
   getAvailableDatesObservable(): Observable<Date[]> {
-    return this.currentReservations$.pipe(map(reservations =>
+    return this.activeReservations$.pipe(map(reservations =>
       this.getAvailableDates(reservations)))
   }
 
@@ -103,7 +105,7 @@ export class ReservationsService {
   }
 
   getAvailableTimesObservable(date: Date): Observable<string[]> {
-    return this.currentReservations$.pipe(map(reservations =>
+    return this.activeReservations$.pipe(map(reservations =>
       this.getAvailableTimes(reservations, date)))
   }
 
@@ -115,11 +117,8 @@ export class ReservationsService {
   }
 
   getAvailableSeatsObservable(date: Date, time: string): Observable<number> {
-    return this.currentReservations$.pipe(map(reservations =>
+    return this.activeReservations$.pipe(map(reservations =>
       this.getAvailableSeats(reservations, date, time)))
   }
 
-  getMaxCustomers() {
-    return MAX_CUSTOMERS
-  }
 }

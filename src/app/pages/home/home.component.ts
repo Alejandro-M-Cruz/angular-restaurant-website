@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
-import {UserInfo} from "../../model/user-info.model";
+import {User} from "../../model/user";
 import {first, Subscription} from "rxjs";
 
 @Component({
@@ -9,7 +9,7 @@ import {first, Subscription} from "rxjs";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  userInfo: UserInfo | null = null
+  userInfo: User | null = null
   userInfoSubscription?: Subscription
 
   constructor(private readonly userService: UserService) {}

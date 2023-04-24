@@ -61,7 +61,7 @@ button:hover {
 
 .grid-div {
   display: grid;
-  grid-template-rows: 150px 1fr 300px;
+  grid-template-rows: 100px 1fr 300px;
   grid-template-columns: 1fr;
   grid-template-areas: "header" "main" "footer";
 }
@@ -81,6 +81,10 @@ input:focus, textarea:focus {
 
 .scale-2 {
   transform: scale(2);
+}
+
+.scale-150 {
+  transform: scale(150%);
 }
 
 /* -------------NAVBAR------------- */
@@ -146,7 +150,7 @@ input:focus, textarea:focus {
 ngb-carousel {
   /* max-width: 70vw; */
   margin: 0 auto;
-  width: 100%;
+  width: 80%;
 }
 
 ngb-carousel img {
@@ -884,8 +888,16 @@ app-complaints form {
     font-size: 12px;
   }
 
+  .scale-2 {
+    transform: scale(1.8);
+  }
+
+  .scale-150 {
+    transform: scale(125%);
+  }
+
   .grid-div {
-    grid-template-rows: 120px 1fr 360px;
+    grid-template-rows: 100px 1fr 360px;
   }
 
   .navbar-list {
@@ -918,14 +930,14 @@ app-complaints form {
     margin: 50px auto;
     width: 100%;
   }
-  
+
   ngb-carousel img {
     width: 100%;
     outline: none;
     filter: brightness(0.6);
   }
 
-  /* 
+  /*
   .slide-image-thing__center-text {
     font-size: 1em;
   }
@@ -1072,6 +1084,14 @@ app-complaints form {
     font-size: 9px;
   }
 
+  .scale-2 {
+    transform: scale(1.5);
+  }
+
+  .scale-150 {
+    transform: scale(1);
+  }
+
   .page-title {
     font-size: 1.8em;
     width: 75%;
@@ -1114,7 +1134,7 @@ app-complaints form {
     margin: 18rem auto;
     width: 100%;
   }
-  
+
   ngb-carousel img {
     width: 100%;
     outline: none;

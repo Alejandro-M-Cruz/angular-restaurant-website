@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {TranslocoService} from '@ngneat/transloco';
-import {Link, NavbarLinksService} from "../../services/navbar-links.service";
+import {Link, NavbarService} from "../../services/navbar.service";
 import {Observable} from "rxjs";
 
 @Component({
@@ -9,15 +9,14 @@ import {Observable} from "rxjs";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  links$: Observable<Link[]> = this.navbarLinksService.getLinks()
-  showUserIcon$: Observable<boolean> = this.navbarLinksService.showUserIcon()
+  links$: Observable<Link[]> = this.navbarService.getLinks()
+  mobileQueryMatches$: Observable<boolean> = this.navbarService.mobileQueryMatches()
 
   constructor(
-    private readonly translateService: TranslocoService,
-    private readonly navbarLinksService: NavbarLinksService
+    private readonly navbarService: NavbarService
   ) { }
 
-  onChangeLanguage() {
-    this.translateService.setActiveLang(this.translateService.getActiveLang() === 'en' ? 'es' : 'en');
+  changeLanguage() {
+    this.navbarService.toggleLanguage()
   }
 }
