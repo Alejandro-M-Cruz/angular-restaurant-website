@@ -1,29 +1,37 @@
-import { MenuItem } from '../model/menu-item.model';
 import { Injectable } from '@angular/core';
+import {MenuItem} from "../model/menu-item.model";
+
+export interface CartItem {
+  menuItem: MenuItem;
+  amount: number;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  items: MenuItem[] = [];
-  constructor() { }
+  cartItems: CartItem[] = [];
 
-  addToCart(item: MenuItem) {
-    this.items.push(item);
+  addToCart(menuItem: MenuItem) {
+    const includedItemWithSameMenuItem = this.cartItems.find(cartItem => cartItem.menuItem.id === menuItem.id);
+    includedItemWithSameMenuItem ?
+      includedItemWithSameMenuItem.amount++ :
+      this.cartItems.push({ menuItem, amount: 1 });
   }
 
-  deleteToCart(item: MenuItem){
-    const itemIndex = this.items.indexOf(item);
-    this.items.splice(itemIndex,1);
+  deleteFromCart(menuItem: MenuItem) {
+    const cartItemIndex = this.cartItems.findIndex(cartItem => cartItem.menuItem.id === menuItem.id);
+    if (cartItemIndex === -1) throw new Error();
+    this.cartItems.splice(cartItemIndex,1);
   }
 
-  getItems() {
-    return this.items;
+  getItems(): CartItem[] {
+    return this.cartItems;
   }
 
   clearCart() {
-    this.items = [];
-    return this.items;
+    this.cartItems = [];
+    return this.cartItems;
   }
 
 }

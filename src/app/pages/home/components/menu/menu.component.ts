@@ -56,13 +56,13 @@ export class MenuComponent implements OnInit {
     return this.translationService.getActiveLang()
   }
 
-  addToCart(item:MenuItem){
+  addToCart(item: MenuItem){
     this.cartService.addToCart(item);
     //window.alert('Your product has been added to the cart!');
   }
 
-  deleteToCart(item:MenuItem){
-    this.cartService.deleteToCart(item)
+  deleteFromCart(item: MenuItem){
+    this.cartService.deleteFromCart(item)
   }
 
 }

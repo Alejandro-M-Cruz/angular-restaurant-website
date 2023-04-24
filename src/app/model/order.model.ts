@@ -1,7 +1,7 @@
-import {MenuItem} from "./menu-item.model";
+import {CartItem} from "./cart-item.model";
 
 export interface Order {
-  items: MenuItem[];
+  items: CartItem[];
   creationTimestamp: Date;
   userId: string;
 }

@@ -9,7 +9,7 @@ import {TranslocoService} from '@ngneat/transloco';
 })
 export class CartComponent {
   @Input() availableLanguages!: string[]
-  items = this.cartService.getItems();
+  cartItems = this.cartService.getItems();
 
   constructor(
     private cartService: CartService,
