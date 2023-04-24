@@ -1145,7 +1145,7 @@ app-complaints-admin .complaints-button {
 
   ngb-carousel {
     /* max-width: 70vw; */
-    margin: 18rem auto;
+    margin: 25px auto;
     width: 100%;
   }
 
