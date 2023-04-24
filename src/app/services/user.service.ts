@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Auth, authState} from "@angular/fire/auth";
 import {User} from "../model/user";
-import {Firestore} from "@angular/fire/firestore";
 import {BehaviorSubject, first, map, Observable} from "rxjs";
-import {ReservationsService} from "./reservations.service";
 import {AlertError} from "../errors/alert-error.errors";
+import {ReservationsService} from "./reservations.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +11,13 @@ import {AlertError} from "../errors/alert-error.errors";
 export class UserService {
   private readonly authState$ = new BehaviorSubject<any>(null)
 
-  constructor(
-    private readonly auth: Auth,
-    private readonly firestore: Firestore,
-    private readonly reservationsService: ReservationsService
-  ) {
+  constructor(private readonly auth: Auth, private readonly reservationsService: ReservationsService) {
     authState(this.auth).subscribe(this.authState$)
   }
 
   private extractUserInfo(user: any): User | null {
     return user ? {
+      uid: user.uid,
       username: user.displayName,
       email: user.email,
       creationDate: user.metadata.creationTime ? new Date(user.metadata.creationTime) : undefined,
@@ -29,11 +25,15 @@ export class UserService {
     } as User : null
   }
 
-  getUserInfo(): Observable<User | null> {
+  getCurrentUser(): User | null {
+    return this.extractUserInfo(this.auth.currentUser)
+  }
+
+  getCurrentUserObservable(): Observable<User | null> {
     return this.authState$.pipe(map(user => this.extractUserInfo(user)))
   }
 
-  private deleteUserAndTheirReservations() {
+  private deleteCurrentUserAndTheirReservations() {
     this.reservationsService.getUserActiveReservations().pipe(first()).subscribe(async reservations => {
       reservations.forEach(reservation => {
         this.reservationsService.cancelReservation(reservation.id!)
@@ -42,10 +42,10 @@ export class UserService {
     })
   }
 
-  async deleteUser() {
+  async deleteCurrentUser(): Promise<void> {
     if (!this.auth.currentUser) return
     try {
-      this.deleteUserAndTheirReservations()
+      this.deleteCurrentUserAndTheirReservations()
     } catch (e: any) {
       const error = new Error()
       switch(e.code) {
