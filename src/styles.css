@@ -1082,11 +1082,20 @@ app-complaints-admin .complaints-button {
 
   /* ----- SHOPPING CART ----- */
   .cart-buttons {
-    width: 90%;
+    width: 100%;
+  }
+
+  .cart-buttons .back-button, .cancel-button{
+    width: 25%;
+    padding: 1%;
   }
 
   app-user-order div h2 {
     font-size: 20px;
+  }
+
+  .cart-item-lang {
+    width: 60%;
   }
 }
 
