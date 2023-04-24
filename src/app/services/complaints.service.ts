@@ -3,9 +3,6 @@ import {addDoc, collection, collectionData, deleteDoc, doc, Firestore, getDocs} 
 import {Complaint} from "../model/complaint.model";
 import {Observable} from "rxjs";
 
-const COMPLAINT_MIN_LENGTH = 20
-const COMPLAINT_MAX_LENGTH = 2000
-
 @Injectable({
   providedIn: 'root'
 })
@@ -29,10 +26,10 @@ export class ComplaintsService {
   }
 
   getComplaintMinLength() {
-    return COMPLAINT_MIN_LENGTH
+    return Complaint.MIN_LENGTH
   }
 
   getComplaintMaxLength() {
-    return COMPLAINT_MAX_LENGTH
+    return Complaint.MAX_LENGTH
   }
 }

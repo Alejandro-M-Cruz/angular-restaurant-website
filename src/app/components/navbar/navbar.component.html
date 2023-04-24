@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <header>
-    <mat-toolbar style="background-color: var(--main-color);">
+    <mat-toolbar #toolbar class="position-fixed" style="z-index: 1000; background-color: var(--main-color);">
       <mat-toolbar-row>
         <button class="p-2 me-2" mat-icon-button (click)="sidenav.toggle()">
           <mat-icon class="scale-150">menu</mat-icon>
@@ -9,7 +9,7 @@
         <button class="p-2 mx-sm-2 d-flex justify-content-center align-items-center" mat-icon-button (click)="changeLanguage()">
           <img class="scale-150" [src]="t('oppositeFlag')" alt="Language">
         </button>
-        <a class="p-2 mx-sm-2 text-black text-decoration-none" mat-icon-button>
+        <a routerLink="/cart" class="p-2 mx-sm-2 text-black text-decoration-none" mat-icon-button>
           <mat-icon class="scale-150">shopping_cart</mat-icon>
         </a>
         <a routerLink="/my-account" class="p-2 mx-sm-2 text-black text-decoration-none" mat-icon-button>
@@ -18,16 +18,20 @@
       </mat-toolbar-row>
     </mat-toolbar>
   </header>
-
   <mat-sidenav-container>
-    <mat-sidenav #sidenav [mode]="(mobileQueryMatches$ | async) ? 'over' : 'side'" [class.w-100]="mobileQueryMatches$ | async">
+    <mat-sidenav
+      #sidenav [mode]="(mobileQueryMatches$ | async) ? 'over' : 'side'"
+      [class.w-100]="mobileQueryMatches$ | async"
+      fixedInViewport
+      [fixedTopGap]="toolbar._elementRef.nativeElement.offsetHeight"
+    >
       <mat-nav-list>
         <a mat-list-item *ngFor="let link of links$ | async" [routerLink]="link.route">
           <span class="py-5 mx-2">{{t(link.name)}}</span>
         </a>
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content [style.margin-top]="toolbar._elementRef.nativeElement.offsetHeight + 'px'">
       <ng-content></ng-content>
     </mat-sidenav-content>
   </mat-sidenav-container>

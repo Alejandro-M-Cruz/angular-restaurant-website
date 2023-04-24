@@ -1,8 +1,11 @@
-<h3 *transloco="let t" id="shopping-cart-title"> {{t('shoppingCart')}} </h3>
+<ng-container *transloco="let t">
+  <h3 id="shopping-cart-title"> {{t('shoppingCart')}} </h3>
 
-<div class="cart-item-lang"*ngFor="let item of items">
-    <img [src]="item.imageUrl" alt="food" class="buy-image-food">
-    <span *transloco="let t"> {{ item.name[getActiveLanguage()] }} </span>
-    <span *transloco="let t"> {{ item.ingredients[getActiveLanguage()] }} </span>
-    <span> {{ item.price | currency: 'EUR'}} </span>
-</div>
+  <div class="cart-item-lang" *ngFor="let cartItem of cartItems">
+    <img *ngIf="cartItem.menuItem.imageUrl" [src]="cartItem.menuItem.imageUrl" alt="item image" class="buy-image-food">
+    <span> {{ cartItem.menuItem.name[getActiveLanguage()] }} </span>
+    <span> {{ cartItem.menuItem.ingredients[getActiveLanguage()] }} </span>
+    <span> {{ cartItem.menuItem.price | currency: 'EUR'}} </span>
+    <span> {{ cartItem.amount }} </span>
+  </div>
+</ng-container>

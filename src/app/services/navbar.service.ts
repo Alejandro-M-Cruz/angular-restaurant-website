@@ -4,7 +4,7 @@ import {map, Observable} from "rxjs";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {TranslocoService} from "@ngneat/transloco";
 
-export interface Link {
+export interface NavbarLink {
   name: string,
   route: string
 }
@@ -13,14 +13,14 @@ export interface Link {
   providedIn: 'root'
 })
 export class NavbarService {
-  private readonly links: Link[] = [
+  private readonly links: NavbarLink[] = [
     {name: 'navbarLinks.home', route: '/home'},
     {name: 'navbarLinks.menu', route: '/home/menu'},
     {name: 'navbarLinks.reservations', route: '/user-reservations'},
     {name: 'navbarLinks.aboutUs', route: '/home/about-us'},
     {name: 'navbarLinks.cart', route: '/cart'}
   ]
-  private readonly adminLinks: Link[] = [
+  private readonly adminLinks: NavbarLink[] = [
     {name: 'navbarLinks.home', route: '/home'},
     {name: 'navbarLinks.reservations', route: '/reservations-admin'},
     {name: 'navbarLinks.editMenu', route: '/menu-sections-admin'},
@@ -33,7 +33,7 @@ export class NavbarService {
     private readonly translateService:  TranslocoService
   ) {}
 
-  getLinks(): Observable<Link[]> {
+  getLinks(): Observable<NavbarLink[]> {
     return this.permissionsService.isAdmin().pipe(map(isAdmin => {
       return isAdmin ? this.adminLinks : this.links
     }))
