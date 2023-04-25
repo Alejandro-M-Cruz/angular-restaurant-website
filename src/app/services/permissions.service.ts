@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {collection, Firestore, getDocs, query, where} from "@angular/fire/firestore";
+import {collection, doc, Firestore, getDoc} from "@angular/fire/firestore";
 import {BehaviorSubject, map, Observable} from "rxjs";
 import {UserService} from "./user.service";
 
@@ -27,8 +27,7 @@ export class PermissionsService {
   }
 
   private adminsCollectionIncludesUser(uid: string): Promise<boolean> {
-    const q = query(this.adminsCollection, where('uid', '==', uid))
-    return getDocs(q).then(querySnapshot => querySnapshot.size > 0)
+    return getDoc(doc(this.adminsCollection, uid)).then(documentSnapshot => documentSnapshot.exists())
   }
 
   isLoggedOut(): Observable<boolean> {

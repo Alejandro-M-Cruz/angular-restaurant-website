@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.myAccount')}}</h2>
-  <table class="data-table" *ngIf="userInfo">
+  <table class="data-table" *ngIf="user">
     <tr class="title-row">
       <th>{{t('userInfo.username')}}</th>
       <th>{{t('userInfo.email')}}</th>
@@ -8,10 +8,10 @@
       <th>{{t('userInfo.lastLogInDate')}}</th>
     </tr>
     <tr class="non-selectable-row">
-      <td>{{userInfo.username}}</td>
-      <td>{{userInfo.email}}</td>
-      <td>{{userInfo.creationDate | date: t('dateFormat') + ', HH:mm'}}</td>
-      <td>{{userInfo.lastLogInDate | date: t('dateFormat') + ', HH:mm'}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.creationDate | date: t('dateFormat') + ', HH:mm'}}</td>
+      <td>{{user.lastLogInDate | date: t('dateFormat') + ', HH:mm'}}</td>
     </tr>
   </table>
   <div class="buttons-container">
