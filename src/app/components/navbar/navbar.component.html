@@ -20,8 +20,8 @@
   </header>
   <mat-sidenav-container>
     <mat-sidenav
-      #sidenav [mode]="(mobileQueryMatches$ | async) ? 'over' : 'side'"
-      [class.w-75]="mobileQueryMatches$ | async"
+      #sidenav [mode]="mobileQueryMatches || tabletQueryMatches ? 'over' : 'side'"
+      [class.w-75]="mobileQueryMatches"
       fixedInViewport
       [fixedTopGap]="toolbar._elementRef.nativeElement.offsetHeight"
     >
@@ -32,6 +32,7 @@
           [routerLink]="link.route"
           class="border-bottom"
           [class.border-top]="i === 0"
+          (click)="mobileQueryMatches || tabletQueryMatches ? sidenav.close() : ''"
         >
           <span class="ps-2 pe-1">{{t(link.name)}}</span>
         </a>
