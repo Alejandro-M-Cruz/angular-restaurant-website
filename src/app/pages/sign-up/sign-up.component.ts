@@ -5,7 +5,6 @@ import {passwordMatchingValidator} from "../../validators/password-matching.vali
 import {Router} from "@angular/router";
 import {FormError} from "../../errors/form-error.errors";
 import {AlertsService} from "../../services/alerts.service";
-import {AlertError} from "../../errors/alert-error.errors";
 
 @Component({
   selector: 'app-sign-up',

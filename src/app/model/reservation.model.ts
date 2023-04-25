@@ -1,5 +1,6 @@
 export class Reservation {
-  static readonly MAX_RESERVATIONS = 5
+  static readonly MAX_ACTIVE_RESERVATIONS_PER_USER = 5
+  static readonly USER_MAX_RES_IN_SAME_DAY = 2
   static readonly MIN_DAYS_BEFOREHAND = 2
   static readonly MAX_DAYS_BEFOREHAND = 30
   static readonly MAX_CUSTOMERS = 30
@@ -12,5 +13,5 @@ export class Reservation {
   time: string;
   customers: number;
   userId?: string;
-  isCancelled: boolean = false;
+  isCancelled?: boolean;
 }

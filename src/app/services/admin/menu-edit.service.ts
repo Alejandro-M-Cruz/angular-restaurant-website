@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {MenuSection} from "../../model/menu-section.model";
 import {addDoc, collection, deleteDoc, doc, Firestore, setDoc} from "@angular/fire/firestore";
 import {MenuItem} from "../../model/menu-item.model";
+import { createProduct, updateProduct, deleteProduct, retrieveProductInformationById } from 'src/app/api/stripe';
 
 @Injectable({
   providedIn: 'root'
@@ -33,12 +34,29 @@ export class MenuEditService {
     return this.sectionBeingEdited
   }
 
-  addItem(menuItem: MenuItem): Promise<any> {
-    return addDoc(this.itemsCollection, menuItem)
+  async addItem(menuItem: MenuItem): Promise<any> {
+    try {
+      const product = await createProduct(menuItem.name.en,
+        menuItem.ingredients.en,
+        menuItem.price * 100,
+        'EUR',
+        menuItem.imageUrl);
+      menuItem.idStripe = product.id;
+      return await addDoc(this.itemsCollection, menuItem);
+    } catch (error) {
+      console.log('Error creating product:', error);
+    }
   }
 
-  deleteItem(id: string): Promise<void> {
-    return deleteDoc(doc(this.itemsCollection, id))
+  async deleteItem(id: string, idStripe: string): Promise<void> {
+    try {
+      const product = await deleteProduct(idStripe);
+      console.log('Whether the product is currently available for purchase:', product.active);
+      return await deleteDoc(doc(this.itemsCollection, id))
+    } catch (error) {
+      console.log('Error deleting product:', error);
+    }
+    
   }
 
   updateItem(id: string, menuItem: MenuItem): Promise<void> {

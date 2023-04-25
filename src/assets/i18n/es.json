@@ -35,7 +35,8 @@
     "menu": "MENÚ",
     "aboutUs": "SOBRE NOSOTROS",
     "menuSectionsAdmin": "Modifique las secciones del menú mediante el desplegable",
-    "orderUser" : "Reserva tu pedido"
+    "orderUser" : "Reserva tu pedido",
+    "orderHistory": "Pedidos anteriores"
   },
   "navbarLinks": {
     "home": "Inicio",
@@ -96,7 +97,8 @@
     "undoChanges": "Deshacer cambios",
     "saveChanges": "Guardar cambios",
     "sendComplaint": "Enviar reclamación",
-    "deleteCart" : "Borrar carrito"
+    "deleteCart" : "Borrar carrito",
+    "tryagain" : "Volver a pedir"
   },
   "userInfo": {
     "username": "Nombre de usuario",
@@ -148,7 +150,8 @@
     "directionLabelRequest" : "Introduzca su dirección (Obligatoria)",
     "askLabel" : "¿Quieres volver a probar?",
     "previousOrderButton" : "Ver pedidos anteriores",
-    "selectLabel": "Seleccione sus opciones"
+    "selectLabel": "Seleccione sus opciones",
+    "totalPrice":"Precio total"
   },
   "formLabels": {
     "username": "Nombre de usuario",
