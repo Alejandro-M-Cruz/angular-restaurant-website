@@ -24,14 +24,13 @@
     <app-menu></app-menu>
     <app-cart></app-cart>
 
+     <div>
+    {{t('orderForms.totalPrice')}} : {{order.getTotalPrice() | number}} €
+    </div>
+
+    <!-- Aqui iría el botón submit -->
+
   </form>
-
-
-  <div>
-    {{t('orderForms.totalPrice')}} : {{order.getTotalPrice()}} €
-  </div>
-
-
 
 </ng-container>
 
