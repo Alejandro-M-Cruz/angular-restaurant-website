@@ -6,6 +6,7 @@ import {DisplayableMenuSection, MenuSection} from "../../../../model/menu-sectio
 import {map} from "rxjs";
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import {CartItem} from "../../../../model/cart-item.model";
 
 @Component({
   selector: 'app-menu',
@@ -16,6 +17,7 @@ export class MenuComponent implements OnInit {
   menuLeft?: DisplayableMenuSection[]
   menuRight?: DisplayableMenuSection[]
   page?:string;
+  cartItems: CartItem[] = []
   @Output() messageEvent = new EventEmitter<MenuItem>();
 
   constructor(
@@ -37,7 +39,7 @@ export class MenuComponent implements OnInit {
       sub.unsubscribe()
     })
     this.page =this.activeRoute.snapshot.routeConfig?.title as string;
-
+    this.cartItems = this.cartService.getCartItems();
   }
 
   getDisplayableMenu(menuSections: MenuSection[], menuItems: MenuItem[]) {
