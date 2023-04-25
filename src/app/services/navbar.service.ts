@@ -48,6 +48,12 @@ export class NavbarService {
       .pipe(map(result => result.matches))
   }
 
+  tabletQueryMatches(): Observable<boolean> {
+    return this.breakPointObserver
+      .observe('(max-width: 1268px) and (min-width: 601px)')
+      .pipe(map(result => result.matches))
+  }
+
   toggleLanguage() {
     this.translateService.setActiveLang(this.translateService.getActiveLang() === 'en' ? 'es' : 'en')
   }

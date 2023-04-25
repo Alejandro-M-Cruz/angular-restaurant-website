@@ -10,7 +10,7 @@ import {
   query, updateDoc,
   where
 } from "@angular/fire/firestore";
-import {BehaviorSubject, map, Observable} from "rxjs";
+import {BehaviorSubject, first, map, Observable} from "rxjs";
 import {UserService} from "./user.service";
 
 @Injectable({
@@ -51,14 +51,28 @@ export class ReservationsService {
       reservations.filter(r => r.userId === this.userService.getCurrentUser()!.uid)))
   }
 
-  getMaxReservations(): number {
-    return Reservation.MAX_RESERVATIONS
+  private reservationIsValid(reservation: Reservation): Observable<void> {
+    return this.getUserActiveReservations().pipe(map(reservations => {
+      if (reservations.find(r => r.date === reservation.date && r.time === reservation.time))
+        throw new Error()
+      if (reservations.filter(r => r.date === reservation.date).length < Reservation.USER_MAX_RES_IN_SAME_DAY)
+        throw new Error()
+    }))
   }
 
-  async addReservation(reservation: Reservation): Promise<void> {
-    reservation.userId = this.userService.getCurrentUser()!.uid
-    reservation.isCancelled = false
-    await addDoc(collection(this.firestore, 'reservations'), reservation)
+  async addReservation(reservation: Reservation) {
+    this.reservationIsValid(reservation).pipe(first()).subscribe({
+      next: () => {
+        reservation.userId = this.userService.getCurrentUser()!.uid
+        reservation.isCancelled = false
+        addDoc(collection(this.firestore, 'reservations'), reservation)
+      },
+      error: error => {
+        switch(error) {
+
+        }
+      }
+    })
   }
 
   cancelReservation(id: string): Promise<void> {
@@ -109,5 +123,6 @@ export class ReservationsService {
     return this.activeReservations$.pipe(map(reservations =>
       this.getAvailableSeats(reservations, date, time)))
   }
+
 
 }

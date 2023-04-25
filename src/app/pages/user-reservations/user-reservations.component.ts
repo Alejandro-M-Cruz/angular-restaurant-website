@@ -16,7 +16,7 @@ export class UserReservationsComponent implements OnInit, OnDestroy {
   reservationsSubscription?: Subscription
   userReservations: Reservation[] = []
   nReservations = 0
-  maxReservations = this.reservationsService.getMaxReservations()
+  maxReservations = Reservation.MAX_ACTIVE_RESERVATIONS_PER_USER
   selectedReservation: Reservation | null = null
 
   constructor(private readonly reservationsService: ReservationsService, private readonly dialog: MatDialog) {}
