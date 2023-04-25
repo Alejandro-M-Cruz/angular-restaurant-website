@@ -5,8 +5,8 @@ import {BreakpointObserver} from "@angular/cdk/layout";
 import {TranslocoService} from "@ngneat/transloco";
 
 export interface NavbarLink {
-  name: string,
-  route: string
+  name: string;
+  route: string;
 }
 
 @Injectable({
@@ -17,14 +17,17 @@ export class NavbarService {
     {name: 'navbarLinks.home', route: '/home'},
     {name: 'navbarLinks.menu', route: '/home/menu'},
     {name: 'navbarLinks.reservations', route: '/user-reservations'},
-    {name: 'navbarLinks.aboutUs', route: '/home/about-us'},
-    {name: 'navbarLinks.cart', route: '/cart'}
+    {name: 'navbarLinks.order', route: '/user-order'},
+    {name: 'navbarLinks.complaintForm', route: '/complaints'},
+    {name: 'navbarLinks.cart', route: '/cart'},
+    {name: 'navbarLinks.myAccount', route: '/my-account'}
   ]
   private readonly adminLinks: NavbarLink[] = [
     {name: 'navbarLinks.home', route: '/home'},
     {name: 'navbarLinks.reservations', route: '/reservations-admin'},
     {name: 'navbarLinks.editMenu', route: '/menu-sections-admin'},
-    {name: 'navbarLinks.complaints', route: '/complaints-admin'}
+    {name: 'navbarLinks.complaints', route: '/complaints-admin'},
+    {name: 'navbarLinks.myAccount', route: '/my-account'}
   ]
 
   constructor(

@@ -21,13 +21,19 @@
   <mat-sidenav-container>
     <mat-sidenav
       #sidenav [mode]="(mobileQueryMatches$ | async) ? 'over' : 'side'"
-      [class.w-100]="mobileQueryMatches$ | async"
+      [class.w-75]="mobileQueryMatches$ | async"
       fixedInViewport
       [fixedTopGap]="toolbar._elementRef.nativeElement.offsetHeight"
     >
       <mat-nav-list>
-        <a mat-list-item *ngFor="let link of links$ | async" [routerLink]="link.route">
-          <span class="py-5 mx-2">{{t(link.name)}}</span>
+        <a
+          mat-list-item
+          *ngFor="let link of links$ | async; let i = index"
+          [routerLink]="link.route"
+          class="border-bottom"
+          [class.border-top]="i === 0"
+        >
+          <span class="ps-2 pe-1">{{t(link.name)}}</span>
         </a>
       </mat-nav-list>
     </mat-sidenav>
