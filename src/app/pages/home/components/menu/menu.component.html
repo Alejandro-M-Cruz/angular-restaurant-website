@@ -17,6 +17,9 @@
           </div>
           <div class = "buttons-items" *ngIf="page=='order'">
             <button (click)="deleteFromCart(item)">-</button>
+            <ng-container *ngFor="let cartItem of cartItems">
+              <span *ngIf="cartItem.menuItem===item">{{ cartItem.amount }}</span> 
+            </ng-container>
             <button (click)="addToCart(item)"> Buy </button>
           </div>
         </div>
@@ -39,6 +42,7 @@
 
           <div class = "buttons-items" *ngIf="page=='order'">
             <button (click)="addToCart(item)">-</button>
+            <span>{{ cartItems[0].amount }}</span>
             <button (click)="addToCart(item)"> Buy </button>
           </div>
         </div>
