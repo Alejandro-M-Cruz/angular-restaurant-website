@@ -12,5 +12,5 @@ export class Reservation {
   time: string;
   customers: number;
   userId?: string;
-  isCancelled: boolean = false;
+  isCancelled?: boolean;
 }

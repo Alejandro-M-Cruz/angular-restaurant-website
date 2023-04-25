@@ -9,6 +9,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Subscription} from "rxjs";
 import {AlertError} from "../../errors/alert-error.errors";
 import {AlertsService} from "../../services/alerts.service";
+import {UserDeletionService} from "../../services/user-deletion.service";
 
 @Component({
   selector: 'app-my-account',
@@ -16,11 +17,12 @@ import {AlertsService} from "../../services/alerts.service";
   styleUrls: ['./my-account.component.css']
 })
 export class MyAccountComponent implements OnInit, OnDestroy {
-  userInfo: User | null = null
-  userInfoSubscription?: Subscription
+  user: User | null = null
+  userSubscription?: Subscription
 
   constructor(
     private readonly userService: UserService,
+    private readonly userDeletionService: UserDeletionService,
     private readonly authService: AuthenticationService,
     private readonly router: Router,
     private readonly dialog: MatDialog,
@@ -28,8 +30,8 @@ export class MyAccountComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.userInfoSubscription = this.userService.getUserInfo().subscribe(userInfo => {
-      this.userInfo = userInfo
+    this.userSubscription = this.userService.getCurrentUserObservable().subscribe(user => {
+      this.user = user
     })
   }
 
@@ -48,7 +50,7 @@ export class MyAccountComponent implements OnInit, OnDestroy {
 
   async deleteAccount(): Promise<void> {
     try {
-      await this.userService.deleteUser()
+      await this.userDeletionService.deleteCurrentUser()
       await this.router.navigate(['/log-in'])
     } catch (e: any) {
       console.error(e)
@@ -90,6 +92,6 @@ export class MyAccountComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.userInfoSubscription?.unsubscribe()
+    this.userSubscription?.unsubscribe()
   }
 }

@@ -12,6 +12,7 @@
     "login": "Iniciar sesión",
     "signup": "Registrarse",
     "myAccount": "Mi cuenta",
+    "order": "Pedidos",
     "shoppingCart": "Carrito de la compra",
     "reservations": "Reservas",
     "reservationsAdmin": "Reservas actuales",
@@ -46,7 +47,10 @@
     "contact": "Contacto",
     "login": "Iniciar sesión",
     "editMenu": "Editar menú",
-    "complaints": "Reclamaciones"
+    "complaints": "Reclamaciones",
+    "complaintForm": "Hoja de reclamaciones",
+    "myAccount": "Mi cuenta",
+    "order": "Pedidos"
   },
   "footerTexts": {
     "followUs": "Síguenos en",

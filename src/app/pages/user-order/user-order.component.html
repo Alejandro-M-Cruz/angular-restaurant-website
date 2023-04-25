@@ -19,18 +19,17 @@
       <h2>
         {{t('orderForms.askLabel')}}
       </h2>
+<<<<<<< HEAD
         <a [routerLink]="['/user-orderhistory']">
-        <button>{{t('orderForms.previousOrderButton')}} </button>
+        <button class="previous-order-button">{{t('orderForms.previousOrderButton')}} </button>
         </a>
+=======
+      <button class="previous-order-button">{{t('orderForms.previousOrderButton')}}</button>
+>>>>>>> 61e400f104406cf7ac465c901a74c36132a79958
     </div>
 
     <app-menu></app-menu>
     <app-cart></app-cart>
-
-    <div class="cart-buttons">
-      <button class="management-button back-button">{{t('buttons.back')}}</button>
-      <button class="management-button cancel-button" (click)="clearCart()">{{t('buttons.deleteCart')}}</button>
-    </div>
 
 </ng-container>
 

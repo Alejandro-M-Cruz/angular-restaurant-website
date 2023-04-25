@@ -1,4 +1,6 @@
 export const environment = {
+  production: false,
+  stripe_key: 'pk_test_51MyyGlAwqI0tPo96EbP3U0LLkBqx4f35wx3QgVHHaS9dVYxkiUtsYkr0F9B7szURMLWf5bE1NZotSVevZIebIYL5000DHdyXcs',
   firebase: {
     projectId: 'restaurantwebsite-3b940',
     appId: '1:869558618824:web:11c1c7c4293e1e8c5373fd',
