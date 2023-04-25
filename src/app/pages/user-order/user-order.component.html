@@ -21,9 +21,17 @@
       {{t('orderForms.askLabel')}}
       <input type="button" value="{{t('orderForms.previousOrderButton')}}">
     </label>
+    <app-menu></app-menu>
+    <app-cart></app-cart>
+
   </form>
-  <app-menu></app-menu>
-  <app-cart></app-cart>
+
+
+  <div>
+    {{t('orderForms.totalPrice')}} : {{order.getTotalPrice()}} €
+  </div>
+
+
 
 </ng-container>
 

@@ -150,7 +150,8 @@
     "directionLabelRequest" : "Introduzca su dirección (Obligatoria)",
     "askLabel" : "¿Quieres volver a probar?",
     "previousOrderButton" : "Ver pedidos anteriores",
-    "selectLabel": "Seleccione sus opciones"
+    "selectLabel": "Seleccione sus opciones",
+    "totalPrice":"Precio total"
   },
   "formLabels": {
     "username": "Nombre de usuario",

@@ -21,16 +21,14 @@ export class UserOrderComponent {
 
 
   constructor(private cartService: CartService,private readonly fb:FormBuilder) {
-
+    this.order = new Order();
+    this.order.cartItems = this.cartService.getCartItems();
   }
 
   ngOnInit(){
     this.form.controls.isHomeDelivery.valueChanges.subscribe(isHomeDelivery => {
-        this.form.controls.deliveryAddress.setValidators(isHomeDelivery ? [Validators.required] : [])
+        this.form.controls.deliveryAddress.setValidators(isHomeDelivery ? [Validators.required] : []);
+        this.order.isHomeDelivery = isHomeDelivery!;
      })
-  }
-
-  clearCart(){
-    this.cartService.clearCart()
   }
 }
