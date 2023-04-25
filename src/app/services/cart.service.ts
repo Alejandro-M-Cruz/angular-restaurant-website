@@ -39,8 +39,8 @@ export class CartService {
     return this.cartItems;
   }
 
-  clearCart() {
-    this.cartItems = [];
+  clearCart(): void {
+    this.cartItems.splice(0,this.cartItems.length);
   }
 
 }

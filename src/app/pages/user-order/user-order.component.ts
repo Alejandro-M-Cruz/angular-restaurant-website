@@ -1,15 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Order } from 'src/app/model/order.model';
 import { CartService } from 'src/app/services/cart.service';
-import {Router} from "@angular/router";
+
+
 
 @Component({
   selector: 'app-user-order',
   templateUrl: './user-order.component.html',
   styleUrls: ['./user-order.component.css']
 })
-
 export class UserOrderComponent {
 
-  constructor(private cartService: CartService, private router: Router) { }
 
+  order:Order;
+  form = this.fb.group({
+    isHomeDelivery: [false, [Validators.required]],
+    deliveryAddress: ['']
+  })
+
+
+  constructor(private cartService: CartService,private readonly fb:FormBuilder) {
+
+  }
+
+  ngOnInit(){
+    this.form.controls.isHomeDelivery.valueChanges.subscribe(isHomeDelivery => {
+        this.form.controls.deliveryAddress.setValidators(isHomeDelivery ? [Validators.required] : [])
+     })
+  }
+
+  clearCart(){
+    this.cartService.clearCart()
+  }
 }
