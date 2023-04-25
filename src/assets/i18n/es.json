@@ -12,6 +12,7 @@
     "login": "Iniciar sesión",
     "signup": "Registrarse",
     "myAccount": "Mi cuenta",
+    "order": "Pedidos",
     "shoppingCart": "Carrito de la compra",
     "reservations": "Reservas",
     "reservationsAdmin": "Reservas actuales",
@@ -34,7 +35,8 @@
     "menu": "MENÚ",
     "aboutUs": "SOBRE NOSOTROS",
     "menuSectionsAdmin": "Modifique las secciones del menú mediante el desplegable",
-    "orderUser" : "Reserva tu pedido"
+    "orderUser" : "Reserva tu pedido",
+    "orderHistory": "Pedidos anteriores"
   },
   "navbarLinks": {
     "home": "Inicio",
@@ -45,7 +47,10 @@
     "contact": "Contacto",
     "login": "Iniciar sesión",
     "editMenu": "Editar menú",
-    "complaints": "Reclamaciones"
+    "complaints": "Reclamaciones",
+    "complaintForm": "Hoja de reclamaciones",
+    "myAccount": "Mi cuenta",
+    "order": "Pedidos"
   },
   "footerTexts": {
     "followUs": "Síguenos en",
@@ -92,7 +97,8 @@
     "undoChanges": "Deshacer cambios",
     "saveChanges": "Guardar cambios",
     "sendComplaint": "Enviar reclamación",
-    "deleteCart" : "Borrar carrito"
+    "deleteCart" : "Borrar carrito",
+    "tryagain" : "Volver a pedir"
   },
   "userInfo": {
     "username": "Nombre de usuario",

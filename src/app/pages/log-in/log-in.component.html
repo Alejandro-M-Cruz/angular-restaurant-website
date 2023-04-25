@@ -8,11 +8,13 @@
       [maxLength]="passwordMaxLength"
     ></app-password-input>
     <mat-error *ngIf="form.errors?.['wrongEmailOrPassword']">{{t('formErrors.wrongEmailOrPassword')}}</mat-error>
-    <div class="already-signed-up-text"><app-already-signed-up
-      link="sign-up"
-      [alreadySignedUpText]="t('notSignedUp')"
-      [linkText]="t('notSignedUpLink')"
-    ></app-already-signed-up></div>
+    <div class="already-signed-up-text">
+      <app-already-signed-up
+        link="sign-up"
+        [alreadySignedUpText]="t('notSignedUp')"
+        [linkText]="t('notSignedUpLink')"
+      ></app-already-signed-up>
+    </div>
     <div class="buttons-container">
       <button class="form-button back-button" type="reset" onclick="window.history.back()">
         {{t('buttons.back')}}

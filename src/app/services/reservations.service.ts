@@ -11,7 +11,7 @@ import {
   where
 } from "@angular/fire/firestore";
 import {BehaviorSubject, map, Observable} from "rxjs";
-import {Auth} from "@angular/fire/auth";
+import {UserService} from "./user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class ReservationsService {
   private readonly reservationsCollection = collection(this.firestore, 'reservations')
   private readonly activeReservations$ = new BehaviorSubject<Reservation[]>([])
 
-  constructor(private readonly firestore: Firestore, private readonly auth: Auth) {
+  constructor(private readonly firestore: Firestore, private readonly userService: UserService) {
     this.loadActiveReservationsFromFirestore().subscribe(this.activeReservations$)
   }
 
@@ -46,8 +46,9 @@ export class ReservationsService {
   }
 
   getUserActiveReservations(): Observable<Reservation[]> {
+    console.log(this.userService.getCurrentUser()?.uid)
     return this.activeReservations$.pipe(map(reservations =>
-      reservations.filter(r => r.userId === this.auth.currentUser!.uid)))
+      reservations.filter(r => r.userId === this.userService.getCurrentUser()!.uid)))
   }
 
   getMaxReservations(): number {
@@ -55,7 +56,8 @@ export class ReservationsService {
   }
 
   async addReservation(reservation: Reservation): Promise<void> {
-    reservation.userId = this.auth.currentUser!.uid
+    reservation.userId = this.userService.getCurrentUser()!.uid
+    reservation.isCancelled = false
     await addDoc(collection(this.firestore, 'reservations'), reservation)
   }
 

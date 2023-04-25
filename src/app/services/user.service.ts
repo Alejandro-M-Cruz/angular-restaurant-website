@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Auth, authState} from "@angular/fire/auth";
 import {User} from "../model/user";
-import {BehaviorSubject, first, map, Observable} from "rxjs";
-import {AlertError} from "../errors/alert-error.errors";
-import {ReservationsService} from "./reservations.service";
+import {BehaviorSubject, map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +9,7 @@ import {ReservationsService} from "./reservations.service";
 export class UserService {
   private readonly authState$ = new BehaviorSubject<any>(null)
 
-  constructor(private readonly auth: Auth, private readonly reservationsService: ReservationsService) {
+  constructor(private readonly auth: Auth) {
     authState(this.auth).subscribe(this.authState$)
   }
 
@@ -31,31 +29,5 @@ export class UserService {
 
   getCurrentUserObservable(): Observable<User | null> {
     return this.authState$.pipe(map(user => this.extractUserInfo(user)))
-  }
-
-  private deleteCurrentUserAndTheirReservations() {
-    this.reservationsService.getUserActiveReservations().pipe(first()).subscribe(async reservations => {
-      reservations.forEach(reservation => {
-        this.reservationsService.cancelReservation(reservation.id!)
-      })
-      await this.auth.currentUser!.delete()
-    })
-  }
-
-  async deleteCurrentUser(): Promise<void> {
-    if (!this.auth.currentUser) return
-    try {
-      this.deleteCurrentUserAndTheirReservations()
-    } catch (e: any) {
-      const error = new Error()
-      switch(e.code) {
-        case 'auth/requires':
-          error.name = AlertError.RECENT_LOGIN_REQUIRED
-          break
-        default:
-          error.name = AlertError.UNKNOWN
-      }
-      throw error
-    }
   }
 }
