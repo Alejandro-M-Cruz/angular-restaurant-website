@@ -13,6 +13,7 @@
   --footer-background-color: #bcbbbb;
   --page-title-font-size: 2.5rem;
   --big-links-font-size: 1.5rem;
+  --box-shadow-color: #bbbbbb;
 }
 
 * {
@@ -59,17 +60,6 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.grid-div {
-  display: grid;
-  grid-template-rows: 100px 1fr 300px;
-  grid-template-columns: 1fr;
-  grid-template-areas: "header" "main" "footer";
-}
-
-.grid-div main {
-  grid-area: main;
-}
-
 input, textarea, select {
   border: black solid 1px;
   padding-left: 2px;
@@ -87,53 +77,12 @@ input:focus, textarea:focus {
   transform: scale(150%);
 }
 
-/* -------------NAVBAR------------- */
-
-.navbar-header {
-  grid-area: header;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--main-color);
-  z-index: 999;
+mat-error {
+  font-size: 0.8rem !important;
 }
 
-.navbar-list {
-  list-style-type: none;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar-list__logo {
-  flex-grow: 2;
-  padding: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.hamburger-button {
-  background: none;
-  margin-right: 3rem;
-  display: none;
-}
-
-.navbar-list a {
-  display: block;
-}
-
-.navbar-list li:not(.navbar-list__logo) {
-  display: block;
-  text-align: center;
-}
-
-.navbar-list a:not(.navbar-list__logo a) {
-  color: black;
-  padding: 0 3rem;
-  font-size: 1.2rem;
+mat-form-field {
+  margin-top: 1rem;
 }
 
 
@@ -431,7 +380,6 @@ app-menu h2{
 
 .footer-section {
   margin-top: 5rem;
-  grid-area: footer;
 }
 
 .footer-container {
@@ -676,27 +624,31 @@ app-reservations-admin .buttons-container .management-button{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 0 2rem 0;
+  margin-bottom: 2rem;
 }
 
 .management-button {
+  box-shadow: 0 5px 10px var(--box-shadow-color);
+  border-radius: 5px;
   display: block;
   font-size: 1.2rem;
-  width: 15%;
-  padding: 0.3rem;
+  min-width: 15%;
+  padding: 1rem;
   text-align: center;
   text-decoration: none;
   margin: 0 1rem;
 }
 
 .form-button {
+  box-shadow: 0 5px 10px var(--box-shadow-color);
+  border-radius: 5px;
   display: block;
   font-size: 1.2rem;
-  width: 50%;
-  padding: 0.3rem;
+  min-width: 25%;
+  padding: 1rem;
   text-align: center;
   text-decoration: none;
-  margin: 1.2rem 0.3rem 0;
+  margin: 1.2rem 1rem 0;
 }
 
 .management-button:hover {
@@ -921,32 +873,10 @@ app-complaints-admin .complaints-button {
     transform: scale(125%);
   }
 
-  .grid-div {
-    grid-template-rows: 100px 1fr 360px;
-  }
-
-  .navbar-list {
-    display: grid;
-    grid-template-columns: 150px repeat(6, 1fr);
-  }
-
   .page-title {
     font-size: 2rem;
   }
 
-  .navbar-header {
-    position: static;
-    flex-wrap: nowrap;
-    height: max-content;
-  }
-
-  .navbar-list__logo {
-    flex-basis: 100%;
-  }
-
-  .navbar-list a {
-    margin-bottom: 0.5rem;
-  }
 
   /* ----- CAROUSEL ----- */
 
@@ -1126,35 +1056,6 @@ app-complaints-admin .complaints-button {
     width: 75%;
   }
 
-  .navbar-list li:not(.navbar-list__logo) {
-    display: none;
-  }
-
-  .navbar-list {
-    flex-direction: column;
-  }
-
-  .hamburger-button {
-    display: block;
-  }
-
-  .navbar-list li {
-    width: 100%;
-    border-top: 1px solid black;
-    text-align: center;
-  }
-
-  .navbar-list a:not(#la-nostra-casa-nav-logo):not(.user-icon) {
-    padding: 15px 0;
-  }
-
-  .navbar-list .user-icon {
-    margin: 5px;
-  }
-
-  .navbar-list__user-icon img {
-    width: 40px;
-  }
 
   /* ----- CARRUSEL DE IMAGENES ----- */
 
