@@ -69,6 +69,8 @@ import { CarouselComponent } from './pages/home/components/carousel/carousel.com
 import { MenuSectionFormDialogComponent } from './components/form-dialogs/menu-section-form-dialog/menu-section-form-dialog.component';
 import { CartComponent } from './components/cart/cart.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { UserOrderHistoryComponent } from './pages/user-orderhistory/user-orderhistory.component';
+
 registerLocaleData(es);
 
 @NgModule({
@@ -110,6 +112,7 @@ registerLocaleData(es);
     CarouselComponent,
     MenuSectionFormDialogComponent,
     CartComponent,
+    UserOrderHistoryComponent
   ],
   imports: [
     BrowserModule,

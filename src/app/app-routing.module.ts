@@ -23,6 +23,8 @@ import {MenuItemsAdminComponent} from "./pages/menu-items-admin/menu-items-admin
 import {PermissionsService} from "./services/permissions.service";
 import { UserOrderComponent } from './pages/user-order/user-order.component';
 import { CartComponent } from './components/cart/cart.component';
+import {UserOrderHistoryComponent} from './pages/user-orderhistory/user-orderhistory.component';
+
 
 const canActivateLoggedIn: CanActivateFn = (_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot) => {
   const isLoggedIn = inject(PermissionsService).isLoggedIn()
@@ -66,6 +68,7 @@ const routes: Routes = [
   { path: 'user-reservations', title: 'reservations', component: UserReservationsComponent, canActivate: [canActivateLoggedIn] },
   { path: 'new-reservation', title: 'newReservation', component: NewReservationComponent, canActivate: [canActivateLoggedIn] },
   { path: 'user-order', title: 'order', component: UserOrderComponent, canActivate: [canActivateLoggedIn] },
+  { path: 'user-orderhistory', title: 'previousOrder', component: UserOrderHistoryComponent, canActivate: [canActivateLoggedIn] },
   { path: 'cart', title: 'shoppingCart', component: CartComponent, canActivate: [canActivateLoggedIn] },
 
   // ADMIN

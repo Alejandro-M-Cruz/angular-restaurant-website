@@ -34,7 +34,8 @@
     "menu": "MENU",
     "aboutUs": "ABOUT US",
     "menuSectionsAdmin": "Modify the menu sections using the drop-down",
-    "orderUser": "Reserve your order"
+    "orderUser": "Reserve your order",
+    "orderHistory": "Order History"
   },
   "navbarLinks": {
     "home": "Home",
@@ -92,7 +93,8 @@
     "undoChanges": "Undo changes",
     "saveChanges": "Save changes",
     "sendComplaint": "Send complaint",
-    "deleteCart": "Delete cart"
+    "deleteCart": "Delete cart",
+    "tryagain" : "Try again"
   },
   "userInfo": {
     "username": "Username",

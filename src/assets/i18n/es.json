@@ -34,7 +34,8 @@
     "menu": "MENÚ",
     "aboutUs": "SOBRE NOSOTROS",
     "menuSectionsAdmin": "Modifique las secciones del menú mediante el desplegable",
-    "orderUser" : "Reserva tu pedido"
+    "orderUser" : "Reserva tu pedido",
+    "orderHistory": "Pedidos anteriores"
   },
   "navbarLinks": {
     "home": "Inicio",
@@ -92,7 +93,8 @@
     "undoChanges": "Deshacer cambios",
     "saveChanges": "Guardar cambios",
     "sendComplaint": "Enviar reclamación",
-    "deleteCart" : "Borrar carrito"
+    "deleteCart" : "Borrar carrito",
+    "tryagain" : "Volver a pedir"
   },
   "userInfo": {
     "username": "Nombre de usuario",

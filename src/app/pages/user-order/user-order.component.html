@@ -19,7 +19,9 @@
       <h2>
         {{t('orderForms.askLabel')}}
       </h2>
-      <button>{{t('orderForms.previousOrderButton')}}</button>
+        <a [routerLink]="['/user-orderhistory']">
+        <button>{{t('orderForms.previousOrderButton')}} </button>
+        </a>
     </div>
 
     <app-menu></app-menu>
