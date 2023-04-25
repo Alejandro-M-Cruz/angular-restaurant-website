@@ -1,33 +1,32 @@
 <ng-container *transloco="let t">
-    <h2 class="page-title">{{t('titles.orderUser')}}</h2>
-    <div>
-      <h2>{{t('orderForms.optionLabel')}}</h2>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1">{{t('orderForms.homeDelivery')}}</mat-radio-button>
-        <mat-radio-button value="2">{{t('orderForms.pickUpOrder')}}</mat-radio-button>
+  <h2 class="page-title">{{t('titles.orderUser')}}</h2>
+  <form id="orderForm" #myForm="ngForm" [formGroup]="form">
+
+    <label>
+      {{t('orderForms.optionLabel')}}
+      <mat-radio-group aria-label="Select an option" formControlName="isHomeDelivery">
+        <mat-radio-button  [value]="true">{{t('orderForms.homeDelivery')}}</mat-radio-button>
+        <mat-radio-button  [value]="false">{{t('orderForms.pickUpOrder')}}</mat-radio-button>
       </mat-radio-group>
-    </div>
+    </label>
 
-    <div>
-      <h2>
-        {{t('orderForms.directionLabelRequest')}}
-      </h2>
-      <input type="text">
-    </div>
+    <ng-container *ngIf="this.form.controls.isHomeDelivery.value">
+      <label>
+        {{ t('orderForms.directionLabelRequest') }}
+        <input formControlName="deliveryAddress" type="text">
+      </label>
+    </ng-container>
 
-    <div>
-      <h2>
-        {{t('orderForms.askLabel')}}
-      </h2>
-        <a [routerLink]="['/user-orderhistory']">
-        <button class="previous-order-button">{{t('orderForms.previousOrderButton')}} </button>
-        </a>
-    </div>
-
-    <app-menu></app-menu>
-    <app-cart></app-cart>
+    <label>
+      {{t('orderForms.askLabel')}}
+      <input type="button" value="{{t('orderForms.previousOrderButton')}}">
+    </label>
+  </form>
+  <app-menu></app-menu>
+  <app-cart></app-cart>
 
 </ng-container>
+
 
 
 
