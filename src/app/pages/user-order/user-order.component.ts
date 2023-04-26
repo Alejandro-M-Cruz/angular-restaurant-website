@@ -16,7 +16,8 @@ export class UserOrderComponent {
   order:Order;
   form = this.fb.group({
     isHomeDelivery: [false, [Validators.required]],
-    deliveryAddress: ['']
+    deliveryAddress: [''],
+    tip:[0]
   })
 
 

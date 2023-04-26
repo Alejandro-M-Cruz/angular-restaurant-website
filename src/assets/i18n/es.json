@@ -151,7 +151,8 @@
     "askLabel" : "¿Quieres volver a probar?",
     "previousOrderButton" : "Ver pedidos anteriores",
     "selectLabel": "Seleccione sus opciones",
-    "totalPrice":"Precio total"
+    "totalPrice":"Precio total",
+    "askTip":"¿Desea dejar propina?"
   },
   "formLabels": {
     "username": "Nombre de usuario",
