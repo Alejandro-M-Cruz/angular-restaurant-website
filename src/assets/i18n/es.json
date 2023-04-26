@@ -27,8 +27,8 @@
   },
   "titles": {
     "main": "La Nostra Casa",
-    "login": "Inicie sesión para poder ver sus reservas y pedidos",
-    "signup": "Regístrese para poder realizar su primera reserva",
+    "login": "Inicie sesión para acceder a sus pedidos y reservas",
+    "signup": "Regístrese para poder realizar su primer pedido o reserva",
     "myAccount": "Mi cuenta",
     "reservations": "Reservas",
     "newReservation": "Complete los datos para realizar su reserva",

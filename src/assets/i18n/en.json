@@ -27,8 +27,8 @@
   },
   "titles": {
     "main": "La Nostra Casa",
-    "login": "Log in to access your reservations and orders",
-    "signup": "Sign up to make your first reservation",
+    "login": "Log in to access your orders and reservations",
+    "signup": "Sign up to make your first order or reservation",
     "myAccount": "My account",
     "reservations": "Reservations",
     "newReservation": "Fill in the form to make a reservation",
