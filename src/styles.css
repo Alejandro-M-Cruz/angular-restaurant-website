@@ -792,6 +792,26 @@ app-complaints-admin .complaints-button {
   text-align: center;
 }
 
+.mat-mdc-select-trigger {
+  justify-content: center !important;
+  width: 25% !important;
+  border: 1px solid black;
+  margin-bottom: 2%;
+}
+
+.mat-mdc-select {
+  display: flex !important;
+  justify-content: center;
+}
+
+.mat-mdc-select-value {
+  padding: 2%;
+}
+
+.mdc-menu-surface.mat-mdc-select-panel {
+  width: 25% !important;
+}
+
 /* -------------COMPLAINTS AND SUGGESTIONS/ ADMIN------------- */
 
 .cards-grid {
@@ -948,6 +968,16 @@ app-complaints-admin .complaints-button {
   .right-side {
     font-size: 1.2em;
   }
+
+  /* ----- MENU EDIT ----- */
+
+  .mat-mdc-select-trigger {
+    width: 30% !important;
+  }
+
+  .mdc-menu-surface.mat-mdc-select-panel {
+    width: 30% !important;
+}
 
   /* ----- RESERVE HERE ----- */
 
@@ -1110,6 +1140,16 @@ app-complaints-admin .complaints-button {
   .menu-left h3, .menu-right h3 {
     font-size: 1.5em;
   }
+
+  /* ----- MENU EDIT ----- */
+
+  .mat-mdc-select-trigger {
+    width: 60% !important;
+  }
+
+  .mdc-menu-surface.mat-mdc-select-panel {
+    width: 60% !important;
+}
 
   /* ----- RESERVE HERE ----- */
 
