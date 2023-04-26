@@ -98,7 +98,8 @@
     "saveChanges": "Save changes",
     "sendComplaint": "Send complaint",
     "deleteCart": "Delete cart",
-    "tryagain" : "Try again"
+    "tryagain" : "Try again",
+    "buy": "Buy"
   },
   "userInfo": {
     "username": "Username",

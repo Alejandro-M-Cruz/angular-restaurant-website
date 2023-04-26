@@ -98,7 +98,8 @@
     "saveChanges": "Guardar cambios",
     "sendComplaint": "Enviar reclamación",
     "deleteCart" : "Borrar carrito",
-    "tryagain" : "Volver a pedir"
+    "tryagain" : "Volver a pedir",
+    "buy": "Comprar"
   },
   "userInfo": {
     "username": "Nombre de usuario",
