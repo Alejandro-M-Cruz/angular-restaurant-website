@@ -15,10 +15,34 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 const firebase_1 = require("../firebase");
+/*router
+  .get('/', (_req, res) => res.send(Users.getUsers()))
+  .get('/:uid', (req, res) => res.send(Users.getUserById(req.params.uid)))*/
+function firestoreUserRecordToUser(user) {
+    return {
+        uid: user.uid,
+        username: user.displayName,
+        email: user.email,
+        creationDate: new Date(user.metadata.creationTime),
+        lastLogInDate: new Date(user.metadata.lastSignInTime)
+    };
+}
 router.get('/', (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const querySnapshot = yield firebase_1.firestore.collection('complaints').get();
-    res.json(querySnapshot.docs.map(doc => {
-        return Object.assign({ id: doc.id }, doc.data());
-    }));
+    try {
+        const usersList = yield firebase_1.auth.listUsers();
+        res.json(usersList.users.map(firestoreUserRecordToUser));
+    }
+    catch (e) {
+        res.json({ error: e.message });
+    }
+}));
+router.get('/:uid', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const user = yield firebase_1.auth.getUser(req.params.uid);
+        res.json(firestoreUserRecordToUser(user));
+    }
+    catch (e) {
+        res.json({ error: e.message });
+    }
 }));
 exports.default = router;

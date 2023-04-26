@@ -32,6 +32,7 @@
     "signup": "Sign up to make your first order or reservation",
     "myAccount": "My account",
     "reservations": "Reservations",
+    "allReservations": "General reservations history",
     "newReservation": "Fill in the form to make a reservation",
     "complaints": "Complaint form",
     "complaintsAdmin": "Complaints",
