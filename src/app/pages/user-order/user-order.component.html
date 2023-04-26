@@ -24,8 +24,18 @@
     <app-menu></app-menu>
     <app-cart></app-cart>
 
-    <div class="totalPrice">
-    {{t('orderForms.totalPrice')}} : {{order.getTotalPrice() | number}} €
+
+    <label>
+      {{t('orderForms.askTip')}}
+      <mat-radio-group aria-label="Select an option" formControlName="tip">
+        <mat-radio-button  [value]="0">0 €</mat-radio-button>
+        <mat-radio-button  [value]="1">1.00 €</mat-radio-button>
+        <mat-radio-button  [value]="2">2.00 €</mat-radio-button>
+        <mat-radio-button  [value]="3">3.00 €</mat-radio-button>
+      </mat-radio-group>
+    </label>
+     <div>
+    {{t('orderForms.totalPrice')}} : {{order.getTotalPrice(this.form.controls.tip.value!) | number}} €
     </div>
 
     <!-- Aqui iría el botón submit -->
