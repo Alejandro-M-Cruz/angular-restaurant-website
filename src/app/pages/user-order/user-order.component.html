@@ -1,34 +1,46 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.orderUser')}}</h2>
-  <form #myForm="ngForm" [formGroup]="form">
-    <div>
-      <h2>{{t('orderForms.optionLabel')}}</h2>
+  <form id="orderForm" #myForm="ngForm" [formGroup]="form">
+
+    <label>
+      {{t('orderForms.optionLabel')}}
       <mat-radio-group aria-label="Select an option" formControlName="isHomeDelivery">
         <mat-radio-button  [value]="true">{{t('orderForms.homeDelivery')}}</mat-radio-button>
         <mat-radio-button  [value]="false">{{t('orderForms.pickUpOrder')}}</mat-radio-button>
       </mat-radio-group>
+    </label>
+
+    <ng-container *ngIf="this.form.controls.isHomeDelivery.value">
+      <label>
+        {{ t('orderForms.directionLabelRequest') }}
+        <input formControlName="deliveryAddress" type="text">
+      </label>
+    </ng-container>
+
+    <label>
+      {{t('orderForms.askLabel')}}
+      <input type="button" value="{{t('orderForms.previousOrderButton')}}">
+    </label>
+    <app-menu></app-menu>
+    <app-cart></app-cart>
+
+
+    <label>
+      {{t('orderForms.askTip')}}
+      <mat-radio-group aria-label="Select an option" formControlName="tip">
+        <mat-radio-button  [value]="0">0 €</mat-radio-button>
+        <mat-radio-button  [value]="1">1.00 €</mat-radio-button>
+        <mat-radio-button  [value]="2">2.00 €</mat-radio-button>
+        <mat-radio-button  [value]="3">3.00 €</mat-radio-button>
+      </mat-radio-group>
+    </label>
+     <div>
+    {{t('orderForms.totalPrice')}} : {{order.getTotalPrice(this.form.controls.tip.value!) | number}} €
     </div>
 
+    <!-- Aqui iría el botón submit -->
 
-      <ng-container *ngIf="this.form.controls.isHomeDelivery.value">
-        <label>
-          {{ t('orderForms.directionLabelRequest') }}
-          <input formControlName="deliveryAddress" type="text">
-        </label>
-      </ng-container>
-
-
-</form>
-
-  <div>
-    <h2>
-      {{t('orderForms.askLabel')}}
-    </h2>
-    <button>{{t('orderForms.previousOrderButton')}}</button>
-  </div>
-
-  <app-menu></app-menu>
-  <app-cart></app-cart>
+  </form>
 
 </ng-container>
 

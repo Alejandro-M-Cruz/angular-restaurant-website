@@ -10,8 +10,8 @@ export class Order {
   deliveryAddress?: string;
   userId: string;
 
-  getTotalPrice(): number {
-    let totalPrice = 0
+  getTotalPrice(tip:number): number {
+    let totalPrice = tip;
     this.cartItems.forEach(cartItem => totalPrice += cartItem.menuItem.price * cartItem.amount)
     return this.isHomeDelivery ? totalPrice + Order.HOME_DELIVERY_FEE : totalPrice
   }

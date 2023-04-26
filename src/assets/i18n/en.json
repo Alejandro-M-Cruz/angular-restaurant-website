@@ -150,7 +150,9 @@
     "directionLabelRequest" : "Enter your order address (Required)",
     "askLabel" : "Do you want to taste again?",
     "previousOrderButton" : "See previous orders",
-    "selectLabel": "See previous orders"
+    "selectLabel": "See previous orders",
+    "totalPrice":"Total price",
+    "askTip":"Would you like to leave a tip?"
   },
   "formLabels": {
     "username": "Username",
