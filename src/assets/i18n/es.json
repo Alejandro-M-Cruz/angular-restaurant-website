@@ -200,7 +200,9 @@
     "menuItemName": "El nombre del producto no es válido",
     "menuItemDescription": "La descripción del producto no es válida",
     "menuItemPrice": "El precio del producto no es válido",
-    "menuImageSrc": "La ruta de la imagen del producto no es válida"
+    "menuImageSrc": "La ruta de la imagen del producto no es válida",
+    "reservationAtTheSameTime": "Ya tiene una reserva para la fecha y hora seleccionadas",
+    "exceededMaxReservationsTheSameDay": "Ha excedido el número máximo de reservas para el día seleccionado"
   },
   "alreadySignedUp": "Si ya se ha registrado, ",
   "alreadySignedUpLink": "INICIE SESIÓN AQUÍ",
@@ -239,26 +241,16 @@
     "confirmButtonTexts": {
       "accept": "Aceptar"
     },
+    "titles": {
+      "error": "Error"
+    },
     "errors": {
-      "unknown": {
-        "title": "Error",
-        "text": "Se ha producido un error, inténtelo de nuevo"
-      },
-      "imageUpload": {
-        "title": "Error",
-        "text": "Se ha producido un error al subir la imagen"
-      },
-      "recentLoginRequired": {
-        "title": "Error",
-        "text": "Inicie sesión nuevamente para confirmar su identidad"
-      },
-      "tooManyLoginRequests": {
-        "title": "Error",
-        "text": "Ha habido demasiados intentos de inicio de sesión en esta cuenta, inténtelo de nuevo más tarde"
-      }
+      "unknown": "Se ha producido un error, inténtelo de nuevo",
+      "imageUpload": "Se ha producido un error al subir la imagen",
+      "recentLoginRequired": "Inicie sesión nuevamente para confirmar su identidad",
+      "tooManyLoginRequests": "Ha habido demasiados intentos de inicio de sesión en esta cuenta, inténtelo de nuevo más tarde"
     },
     "NOT_FOUND": "El recurso solicitado no está disponible",
-
     "PASSWORDS_DONT_MATCH": "Las contraseñas no coinciden",
     "DUPLICATE_USER": "Este número de teléfono ya ha sido registrado",
     "FAILED_LOGIN": "El número de teléfono o la contraseña son incorrectos",
