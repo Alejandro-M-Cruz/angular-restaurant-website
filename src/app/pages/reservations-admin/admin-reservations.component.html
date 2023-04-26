@@ -1,5 +1,5 @@
 <ng-container *transloco="let t">
-  <h2 class="page-title">{{t('titles.reservations')}}</h2>
+  <h2 class="page-title">{{t('titles.' + (showPastReservations ? 'allReservations' : 'reservations'))}}</h2>
   <section class="content-section">
     <ng-container>
       <app-admin-reservations-table
@@ -14,6 +14,7 @@
         {{showPastReservations ? t('buttons.getCurrentReservations') : t('buttons.getAllReservations')}}
       </button>
       <button
+        *ngIf="!showPastReservations"
         class="management-button cancel-button"
         [disabled]="selectedReservation === null"
         (click)="onCancelReservation()"

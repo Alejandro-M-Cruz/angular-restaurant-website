@@ -12,17 +12,18 @@ const API = '/api/v1';
 const PORT = 3000;
 const users_routes_1 = __importDefault(require("./routes/users.routes"));
 app.use((0, cors_1.default)({
-    origin: 'http://localhost:4200'
+    origin: true
 }));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-app.use(API + '/users', users_routes_1.default);
 app.get('/', (_req, res) => {
     res.send('Welcome, admin');
 });
+app.use(API + '/users', users_routes_1.default);
 app.get('*', (_req, res) => {
     res.sendStatus(404);
 });
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
+/*functions.https.onRequest(app)*/
