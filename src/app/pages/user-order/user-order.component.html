@@ -19,12 +19,12 @@
 
     <label>
       {{t('orderForms.askLabel')}}
-      <input type="button" value="{{t('orderForms.previousOrderButton')}}">
+      <input type="button" class="previous-order-button" value="{{t('orderForms.previousOrderButton')}}">
     </label>
     <app-menu></app-menu>
     <app-cart></app-cart>
 
-     <div>
+    <div class="totalPrice">
     {{t('orderForms.totalPrice')}} : {{order.getTotalPrice() | number}} €
     </div>
 

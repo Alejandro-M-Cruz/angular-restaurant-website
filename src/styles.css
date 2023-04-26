@@ -353,17 +353,24 @@ ngb-carousel img {
   padding: 1rem;
 }
 
-app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons), h2.ng-star-inserted:not(.page-title.ng-star-inserted) {
+app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons), h2.ng-star-inserted:not(.page-title.ng-star-inserted), label, .totalPrice {
   margin-left: 1rem;
 }
 
-app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons) {
+app-user-order label {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 2%;
+  font-size: large;
 }
 
-app-user-order div.ng-star-inserted .previous-order-button {
-  padding: 2%;
-  margin-top: 1rem;
+app-user-order label input {
+  width: 25rem;
+  margin-top: 0.5rem;
+}
+
+app-user-order .previous-order-button {
+  padding: 1%;
   background-color: #ffd232;
 }
 
@@ -374,6 +381,12 @@ app-menu h2{
 .cart-buttons {
   display: flex;
   flex-direction: row;
+}
+
+.totalPrice {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 1%;
 }
 
 /* -------------FOOTER------------- */
@@ -1025,10 +1038,6 @@ app-complaints-admin .complaints-button {
     width: 25%;
   }
 
-  app-user-order div h2 {
-    font-size: 20px;
-  }
-
   .cart-item-lang {
     width: 60%;
   }
@@ -1282,8 +1291,8 @@ app-complaints-admin .complaints-button {
     align-items: center;
   }
 
-  app-user-order div h2 {
-    font-size: 14px;
+  app-user-order label {
+    font-size: 15px;
   }
 
   .cart-item-lang {
