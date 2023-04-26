@@ -792,25 +792,25 @@ app-complaints-admin .complaints-button {
   text-align: center;
 }
 
-.mat-mdc-select-trigger {
+app-menu-sections-admin .mat-mdc-select-trigger {
   justify-content: center !important;
   width: 25% !important;
   border: 1px solid black;
   margin-bottom: 2%;
 }
 
-.mat-mdc-select {
+app-menu-sections-admin .mat-mdc-select {
   display: flex !important;
   justify-content: center;
 }
 
-.mat-mdc-select-value {
+app-menu-sections-admin .mat-mdc-select-value {
   padding: 2%;
 }
 
-.mdc-menu-surface.mat-mdc-select-panel {
-  width: 25% !important;
-}
+/* .mdc-menu-surface.mat-mdc-select-panel { */
+  /* width: 25%; */
+/* } */
 
 /* -------------COMPLAINTS AND SUGGESTIONS/ ADMIN------------- */
 
@@ -971,11 +971,11 @@ app-complaints-admin .complaints-button {
 
   /* ----- MENU EDIT ----- */
 
-  .mat-mdc-select-trigger {
+  app-menu-sections-admin .mat-mdc-select-trigger {
     width: 30% !important;
   }
 
-  .mdc-menu-surface.mat-mdc-select-panel {
+  app-menu-sections-admin .mdc-menu-surface.mat-mdc-select-panel {
     width: 30% !important;
 }
 
@@ -1143,11 +1143,11 @@ app-complaints-admin .complaints-button {
 
   /* ----- MENU EDIT ----- */
 
-  .mat-mdc-select-trigger {
+  app-menu-sections-admin .mat-mdc-select-trigger {
     width: 60% !important;
   }
 
-  .mdc-menu-surface.mat-mdc-select-panel {
+  app-menu-sections-admin .mdc-menu-surface.mat-mdc-select-panel {
     width: 60% !important;
 }
 
