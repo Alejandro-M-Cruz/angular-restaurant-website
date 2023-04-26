@@ -355,6 +355,10 @@ ngb-carousel img {
   padding: 1rem;
 }
 
+app-cart div {
+  margin-left: 1rem;
+}
+
 app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons), h2.ng-star-inserted:not(.page-title.ng-star-inserted), label, .totalPrice {
   margin-left: 1rem;
 }
