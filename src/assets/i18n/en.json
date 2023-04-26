@@ -7,6 +7,8 @@
   "slideShowAddress": "Located in Triana St. / 30, Las Palmas de Gran Canaria",
   "aboutUsText": "We are not your <b> one night pizza </b>. <br>We want quality, althought you eat that pizza in your car <br>It is not pure, <b>we didn't invent the pizzas </b>.<br>We are the guardians of their true essence <br><br>Lovers of <b>BACK TO PIZZA</b>. <br>That one that leaves you full, <b>That one that keeps yourself up</b>. <br>The pizza's texture and the cheese quality <br><b> We feel every bite like a kiss in your head </b> <br><br>That one that brings with fine texture...<br><b> That one that you don't gonna regret </b>. <br><b> THAT ONE THAT KEEPS US PROUD </b>",
   "shoppingCart": "Shopping cart",
+  "orderConfirmedTitle": "Order confirmed",
+  "orderConfirmedDescription": "Your order has been confirmed. You will receive an email with the details of your order.",
   "tabTitles": {
     "home": "La Nostra Casa",
     "login": "Log in",
@@ -25,8 +27,8 @@
   },
   "titles": {
     "main": "La Nostra Casa",
-    "login": "Log in to access your reservations",
-    "signup": "Sign up to make your first reservation",
+    "login": "Log in to access your orders and reservations",
+    "signup": "Sign up to make your first order or reservation",
     "myAccount": "My account",
     "reservations": "Reservations",
     "allReservations": "General reservations history",
@@ -99,7 +101,10 @@
     "saveChanges": "Save changes",
     "sendComplaint": "Send complaint",
     "deleteCart": "Delete cart",
-    "tryagain" : "Try again"
+    "tryagain" : "Try again",
+    "buy": "Buy",
+    "continueShopping": "Continue shopping",
+    "viewOrder": "View order"
   },
   "userInfo": {
     "username": "Username",

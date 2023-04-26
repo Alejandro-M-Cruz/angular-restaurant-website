@@ -19,11 +19,11 @@
 
     <label>
       {{t('orderForms.askLabel')}}
-      <input type="button" value="{{t('orderForms.previousOrderButton')}}">
+      <input type="button" class="previous-order-button" value="{{t('orderForms.previousOrderButton')}}">
     </label>
     <app-menu></app-menu>
     <app-cart></app-cart>
-
+    <app-success> </app-success>
 
     <label>
       {{t('orderForms.askTip')}}
@@ -34,11 +34,9 @@
         <mat-radio-button  [value]="3">3.00 €</mat-radio-button>
       </mat-radio-group>
     </label>
-     <div>
+     <div class="totalPrice">
     {{t('orderForms.totalPrice')}} : {{order.getTotalPrice(this.form.controls.tip.value!) | number}} €
     </div>
-
-    <!-- Aqui iría el botón submit -->
 
   </form>
 

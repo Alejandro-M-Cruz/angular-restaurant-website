@@ -70,6 +70,7 @@ import { MenuSectionFormDialogComponent } from './components/form-dialogs/menu-s
 import { CartComponent } from './components/cart/cart.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { UserOrderHistoryComponent } from './pages/user-orderhistory/user-orderhistory.component';
+import { SuccessComponent } from './pages/success/success.component';
 
 registerLocaleData(es);
 
@@ -112,7 +113,8 @@ registerLocaleData(es);
     CarouselComponent,
     MenuSectionFormDialogComponent,
     CartComponent,
-    UserOrderHistoryComponent
+    UserOrderHistoryComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,6 @@ export class MenuComponent implements OnInit {
   menuRight?: DisplayableMenuSection[]
   page?:string;
   cartItems: CartItem[] = []
-  @Output() messageEvent = new EventEmitter<MenuItem>();
 
   constructor(
     private cartService: CartService,
