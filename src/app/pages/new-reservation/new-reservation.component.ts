@@ -5,7 +5,8 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AlertsService} from "../../services/alerts.service";
 import {AlertError} from "../../errors/alert-error.errors";
-import {Observable, Subscription} from "rxjs";
+import {catchError, first, Observable, Subscription} from "rxjs";
+import {FormError} from "../../errors/form-error.errors";
 
 @Component({
   selector: 'app-new-reservation',
@@ -84,13 +85,29 @@ export class NewReservationComponent implements OnInit, OnDestroy {
     this.enableInputs('customers')
   }
 
-  async onSubmit() {
-    try {
-      await this.reservationsService.addReservation(this.form.value as Reservation)
-      await this.router.navigate(['/user-reservations'])
-    } catch (e) {
-      console.error(e)
-      await this.alertsService.showErrorAlert(AlertError.UNKNOWN)
+  async onSubmitAddReservation() {
+      this.reservationsService.addReservation(this.form.value as Reservation)
+        .subscribe({
+          next: addPromise => {
+            addPromise
+              .then(() => this.router.navigate(['/user-reservations']))
+              .catch((e: any) => this.showErrorAlert(e.name))
+          },
+          error: e => this.showErrorAlert(e.name)
+        })
+  }
+
+  private async showErrorAlert(errorName: string) {
+    switch(errorName) {
+      case FormError.RESERVATION_AT_THE_SAME_TIME:
+        await this.alertsService.showErrorAlert(errorName)
+        break
+      case FormError.EXCEEDED_MAX_RESERVATIONS_AT_THE_SAME_DATE:
+        await this.alertsService.showErrorAlert(errorName)
+        break
+      default:
+        await this.alertsService.showErrorAlert(AlertError.UNKNOWN)
+        break
     }
   }
 

@@ -152,7 +152,8 @@
     "askLabel" : "Do you want to taste again?",
     "previousOrderButton" : "See previous orders",
     "selectLabel": "See previous orders",
-    "totalPrice":"Total price"
+    "totalPrice":"Total price",
+    "askTip":"Would you like to leave a tip?"
   },
   "formLabels": {
     "username": "Username",
@@ -201,7 +202,9 @@
     "menuItemName": "Nombre del producto no válido",
     "menuItemDescription": "Descripción del producto no válida",
     "menuItemPrice": "Precio del producto no válido",
-    "menuImageSrc": "Ruta de la imagen del producto no válida"
+    "menuImageSrc": "Ruta de la imagen del producto no válida",
+    "reservationAtTheSameTime": "You have already made a reservation for the selected date and time",
+    "exceededMaxReservationsTheSameDay": "You have exceeded the maximum number of reservations for the selected date"
   },
   "alreadySignedUp": "If you already have an account, ",
   "alreadySignedUpLink": "LOG IN HERE",
@@ -240,26 +243,16 @@
     "confirmButtonTexts": {
       "accept": "Accept"
     },
+    "titles": {
+      "error": "Error"
+    },
     "errors": {
-      "unknown": {
-        "title": "Error",
-        "text": "There has been an error, try again later"
-      },
-      "imageUpload": {
-        "title": "Error",
-        "text": "There has been an error uploading the image"
-      },
-      "recentLoginRequired": {
-        "title": "Error",
-        "text": "Log in again to confirm your identity"
-      },
-      "tooManyLoginRequests": {
-        "title": "Error",
-        "text": "There have been too many log-in attempts in this account, try again later"
-      }
+      "unknown": "There has been an error, try again later",
+      "imageUpload": "There has been an error uploading the image",
+      "recentLoginRequired": "Log in again to confirm your identity",
+      "tooManyLoginRequests": "There have been too many log-in attempts in this account, try again later"
     },
     "NOT_FOUND": "The requested resource is not available",
-
     "PASSWORDS_DONT_MATCH": "The passwords don't match",
     "DUPLICATE_USER": "The phone number is already registered",
     "FAILED_LOGIN": "The phone number or password is incorrect",

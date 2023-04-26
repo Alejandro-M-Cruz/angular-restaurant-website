@@ -12,6 +12,7 @@ import {
 } from "@angular/fire/firestore";
 import {BehaviorSubject, first, map, Observable} from "rxjs";
 import {UserService} from "./user.service";
+import {FormError} from "../errors/form-error.errors";
 
 @Injectable({
   providedIn: 'root'
@@ -46,33 +47,42 @@ export class ReservationsService {
   }
 
   getUserActiveReservations(): Observable<Reservation[]> {
-    console.log(this.userService.getCurrentUser()?.uid)
     return this.activeReservations$.pipe(map(reservations =>
       reservations.filter(r => r.userId === this.userService.getCurrentUser()!.uid)))
   }
 
-  private reservationIsValid(reservation: Reservation): Observable<void> {
+  private userHasReservedAtThatTime(reservations: Reservation[], dateTimestamp: number, time: string): boolean {
+    return !!reservations.find(r => r.date === dateTimestamp && r.time === time)
+  }
+
+  private userHasMaxReservationsAtTheSameDate(reservations: Reservation[], dateTimestamp: number): boolean {
+    return reservations.filter(r => r.date === dateTimestamp).length >= Reservation.USER_MAX_RES_IN_SAME_DAY
+  }
+
+  private checkReservationValidity(reservation: Reservation): Observable<void> {
     return this.getUserActiveReservations().pipe(map(reservations => {
-      if (reservations.find(r => r.date === reservation.date && r.time === reservation.time))
-        throw new Error()
-      if (reservations.filter(r => r.date === reservation.date).length < Reservation.USER_MAX_RES_IN_SAME_DAY)
-        throw new Error()
+      const error = new Error()
+      switch (true) {
+        case this.userHasReservedAtThatTime(reservations, reservation.date, reservation.time):
+          error.name = FormError.RESERVATION_AT_THE_SAME_TIME
+          break
+        case this.userHasMaxReservationsAtTheSameDate(reservations, reservation.date):
+          error.name = FormError.EXCEEDED_MAX_RESERVATIONS_AT_THE_SAME_DATE
+          break
+        default:
+          return
+      }
+      throw error
     }))
   }
 
-  async addReservation(reservation: Reservation) {
-    this.reservationIsValid(reservation).pipe(first()).subscribe({
-      next: () => {
+  addReservation(reservation: Reservation): Observable<Promise<void>> {
+    return this.checkReservationValidity(reservation)
+      .pipe(first(), map(async () => {
         reservation.userId = this.userService.getCurrentUser()!.uid
         reservation.isCancelled = false
-        addDoc(collection(this.firestore, 'reservations'), reservation)
-      },
-      error: error => {
-        switch(error) {
-
-        }
-      }
-    })
+        await addDoc(collection(this.firestore, 'reservations'), reservation)
+      }))
   }
 
   cancelReservation(id: string): Promise<void> {

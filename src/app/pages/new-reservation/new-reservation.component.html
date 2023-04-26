@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.newReservation')}}</h2>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmitAddReservation()">
     <app-date-picker [availableDates]="availableDates$ | async" [control]="form.controls.date"></app-date-picker>
     <app-time-picker
       [availableTimes]="availableTimesForSelectedDate$ | async"
@@ -14,7 +14,7 @@
       <button class="form-button back-button" type="reset" onclick="window.history.back()">
         {{t('buttons.back')}}
       </button>
-      <button class="form-button confirm-button" type="submit" [disabled]="!form.valid">
+      <button class="form-button confirm-button" type="submit" [disabled]="form.invalid">
         {{t('buttons.confirm')}}
       </button>
     </div>

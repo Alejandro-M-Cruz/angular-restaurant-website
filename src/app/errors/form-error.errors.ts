@@ -9,5 +9,7 @@ export enum FormError {
   INVALID_TIME = 'formErrors.time',
   INVALID_CUSTOMERS_NUMBER = 'formErrors.customers',
   INVALID_NAME = 'formErrors.name',
-  COMPLAINT_TOO_LONG = 'formErrors.complaintLong'
+  COMPLAINT_TOO_LONG = 'formErrors.complaintLong',
+  RESERVATION_AT_THE_SAME_TIME  = 'formErrors.reservationAtTheSameTime',
+  EXCEEDED_MAX_RESERVATIONS_AT_THE_SAME_DATE = 'formErrors.exceededMaxReservationsTheSameDay',
 }
