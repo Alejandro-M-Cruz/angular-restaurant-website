@@ -7,6 +7,8 @@
   "slideShowAddress": "En calle Triana / 30, Las Palmas de Gran Canaria",
   "aboutUsText": "No somos tu <b> pizza de una noche </b>. <br>Queremos calidad, aunque te la comas en el coche. <br>No es purisimo, <b>no inventamos las pizzas</b>.<br>Somos los guardianes de su verdadera esencia. <br><br>Amantes del <b>BACK TO PIZZA</b>. <br>La que te deja lleno, <b>la que nutre</b>. <br>La textura de la pizza, la suavidad del queso... <br><b>Sentimos cada Bocado como un primer BESO</b> <br><br>La que viene con su masa fina e ingredientes sabrosos...<br><b> De la que no te arrepientes </b>. <br><b>LA QUE NOS HACE SENTIR ORGULLOSOS</b>",
   "shoppingCart": "Carrito de la compra",
+  "orderConfirmedTitle": "Pedido confirmado",
+  "orderConfirmedDescription": "Su pedido ha sido confirmado. En breve recibirá un correo electrónico con los detalles de su pedido.",
   "tabTitles": {
     "home": "La Nostra Casa",
     "login": "Iniciar sesión",
@@ -25,7 +27,7 @@
   },
   "titles": {
     "main": "La Nostra Casa",
-    "login": "Inicie sesión para poder ver sus reservas",
+    "login": "Inicie sesión para poder ver sus reservas y pedidos",
     "signup": "Regístrese para poder realizar su primera reserva",
     "myAccount": "Mi cuenta",
     "reservations": "Reservas",
@@ -99,7 +101,9 @@
     "sendComplaint": "Enviar reclamación",
     "deleteCart" : "Borrar carrito",
     "tryagain" : "Volver a pedir",
-    "buy": "Comprar"
+    "buy": "Comprar",
+    "continueShopping": "Seguir comprando",
+    "viewOrder": "Ver pedido"
   },
   "userInfo": {
     "username": "Nombre de usuario",

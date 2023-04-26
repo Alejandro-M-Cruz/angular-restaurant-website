@@ -31,21 +31,27 @@ export class CartComponent {
   async buy(){
     type line_items = {price: string, quantity: number}
     let line_items: line_items[] = []
-    await Promise.all(
-      this.cartService.getCartItems().map(async (cartItem) => {
-        const product = await this.stripeStoreService.retrieveProductInformationById(cartItem.menuItem.idStripe!);
-        line_items.push({
-          price: product.default_price,
-          quantity: cartItem.amount,
-        });
-      })
-    );
+    try {
+      await Promise.all(
+            this.cartService.getCartItems().map(async (cartItem) => {
+              const product = await this.stripeStoreService.retrieveProductInformationById(cartItem.menuItem.idStripe!);
+              line_items.push({
+                price: product.default_price,
+                quantity: cartItem.amount,
+              });
+            })
+      );
 
-    return await this.stripeCheckoutService.createCheckoutSession(
-      line_items,
-      'https://example.com/success',
-      'https://example.com/cancel' 
-    )
+      const session = await this.stripeCheckoutService.createCheckoutSession(
+        line_items,
+        'http://localhost:4200/success?session_id={CHECKOUT_SESSION_ID}',
+        'http://localhost:4200/cart/cancel',
+      );
+        
+      window.location.href=session.url;
+    } catch (error) {
+      console.log('Error creating checkout session:', error);
+    }
   }
 
 }

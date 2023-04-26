@@ -23,7 +23,7 @@
     </label>
     <app-menu></app-menu>
     <app-cart></app-cart>
-
+    <app-success> </app-success>
 
     <label>
       {{t('orderForms.askTip')}}
@@ -37,8 +37,6 @@
      <div>
     {{t('orderForms.totalPrice')}} : {{order.getTotalPrice(this.form.controls.tip.value!) | number}} €
     </div>
-
-    <!-- Aqui iría el botón submit -->
 
   </form>
 

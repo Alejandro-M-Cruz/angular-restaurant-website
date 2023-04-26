@@ -1,0 +1,27 @@
+.verification-payment-image {
+    position: relative;
+    box-sizing: content-box;
+    min-width: 5vw;
+    width: 10vw;
+    height: 10vw;
+    display: block;
+    margin-left: 2em;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2em;
+    align-items: center;
+}
+
+.order {
+    margin-top: 4em;
+}
