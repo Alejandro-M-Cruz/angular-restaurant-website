@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {MenuSection} from "../../model/menu-section.model";
 import {addDoc, collection, deleteDoc, doc, Firestore, setDoc} from "@angular/fire/firestore";
 import {MenuItem} from "../../model/menu-item.model";
-import { createProduct, updateProduct, deleteProduct, retrieveProductInformationById } from 'src/app/api/stripe';
+import { StripeStoreService } from 'src/app/services/stripe-store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,8 @@ export class MenuEditService {
   private readonly itemsCollection = collection(this.firestore, 'menu_items')
   private sectionBeingEdited: MenuSection | null = null
 
-  constructor(private readonly firestore: Firestore) {}
+  constructor(private readonly firestore: Firestore,
+              private stripePlatform: StripeStoreService) {}
 
   addSection(menuSection: MenuSection): Promise<any> {
     return addDoc(this.sectionsCollection, menuSection)
@@ -36,11 +37,11 @@ export class MenuEditService {
 
   async addItem(menuItem: MenuItem): Promise<any> {
     try {
-      const product = await createProduct(menuItem.name.en,
-        menuItem.ingredients.en,
+      const product = await this.stripePlatform.createProduct(menuItem.name.en!,
+        menuItem.ingredients.en!,
         menuItem.price * 100,
         'EUR',
-        menuItem.imageUrl);
+        menuItem.imageUrl!);
       menuItem.idStripe = product.id;
       return await addDoc(this.itemsCollection, menuItem);
     } catch (error) {
@@ -50,7 +51,7 @@ export class MenuEditService {
 
   async deleteItem(id: string, idStripe: string): Promise<void> {
     try {
-      const product = await deleteProduct(idStripe);
+      const product = await this.stripePlatform.deleteProduct(idStripe);
       console.log('Whether the product is currently available for purchase:', product.active);
       return await deleteDoc(doc(this.itemsCollection, id))
     } catch (error) {
