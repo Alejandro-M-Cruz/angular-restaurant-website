@@ -195,13 +195,16 @@ ngb-carousel img {
   padding-left: 2em;
 }
 
+.left-side-text p:not(.left-side__ingredients){
+  font-weight: bold;
+}
+
 .left-side-text p, .right-side-text p{
   line-height: 1.3em;
 }
 
 .left-side__ingredients {
   font-size: 0.8em;
-  font-weight: bold;
 }
 
 .right-side-text {
@@ -342,14 +345,13 @@ ngb-carousel img {
 }
 
 .cart-item-lang {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 10% 15% auto 10% 5%;
+  grid-gap: 10px;
   align-items: center;
-  margin: 1rem 1rem;
   background-color: lightgray;
-  width: 40%;
-  height: 5rem;
+  width: 60%;
+  margin-bottom: 1%;
   padding: 1rem;
 }
 
@@ -361,6 +363,7 @@ app-user-order label {
   display: flex;
   flex-direction: column;
   margin-bottom: 2%;
+  margin-top: 2%;
   font-size: large;
 }
 
@@ -726,6 +729,13 @@ app-password-input, app-password-confirmation {
   margin-bottom: 10px;
 }
 
+.mat-mdc-input-element{
+  font-size: medium !important;
+}
+
+.mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
+  margin-left: -1%;
+}
 mat-error {
   color: red;
   margin-top: -6px;
@@ -793,14 +803,14 @@ app-complaints-admin .complaints-button {
 }
 
 app-menu-sections-admin .mat-mdc-select-trigger {
-  justify-content: center !important;
-  width: 25% !important;
+  justify-content: center;
+  width: 25%;
   border: 1px solid black;
   margin-bottom: 2%;
 }
 
 app-menu-sections-admin .mat-mdc-select {
-  display: flex !important;
+  display: flex;
   justify-content: center;
 }
 
@@ -925,15 +935,6 @@ app-menu-sections-admin .mat-mdc-select-value {
     filter: brightness(0.6);
   }
 
-  /*
-  .slide-image-thing__center-text {
-    font-size: 1em;
-  }
-
-  .slide-image-thing__center-text-p {
-    font-size: 12px;
-  } */
-
   /* ----- ABOUT US ----- */
 
   .about-us-content {
@@ -965,6 +966,12 @@ app-menu-sections-admin .mat-mdc-select-value {
     font-size: 1em;
   }
 
+  .left-side-image img {
+    width: 110%;
+    height: 110%;
+    margin-top: -10%;
+  }
+
   .right-side {
     font-size: 1.2em;
   }
@@ -972,11 +979,11 @@ app-menu-sections-admin .mat-mdc-select-value {
   /* ----- MENU EDIT ----- */
 
   app-menu-sections-admin .mat-mdc-select-trigger {
-    width: 30% !important;
+    width: 30%;
   }
 
   app-menu-sections-admin .mdc-menu-surface.mat-mdc-select-panel {
-    width: 30% !important;
+    width: 30%;
 }
 
   /* ----- RESERVE HERE ----- */
@@ -1064,12 +1071,9 @@ app-menu-sections-admin .mat-mdc-select-value {
     width: 100%;
   }
 
-  .cart-buttons .back-button, .cancel-button{
-    width: 25%;
-  }
-
   .cart-item-lang {
-    width: 60%;
+    width: 75%;
+    grid-template-columns: 8% 15% auto 8% 5%;
   }
 }
 
@@ -1137,6 +1141,12 @@ app-menu-sections-admin .mat-mdc-select-value {
     width:75%;
   }
 
+  .left-side-image img {
+    width: 200%;
+    height: 200%;
+    margin-top: -50%;
+  }
+
   .menu-left h3, .menu-right h3 {
     font-size: 1.5em;
   }
@@ -1144,11 +1154,11 @@ app-menu-sections-admin .mat-mdc-select-value {
   /* ----- MENU EDIT ----- */
 
   app-menu-sections-admin .mat-mdc-select-trigger {
-    width: 60% !important;
+    width: 60%;
   }
 
   app-menu-sections-admin .mdc-menu-surface.mat-mdc-select-panel {
-    width: 60% !important;
+    width: 60%;
 }
 
   /* ----- RESERVE HERE ----- */
@@ -1337,5 +1347,6 @@ app-menu-sections-admin .mat-mdc-select-value {
 
   .cart-item-lang {
     width: 95%;
+    grid-template-columns: 5% 15% auto 10% 5%;
   }
 }
