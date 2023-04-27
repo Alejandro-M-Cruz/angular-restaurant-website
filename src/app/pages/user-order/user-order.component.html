@@ -23,7 +23,6 @@
     </label>
     <app-menu></app-menu>
     <app-cart></app-cart>
-    <app-success> </app-success>
 
     <label>
       {{t('orderForms.askTip')}}
@@ -35,7 +34,7 @@
       </mat-radio-group>
     </label>
      <div class="totalPrice">
-    {{t('orderForms.totalPrice')}} : {{order.getTotalPrice(this.form.controls.tip.value!) | number}} €
+      {{t('orderForms.totalPrice')}} : {{order.totalPriceIncludingTip | number}} €
     </div>
 
   </form>

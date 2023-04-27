@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import Stripe from 'stripe';
 import { StripeConfigService } from './stripe-config.service';
-import {CartItem} from "../model/cart-item.model";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,7 @@ export class StripeCheckoutService {
     this.stripe = new Stripe(apiKey, config);
   }
 
-  async createCheckoutSession(
+  createCheckoutSession(
     line_items: {price: string, quantity: number}[],
     successUrl: string,
     cancelUrl: string

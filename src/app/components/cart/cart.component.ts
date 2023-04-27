@@ -34,9 +34,11 @@ export class CartComponent {
     try {
       await Promise.all(
             this.cartService.getCartItems().map(async (cartItem) => {
-              const product = await this.stripeStoreService.retrieveProductInformationById(cartItem.menuItem.idStripe!);
+              console.log(cartItem.menuItem.priceIdStripe);
+              const price = await this.stripeStoreService.retrieveProductInformationById(cartItem.menuItem.priceIdStripe!);
+              console.log(price)
               line_items.push({
-                price: product.default_price,
+                price: price.id,
                 quantity: cartItem.amount,
               });
             })

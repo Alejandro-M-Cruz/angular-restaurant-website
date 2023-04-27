@@ -71,7 +71,7 @@ const routes: Routes = [
   { path: 'user-order', title: 'order', component: UserOrderComponent, canActivate: [canActivateLoggedIn] },
   { path: 'user-orderhistory', title: 'previousOrder', component: UserOrderHistoryComponent, canActivate: [canActivateLoggedIn] },
   { path: 'cart', title: 'shoppingCart', component: CartComponent, canActivate: [canActivateLoggedIn] },
-  { path: 'success' , title: 'success', component: SuccessComponent, canActivate: [canActivateLoggedIn] },
+  { path: 'success' , title: 'success', component: SuccessComponent},
 
   // ADMIN
   { path: 'reservations-admin', title: 'reservationsAdmin', component: AdminReservationsComponent, canActivate: [canActivateAdmin] },

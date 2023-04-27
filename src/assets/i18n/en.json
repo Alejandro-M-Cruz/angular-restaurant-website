@@ -23,7 +23,8 @@
     "complaintsAdmin": "Complaints",
     "menuSectionsAdmin": "Menu sections",
     "menuItemsAdmin": "Menu items",
-    "contactInfo": "Contact information"
+    "contactInfo": "Contact information",
+    "success": "Payment successful"
   },
   "titles": {
     "main": "La Nostra Casa",
