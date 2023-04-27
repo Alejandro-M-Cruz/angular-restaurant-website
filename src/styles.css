@@ -222,6 +222,30 @@ ngb-carousel img {
   width: 3rem;
 }
 
+app-user-order .right-side-text {
+  padding-right: 0%;
+}
+
+app-user-order .sides {
+  display: grid;
+  grid-template-columns: 12% auto 10% 20%;
+  grid-gap: 10px;
+  align-items: center;
+}
+
+app-user-order .left-side-text {
+  width: 100%;
+}
+
+app-user-order .right-side-text p {
+  margin-bottom: 0%;
+}
+
+app-user-order .sides .buttons-items span.ng-star-inserted {
+  height: 50%;
+  margin-top: 13px;
+}
+
 /* -------------LINKS TO RESERVATIONS------------- */
 
 .reserva {
