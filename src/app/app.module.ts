@@ -71,6 +71,7 @@ import { CartComponent } from './components/cart/cart.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { UserOrderHistoryComponent } from './pages/user-orderhistory/user-orderhistory.component';
 import { SuccessComponent } from './pages/success/success.component';
+import { TipSelectorComponent } from './components/tip-selector/tip-selector.component';
 
 registerLocaleData(es);
 
@@ -114,7 +115,8 @@ registerLocaleData(es);
     MenuSectionFormDialogComponent,
     CartComponent,
     UserOrderHistoryComponent,
-    SuccessComponent
+    SuccessComponent,
+    TipSelectorComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+<ng-container *transloco="let t">
+  <form id="orderForm" #myForm="ngForm" [formGroup]="form">
+    <label>
+      {{t('orderForms.askTip')}}
+      <mat-radio-group aria-label="Select an option" formControlName="tip">
+        <mat-radio-button  [value]="0">0 €</mat-radio-button>
+        <mat-radio-button  [value]="1">1.00 €</mat-radio-button>
+        <mat-radio-button  [value]="2">2.00 €</mat-radio-button>
+        <mat-radio-button  [value]="3">3.00 €</mat-radio-button>
+      </mat-radio-group>
+    </label>
+  </form>
+</ng-container>

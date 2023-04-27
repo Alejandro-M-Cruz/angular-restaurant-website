@@ -21,20 +21,13 @@
       {{t('orderForms.askLabel')}}
       <input type="button" class="previous-order-button" value="{{t('orderForms.previousOrderButton')}}">
     </label>
+
     <app-menu></app-menu>
     <app-cart></app-cart>
+    <app-tip-selector></app-tip-selector>
 
-    <label>
-      {{t('orderForms.askTip')}}
-      <mat-radio-group aria-label="Select an option" formControlName="tip">
-        <mat-radio-button  [value]="0">0 €</mat-radio-button>
-        <mat-radio-button  [value]="1">1.00 €</mat-radio-button>
-        <mat-radio-button  [value]="2">2.00 €</mat-radio-button>
-        <mat-radio-button  [value]="3">3.00 €</mat-radio-button>
-      </mat-radio-group>
-    </label>
-     <div class="totalPrice">
-    {{t('orderForms.totalPrice')}} : {{order.totalPriceIncludingTip | number}} €
+    <div class="totalPrice">
+    {{t('orderForms.totalPrice')}} : {{totalPrice| number}} €
     </div>
 
   </form>
