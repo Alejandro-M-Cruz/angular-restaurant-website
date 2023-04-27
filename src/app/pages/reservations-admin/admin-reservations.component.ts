@@ -6,7 +6,6 @@ import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/
 import {translate} from "@ngneat/transloco";
 import {formatDate} from "@angular/common";
 import {UsersService} from "../../services/admin/users.service";
-import {find} from "rxjs";
 import {User} from "../../model/user";
 
 @Component({

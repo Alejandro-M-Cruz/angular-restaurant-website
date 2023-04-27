@@ -24,6 +24,7 @@ import {PermissionsService} from "./services/permissions.service";
 import { UserOrderComponent } from './pages/user-order/user-order.component';
 import { CartComponent } from './components/cart/cart.component';
 import {UserOrderHistoryComponent} from './pages/user-orderhistory/user-orderhistory.component';
+import { SuccessComponent } from './pages/success/success.component';
 
 
 const canActivateLoggedIn: CanActivateFn = (_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot) => {
@@ -70,6 +71,7 @@ const routes: Routes = [
   { path: 'user-order', title: 'order', component: UserOrderComponent, canActivate: [canActivateLoggedIn] },
   { path: 'user-orderhistory', title: 'previousOrder', component: UserOrderHistoryComponent, canActivate: [canActivateLoggedIn] },
   { path: 'cart', title: 'shoppingCart', component: CartComponent, canActivate: [canActivateLoggedIn] },
+  { path: 'success' , title: 'success', component: SuccessComponent},
 
   // ADMIN
   { path: 'reservations-admin', title: 'reservationsAdmin', component: AdminReservationsComponent, canActivate: [canActivateAdmin] },

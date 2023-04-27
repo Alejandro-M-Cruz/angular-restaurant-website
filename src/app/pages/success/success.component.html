@@ -1,0 +1,13 @@
+<ng-container *transloco="let t">
+    <div class="order">
+        <div class="order-info">
+            <img src="../../../assets/images/verification-payment.png" alt="verification payment tick" class="verification-payment-image">
+            <h2> {{t('orderConfirmedTitle')}}</h2>
+            <p> {{t('orderConfirmedDescription')}}  </p>
+        </div>
+        <div class="cart-buttons">
+            <button (click)="redirectToUserOrder()" class="management-button buy-button"> {{t('buttons.continueShopping')}} </button>
+            <button class="management-button back-button"> {{t('buttons.viewOrder')}} </button>
+        </div>
+    </div>
+</ng-container>

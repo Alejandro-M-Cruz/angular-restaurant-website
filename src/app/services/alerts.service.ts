@@ -11,7 +11,7 @@ export class AlertsService {
     await Swal.fire({
       icon: 'error',
       title: translate('alerts.titles.error'),
-      text: translate(errorName),
+      text: translate(errorName) ?? errorName,
       confirmButtonText: translate('alerts.confirmButtonTexts.accept')
     })
   }

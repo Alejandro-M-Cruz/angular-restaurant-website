@@ -24,7 +24,6 @@
     <app-menu></app-menu>
     <app-cart></app-cart>
 
-
     <label>
       {{t('orderForms.askTip')}}
       <mat-radio-group aria-label="Select an option" formControlName="tip">
@@ -37,8 +36,6 @@
      <div class="totalPrice">
     {{t('orderForms.totalPrice')}} : {{order.getTotalPrice(this.form.controls.tip.value!) | number}} €
     </div>
-
-    <!-- Aqui iría el botón submit -->
 
   </form>
 

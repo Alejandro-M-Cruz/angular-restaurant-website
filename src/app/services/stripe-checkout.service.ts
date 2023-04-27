@@ -25,4 +25,13 @@ export class StripeCheckoutService {
       cancel_url: cancelUrl
     });
   }
+
+  async retrieveCheckoutSession(sessionId: string): Promise<any> {
+    const session = await this.stripe.checkout.sessions.retrieve(sessionId);
+    const customer_info = session.customer_details;
+    return customer_info;
+  }
+
+
+
 }
