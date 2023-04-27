@@ -36,10 +36,6 @@ a {
   text-decoration: none !important;
 }
 
-a:hover {
-  color: initial;
-}
-
 button:hover {
   cursor: pointer;
 }
