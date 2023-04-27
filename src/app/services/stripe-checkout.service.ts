@@ -17,13 +17,14 @@ export class StripeCheckoutService {
                                 line_items: {price: string, quantity: number}[],
                                 successUrl: string, 
                                 cancelUrl: string): Promise<any> {
-    return this.stripe.checkout.sessions.create({
+    const session = await this.stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: line_items,
       mode: 'payment',
       success_url: successUrl,
       cancel_url: cancelUrl
     });
+    return session
   }
 
   async retrieveCheckoutSession(sessionId: string): Promise<any> {
@@ -32,6 +33,6 @@ export class StripeCheckoutService {
     return customer_info;
   }
 
-
+  
 
 }

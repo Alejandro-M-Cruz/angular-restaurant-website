@@ -71,7 +71,7 @@ export class MenuItemsAdminComponent {
         yes: translate('confirmationOptions.yes'),
         no: translate('confirmationOptions.no')
       }}).afterClosed().subscribe(async result => {
-        if (result) await this.deleteItem(item.id!, item.idStripe!)
+        if (result) await this.deleteItem(item.id!, item.productIdStripe!)
     })
   }
 

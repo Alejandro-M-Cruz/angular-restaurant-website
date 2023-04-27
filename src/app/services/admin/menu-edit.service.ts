@@ -37,12 +37,14 @@ export class MenuEditService {
 
   async addItem(menuItem: MenuItem): Promise<any> {
     try {
-      const product = await this.stripePlatform.createProduct(menuItem.name.en!,
+      const price = await this.stripePlatform.createProduct(menuItem.name.en!,
         menuItem.ingredients.en!,
         menuItem.price * 100,
         'EUR',
-        menuItem.imageUrl!);
-      menuItem.idStripe = product.id;
+        menuItem.imageUrl!
+        );
+      menuItem.productIdStripe = price.product;
+      menuItem.priceIdStripe = price.id;
       return await addDoc(this.itemsCollection, menuItem);
     } catch (error) {
       console.log('Error creating product:', error);
@@ -60,8 +62,21 @@ export class MenuEditService {
     
   }
 
-  updateItem(id: string, menuItem: MenuItem): Promise<void> {
-    return setDoc(doc(this.itemsCollection, id), menuItem)
+  async updateItem(id: string, menuItem: MenuItem): Promise<void> {
+    try {
+      const price = await this.stripePlatform.createProduct(menuItem.name.en!,
+        menuItem.ingredients.en!,
+        menuItem.price * 100,
+        'EUR',
+        menuItem.imageUrl!,
+        menuItem.productIdStripe,
+        menuItem.priceIdStripe
+        );
+      // menuItem.productIdStripe = product.product;
+      return setDoc(doc(this.itemsCollection, id), menuItem)
+    } catch (error) {
+      console.log('Error creating product:', error);
+    }
   }
 
 }
