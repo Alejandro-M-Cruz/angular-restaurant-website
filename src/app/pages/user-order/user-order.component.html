@@ -34,7 +34,7 @@
       </mat-radio-group>
     </label>
      <div class="totalPrice">
-    {{t('orderForms.totalPrice')}} : {{order.getTotalPrice(this.form.controls.tip.value!) | number}} €
+    {{t('orderForms.totalPrice')}} : {{order.totalPriceIncludingTip | number}} €
     </div>
 
   </form>

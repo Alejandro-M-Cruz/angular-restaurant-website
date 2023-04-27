@@ -23,6 +23,10 @@ export class UserService {
     } as User : null
   }
 
+  get currentUser(): User | null {
+    return this.extractUserInfo(this.auth.currentUser)
+  }
+
   getCurrentUser(): User | null {
     return this.extractUserInfo(this.auth.currentUser)
   }

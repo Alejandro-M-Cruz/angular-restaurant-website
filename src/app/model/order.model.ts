@@ -5,14 +5,20 @@ export class Order {
   static readonly HOME_DELIVERY_FEE = 2.99
   id?: string;
   cartItems: CartItem[];
+  tip?: number | null;
   creationTimestamp: Date;
-  isHomeDelivery: boolean = false;
+  isFinished: boolean;
+  isHomeDelivery: boolean;
   deliveryAddress?: string;
   userId: string;
 
-  getTotalPrice(tip:number): number {
-    let totalPrice = tip;
+  get totalPriceNotIncludingTip(): number {
+    let totalPrice = 0
     this.cartItems.forEach(cartItem => totalPrice += cartItem.menuItem.price * cartItem.amount)
     return this.isHomeDelivery ? totalPrice + Order.HOME_DELIVERY_FEE : totalPrice
+  }
+
+  get totalPriceIncludingTip(): number {
+    return this.totalPriceNotIncludingTip + (this.tip ?? 0)
   }
 }

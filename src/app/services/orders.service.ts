@@ -12,7 +12,7 @@ export class OrdersService {
   constructor(private readonly firestore: Firestore, private readonly userService: UserService) { }
 
   getAllOrders(): Observable<Order[]> {
-    const q = query(this.ordersCollection, orderBy('creationTimestamp'))
+    const q = query(this.ordersCollection, orderBy('creationTimestamp', 'desc'))
     return collectionData(q, {idField: 'id'})
       .pipe(
         map(orders => orders.map((order: any) => order.creationtimestamp = order.creationTimestamp.toDate()))
@@ -22,7 +22,12 @@ export class OrdersService {
   getActiveOrders(): Observable<Order[]> {
     const today = new Date()
     today.setHours(0, 0, 0, 0)
-    const q = query(this.ordersCollection, where('creationTimestamp', '>=', today))
+    const q = query(
+      this.ordersCollection,
+      where('creationTimestamp', '>=', today),
+      where('isFinished', '==', false),
+      orderBy('creationTimestamp', 'asc')
+    )
     return collectionData(q, {idField: 'id'})
       .pipe(
         map(orders => orders.map((order: any) => order.creationtimestamp = order.creationTimestamp.toDate()))
@@ -33,7 +38,7 @@ export class OrdersService {
     const q = query(
       this.ordersCollection,
       where('userId', '==', this.userService.getCurrentUser()!.uid),
-      orderBy('creationTimestamp')
+      orderBy('creationTimestamp', 'desc')
     )
     return collectionData(q, {idField: 'id'})
       .pipe(
