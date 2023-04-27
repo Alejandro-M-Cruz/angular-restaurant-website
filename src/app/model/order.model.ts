@@ -3,7 +3,7 @@ import {CartItem} from "./cart-item.model";
 export class Order {
   static readonly MAX_TOTAL_ITEMS = 30
   static readonly HOME_DELIVERY_FEE = 2.99
-  id?: string;
+  id: string;
   cartItems: CartItem[];
   tip?: number | null;
   creationTimestamp: Date;
