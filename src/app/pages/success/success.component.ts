@@ -11,19 +11,15 @@ import { CurrentOrderService } from 'src/app/services/current-order.service';
 export class SuccessComponent implements OnInit {
   constructor(private router: Router, private order:CurrentOrderService) { }
 
-  
+
   ngOnInit(): void {
-    this.finishOrder();
+    this.order.confirmOrder();
   }
 
 
 
   redirectToUserOrder(){
     this.router.navigate(['/user-order']);
-  }
-
-  private finishOrder(){
-    this.order.confirmOrder();
   }
 
 }

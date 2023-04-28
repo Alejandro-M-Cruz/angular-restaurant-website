@@ -47,7 +47,7 @@ export class OrdersService {
   }
 
   async addOrder(order: Order): Promise<void> {
-    await addDoc(this.ordersCollection, {...order, userId: this.userService.getCurrentUser()!.uid})
+    await addDoc(this.ordersCollection, {...order})
   }
 
 }

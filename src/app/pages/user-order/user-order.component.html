@@ -2,20 +2,10 @@
   <h2 class="page-title">{{t('titles.orderUser')}}</h2>
   <form id="orderForm" #myForm="ngForm" [formGroup]="form">
 
-    <label>
-      {{t('orderForms.optionLabel')}}
-      <mat-radio-group aria-label="Select an option" formControlName="isHomeDelivery">
-        <mat-radio-button  [value]="true">{{t('orderForms.homeDelivery')}}</mat-radio-button>
-        <mat-radio-button  [value]="false">{{t('orderForms.pickUpOrder')}}</mat-radio-button>
-      </mat-radio-group>
-    </label>
-
-    <ng-container *ngIf="this.form.controls.isHomeDelivery.value">
-      <label>
-        {{ t('orderForms.directionLabelRequest') }}
-        <input formControlName="deliveryAddress" type="text">
-      </label>
-    </ng-container>
+    <app-is-home-delivery-selector
+    [radioControls]="form.controls.isHomeDelivery"
+    [textControls]="form.controls.deliveryAddress">
+    </app-is-home-delivery-selector>
 
     <label>
       {{t('orderForms.askLabel')}}
@@ -24,7 +14,7 @@
 
     <app-menu></app-menu>
     <app-cart></app-cart>
-    <app-tip-selector></app-tip-selector>
+    <app-tip-selector [control]="form.controls.tip"></app-tip-selector>
 
     <div class="totalPrice">
     {{t('orderForms.totalPrice')}} : {{totalPrice| number}} €
