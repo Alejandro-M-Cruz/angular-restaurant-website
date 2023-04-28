@@ -419,6 +419,10 @@ app-menu h2{
   flex-direction: row;
 }
 
+.cart-buttons .buy-button {
+  background-color: limegreen;
+}
+
 .totalPrice {
   font-size: 18px;
   font-weight: 500;
