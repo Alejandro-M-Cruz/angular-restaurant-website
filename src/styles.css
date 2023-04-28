@@ -228,17 +228,26 @@ app-user-order .right-side-text {
 
 app-user-order .sides {
   display: grid;
-  grid-template-columns: 12% auto 10% 20%;
+  grid-template-columns: 12% auto 10% 15%;
   grid-gap: 10px;
   align-items: center;
 }
 
 app-user-order .left-side-text {
   width: 100%;
+  padding-left: 1em;
+}
+
+app-user-order .left-side-image {
+  margin-left: 1em;
 }
 
 app-user-order .right-side-text p {
   margin-bottom: 0%;
+}
+
+app-user-order .sides .buttons-items {
+  margin-left: 0%;
 }
 
 app-user-order .sides .buttons-items span.ng-star-inserted {
@@ -379,7 +388,7 @@ app-cart div {
   margin-left: 1rem;
 }
 
-app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons), h2.ng-star-inserted:not(.page-title.ng-star-inserted), label, .totalPrice {
+app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons, .sides, .buttons-items), h2.ng-star-inserted:not(.page-title.ng-star-inserted), label, .totalPrice {
   margin-left: 1rem;
 }
 
@@ -408,6 +417,10 @@ app-menu h2{
 .cart-buttons {
   display: flex;
   flex-direction: row;
+}
+
+.cart-buttons .buy-button {
+  background-color: limegreen;
 }
 
 .totalPrice {
@@ -1008,7 +1021,22 @@ app-menu-sections-admin .mat-mdc-select-value {
 
   app-menu-sections-admin .mdc-menu-surface.mat-mdc-select-panel {
     width: 30%;
+  }
+
+  app-user-order .sides {
+    grid-template-columns: 12% 45% 10% 20%;
+    grid-gap: 12px;
+  }
+
+  .mat-mdc-icon-button.mat-mdc-button-base {
+    width: 40px;
+    height: 40px;
+    padding: 6px;
 }
+
+  app-user-order .sides .buttons-items span.ng-star-inserted {
+    margin-top: 12px;
+  }
 
   /* ----- RESERVE HERE ----- */
 
@@ -1092,7 +1120,7 @@ app-menu-sections-admin .mat-mdc-select-value {
 
   /* ----- SHOPPING CART ----- */
   .cart-buttons {
-    width: 100%;
+    width: 95%;
   }
 
   .cart-item-lang {
@@ -1183,7 +1211,25 @@ app-menu-sections-admin .mat-mdc-select-value {
 
   app-menu-sections-admin .mdc-menu-surface.mat-mdc-select-panel {
     width: 60%;
-}
+  }
+
+  app-user-order .right-side-text p {
+    font-size: 11px;
+  }
+
+  app-user-order .sides {
+    grid-template-columns: 11% auto 12% 25%;
+  }
+
+  app-user-order .sides .buttons-items .mat-mdc-icon-button.mat-mdc-button-base {
+    width: 34px;
+    height: 34px;
+    padding: 3px;
+  }
+
+  app-user-order .sides .buttons-items span.ng-star-inserted {
+    margin-top: 11px;
+  }
 
   /* ----- RESERVE HERE ----- */
 
@@ -1361,7 +1407,7 @@ app-menu-sections-admin .mat-mdc-select-value {
   /* ----- SHOPPING CART ----- */
   .cart-buttons {
     flex-direction: column;
-    width: 100%;
+    width: 95%;
     align-items: center;
   }
 
@@ -1371,6 +1417,7 @@ app-menu-sections-admin .mat-mdc-select-value {
 
   .cart-item-lang {
     width: 95%;
-    grid-template-columns: 5% 15% auto 10% 5%;
+    grid-template-columns: 5% 20% auto 10% 5%;
+    gap: 15px;
   }
 }

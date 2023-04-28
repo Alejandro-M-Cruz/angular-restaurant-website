@@ -12,9 +12,27 @@ export class Order {
   deliveryAddress?: string;
   userId: string;
 
+  /*
+  constructor(
+    cartItems: CartItem[],
+    isHomeDelivery: boolean,
+    creationTimestamp: Date,
+    userId: string,
+    deliveryAddress?: string,
+    tip?: number | null
+  ) {
+    this.cartItems = cartItems
+    this.isHomeDelivery = isHomeDelivery
+    this.creationTimestamp = creationTimestamp
+    this.userId = userId
+    this.deliveryAddress = deliveryAddress
+    this.tip = tip
+  }
+  */
+
   get totalPriceNotIncludingTip(): number {
     let totalPrice = 0
-    this.cartItems.forEach(cartItem => totalPrice += cartItem.menuItem.price * cartItem.amount)
+    this.cartItems.forEach(cartItem => totalPrice += cartItem.subtotalPrice)
     return this.isHomeDelivery ? totalPrice + Order.HOME_DELIVERY_FEE : totalPrice
   }
 
