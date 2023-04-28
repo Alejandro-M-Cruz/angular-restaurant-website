@@ -71,7 +71,7 @@ export class MenuItemsAdminComponent {
         yes: translate('confirmationOptions.yes'),
         no: translate('confirmationOptions.no')
       }}).afterClosed().subscribe(async result => {
-        if (result) await this.deleteItem(item.id!, item.idStripe!)
+        if (result) await this.deleteItem(item.id!, item.productIdStripe!)
     })
   }
 
@@ -81,7 +81,7 @@ export class MenuItemsAdminComponent {
     }).afterClosed().subscribe(async result => {
       if (result) {
         item ?
-          await this.menuEditService.updateItem(item.id!, await result) :
+          await this.menuEditService.updateItem(item.id!, item.priceIdStripe!, item.productIdStripe!, await result) :
           await this.menuEditService.addItem(await result)
       }
     })
