@@ -62,17 +62,21 @@ export class MenuEditService {
     
   }
 
-  async updateItem(id: string, menuItem: MenuItem): Promise<void> {
+  async updateItem(id: string, priceId: string, productId: string, menuItem: MenuItem): Promise<void> {
     try {
+      console.log('El ID del producto es: + ' + productId)
+      console.log('El ID del precio es: + ' + priceId)
       const price = await this.stripePlatform.createProduct(menuItem.name.en!,
         menuItem.ingredients.en!,
         menuItem.price * 100,
         'EUR',
         menuItem.imageUrl!,
-        menuItem.productIdStripe,
-        menuItem.priceIdStripe
+        productId,
+        priceId
         );
-      // menuItem.productIdStripe = product.product;
+      menuItem.priceIdStripe = price.id;
+      menuItem.productIdStripe = price.product;
+      
       return setDoc(doc(this.itemsCollection, id), menuItem)
     } catch (error) {
       console.log('Error creating product:', error);

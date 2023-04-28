@@ -30,10 +30,10 @@ export class StripeStoreService {
     let product: Stripe.Product;
     if (productId) {
       product = await this.stripe.products.update(productId, productUpdateParams);
-      console.log("Se esta actualizando un producto con las propiedades: " + product);
+      console.log("Se esta actualizando un producto con las propiedades: " + product.name);
     } else {
       product = await this.stripe.products.create(productCreateParams);
-      console.log("Se esta creando un nuevo producto con las propiedades: " + product);
+      console.log("Se esta creando un nuevo producto con las propiedades: " + product.name);
     }
 
     const priceParams: Stripe.PriceCreateParams = {
@@ -43,24 +43,14 @@ export class StripeStoreService {
     };
 
     if (priceId) {
-      const updatePrice = await this.stripe.prices.update(priceId, priceParams);
-      console.log("Se esta actualizando un precio existente con las propiedades: " + updatePrice);
+      const updatePrice = await this.stripe.prices.create(priceParams)
+      console.log("Se esta actualizando un precio existente con las propiedades: " + updatePrice.unit_amount);
       return updatePrice;
     } else {
       const price = await this.stripe.prices.create(priceParams);
-      console.log("Se esta creando un nuevo precio con las propiedades: " + price);
+      console.log("Se esta creando un nuevo precio con las propiedades: " + price.unit_amount);
       return price;
     }
-    
-    // return this.stripe.products.create({
-    //   name: name,
-    //   description: description,
-    //   images: images,
-    //   default_price_data: {
-    //     currency: currency,
-    //     unit_amount: price,
-    //   },
-    // });
   }
 
   async retrieveProductInformationById(id: string): Promise<any> {
@@ -68,18 +58,6 @@ export class StripeStoreService {
     const product = await this.stripe.prices.retrieve(id);
     return product;
   }
-
-  // updateProduct(id: string, name: string, description: string, price: number, currency: string, image: string): Promise<any> {
-  //   return this.stripe.products.update(id, {
-  //     name: name,
-  //     description: description,
-  //     images: [image],
-  //     default_price: {
-  //       currency: currency,
-  //       unit_amount: price,
-  //     },
-  //   });
-  // }
 
   async deleteProduct(id: string): Promise<any> {
     return this.stripe.products.update(id, {
