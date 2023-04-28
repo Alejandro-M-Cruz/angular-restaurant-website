@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {ComplaintsService} from "../../services/complaints.service";
+import {ComplaintsService} from "../../services/complaints/complaints.service";
 import {Complaint} from "../../model/complaint.model";
 import {Router} from "@angular/router";
 

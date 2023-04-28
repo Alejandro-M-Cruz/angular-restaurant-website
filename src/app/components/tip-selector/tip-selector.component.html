@@ -3,7 +3,7 @@
     {{t('orderForms.askTip')}}
     <mat-radio-group aria-label="Select an option" [formControl]="tipFormControl">
       <mat-radio-button
-        *ngFor="let tipOption of tipOptions"
+        *ngFor="let tipOption of tipOptions; let i = index"
         [value]="tipOption"
         (click)="onCustomTipOptionDeselected()"
       >

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ComplaintsService} from "../../services/complaints.service";
+import {ComplaintsService} from "../../services/complaints/complaints.service";
 
 @Component({
   selector: 'app-complaints-admin',

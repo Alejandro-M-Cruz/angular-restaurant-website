@@ -1,11 +1,11 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {TranslocoService} from "@ngneat/transloco";
-import {MenuService} from "../../../../services/menu.service";
+import {MenuService} from "../../../../services/menu/menu.service";
 import {MenuItem} from "../../../../model/menu-item.model";
 import {DisplayableMenuSection, MenuSection} from "../../../../model/menu-section.model";
 import {map} from "rxjs";
 import { ActivatedRoute } from '@angular/router';
-import { CartService } from 'src/app/services/cart.service';
+import { CartService } from 'src/app/services/orders/cart.service';
 import {CartItem} from "../../../../model/cart-item.model";
 
 @Component({
@@ -59,7 +59,6 @@ export class MenuComponent implements OnInit {
 
   addToCart(item: MenuItem){
     this.cartService.addToCart(item);
-    //window.alert('Your product has been added to the cart!');
   }
 
   deleteFromCart(item: MenuItem){

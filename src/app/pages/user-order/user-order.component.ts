@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import { Order } from 'src/app/model/order.model';
-import { CartService } from 'src/app/services/cart.service';
-import { CurrentOrderService } from 'src/app/services/current-order.service';
-import { UserService } from 'src/app/services/user.service';
+import { CartService } from 'src/app/services/orders/cart.service';
+import { CurrentOrderService } from 'src/app/services/orders/current-order.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 
 

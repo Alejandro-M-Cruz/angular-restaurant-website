@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {addDoc, collection, collectionData, deleteDoc, doc, Firestore} from "@angular/fire/firestore";
-import {Complaint} from "../model/complaint.model";
+import {Complaint} from "../../model/complaint.model";
 import {Observable} from "rxjs";
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {PermissionsService} from "./permissions.service";
+import {PermissionsService} from "./user/permissions.service";
 import {map, Observable} from "rxjs";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {TranslocoService} from "@ngneat/transloco";

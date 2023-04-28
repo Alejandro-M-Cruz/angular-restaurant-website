@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthenticationService} from "../../services/authentication.service";
+import {AuthenticationService} from "../../services/user/authentication.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {passwordMatchingValidator} from "../../validators/password-matching.validator";
 import {Router} from "@angular/router";

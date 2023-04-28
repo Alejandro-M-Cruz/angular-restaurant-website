@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {MenuSection} from "../../model/menu-section.model";
 import {addDoc, collection, deleteDoc, doc, Firestore, setDoc} from "@angular/fire/firestore";
 import {MenuItem} from "../../model/menu-item.model";
-import { StripeStoreService } from 'src/app/services/stripe-store.service';
+import { StripeStoreService } from 'src/app/services/orders/stripe-store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -59,7 +59,7 @@ export class MenuEditService {
     } catch (error) {
       console.log('Error deleting product:', error);
     }
-    
+
   }
 
   async updateItem(id: string, priceId: string, productId: string, menuItem: MenuItem): Promise<void> {
@@ -76,7 +76,7 @@ export class MenuEditService {
         );
       menuItem.priceIdStripe = price.id;
       menuItem.productIdStripe = price.product;
-      
+
       return setDoc(doc(this.itemsCollection, id), menuItem)
     } catch (error) {
       console.log('Error creating product:', error);

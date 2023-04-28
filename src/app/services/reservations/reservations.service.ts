@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Reservation} from "../model/reservation.model";
+import {Reservation} from "../../model/reservation.model";
 import {
   addDoc,
   collection,
@@ -11,8 +11,8 @@ import {
   where
 } from "@angular/fire/firestore";
 import {BehaviorSubject, first, map, Observable} from "rxjs";
-import {UserService} from "./user.service";
-import {FormError} from "../errors/form-error.errors";
+import {UserService} from "../user/user.service";
+import {FormError} from "../../errors/form-error.errors";
 
 @Injectable({
   providedIn: 'root'

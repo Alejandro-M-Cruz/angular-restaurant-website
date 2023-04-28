@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.orderUser')}}</h2>
-  <form id="orderForm" #myForm="ngForm" [formGroup]="form">
+  <form id="orderForm" [formGroup]="form">
 
     <app-is-home-delivery-selector
     [radioControls]="form.controls.isHomeDelivery"

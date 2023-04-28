@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { CartService } from 'src/app/services/cart.service';
+import { CartService } from 'src/app/services/orders/cart.service';
 import { TranslocoService } from '@ngneat/transloco';
-import { StripeCheckoutService } from 'src/app/services/stripe-checkout.service';
-import { StripeStoreService } from 'src/app/services/stripe-store.service';
+import { StripeCheckoutService } from 'src/app/services/orders/stripe-checkout.service';
+import { StripeStoreService } from 'src/app/services/orders/stripe-store.service';
 
 @Component({
   selector: 'app-cart',
@@ -49,7 +49,7 @@ export class CartComponent {
         'http://localhost:4200/success?session_id={CHECKOUT_SESSION_ID}',
         'http://localhost:4200/cart/cancel',
       );
-        
+
       window.location.href=session.url;
     } catch (error) {
       console.log('Error creating checkout session:', error);

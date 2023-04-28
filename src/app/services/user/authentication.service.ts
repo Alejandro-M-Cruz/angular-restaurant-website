@@ -5,9 +5,9 @@ import {
   signInWithEmailAndPassword,
   updateProfile
 } from '@angular/fire/auth';
-import {FormError} from "../errors/form-error.errors";
-import {AlertError} from "../errors/alert-error.errors";
-import {User} from "../model/user";
+import {FormError} from "../../errors/form-error.errors";
+import {AlertError} from "../../errors/alert-error.errors";
+import {User} from "../../model/user";
 
 @Injectable({
   providedIn: 'root'

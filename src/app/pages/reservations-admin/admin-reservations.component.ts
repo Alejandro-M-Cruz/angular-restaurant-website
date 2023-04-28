@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Reservation} from "../../model/reservation.model";
-import {ReservationsService} from "../../services/reservations.service";
+import {ReservationsService} from "../../services/reservations/reservations.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 import {translate} from "@ngneat/transloco";
