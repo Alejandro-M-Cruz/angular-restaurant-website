@@ -3,32 +3,24 @@ import {CartItem} from "./cart-item.model";
 export class Order {
   static readonly MAX_TOTAL_ITEMS = 30
   static readonly HOME_DELIVERY_FEE = 2.99
+  static readonly TIP_OPTIONS = [0, 1, 2, 5]
+  static readonly MAX_TIP = 100
   id?: string;
   cartItems: CartItem[];
   tip?: number | null;
-  creationTimestamp: Date;
+  creationTimestamp?: Date;
   isFinished: boolean;
   isHomeDelivery: boolean;
   deliveryAddress?: string;
-  userId: string;
+  userId?: string;
 
-  /*
-  constructor(
-    cartItems: CartItem[],
-    isHomeDelivery: boolean,
-    creationTimestamp: Date,
-    userId: string,
-    deliveryAddress?: string,
-    tip?: number | null
-  ) {
+  constructor(cartItems: CartItem[], isHomeDelivery: boolean, deliveryAddress?: string, tip?: number | null) {
     this.cartItems = cartItems
     this.isHomeDelivery = isHomeDelivery
-    this.creationTimestamp = creationTimestamp
-    this.userId = userId
     this.deliveryAddress = deliveryAddress
     this.tip = tip
+    this.isFinished = false
   }
-  */
 
   get totalPriceNotIncludingTip(): number {
     let totalPrice = 0

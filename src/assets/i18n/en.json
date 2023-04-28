@@ -159,7 +159,8 @@
     "previousOrderButton" : "See previous orders",
     "selectLabel": "See previous orders",
     "totalPrice":"Total price",
-    "askTip":"Would you like to leave a tip?"
+    "askTip":"Would you like to leave a tip?",
+    "customTip": "Specific amount"
   },
   "formLabels": {
     "username": "Username",

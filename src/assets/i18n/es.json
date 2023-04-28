@@ -159,7 +159,8 @@
     "previousOrderButton" : "Ver pedidos anteriores",
     "selectLabel": "Seleccione sus opciones",
     "totalPrice":"Precio total",
-    "askTip":"¿Desea dejar propina?"
+    "askTip":"¿Desea dejar propina?",
+    "customTip": "Cantidad específica"
   },
   "formLabels": {
     "username": "Nombre de usuario",
