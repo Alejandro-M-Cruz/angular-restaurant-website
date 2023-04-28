@@ -24,7 +24,7 @@ export class CartService {
     const includedCartItemWithSameMenuItem = this.cartItems.find(cartItem => cartItem.menuItem.id === menuItem.id);
     includedCartItemWithSameMenuItem ?
       includedCartItemWithSameMenuItem.amount++ :
-      this.cartItems.push({ menuItem, amount: 1 });
+      this.cartItems.push(new CartItem(menuItem, 1));
   }
 
   deleteFromCart(menuItem: MenuItem) {
