@@ -2,55 +2,22 @@
   <h2 class="page-title">{{t('titles.orderUser')}}</h2>
   <form id="orderForm" #myForm="ngForm" [formGroup]="form">
 
-    <label>
-      {{t('orderForms.optionLabel')}}
-      <mat-radio-group aria-label="Select an option" formControlName="isHomeDelivery">
-        <mat-radio-button  [value]="true">{{t('orderForms.homeDelivery')}}</mat-radio-button>
-        <mat-radio-button  [value]="false">{{t('orderForms.pickUpOrder')}}</mat-radio-button>
-      </mat-radio-group>
-    </label>
-
-    <ng-container *ngIf="this.form.controls.isHomeDelivery.value">
-      <label>
-        {{ t('orderForms.directionLabelRequest') }}
-        <input formControlName="deliveryAddress" type="text">
-      </label>
-    </ng-container>
+    <app-is-home-delivery-selector
+    [radioControls]="form.controls.isHomeDelivery"
+    [textControls]="form.controls.deliveryAddress">
+    </app-is-home-delivery-selector>
 
     <label>
       {{t('orderForms.askLabel')}}
       <input type="button" class="previous-order-button" value="{{t('orderForms.previousOrderButton')}}">
     </label>
+
     <app-menu></app-menu>
     <app-cart></app-cart>
+    <app-tip-selector [tipFormControl]="form.controls.tip"></app-tip-selector>
 
-    <label>
-      {{t('orderForms.askTip')}}
-      <mat-radio-group aria-label="Select an option" formControlName="tip">
-        <mat-radio-button
-          *ngFor="let tipOption of tipOptions"
-          [value]="tipOption"
-          (click)="onCustomTipOptionDeselected()"
-        >
-          {{tipOption | currency: 'EUR'}}
-        </mat-radio-button>
-        <mat-radio-button (click)="onCustomTipOptionSelected()">
-          <mat-form-field appearance="outline">
-            <mat-label>{{t('orderForms.customTip')}}</mat-label>
-            <input
-              class="text-end"
-              matInput
-              type="number"
-              step="0.01"
-              [formControl]="customTipFormControl"
-            >
-          </mat-form-field>
-        </mat-radio-button>
-
-      </mat-radio-group>
-    </label>
-     <div class="totalPrice">
-      {{t('orderForms.totalPrice')}} : {{order.totalPriceIncludingTip | number}} €
+    <div class="totalPrice">
+      {{t('orderForms.totalPrice')}} : {{totalPrice | currency: 'EUR'}}
     </div>
 
   </form>

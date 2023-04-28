@@ -9,18 +9,18 @@ export class Order {
   cartItems: CartItem[];
   tip?: number | null;
   creationTimestamp?: Date;
-  isFinished: boolean;
+  isFinished: boolean = false;
   isHomeDelivery: boolean;
   deliveryAddress?: string;
   userId?: string;
 
-  constructor(cartItems: CartItem[], isHomeDelivery: boolean, deliveryAddress?: string, tip?: number | null) {
+  /*constructor(cartItems: CartItem[], isHomeDelivery: boolean, deliveryAddress?: string, tip?: number | null) {
     this.cartItems = cartItems
     this.isHomeDelivery = isHomeDelivery
     this.deliveryAddress = deliveryAddress
     this.tip = tip
     this.isFinished = false
-  }
+  }*/
 
   get totalPriceNotIncludingTip(): number {
     let totalPrice = 0

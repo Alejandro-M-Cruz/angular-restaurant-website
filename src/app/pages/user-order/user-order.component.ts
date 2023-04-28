@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import { Order } from 'src/app/model/order.model';
 import { CartService } from 'src/app/services/cart.service';
+import { CurrentOrderService } from 'src/app/services/current-order.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 
@@ -11,35 +13,35 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./user-order.component.css']
 })
 export class UserOrderComponent implements OnInit {
-  order: Order = new Order(this.cartService.getCartItems(), false);
-  tipOptions = Order.TIP_OPTIONS;
+  newOrder: Order = new Order();
   form = this.fb.group({
-    isHomeDelivery: [false, [Validators.required]],
+    isHomeDelivery: [false],
     deliveryAddress: [''],
     tip:[0]
   });
-  customTipFormControl = new FormControl<number>(
-    0,
-    [Validators.min(0), Validators.max(Order.MAX_TIP)]
-  );
 
-  constructor(private readonly cartService: CartService, private readonly fb:FormBuilder) {}
+  constructor(
+    private readonly fb:FormBuilder,
+    private readonly currentOrderService:CurrentOrderService,
+    private readonly user:UserService,
+    private readonly cartService:CartService
+  ){
+    this.newOrder.cartItems = this.cartService.getCartItems();
+  }
 
   ngOnInit(){
-    this.customTipFormControl.disable()
     this.form.controls.isHomeDelivery.valueChanges.subscribe(isHomeDelivery => {
         this.form.controls.deliveryAddress.setValidators(isHomeDelivery ? [Validators.required] : []);
-        this.order.isHomeDelivery = isHomeDelivery!;
+        this.newOrder.isHomeDelivery = isHomeDelivery!;
      })
+     this.form.controls.tip.valueChanges.subscribe(tipValue =>{
+      this.newOrder.tip = tipValue;
+     })
+     this.currentOrderService.currentOrder = this.newOrder;
   }
 
-  onCustomTipOptionSelected() {
-    this.customTipFormControl.enable()
-    this.form.controls.tip.setValue(this.customTipFormControl.value ?? 0)
-  }
-
-  onCustomTipOptionDeselected() {
-    this.customTipFormControl.disable()
+  get totalPrice(){
+    return this.currentOrderService.totalPrice;
   }
 
 }
