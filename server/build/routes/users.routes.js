@@ -13,8 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const router = express_1.default.Router();
 const firebase_1 = require("../firebase");
+const router = express_1.default.Router();
 /*router
   .get('/', (_req, res) => res.send(Users.getUsers()))
   .get('/:uid', (req, res) => res.send(Users.getUserById(req.params.uid)))*/
@@ -27,7 +27,7 @@ function firestoreUserRecordToUser(user) {
         lastLogInDate: new Date(user.metadata.lastSignInTime)
     };
 }
-router.get('/', (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const usersList = yield firebase_1.auth.listUsers();
         res.json(usersList.users.map(firestoreUserRecordToUser));

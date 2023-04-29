@@ -15,7 +15,10 @@ export class OrdersService {
     const q = query(this.ordersCollection, orderBy('creationTimestamp', 'desc'))
     return collectionData(q, {idField: 'id'})
       .pipe(
-        map(orders => orders.map((order: any) => order.creationtimestamp = order.creationTimestamp.toDate()))
+        map(orders => orders.map((order: any) => {
+          order.creationtimestamp = order.creationTimestamp.toDate()
+          return order
+        }))
       ) as Observable<Order[]>
   }
 

@@ -6,21 +6,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const express_1 = __importDefault(require("express"));
-const app = (0, express_1.default)();
 const cors_1 = __importDefault(require("cors"));
+const users_routes_1 = __importDefault(require("./routes/users.routes"));
+const orders_routes_1 = __importDefault(require("./routes/orders.routes"));
 const API = '/api/v1';
 const PORT = 3000;
-const users_routes_1 = __importDefault(require("./routes/users.routes"));
+const app = (0, express_1.default)();
+app.use(express_1.default.static('public'));
 app.use((0, cors_1.default)({
-    origin: true
+    origin: true,
+    credentials: true
 }));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-app.get('/', (_req, res) => {
+app.get('/', (req, res) => {
     res.send('Welcome, admin');
 });
 app.use(API + '/users', users_routes_1.default);
-app.get('*', (_req, res) => {
+app.use(API + '/orders', orders_routes_1.default);
+app.get('*', (req, res) => {
     res.sendStatus(404);
 });
 app.listen(PORT, () => {
