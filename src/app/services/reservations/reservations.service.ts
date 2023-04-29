@@ -52,7 +52,7 @@ export class ReservationsService {
   }
 
   private userHasReservedAtThatTime(reservations: Reservation[], dateTimestamp: number, time: string): boolean {
-    return !!reservations.find(r => r.date === dateTimestamp && r.time === time)
+    return reservations.some(r => r.date === dateTimestamp && r.time === time)
   }
 
   private userHasMaxReservationsAtTheSameDate(reservations: Reservation[], dateTimestamp: number): boolean {

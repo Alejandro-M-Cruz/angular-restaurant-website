@@ -17,14 +17,18 @@ export class StripeCheckoutService {
   async createCheckoutSession(
     cartItems: CartItem[],
     successUrl: string,
-    cancelUrl: string
+    cancelUrl: string,
+    shipping_id?: string
   ): Promise<any> {
     return this.stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: cartItems.map(this.cartItemToLineItem),
       mode: 'payment',
       success_url: successUrl,
-      cancel_url: cancelUrl
+      cancel_url: cancelUrl,
+      shipping_options : [{
+        shipping_rate: shipping_id,
+      }]
     });
   }
 
@@ -37,6 +41,27 @@ export class StripeCheckoutService {
     const customer_info = session.customer_details;
     return customer_info;
   }
+
+  async createShippingRate(
+    display_name: string,
+    fixed_amount: Stripe.Checkout.SessionCreateParams.ShippingOption.ShippingRateData.FixedAmount){
+    return this.stripe.shippingRates.create({
+      display_name: display_name,
+      type: "fixed_amount",
+      fixed_amount: fixed_amount,
+      delivery_estimate: {
+        minimum: {
+          unit: 'hour',
+          value: 1
+        },
+        maximum: {
+          unit: 'hour',
+          value: 2
+        }
+      },
+    });
+    }
+
 
 
 
