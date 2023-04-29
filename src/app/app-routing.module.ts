@@ -20,7 +20,7 @@ import {AdminReservationsComponent} from "./pages/reservations-admin/admin-reser
 import {MenuSectionsAdminComponent} from "./pages/menu-sections-admin/menu-sections-admin.component";
 import {ComplaintsAdminComponent} from "./pages/complaints-admin/complaints-admin.component";
 import {MenuItemsAdminComponent} from "./pages/menu-items-admin/menu-items-admin.component";
-import {PermissionsService} from "./services/permissions.service";
+import {PermissionsService} from "./services/user/permissions.service";
 import { UserOrderComponent } from './pages/user-order/user-order.component';
 import { CartComponent } from './components/cart/cart.component';
 import {UserOrderHistoryComponent} from './pages/user-orderhistory/user-orderhistory.component';

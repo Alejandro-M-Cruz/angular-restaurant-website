@@ -1,6 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { CurrentOrderService } from 'src/app/services/current-order.service';
+import { CurrentOrderService } from 'src/app/services/orders/current-order.service';
 
 @Component({
   selector: 'app-success',

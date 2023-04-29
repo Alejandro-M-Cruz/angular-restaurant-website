@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {first} from "rxjs";
-import {AlertError} from "../errors/alert-error.errors";
+import {AlertError} from "../../errors/alert-error.errors";
 import {Auth} from "@angular/fire/auth";
-import {ReservationsService} from "./reservations.service";
+import {ReservationsService} from "../reservations/reservations.service";
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MenuService} from "../../services/menu.service";
+import {MenuService} from "../../services/menu/menu.service";
 import {MenuSection} from "../../model/menu-section.model";
 import {FormBuilder, Validators} from "@angular/forms";
 import {translate, TranslocoService} from "@ngneat/transloco";

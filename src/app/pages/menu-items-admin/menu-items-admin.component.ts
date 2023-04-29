@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import { MenuEditService } from 'src/app/services/admin/menu-edit.service';
 import {translate, TranslocoService} from "@ngneat/transloco";
-import {MenuService} from "../../services/menu.service";
+import {MenuService} from "../../services/menu/menu.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {MenuItem} from "../../model/menu-item.model";

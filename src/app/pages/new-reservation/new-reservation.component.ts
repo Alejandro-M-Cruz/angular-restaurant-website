@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ReservationsService} from "../../services/reservations.service";
+import {ReservationsService} from "../../services/reservations/reservations.service";
 import {Reservation} from "../../model/reservation.model";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";

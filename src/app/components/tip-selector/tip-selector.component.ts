@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
-import { CurrentOrderService } from 'src/app/services/current-order.service';
+import { CurrentOrderService } from 'src/app/services/orders/current-order.service';
 import {Order} from "../../model/order.model";
 
 @Component({
@@ -25,11 +25,11 @@ export class TipSelectorComponent implements OnInit {
     this.tipFormControl.setValue(this.customTipFormControl.value ?? 0)
   }
 
-  onCustomTipInputChanged() {
-    this.tipFormControl.setValue(this.customTipFormControl.value ?? 0)
-  }
-
   onCustomTipOptionDeselected() {
     this.customTipFormControl.disable()
+  }
+
+  onCustomTipInputChanged() {
+    this.tipFormControl.setValue(this.customTipFormControl.value ?? 0)
   }
 }

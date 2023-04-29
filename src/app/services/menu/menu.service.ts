@@ -3,8 +3,8 @@ import {
   collection, collectionData,
   Firestore, orderBy, query, where
 } from "@angular/fire/firestore";
-import {MenuSection} from "../model/menu-section.model";
-import {MenuItem} from "../model/menu-item.model";
+import {MenuSection} from "../../model/menu-section.model";
+import {MenuItem} from "../../model/menu-item.model";
 import {Observable} from "rxjs";
 
 @Injectable({

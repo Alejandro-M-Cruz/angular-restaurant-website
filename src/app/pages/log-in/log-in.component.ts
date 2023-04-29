@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {AuthenticationService} from "../../services/authentication.service";
+import {AuthenticationService} from "../../services/user/authentication.service";
 import {Router} from "@angular/router";
 import {FormError} from "../../errors/form-error.errors";
 import {AlertsService} from "../../services/alerts.service";

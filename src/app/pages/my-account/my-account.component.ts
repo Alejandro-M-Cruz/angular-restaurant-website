@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {UserService} from "../../services/user.service";
+import {UserService} from "../../services/user/user.service";
 import {User} from "../../model/user";
-import {AuthenticationService} from "../../services/authentication.service";
+import {AuthenticationService} from "../../services/user/authentication.service";
 import {Router} from "@angular/router";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 import {translate} from "@ngneat/transloco";
@@ -9,7 +9,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Subscription} from "rxjs";
 import {AlertError} from "../../errors/alert-error.errors";
 import {AlertsService} from "../../services/alerts.service";
-import {UserDeletionService} from "../../services/user-deletion.service";
+import {UserDeletionService} from "../../services/user/user-deletion.service";
 
 @Component({
   selector: 'app-my-account',
