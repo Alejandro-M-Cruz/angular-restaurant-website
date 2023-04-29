@@ -5,8 +5,6 @@ import { CartService } from 'src/app/services/orders/cart.service';
 import { CurrentOrderService } from 'src/app/services/orders/current-order.service';
 import { UserService } from 'src/app/services/user/user.service';
 
-
-
 @Component({
   selector: 'app-user-order',
   templateUrl: './user-order.component.html',
@@ -33,15 +31,19 @@ export class UserOrderComponent implements OnInit {
     this.form.controls.isHomeDelivery.valueChanges.subscribe(isHomeDelivery => {
         this.form.controls.deliveryAddress.setValidators(isHomeDelivery ? [Validators.required] : []);
         this.newOrder.isHomeDelivery = isHomeDelivery!;
-     })
-     this.form.controls.tip.valueChanges.subscribe(tipValue =>{
+    });
+    this.form.controls.tip.valueChanges.subscribe(tipValue =>{
       this.newOrder.tip = tipValue;
-     })
-     this.currentOrderService.currentOrder = this.newOrder;
+    })
+    this.currentOrderService.currentOrder = this.newOrder;
   }
 
   get totalPrice(){
     return this.currentOrderService.totalPrice;
+  }
+
+  changeShippingConfig(data: FormControl){
+    this.form.controls.isHomeDelivery.setValue(data.value);
   }
 
 }

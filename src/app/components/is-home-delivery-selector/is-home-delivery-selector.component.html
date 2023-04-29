@@ -2,8 +2,8 @@
   <label>
     {{t('orderForms.optionLabel')}}
     <mat-radio-group aria-label="Select an option" [formControl]="radioControls">
-      <mat-radio-button  [value]="true">{{t('orderForms.homeDelivery')}}</mat-radio-button>
-      <mat-radio-button  [value]="false">{{t('orderForms.pickUpOrder')}}</mat-radio-button>
+      <mat-radio-button  (click)="onHomeDeliverySelected()" [value]="true">{{t('orderForms.homeDelivery')}}</mat-radio-button>
+      <mat-radio-button  (click)="onHomeDeliverySelected()" [value]="false">{{t('orderForms.pickUpOrder')}}</mat-radio-button>
     </mat-radio-group>
   </label>
 
