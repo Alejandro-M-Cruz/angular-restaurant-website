@@ -1,5 +1,5 @@
 import express from 'express'
-import {auth} from '../firebase'
+import UsersController from '../controllers/users.controller'
 
 const router = express.Router()
 
@@ -7,32 +7,8 @@ const router = express.Router()
   .get('/', (_req, res) => res.send(Users.getUsers()))
   .get('/:uid', (req, res) => res.send(Users.getUserById(req.params.uid)))*/
 
-function firestoreUserRecordToUser(user: any) {
-  return {
-    uid: user.uid,
-    username: user.displayName,
-    email: user.email,
-    creationDate: new Date(user.metadata.creationTime),
-    lastLogInDate: new Date(user.metadata.lastSignInTime)
-  }
-}
+router.get('/', UsersController.getUsers)
 
-router.get('/', async (req, res) => {
-  try {
-    const usersList = await auth.listUsers()
-    res.json(usersList.users.map(firestoreUserRecordToUser))
-  } catch (e: any) {
-    res.json({ error: e.message })
-  }
-})
-
-router.get('/:uid', async (req, res) => {
-  try {
-    const user = await auth.getUser(req.params.uid)
-    res.json(firestoreUserRecordToUser(user))
-  } catch (e: any) {
-    res.json({ error: e.message })
-  }
-})
+router.get('/:uid', UsersController.getUserById)
 
 export default router

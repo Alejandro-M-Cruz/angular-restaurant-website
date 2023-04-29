@@ -39,8 +39,8 @@
     "menu": "MENÚ",
     "aboutUs": "SOBRE NOSOTROS",
     "menuSectionsAdmin": "Modifique las secciones del menú mediante el desplegable",
-    "orderUser" : "Reserva tu pedido",
-    "orderHistory": "Pedidos anteriores"
+    "orderUser" : "Realice su pedido",
+    "orderHistory": "Historial de pedidos"
   },
   "navbarLinks": {
     "home": "Inicio",

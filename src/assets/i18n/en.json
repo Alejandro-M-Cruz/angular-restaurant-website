@@ -39,8 +39,8 @@
     "menu": "MENU",
     "aboutUs": "ABOUT US",
     "menuSectionsAdmin": "Modify the menu sections using the drop-down",
-    "orderUser": "Reserve your order",
-    "orderHistory": "Order History"
+    "orderUser": "Make an order",
+    "orderHistory": "Order history"
   },
   "navbarLinks": {
     "home": "Home",
