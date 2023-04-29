@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import Stripe from 'stripe';
 import { StripeConfigService } from './stripe-config.service';
+import { CartItem } from 'src/app/model/cart-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,21 +14,6 @@ export class StripeCheckoutService {
     this.stripe = new Stripe(apiKey, config);
   }
 
-  createCheckoutSession(
-    line_items: {price: string, quantity: number}[],
-    successUrl: string,
-    cancelUrl: string
-  ): Promise<any> {
-    return this.stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: line_items,
-      mode: 'payment',
-      success_url: successUrl,
-      cancel_url: cancelUrl
-    });
-  }
-
-  /*    SUGGESTED REFACTORING
   async createCheckoutSession(
     cartItems: CartItem[],
     successUrl: string,
@@ -43,8 +29,8 @@ export class StripeCheckoutService {
   }
 
   private cartItemToLineItem(cartItem: CartItem): Stripe.Checkout.SessionCreateParams.LineItem  {
-    return {price: (cartItem.menuItem.price * cartItem.amount).toString(), quantity: cartItem.amount }
-  }*/
+    return {price: cartItem.menuItem.priceIdStripe, quantity: cartItem.amount }
+  }
 
   async retrieveCheckoutSession(sessionId: string): Promise<any> {
     const session = await this.stripe.checkout.sessions.retrieve(sessionId);

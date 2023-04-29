@@ -32,22 +32,10 @@ export class CartComponent {
     type line_items = {price: string, quantity: number}
     let line_items: line_items[] = []
     try {
-      await Promise.all(
-            this.cartService.getCartItems().map(async (cartItem) => {
-              console.log(cartItem.menuItem.priceIdStripe);
-              const price = await this.stripeStoreService.retrieveProductInformationById(cartItem.menuItem.priceIdStripe!);
-              console.log(price)
-              line_items.push({
-                price: price.id,
-                quantity: cartItem.amount,
-              });
-            })
-      );
-
       const session = await this.stripeCheckoutService.createCheckoutSession(
-        line_items,
+        this.cartService.getCartItems(),
         'http://localhost:4200/success?session_id={CHECKOUT_SESSION_ID}',
-        'http://localhost:4200/cart/cancel',
+        'http://localhost:4200/cancel',
       );
 
       window.location.href=session.url;
