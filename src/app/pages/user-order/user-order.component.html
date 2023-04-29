@@ -17,7 +17,8 @@
     <app-tip-selector [tipFormControl]="form.controls.tip"></app-tip-selector>
 
     <div class="totalPrice">
-      {{t('orderForms.totalPrice')}} : {{totalPrice | currency: 'EUR'}}
+      <p> {{t('orderForms.tip')}} : {{totalPrice[1] | currency: 'EUR'}}</p>
+      <p> {{t('orderForms.totalPrice')}} : {{totalPrice[0] | currency: 'EUR'}} </p>
     </div>
 
   </form>
