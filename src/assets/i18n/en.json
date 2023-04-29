@@ -166,6 +166,8 @@
   },
   "ordersAdmin":{
     "title":"Orders",
+    "allCards":"All orders",
+    "activeCards":"Active orders",
     "cardTitle":"ORDER #",
     "dateLabel":"DATE - ",
     "deliveryAddressLabel":"Delivery Address: ",

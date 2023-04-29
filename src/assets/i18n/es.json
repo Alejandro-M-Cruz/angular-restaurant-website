@@ -166,6 +166,8 @@
   },
   "ordersAdmin":{
     "title":"Pedidos",
+    "allCards":"Todos los pedidos",
+    "activeCards":"Pedidos activos",
     "cardTitle":"PEDIDO #",
     "dateLabel":"FECHA - ",
     "deliveryAddressLabel":"Dirección de entrega: ",

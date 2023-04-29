@@ -2,10 +2,10 @@
   <h1 class="page-title">{{t('ordersAdmin.title')}}</h1>
 
   <mat-tab-group animationDuration="1000ms">
-    <mat-tab label="First">
+    <mat-tab label="{{t('ordersAdmin.allCards')}}">
       <ng-container *ngTemplateOutlet="cards; context:allOrders"></ng-container>
     </mat-tab>
-    <mat-tab label="Second">
+    <mat-tab label="{{t('ordersAdmin.activeCards')}}">
       <ng-container *ngTemplateOutlet="cards ;context:activeOrders"></ng-container>
     </mat-tab>
   </mat-tab-group>
