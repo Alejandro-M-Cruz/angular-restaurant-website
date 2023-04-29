@@ -24,7 +24,8 @@
     "menuSectionsAdmin": "Menu sections",
     "menuItemsAdmin": "Menu items",
     "contactInfo": "Contact information",
-    "success": "Payment successful"
+    "success": "Payment successful",
+    "orderHistoryAdmin":"Order History"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -162,6 +163,15 @@
     "tip": "Tip",
     "askTip": "Would you like to leave a tip?",
     "customTip": "Specific amount"
+  },
+  "ordersAdmin":{
+    "title":"Orders",
+    "cardTitle":"ORDER #",
+    "dateLabel":"DATE - ",
+    "deliveryAddressLabel":"Delivery Address: ",
+    "pickUpLabel":"Order to pick up.",
+    "confirmButton": "Ready",
+    "completedLabel":"Finished"
   },
   "formLabels": {
     "username": "Username",

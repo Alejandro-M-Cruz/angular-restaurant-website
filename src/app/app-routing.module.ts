@@ -25,6 +25,7 @@ import { UserOrderComponent } from './pages/user-order/user-order.component';
 import { CartComponent } from './components/cart/cart.component';
 import {UserOrderHistoryComponent} from './pages/user-orderhistory/user-orderhistory.component';
 import { SuccessComponent } from './pages/success/success.component';
+import { OrderHistoryAdminComponent } from './pages/order-history-admin/order-history-admin.component';
 
 
 const canActivateLoggedIn: CanActivateFn = (_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot) => {
@@ -78,6 +79,7 @@ const routes: Routes = [
   { path: 'complaints-admin', title: 'complaintsAdmin', component: ComplaintsAdminComponent, canActivate: [canActivateAdmin] },
   { path: 'menu-sections-admin', title: 'menuSectionsAdmin', component: MenuSectionsAdminComponent, canActivate: [canActivateAdmin] },
   { path: 'menu-items-admin', title: 'menuItemsAdmin', component: MenuItemsAdminComponent, canActivate: [canActivateAdmin] },
+  { path: 'order-history-admin', title:'orderHistoryAdmin', component:OrderHistoryAdminComponent, canActivate:[canActivateAdmin]},
 
   { path: '**', redirectTo: '/home' },
 ];

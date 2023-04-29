@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collection, collectionData, Firestore, orderBy, query, where} from "@angular/fire/firestore";
+import {addDoc, collection, collectionData, doc, DocumentReference, Firestore, orderBy, query, where} from "@angular/fire/firestore";
 import {Order} from "../../model/order.model";
 import {map, Observable} from "rxjs";
 import {UserService} from "../user/user.service";
+import { updateDoc } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class OrdersService {
     const q = query(this.ordersCollection, orderBy('creationTimestamp', 'desc'))
     return collectionData(q, {idField: 'id'})
       .pipe(map(orders => orders.map((order: any) => {
-        order.creationtimestamp = order.creationTimestamp.toDate()
+        order.creationTimestamp = order.creationTimestamp.toDate()
         return order
       }))) as Observable<Order[]>
   }
@@ -31,7 +32,7 @@ export class OrdersService {
     )
     return collectionData(q, {idField: 'id'})
       .pipe(map(orders => orders.map((order: any) => {
-        order.creationtimestamp = order.creationTimestamp.toDate()
+        order.creationTimestamp = order.creationTimestamp.toDate()
         return order
       }))) as Observable<Order[]>
   }
@@ -44,13 +45,18 @@ export class OrdersService {
     )
     return collectionData(q, {idField: 'id'})
       .pipe(map(orders => orders.map((order: any) => {
-        order.creationtimestamp = order.creationTimestamp.toDate()
+        order.creationTimestamp = order.creationTimestamp.toDate()
         return order
       }))) as Observable<Order[]>
   }
 
   async addOrder(order: Order): Promise<void> {
     await addDoc(this.ordersCollection, {...order})
+  }
+
+  updateOrderStatus(id:string){
+    const orderDocRef: DocumentReference = doc(this.ordersCollection,id);
+    updateDoc(orderDocRef,{isFinished:true});
   }
 
 }

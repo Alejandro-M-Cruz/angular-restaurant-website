@@ -24,7 +24,8 @@
     "menuSectionsAdmin": "Secciones del menú",
     "menuItemsAdmin": "Productos del menú",
     "contactInfo": "Información de contacto",
-    "success": "Éxito en la operación"
+    "success": "Éxito en la operación",
+    "orderHistoryAdmin":"Historial de pedidos"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -162,6 +163,15 @@
     "tip":"Propina",
     "askTip":"¿Desea dejar propina?",
     "customTip": "Cantidad específica"
+  },
+  "ordersAdmin":{
+    "title":"Pedidos",
+    "cardTitle":"PEDIDO #",
+    "dateLabel":"FECHA - ",
+    "deliveryAddressLabel":"Dirección de entrega: ",
+    "pickUpLabel":"Pedido para recoger.",
+    "confirmButton": "Listo",
+    "completedLabel":"Finalizado"
   },
   "formLabels": {
     "username": "Nombre de usuario",

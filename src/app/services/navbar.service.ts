@@ -25,6 +25,7 @@ export class NavbarService {
   private readonly adminLinks: NavbarLink[] = [
     {name: 'navbarLinks.home', route: '/home'},
     {name: 'navbarLinks.reservations', route: '/reservations-admin'},
+    {name: 'navbarLinks.order', route:'/order-history-admin'},
     {name: 'navbarLinks.editMenu', route: '/menu-sections-admin'},
     {name: 'navbarLinks.complaints', route: '/complaints-admin'},
     {name: 'navbarLinks.myAccount', route: '/my-account'}

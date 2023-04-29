@@ -73,6 +73,8 @@ import { UserOrderHistoryComponent } from './pages/user-orderhistory/user-orderh
 import { SuccessComponent } from './pages/success/success.component';
 import { TipSelectorComponent } from './components/tip-selector/tip-selector.component';
 import { IsHomeDeliverySelectorComponent } from './components/is-home-delivery-selector/is-home-delivery-selector.component';
+import { OrderHistoryAdminComponent } from './pages/order-history-admin/order-history-admin.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 registerLocaleData(es);
 
@@ -118,7 +120,8 @@ registerLocaleData(es);
     UserOrderHistoryComponent,
     SuccessComponent,
     TipSelectorComponent,
-    IsHomeDeliverySelectorComponent
+    IsHomeDeliverySelectorComponent,
+    OrderHistoryAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -148,7 +151,9 @@ registerLocaleData(es);
     MatPaginatorModule,
     MatCardModule,
     MatRadioModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatTabsModule
+
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' },
