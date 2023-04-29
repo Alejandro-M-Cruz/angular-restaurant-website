@@ -14,9 +14,10 @@ export class OrdersService {
   getAllOrders(): Observable<Order[]> {
     const q = query(this.ordersCollection, orderBy('creationTimestamp', 'desc'))
     return collectionData(q, {idField: 'id'})
-      .pipe(
-        map(orders => orders.map((order: any) => order.creationtimestamp = order.creationTimestamp.toDate()))
-      ) as Observable<Order[]>
+      .pipe(map(orders => orders.map((order: any) => {
+        order.creationtimestamp = order.creationTimestamp.toDate()
+        return order
+      }))) as Observable<Order[]>
   }
 
   getActiveOrders(): Observable<Order[]> {
@@ -29,9 +30,10 @@ export class OrdersService {
       orderBy('creationTimestamp', 'asc')
     )
     return collectionData(q, {idField: 'id'})
-      .pipe(
-        map(orders => orders.map((order: any) => order.creationtimestamp = order.creationTimestamp.toDate()))
-      ) as Observable<Order[]>
+      .pipe(map(orders => orders.map((order: any) => {
+        order.creationtimestamp = order.creationTimestamp.toDate()
+        return order
+      }))) as Observable<Order[]>
   }
 
   getAllUserOrders(): Observable<Order[]> {
@@ -41,9 +43,10 @@ export class OrdersService {
       orderBy('creationTimestamp', 'desc')
     )
     return collectionData(q, {idField: 'id'})
-      .pipe(
-        map(orders => orders.map((order: any) => order.creationtimestamp = order.creationTimestamp.toDate()))
-      ) as Observable<Order[]>
+      .pipe(map(orders => orders.map((order: any) => {
+        order.creationtimestamp = order.creationTimestamp.toDate()
+        return order
+      }))) as Observable<Order[]>
   }
 
   async addOrder(order: Order): Promise<void> {

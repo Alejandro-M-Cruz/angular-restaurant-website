@@ -1,6 +1,7 @@
 import express from 'express'
-const router = express.Router()
 import {auth} from '../firebase'
+
+const router = express.Router()
 
 /*router
   .get('/', (_req, res) => res.send(Users.getUsers()))
@@ -16,7 +17,7 @@ function firestoreUserRecordToUser(user: any) {
   }
 }
 
-router.get('/', async (_req, res) => {
+router.get('/', async (req, res) => {
   try {
     const usersList = await auth.listUsers()
     res.json(usersList.users.map(firestoreUserRecordToUser))
