@@ -5,7 +5,7 @@
   "welcomeMessage": "Bienvenido a La Nostra Casa, {{user}}",
   "slideShowTitle": "Restaurante de auténtica comida italiana",
   "slideShowAddress": "En calle Triana / 30, Las Palmas de Gran Canaria",
-  "aboutUsText": "No somos tu <b> pizza de una noche </b>. <br>Queremos calidad, aunque te la comas en el coche. <br>No es purisimo, <b>no inventamos las pizzas</b>.<br>Somos los guardianes de su verdadera esencia. <br><br>Amantes del <b>BACK TO PIZZA</b>. <br>La que te deja lleno, <b>la que nutre</b>. <br>La textura de la pizza, la suavidad del queso... <br><b>Sentimos cada Bocado como un primer BESO</b> <br><br>La que viene con su masa fina e ingredientes sabrosos...<br><b> De la que no te arrepientes </b>. <br><b>LA QUE NOS HACE SENTIR ORGULLOSOS</b>",
+  "aboutUsText": "No somos tu pizza de una noche. Queremos calidad, aunque te la comas en el coche. No es purisimo, no inventamos las pizzas. Somos los guardianes de su verdadera esencia. Amantes del BACK TO PIZZA. La que te deja lleno, la que nutre. La textura de la pizza, la suavidad del queso... Sentimos cada Bocado como un primer BESO. La que viene con su masa fina e ingredientes sabrosos... De la que no te arrepientes. LA QUE NOS HACE SENTIR ORGULLOSOS.",
   "shoppingCart": "Carrito de la compra",
   "orderConfirmedTitle": "Pedido confirmado",
   "orderConfirmedDescription": "Su pedido ha sido confirmado. En breve recibirá un correo electrónico con los detalles de su pedido.",
@@ -159,6 +159,7 @@
     "previousOrderButton" : "Ver pedidos anteriores",
     "selectLabel": "Seleccione sus opciones",
     "totalPrice":"Precio total",
+    "tip":"Propina",
     "askTip":"¿Desea dejar propina?",
     "customTip": "Cantidad específica"
   },
