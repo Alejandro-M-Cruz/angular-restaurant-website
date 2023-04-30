@@ -78,10 +78,11 @@
   "links":{
     "reservations": "HAGA SU RESERVA AQUÍ",
     "order": "HAGA SU PEDIDO",
-    "adminReservations": "RESERVAS",
+    "adminReservations": "VER RESERVAS",
     "complaints": "HOJA DE RECLAMACIONES",
     "adminComplaints": "RECLAMACIONES Y SUGERENCIAS",
-    "editMenu": "Editar menú"
+    "editMenu": "Editar menú",
+    "ordersAdmin": "VER PEDIDOS"
   },
   "buttons": {
     "back": "Atrás",
