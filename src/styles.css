@@ -1016,11 +1016,11 @@ app-menu-sections-admin .mat-mdc-select-value {
   /* ----- MENU EDIT ----- */
 
   app-menu-sections-admin .mat-mdc-select-trigger {
-    width: 30%;
+    width: 100%;
   }
 
   app-menu-sections-admin .mdc-menu-surface.mat-mdc-select-panel {
-    width: 30%;
+    width: 100%;
   }
 
   app-user-order .sides {
@@ -1206,11 +1206,11 @@ app-menu-sections-admin .mat-mdc-select-value {
   /* ----- MENU EDIT ----- */
 
   app-menu-sections-admin .mat-mdc-select-trigger {
-    width: 60%;
+    width: 100%;
   }
 
   app-menu-sections-admin .mdc-menu-surface.mat-mdc-select-panel {
-    width: 60%;
+    width: 100%;
   }
 
   app-user-order .right-side-text p {
