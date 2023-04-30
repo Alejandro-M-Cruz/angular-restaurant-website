@@ -1,0 +1,30 @@
+form{
+  display:grid;
+  grid-template-areas: ". select ." "buttons buttons buttons";
+}
+
+mat-select{
+  grid-area: select;
+  width: 100%;
+}
+
+.buttons-container{
+  grid-area: buttons;
+}
+
+@media screen and (max-width: 1268px) and (min-width: 601px) {
+
+  form{
+    grid-template-columns: 1fr 30% 1fr;
+  }
+}
+
+@media screen and (max-width: 600px){
+  form{
+    grid-template-columns: 1fr 50% 1fr;
+  }
+
+}
+
+
+

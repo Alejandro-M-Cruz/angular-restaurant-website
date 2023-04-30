@@ -78,10 +78,11 @@
   "links": {
     "reservations": "MAKE YOUR RESERVATION HERE",
     "order": "MAKE YOUR ORDER",
-    "adminReservations": "RESERVATIONS",
+    "adminReservations": "VIEW RESERVATIONS",
     "complaints": "COMPLAINT FORM",
     "adminComplaints": "COMPLAINTS AND SUGGESTIONS",
-    "editMenu": "EDIT MENU"
+    "editMenu": "EDIT MENU",
+    "ordersAdmin": "VIEW ORDERS"
   },
   "buttons": {
     "back": "Back",

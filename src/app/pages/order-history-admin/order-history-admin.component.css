@@ -3,4 +3,8 @@ mat-card{
   padding: 1rem;
   border: 2px solid red;
   border-radius: 1rem;
+  display: grid;
+}
+button{
+  width: max-content;
 }

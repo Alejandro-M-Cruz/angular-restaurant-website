@@ -5,14 +5,27 @@
   <section id="menu-section">
     <app-menu></app-menu>
   </section>
-  <section class="reserva">
-    <a routerLink="/user-reservations"><b>{{t('links.reservations')}}</b></a>
-  </section>
-  <section class="pedido">
-    <a routerLink="/user-order"><b>{{t('links.order')}}</b></a>
-  </section>
-  <app-story> </app-story>
-  <section class="complaints">
-    <a routerLink="/complaints"><b>{{t('links.complaints')}}</b></a>
-  </section>
+
+  <ng-container *ngIf="!userIsAdmin; else isAdmin">
+    <section class="reserva">
+      <a routerLink="/user-reservations"><b>{{t('links.reservations')}}</b></a>
+    </section>
+    <section class="pedido">
+      <a routerLink="/user-order"><b>{{t('links.order')}}</b></a>
+    </section>
+    <app-story> </app-story>
+    <section class="complaints">
+      <a routerLink="/complaints"><b>{{t('links.complaints')}}</b></a>
+    </section>
+  </ng-container>
+
+  <ng-template #isAdmin>
+    <section class="reserva">
+      <a routerLink="/reservations-admin"><b>{{t('links.adminReservations')}}</b></a>
+    </section>
+    <section class="pedido">
+      <a routerLink="/order-history-admin"><b>{{t('links.ordersAdmin')}}</b></a>
+    </section>
+
+  </ng-template>
 </ng-container>
