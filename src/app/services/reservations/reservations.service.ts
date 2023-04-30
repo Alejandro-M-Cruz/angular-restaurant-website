@@ -48,7 +48,7 @@ export class ReservationsService {
 
   getUserActiveReservations(): Observable<Reservation[]> {
     return this.activeReservations$.pipe(map(reservations =>
-      reservations.filter(r => r.userId === this.userService.getCurrentUser()!.uid)))
+      reservations.filter(r => r.userId === this.userService.currentUser!.uid)))
   }
 
   private userHasReservedAtThatTime(reservations: Reservation[], dateTimestamp: number, time: string): boolean {
@@ -79,7 +79,7 @@ export class ReservationsService {
   addReservation(reservation: Reservation): Observable<Promise<void>> {
     return this.checkReservationValidity(reservation)
       .pipe(first(), map(async () => {
-        reservation.userId = this.userService.getCurrentUser()!.uid
+        reservation.userId = this.userService.currentUser!.uid
         reservation.isCancelled = false
         await addDoc(collection(this.firestore, 'reservations'), reservation)
       }))

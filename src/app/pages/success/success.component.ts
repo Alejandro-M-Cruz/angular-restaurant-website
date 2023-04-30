@@ -8,13 +8,8 @@ import { CurrentOrderService } from 'src/app/services/orders/current-order.servi
   styleUrls: ['./success.component.css']
 })
 
-export class SuccessComponent implements OnInit {
+export class SuccessComponent {
   constructor(private router: Router, private order:CurrentOrderService) { }
-
-
-  ngOnInit(): void {
-    this.order.confirmOrder();
-  }
 
 
 

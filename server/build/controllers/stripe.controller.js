@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -14,17 +37,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const stripe_1 = __importDefault(require("stripe"));
 const orders_dao_1 = __importDefault(require("../dao/orders.dao"));
-const order_payments_dao_1 = __importDefault(require("../dao/order-payments.dao"));
+const checkout_sessions_dao_1 = __importStar(require("../dao/checkout-sessions.dao"));
+const users_controller_1 = __importDefault(require("./users.controller"));
 class StripeController {
     static createCheckoutSession(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const sessionParams = this.sessionParams(req.body.order, req.body.activeLanguage);
-                const session = yield this.stripe.checkout.sessions.create(sessionParams);
-                yield order_payments_dao_1.default.add(session.id, req.body.order);
-                res.status(200).send(session.url);
+                const userExists = yield users_controller_1.default.userExists(req.body.userId);
+                if (!userExists)
+                    return res.json({ error: 'user-not-found', message: 'User not found' });
+                const session = yield StripeController.stripe.checkout.sessions
+                    .create(StripeController.sessionParams(req.body.cartItems, req.body.activeLanguage));
+                yield StripeController.onCheckoutSessionCreated(session, req.body.userId, req.body.cartItems);
+                res.status(200).json({ url: session.url });
             }
             catch (error) {
+                console.error(error);
                 res.status(400).json({ error: error.code, message: error.message });
             }
         });
@@ -32,37 +60,61 @@ class StripeController {
     static webhook(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const event = this.stripe.webhooks.constructEvent(req.body, req.headers['stripe-signature'], process.env.STRIPE_ENDPOINT_SECRET);
+                const event = req.body;
                 switch (event.type) {
-                    case 'payment_intent.succeeded':
-                        yield this.onPaymentSucceeded(event.data.object);
+                    case 'checkout.session.completed':
+                        yield StripeController.onCheckoutSessionCompleted(event.data.object);
                         break;
-                    case 'payment_intent.payment_failed':
-                        yield this.onPaymentFailed(event.data.object);
+                    case 'checkout.session.expired':
+                        yield StripeController.onCheckoutSessionExpired(event.data.object);
                         break;
                     default:
                         res.sendStatus(200);
                 }
-                res.sendStatus(200);
             }
             catch (error) {
+                console.error(error);
                 res.status(400).json({ error: error.code, message: error.message });
             }
         });
     }
-    static onPaymentSucceeded(successfulPayment) {
+    static onCheckoutSessionCreated(session, userId, cartItems) {
         return __awaiter(this, void 0, void 0, function* () {
-            const order = yield order_payments_dao_1.default.getOrderFromPaymentId(successfulPayment.id);
-            yield orders_dao_1.default.addOrder(order);
-            yield order_payments_dao_1.default.delete(successfulPayment.id);
+            yield checkout_sessions_dao_1.default.add(session.id, userId, cartItems);
         });
     }
-    static onPaymentFailed(failedPayment) {
-        return order_payments_dao_1.default.delete(failedPayment.id);
+    static onCheckoutSessionExpired(session) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield checkout_sessions_dao_1.default.setStatus(session.id, checkout_sessions_dao_1.CheckoutSessionStatus.EXPIRED);
+        });
     }
-    static sessionParams(order, activeLanguage) {
-        return Object.assign(Object.assign({}, this.shippingOptions(activeLanguage)), { locale: ['en', 'es'].includes(activeLanguage) ? activeLanguage : 'en', payment_method_types: ['card'], line_items: order.cartItems
-                .map(cartItem => this.cartItemToLineItem(cartItem, activeLanguage)), mode: 'payment', success_url: 'http://localhost:4200/success', cancel_url: 'http://localhost:3000/cancel.html' });
+    static onCheckoutSessionCompleted(session) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (session.payment_status === 'paid') {
+                yield checkout_sessions_dao_1.default.setStatus(session.id, checkout_sessions_dao_1.CheckoutSessionStatus.SUCCEEDED);
+                yield orders_dao_1.default.addOrder(yield StripeController.extractOrderDataFromCheckoutSession(session));
+            }
+            else {
+                yield checkout_sessions_dao_1.default.setStatus(session.id, checkout_sessions_dao_1.CheckoutSessionStatus.FAILED);
+            }
+        });
+    }
+    static extractOrderDataFromCheckoutSession(stripeSession) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const checkoutSession = yield checkout_sessions_dao_1.default.getCheckoutSessionById(stripeSession.id);
+            return {
+                cartItems: checkoutSession.cartItems,
+                creationTimestamp: new Date(stripeSession.created * 1000),
+                deliveryAddress: stripeSession.shipping_details.address,
+                isHomeDelivery: stripeSession.shipping_details.name === 'b',
+                isFinished: false,
+                userId: checkoutSession.userId
+            };
+        });
+    }
+    static sessionParams(cartItems, activeLanguage) {
+        return Object.assign(Object.assign({}, StripeController.shippingOptions(activeLanguage)), { locale: ['en', 'es'].includes(activeLanguage) ? activeLanguage : 'en', payment_method_types: ['card'], line_items: cartItems
+                .map(cartItem => StripeController.cartItemToLineItem(cartItem, activeLanguage)), mode: 'payment', success_url: 'http://localhost:4200/success', cancel_url: 'http://localhost:3000/cancel.html' });
     }
     static shippingOptions(activeLang) {
         return {
@@ -77,17 +129,17 @@ class StripeController {
                             amount: 0,
                             currency: 'eur',
                         },
-                        display_name: activeLang === 'es' ? 'A recoger en el restaurante' : 'Order to pick up'
+                        display_name: StripeController.DELIVERY_OPTIONS.pickUpOrder[activeLang]
                     }
                 },
                 {
                     shipping_rate_data: {
                         type: 'fixed_amount',
                         fixed_amount: {
-                            amount: 399,
+                            amount: StripeController.HOME_DELIVERY_FEE_IN_EUR_CENTS,
                             currency: 'eur',
                         },
-                        display_name: activeLang === 'es' ? 'Pedido a domicilio' : 'Home delivery'
+                        display_name: StripeController.DELIVERY_OPTIONS.homeDelivery[activeLang]
                     }
                 }
             ]
@@ -95,7 +147,6 @@ class StripeController {
     }
     static cartItemToLineItem(cartItem, activeLang) {
         const lineItem = {
-            price: cartItem.menuItem.priceIdStripe,
             quantity: cartItem.amount,
             price_data: {
                 currency: 'eur',
@@ -111,6 +162,17 @@ class StripeController {
         return lineItem;
     }
 }
+StripeController.HOME_DELIVERY_FEE_IN_EUR_CENTS = 399;
+StripeController.DELIVERY_OPTIONS = {
+    homeDelivery: {
+        es: 'Pedido a domicilio',
+        en: 'Home delivery'
+    },
+    pickUpOrder: {
+        es: 'Recogida en local',
+        en: 'Pick up order'
+    }
+};
 StripeController.stripe = new stripe_1.default(process.env.STRIPE_API_KEY, {
     timeout: 60000,
     apiVersion: '2022-11-15'

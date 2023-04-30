@@ -19,8 +19,9 @@ export class OrderHistoryAdminComponent implements OnInit{
     this.orderService.getAllOrders().subscribe(orders => (this.allOrders.orders as Order[]) = orders);
     this.orderService.getActiveOrders().subscribe(orders => (this.activeOrders.orders as Order[])=orders);
   }
-  completeOrder(id:string){
-    this.orderService.updateOrderStatus(id);
+
+  async completeOrder(id:string){
+    await this.orderService.completeOrder(id);
   }
 
   getActiveLanguage() {

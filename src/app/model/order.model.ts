@@ -1,5 +1,14 @@
 import {CartItem} from "./cart-item.model";
 
+interface Address {
+  city: string
+  country: string
+  line1: string
+  line2: string
+  postalCode: string
+  state: string
+}
+
 export class Order {
   static readonly MAX_TOTAL_ITEMS = 30
   static readonly HOME_DELIVERY_FEE = 2.99
@@ -11,7 +20,7 @@ export class Order {
   creationTimestamp?: Date;
   isFinished: boolean = false;
   isHomeDelivery: boolean;
-  deliveryAddress?: string;
+  deliveryAddress?: Address;
   userId?: string;
 
   /*constructor(cartItems: CartItem[], isHomeDelivery: boolean, deliveryAddress?: string, tip?: number | null) {

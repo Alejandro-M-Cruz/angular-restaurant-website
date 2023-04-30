@@ -16,19 +16,11 @@ export class CurrentOrderService {
 
   set currentOrder(order: Order) {
     this._currentOrder = order
-    this._currentOrder.userId = this.userService.getCurrentUser()!.uid;
+    this._currentOrder.userId = this.userService.currentUser!.uid;
   }
 
   get totalPrice(){
     return this._currentOrder.totalPriceIncludingTip;
-  }
-
-  confirmOrder(){
-
-    this._currentOrder.creationTimestamp = new Date();
-    console.log(this._currentOrder);
-
-    this.orderService.addOrder(this._currentOrder);
   }
 
 }

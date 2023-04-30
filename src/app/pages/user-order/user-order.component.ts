@@ -42,8 +42,4 @@ export class UserOrderComponent implements OnInit {
     return this.currentOrderService.totalPrice;
   }
 
-  changeShippingConfig(data: FormControl){
-    this.form.controls.isHomeDelivery.setValue(data.value);
-  }
-
 }

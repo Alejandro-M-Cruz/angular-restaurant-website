@@ -270,7 +270,8 @@
       "unknown": "There has been an error, try again later",
       "imageUpload": "There has been an error uploading the image",
       "recentLoginRequired": "Log in again to confirm your identity",
-      "tooManyLoginRequests": "There have been too many log-in attempts in this account, try again later"
+      "tooManyLoginRequests": "There have been too many log-in attempts in this account, try again later",
+      "orderCheckoutCreationFailed": "There has been an error creating the checkout session, try again later"
     },
     "NOT_FOUND": "The requested resource is not available",
     "PASSWORDS_DONT_MATCH": "The passwords don't match",

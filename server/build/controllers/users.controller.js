@@ -11,11 +11,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const firebase_1 = require("../firebase");
 class UsersController {
+    static userExists(uid) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const userRecord = yield firebase_1.auth.getUser(uid);
+                return !!userRecord;
+            }
+            catch (e) {
+                return false;
+            }
+        });
+    }
     static getUsers(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const usersList = yield firebase_1.auth.listUsers();
-                res.json(usersList.users.map(this.firestoreUserRecordToUser));
+                res.json(usersList.users.map(UsersController.firestoreUserRecordToUser));
             }
             catch (e) {
                 res.json({ error: e.message });
@@ -26,7 +37,7 @@ class UsersController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const userRecord = yield firebase_1.auth.getUser(req.params.uid);
-                res.json(this.firestoreUserRecordToUser(userRecord));
+                res.json(UsersController.firestoreUserRecordToUser(userRecord));
             }
             catch (e) {
                 res.json({ error: e.message });

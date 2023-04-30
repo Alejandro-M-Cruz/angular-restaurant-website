@@ -58,8 +58,8 @@ export class MenuItemsAdminComponent {
     this.openItemFormDialog(item)
   }
 
-  async deleteItem(id: string, idStripe: string) {
-    await this.menuEditService.deleteItem(id, idStripe)
+  async deleteItem(id: string) {
+    await this.menuEditService.deleteItem(id)
   }
 
   openDeleteItemConfirmationDialog(item: MenuItem) {
@@ -71,7 +71,7 @@ export class MenuItemsAdminComponent {
         yes: translate('confirmationOptions.yes'),
         no: translate('confirmationOptions.no')
       }}).afterClosed().subscribe(async result => {
-        if (result) await this.deleteItem(item.id!, item.productIdStripe!)
+        if (result) await this.deleteItem(item.id!)
     })
   }
 
@@ -81,7 +81,7 @@ export class MenuItemsAdminComponent {
     }).afterClosed().subscribe(async result => {
       if (result) {
         item ?
-          await this.menuEditService.updateItem(item.id!, item.priceIdStripe!, item.productIdStripe!, await result) :
+          await this.menuEditService.updateItem(item.id!, await result) :
           await this.menuEditService.addItem(await result)
       }
     })

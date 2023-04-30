@@ -271,7 +271,8 @@
       "unknown": "Se ha producido un error, inténtelo de nuevo",
       "imageUpload": "Se ha producido un error al subir la imagen",
       "recentLoginRequired": "Inicie sesión nuevamente para confirmar su identidad",
-      "tooManyLoginRequests": "Ha habido demasiados intentos de inicio de sesión en esta cuenta, inténtelo de nuevo más tarde"
+      "tooManyLoginRequests": "Ha habido demasiados intentos de inicio de sesión en esta cuenta, inténtelo de nuevo más tarde",
+      "orderCheckoutCreationFailed": "Se ha producido un error al intentar acceder a la pasarela de pago, inténtelo de nuevo más tarde"
     },
     "NOT_FOUND": "El recurso solicitado no está disponible",
     "PASSWORDS_DONT_MATCH": "Las contraseñas no coinciden",

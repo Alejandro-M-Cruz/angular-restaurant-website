@@ -1,8 +1,20 @@
 import Stripe from 'stripe'
 import OrdersDao from '../dao/orders.dao'
-import OrderPaymentsDao from '../dao/order-payments.dao'
+import CheckoutSessionsDao, {CheckoutSessionStatus} from '../dao/checkout-sessions.dao'
+import UsersController from "./users.controller";
 
 export default class StripeController {
+  private static readonly HOME_DELIVERY_FEE_IN_EUR_CENTS = 399
+  private static readonly DELIVERY_OPTIONS = {
+    homeDelivery: {
+      es: 'Pedido a domicilio',
+      en: 'Home delivery'
+    },
+    pickUpOrder: {
+      es: 'Recogida en local',
+      en: 'Pick up order'
+    }
+  }
   private static readonly stripe = new Stripe(process.env.STRIPE_API_KEY!, {
     timeout: 60000,
     apiVersion: '2022-11-15'
@@ -10,55 +22,73 @@ export default class StripeController {
 
   static async createCheckoutSession(req, res) {
     try {
-      const sessionParams = this.sessionParams(req.body.order, req.body.activeLanguage)
-      const session = await this.stripe.checkout.sessions.create(sessionParams)
-      await OrderPaymentsDao.add(session.id, req.body.order)
-      res.status(200).send(session.url)
+      const userExists = await UsersController.userExists(req.body.userId)
+      if (!userExists) return res.json({error: 'user-not-found', message: 'User not found'})
+      const session = await StripeController.stripe.checkout.sessions
+        .create(StripeController.sessionParams(req.body.cartItems, req.body.activeLanguage))
+      await StripeController.onCheckoutSessionCreated(session, req.body.userId, req.body.cartItems)
+      res.status(200).json({url: session.url})
     } catch (error: any) {
+      console.error(error)
       res.status(400).json({error: error.code, message: error.message})
     }
   }
 
   static async webhook(req, res) {
     try {
-      const event = this.stripe.webhooks.constructEvent(
-        req.body,
-        req.headers['stripe-signature']!,
-        process.env.STRIPE_ENDPOINT_SECRET!
-      )
+      const event = req.body
       switch(event.type) {
-        case 'payment_intent.succeeded':
-          await this.onPaymentSucceeded(event.data.object as Stripe.PaymentIntent)
+        case 'checkout.session.completed':
+          await StripeController.onCheckoutSessionCompleted(event.data.object as Stripe.Checkout.Session)
           break
-        case 'payment_intent.payment_failed':
-          await this.onPaymentFailed(event.data.object as Stripe.PaymentIntent)
+        case 'checkout.session.expired':
+          await StripeController.onCheckoutSessionExpired(event.data.object as Stripe.Checkout.Session)
           break
         default:
           res.sendStatus(200)
       }
-      res.sendStatus(200)
     } catch (error: any) {
+      console.error(error)
       res.status(400).json({error: error.code, message: error.message})
     }
   }
 
-  private static async onPaymentSucceeded(successfulPayment: Stripe.PaymentIntent) {
-    const order = await OrderPaymentsDao.getOrderFromPaymentId(successfulPayment.id)
-    await OrdersDao.addOrder(order)
-    await OrderPaymentsDao.delete(successfulPayment.id)
+  private static async onCheckoutSessionCreated(session: Stripe.Checkout.Session, userId: string, cartItems: any[]) {
+    await CheckoutSessionsDao.add(session.id, userId,cartItems)
   }
 
-  private static onPaymentFailed(failedPayment: Stripe.PaymentIntent) {
-    return OrderPaymentsDao.delete(failedPayment.id)
+  private static async onCheckoutSessionExpired(session: Stripe.Checkout.Session) {
+    await CheckoutSessionsDao.setStatus(session.id, CheckoutSessionStatus.EXPIRED)
   }
 
-  private static sessionParams(order, activeLanguage: string): Stripe.Checkout.SessionCreateParams {
+  private static async onCheckoutSessionCompleted(session: Stripe.Checkout.Session) {
+    if (session.payment_status === 'paid') {
+      await CheckoutSessionsDao.setStatus(session.id, CheckoutSessionStatus.SUCCEEDED)
+      await OrdersDao.addOrder(await StripeController.extractOrderDataFromCheckoutSession(session))
+    } else {
+      await CheckoutSessionsDao.setStatus(session.id, CheckoutSessionStatus.FAILED)
+    }
+  }
+
+  private static async extractOrderDataFromCheckoutSession(stripeSession: Stripe.Checkout.Session): Promise<any> {
+    const checkoutSession = await CheckoutSessionsDao.getCheckoutSessionById(stripeSession.id)
     return {
-      ...this.shippingOptions(activeLanguage),
+      cartItems: checkoutSession.cartItems,
+      creationTimestamp: new Date(stripeSession.created * 1000),
+      deliveryAddress: stripeSession.shipping_details!.address,
+      isHomeDelivery: stripeSession.shipping_details!.name === 'b',
+      isFinished: false,
+      userId: checkoutSession.userId
+    }
+  }
+
+  private static sessionParams(cartItems: any[], activeLanguage: string): Stripe.Checkout.SessionCreateParams {
+    return {
+      ...StripeController.shippingOptions(activeLanguage),
       locale: ['en', 'es'].includes(activeLanguage) ? activeLanguage : 'en',
       payment_method_types: ['card'],
-      line_items: order.cartItems
-        .map(cartItem => this.cartItemToLineItem(cartItem, activeLanguage)),
+      line_items: cartItems
+        .map(cartItem => StripeController.cartItemToLineItem(cartItem, activeLanguage)),
       mode: 'payment',
       success_url: 'http://localhost:4200/success',
       cancel_url: 'http://localhost:3000/cancel.html'
@@ -78,17 +108,17 @@ export default class StripeController {
               amount: 0,
               currency: 'eur',
             },
-            display_name: activeLang === 'es' ? 'A recoger en el restaurante' : 'Order to pick up'
+            display_name: StripeController.DELIVERY_OPTIONS.pickUpOrder[activeLang]
           }
         },
         {
           shipping_rate_data: {
             type: 'fixed_amount',
             fixed_amount: {
-              amount: 399,
+              amount: StripeController.HOME_DELIVERY_FEE_IN_EUR_CENTS,
               currency: 'eur',
             },
-            display_name: activeLang === 'es' ? 'Pedido a domicilio' : 'Home delivery'
+            display_name: StripeController.DELIVERY_OPTIONS.homeDelivery[activeLang]
           }
         }
       ]
@@ -97,7 +127,6 @@ export default class StripeController {
 
   private static cartItemToLineItem(cartItem: any, activeLang: string): Stripe.Checkout.SessionCreateParams.LineItem {
     const lineItem: Stripe.Checkout.SessionCreateParams.LineItem = {
-      price: cartItem.menuItem.priceIdStripe,
       quantity: cartItem.amount,
       price_data: {
         currency: 'eur',
@@ -112,4 +141,5 @@ export default class StripeController {
       lineItem.price_data!.product_data!.images = [cartItem.menuItem.imageUrl]
     return lineItem
   }
+
 }

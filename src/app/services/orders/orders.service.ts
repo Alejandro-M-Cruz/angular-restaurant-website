@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collection, collectionData, doc, DocumentReference, Firestore, orderBy, query, where} from "@angular/fire/firestore";
+import {collection, collectionData, doc, Firestore, orderBy, query, updateDoc, where} from "@angular/fire/firestore";
 import {Order} from "../../model/order.model";
 import {map, Observable} from "rxjs";
 import {UserService} from "../user/user.service";
-import { updateDoc } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +39,7 @@ export class OrdersService {
   getAllUserOrders(): Observable<Order[]> {
     const q = query(
       this.ordersCollection,
-      where('userId', '==', this.userService.getCurrentUser()!.uid),
+      where('userId', '==', this.userService.currentUser!.uid),
       orderBy('creationTimestamp', 'desc')
     )
     return collectionData(q, {idField: 'id'})
@@ -50,13 +49,8 @@ export class OrdersService {
       }))) as Observable<Order[]>
   }
 
-  async addOrder(order: Order): Promise<void> {
-    await addDoc(this.ordersCollection, {...order})
-  }
-
-  updateOrderStatus(id:string){
-    const orderDocRef: DocumentReference = doc(this.ordersCollection,id);
-    updateDoc(orderDocRef,{isFinished:true});
+  completeOrder(orderId: string): Promise<void> {
+    return updateDoc(doc(this.firestore, orderId), {isFinished: true})
   }
 
 }
