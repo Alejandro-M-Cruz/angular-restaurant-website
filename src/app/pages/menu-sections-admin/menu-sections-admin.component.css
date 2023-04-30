@@ -5,7 +5,7 @@ form{
 
 mat-select{
   grid-area: select;
-  min-width: 100%;
+  width: 100%;
 }
 
 .buttons-container{
@@ -23,9 +23,7 @@ mat-select{
   form{
     grid-template-columns: 1fr 50% 1fr;
   }
-  mat-select{
-    max-width: 60%;
-  }
+
 }
 
 
