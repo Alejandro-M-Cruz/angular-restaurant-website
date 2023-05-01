@@ -12,7 +12,7 @@
 
   <ng-template #cards let-orders="orders">
     <section class="cards-grid">
-      <mat-card [style.border-color]="order.isFinished ? 'greenyellow' : 'red'" *ngFor="let order of orders">
+      <mat-card class="main-card" *ngFor="let order of orders">
         <mat-card-title class="card-title">{{t('ordersAdmin.cardTitle')}}{{order.id}}</mat-card-title>
         <mat-card-subtitle>{{order.creationTimestamp | date:'short'}}</mat-card-subtitle>
         <mat-card-subtitle *ngIf="order.isHomeDelivery;else isPickUp">{{t('ordersAdmin.deliveryAddressLabel')}}{{order.deliveryAddress}}</mat-card-subtitle>

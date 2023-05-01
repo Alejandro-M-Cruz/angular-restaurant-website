@@ -1,10 +1,16 @@
-mat-card{
+.main-card{
   margin: 1rem;
   padding: 1rem;
-  border: 2px solid red;
   border-radius: 1rem;
-  display: grid;
+}
+mat-card-subtitle{
+  text-align: center;
+
+}
+mat-card-actions{
+  justify-content: center;
 }
 button{
   width: max-content;
+
 }
