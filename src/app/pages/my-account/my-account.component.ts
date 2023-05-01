@@ -30,7 +30,7 @@ export class MyAccountComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.userSubscription = this.userService.getCurrentUserObservable().subscribe(user => {
+    this.userSubscription = this.userService.currentUser$.subscribe(user => {
       this.user = user
     })
   }

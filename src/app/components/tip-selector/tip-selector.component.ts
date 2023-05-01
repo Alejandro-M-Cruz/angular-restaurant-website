@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
-import { CurrentOrderService } from 'src/app/services/orders/current-order.service';
+import {FormControl, Validators} from '@angular/forms';
 import {Order} from "../../model/order.model";
 
 @Component({

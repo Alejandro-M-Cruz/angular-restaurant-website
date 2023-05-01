@@ -6,8 +6,12 @@
             <p> {{t('orderConfirmedDescription')}}  </p>
         </div>
         <div class="cart-buttons">
-            <button (click)="redirectToUserOrder()" class="management-button buy-button"> {{t('buttons.continueShopping')}} </button>
-            <button  class="management-button back-button"> {{t('buttons.viewOrder')}} </button>
+            <button (click)="redirectToUserOrder()" class="management-button buy-button">
+              {{t('buttons.continueShopping')}}
+            </button>
+            <button (click)="redirectToUserOrdersHistory()" class="management-button back-button">
+              {{t('buttons.goToOrdersHistory')}}
+            </button>
         </div>
     </div>
 </ng-container>

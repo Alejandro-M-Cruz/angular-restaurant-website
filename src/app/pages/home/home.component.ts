@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private readonly userService: UserService, private permissionsService:PermissionsService) {}
 
   ngOnInit() {
-    this.userSubscription = this.userService.getCurrentUserObservable().subscribe(userInfo => {
+    this.userSubscription = this.userService.currentUser$.subscribe(userInfo => {
       this.user = userInfo
     })
     this.isAdminSubscription = this.permissionsService.isAdmin().subscribe(isAdmin => this.userIsAdmin = isAdmin);

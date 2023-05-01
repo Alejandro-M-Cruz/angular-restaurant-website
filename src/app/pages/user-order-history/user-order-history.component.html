@@ -5,7 +5,7 @@
     <mat-card *ngFor="let order of userOrders | async" class="m-2">
       <mat-card-header>
         <mat-card-title class="text-center m-2">
-          {{order.creationTimestamp | date: t('dateFormat')}}
+          {{order.creationTimestamp | date: t('dateFormat') + ' HH:mm'}}
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>

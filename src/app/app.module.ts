@@ -70,7 +70,7 @@ import { MenuSectionFormDialogComponent } from './components/form-dialogs/menu-s
 import { CartComponent } from './components/cart/cart.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { UserOrderHistoryComponent } from './pages/user-order-history/user-order-history.component';
-import { SuccessComponent } from './pages/success/success.component';
+import { SuccessfulOrderComponent } from './pages/successful-order/successful-order.component';
 import { TipSelectorComponent } from './components/tip-selector/tip-selector.component';
 import { IsHomeDeliverySelectorComponent } from './components/is-home-delivery-selector/is-home-delivery-selector.component';
 import { OrderHistoryAdminComponent } from './pages/order-history-admin/order-history-admin.component';
@@ -118,7 +118,7 @@ registerLocaleData(es);
     MenuSectionFormDialogComponent,
     CartComponent,
     UserOrderHistoryComponent,
-    SuccessComponent,
+    SuccessfulOrderComponent,
     TipSelectorComponent,
     IsHomeDeliverySelectorComponent,
     OrderHistoryAdminComponent

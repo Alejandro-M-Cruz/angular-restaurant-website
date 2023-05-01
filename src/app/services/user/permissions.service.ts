@@ -14,10 +14,17 @@ enum UserStatus {
 })
 export class PermissionsService {
   private readonly adminsCollection = collection(this.firestore, 'admins')
-  private readonly userStatus$ = new BehaviorSubject(UserStatus.LOGGED_OUT)
+  private readonly userStatus$ = new BehaviorSubject<UserStatus | null>(null)
 
-  constructor(private readonly userService: UserService, private readonly firestore: Firestore) {
-    this.userService.getCurrentUserObservable().subscribe(user => {
+  constructor(
+    private readonly userService: UserService,
+    private readonly firestore: Firestore
+  ) {
+    this.subscribeToCurrentUser$()
+  }
+
+  private subscribeToCurrentUser$() {
+    this.userService.currentUser$.subscribe(user => {
       if (user === null)
         return this.userStatus$.next(UserStatus.LOGGED_OUT)
       this.adminsCollectionIncludesUser(user.uid).then(isAdmin => {

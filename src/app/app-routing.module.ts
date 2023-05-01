@@ -24,9 +24,8 @@ import {PermissionsService} from "./services/user/permissions.service";
 import { UserOrderComponent } from './pages/user-order/user-order.component';
 import { CartComponent } from './components/cart/cart.component';
 import {UserOrderHistoryComponent} from './pages/user-order-history/user-order-history.component';
-import { SuccessComponent } from './pages/success/success.component';
+import { SuccessfulOrderComponent } from './pages/successful-order/successful-order.component';
 import { OrderHistoryAdminComponent } from './pages/order-history-admin/order-history-admin.component';
-
 
 const canActivateLoggedIn: CanActivateFn = (_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot) => {
   const isLoggedIn = inject(PermissionsService).isLoggedIn()
@@ -60,6 +59,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', title: 'home', component: HomeComponent },
   { path: 'complaints', title: 'complaints', component: ComplaintsComponent },
+  { path: 'success' , title: 'success', component: SuccessfulOrderComponent },
 
   // LOGGED OUT
   { path: 'sign-up', title: 'signup', component: SignUpComponent, canActivate: [canActivateLoggedOut] },
@@ -72,7 +72,6 @@ const routes: Routes = [
   { path: 'user-order', title: 'order', component: UserOrderComponent, canActivate: [canActivateLoggedIn] },
   { path: 'user-order-history', title: 'orderHistoryUser', component: UserOrderHistoryComponent, canActivate: [canActivateLoggedIn] },
   { path: 'cart', title: 'shoppingCart', component: CartComponent, canActivate: [canActivateLoggedIn] },
-  { path: 'success' , title: 'success', component: SuccessComponent, canActivate: [canActivateLoggedIn] },
 
   // ADMIN
   { path: 'reservations-admin', title: 'reservationsAdmin', component: AdminReservationsComponent, canActivate: [canActivateAdmin] },

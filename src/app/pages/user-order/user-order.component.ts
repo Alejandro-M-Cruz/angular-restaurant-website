@@ -1,8 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
-import { Order } from 'src/app/model/order.model';
+import {Component} from '@angular/core';
+import {FormBuilder} from '@angular/forms';
 import { CartService } from 'src/app/services/orders/cart.service';
-import { CurrentOrderService } from 'src/app/services/orders/current-order.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -15,7 +13,6 @@ export class UserOrderComponent {
 
   constructor(
     private readonly fb:FormBuilder,
-    private readonly currentOrderService:CurrentOrderService,
     private readonly user:UserService,
     private readonly cartService:CartService
   ){}

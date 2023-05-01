@@ -108,7 +108,7 @@
     "tryagain" : "Volver a pedir",
     "buy": "Comprar",
     "continueShopping": "Seguir comprando",
-    "viewOrder": "Ver pedido"
+    "goToOrdersHistory": "Acceder al historial de pedidos"
   },
   "userInfo": {
     "username": "Nombre de usuario",

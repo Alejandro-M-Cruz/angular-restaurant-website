@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Auth, authState} from "@angular/fire/auth";
+import {Auth, authState, onAuthStateChanged} from "@angular/fire/auth";
 import {User} from "../../model/user";
 import {BehaviorSubject, map, Observable} from "rxjs";
 
@@ -27,11 +27,8 @@ export class UserService {
     return this.extractUserInfo(this.auth.currentUser)
   }
 
-  getCurrentUser(): User | null {
-    return this.extractUserInfo(this.auth.currentUser)
-  }
-
-  getCurrentUserObservable(): Observable<User | null> {
+  get currentUser$(): Observable<User | null> {
     return this.authState$.pipe(map(user => this.extractUserInfo(user)))
   }
+
 }
