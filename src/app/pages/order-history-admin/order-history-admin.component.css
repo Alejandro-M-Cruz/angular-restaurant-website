@@ -2,6 +2,8 @@
   margin: 1rem;
   padding: 1rem;
   border-radius: 1rem;
+  display:grid;
+  grid-template-rows:repeat(3,min-content);
 }
 mat-card-subtitle{
   text-align: center;
@@ -9,6 +11,8 @@ mat-card-subtitle{
 }
 mat-card-actions{
   justify-content: center;
+  align-self: flex-end;
+
 }
 button{
   width: max-content;
