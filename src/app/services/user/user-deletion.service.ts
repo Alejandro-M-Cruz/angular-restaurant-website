@@ -27,6 +27,8 @@ export class UserDeletionService {
       })
     try {
       await this.deleteCurrentUserAndCancelTheirReservations(reservations)
+      window.close()
+      window.open('/log-in', '_blank')
     } catch (e: any) {
       const error = new Error()
       switch(e.code) {

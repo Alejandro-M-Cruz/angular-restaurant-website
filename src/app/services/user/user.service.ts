@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import {Auth, authState, onAuthStateChanged} from "@angular/fire/auth";
+import {Auth, authState} from "@angular/fire/auth";
 import {User} from "../../model/user";
-import {BehaviorSubject, map, Observable} from "rxjs";
+import {BehaviorSubject, map, Observable, Subscription} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private readonly authState$ = new BehaviorSubject<any>(null)
+  private authStateSubscription?: Subscription
 
   constructor(private readonly auth: Auth) {
-    authState(this.auth).subscribe(this.authState$)
+    this.reloadAuthState()
   }
 
   private extractUserInfo(user: any): User | null {
@@ -29,5 +30,10 @@ export class UserService {
 
   get currentUser$(): Observable<User | null> {
     return this.authState$.pipe(map(user => this.extractUserInfo(user)))
+  }
+
+  reloadAuthState() {
+    this.authStateSubscription?.unsubscribe()
+    this.authStateSubscription = authState(this.auth).subscribe(this.authState$)
   }
 }

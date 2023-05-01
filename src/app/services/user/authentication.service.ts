@@ -20,6 +20,7 @@ export class AuthenticationService {
     try {
       const result = await createUserWithEmailAndPassword(this.auth, email, password)
       await updateProfile(result.user, { displayName: username })
+      this.userService.reloadAuthState()
     } catch (e: any) {
       const error = new Error()
       switch(e.code) {
@@ -59,6 +60,8 @@ export class AuthenticationService {
 
   async logOut(): Promise<void> {
     await this.auth.signOut()
+    window.close()
+    window.open('/log-in', '_blank')
   }
 
   getUsernameMaxLength(): number {

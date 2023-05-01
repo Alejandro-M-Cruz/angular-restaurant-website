@@ -1,7 +1,7 @@
 <section *transloco="let t">
   <h2 class="page-title">{{t('titles.complaints')}}</h2>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>{{t('formLabels.complaint')}}</mat-label>
       <textarea matInput class="complaint-textarea" cols="55" rows="8" formControlName="content"></textarea>
       <mat-error *ngIf="form.controls.content.errors?.['minlength']">
