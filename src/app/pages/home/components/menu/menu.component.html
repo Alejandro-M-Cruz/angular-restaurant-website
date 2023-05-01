@@ -41,9 +41,11 @@
           </div>
 
           <div class = "buttons-items" *ngIf="page=='order'">
-            <button (click)="addToCart(item)">-</button>
-            <span>{{ cartItems[0].quantity }}</span>
-            <button (click)="addToCart(item)"> Buy </button>
+            <button mat-icon-button (click)="deleteFromCart(item)"><mat-icon>remove_circle_outline</mat-icon></button>
+            <ng-container *ngFor="let cartItem of cartItems">
+              <span *ngIf="cartItem.menuItem===item">{{ cartItem.quantity }}</span>
+            </ng-container>
+            <button mat-icon-button (click)="addToCart(item)"><mat-icon>add_circle_outline</mat-icon></button>
           </div>
         </div>
       </ng-container>
