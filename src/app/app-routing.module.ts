@@ -23,7 +23,7 @@ import {MenuItemsAdminComponent} from "./pages/menu-items-admin/menu-items-admin
 import {PermissionsService} from "./services/user/permissions.service";
 import { UserOrderComponent } from './pages/user-order/user-order.component';
 import { CartComponent } from './components/cart/cart.component';
-import {UserOrderHistoryComponent} from './pages/user-orderhistory/user-orderhistory.component';
+import {UserOrderHistoryComponent} from './pages/user-order-history/user-order-history.component';
 import { SuccessComponent } from './pages/success/success.component';
 import { OrderHistoryAdminComponent } from './pages/order-history-admin/order-history-admin.component';
 
@@ -70,9 +70,9 @@ const routes: Routes = [
   { path: 'user-reservations', title: 'reservations', component: UserReservationsComponent, canActivate: [canActivateLoggedIn] },
   { path: 'new-reservation', title: 'newReservation', component: NewReservationComponent, canActivate: [canActivateLoggedIn] },
   { path: 'user-order', title: 'order', component: UserOrderComponent, canActivate: [canActivateLoggedIn] },
-  { path: 'user-orderhistory', title: 'previousOrder', component: UserOrderHistoryComponent, canActivate: [canActivateLoggedIn] },
+  { path: 'user-order-history', title: 'orderHistoryUser', component: UserOrderHistoryComponent, canActivate: [canActivateLoggedIn] },
   { path: 'cart', title: 'shoppingCart', component: CartComponent, canActivate: [canActivateLoggedIn] },
-  { path: 'success' , title: 'success', component: SuccessComponent},
+  { path: 'success' , title: 'success', component: SuccessComponent, canActivate: [canActivateLoggedIn] },
 
   // ADMIN
   { path: 'reservations-admin', title: 'reservationsAdmin', component: AdminReservationsComponent, canActivate: [canActivateAdmin] },
@@ -81,7 +81,7 @@ const routes: Routes = [
   { path: 'menu-items-admin', title: 'menuItemsAdmin', component: MenuItemsAdminComponent, canActivate: [canActivateAdmin] },
   { path: 'order-history-admin', title:'orderHistoryAdmin', component:OrderHistoryAdminComponent, canActivate:[canActivateAdmin]},
 
-  { path: '**', redirectTo: '/home' },
+  { path: '**', redirectTo: '/home' }
 ];
 
 @Injectable({providedIn: 'root'})

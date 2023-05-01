@@ -20,7 +20,9 @@ export class OrderCheckoutService {
 
   goToCheckout() {
     this.http.post('http://localhost:3000/api/v1/orders/checkout', {
-      cartItems: this.cartService.getCartItems(),
+      cartItems: this.cartService
+        .getCartItems()
+        .map(cartItem => ({...cartItem, subtotalPrice: cartItem.subtotalPrice})),
       userId: this.userService.currentUser!.uid,
       activeLanguage: this.translateService.getActiveLang()
     }).subscribe(response => this.redirectToCheckoutUrl(response))

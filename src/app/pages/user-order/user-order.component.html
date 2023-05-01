@@ -1,28 +1,15 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.orderUser')}}</h2>
-  <form id="orderForm" [formGroup]="form">
 
-    <app-is-home-delivery-selector
-    [radioControls]="form.controls.isHomeDelivery"
-    [textControls]="form.controls.deliveryAddress">
-    (radioControlsChange)="changeShippingConfig($event)"</app-is-home-delivery-selector>
+  <label>{{t('orderForms.askLabel')}}</label>
+  <a routerLink="/user-order-history" class="previous-order-button">{{t('orderForms.previousOrderButton')}}</a>
 
-    <label>
-      {{t('orderForms.askLabel')}}
-      <input type="button" class="previous-order-button" value="{{t('orderForms.previousOrderButton')}}">
-    </label>
+  <app-menu></app-menu>
+  <app-cart></app-cart>
 
-    <app-menu></app-menu>
-    <app-cart [homeDeliveryButtonSelected]="form.controls.isHomeDelivery">
-    </app-cart>
-    <app-tip-selector [tipFormControl]="form.controls.tip"></app-tip-selector>
-
-    <div class="totalPrice">
-      <p> {{t('orderForms.tip')}} : {{totalPrice[1] | currency: 'EUR'}}</p>
-      <p> {{t('orderForms.totalPrice')}} : {{totalPrice[0] | currency: 'EUR'}} </p>
-    </div>
-
-  </form>
+  <div class="totalPrice">
+    <p> {{t('orderForms.totalPrice')}} : {{totalPrice | currency: 'EUR'}} </p>
+  </div>
 
 </ng-container>
 

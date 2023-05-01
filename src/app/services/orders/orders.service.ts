@@ -9,6 +9,7 @@ import {UserService} from "../user/user.service";
 })
 export class OrdersService {
   private readonly ordersCollection = collection(this.firestore, 'orders')
+
   constructor(private readonly firestore: Firestore, private readonly userService: UserService) { }
 
   getAllOrders(): Observable<Order[]> {
@@ -25,7 +26,6 @@ export class OrdersService {
     today.setHours(0, 0, 0, 0)
     const q = query(
       this.ordersCollection,
-      //where('creationTimestamp', '>=', today),
       where('isFinished', '==', false),
       orderBy('creationTimestamp', 'asc')
     )
@@ -50,8 +50,7 @@ export class OrdersService {
   }
 
   completeOrder(orderId: string): Promise<void> {
-    const document = "/orders/"+orderId
-    return updateDoc(doc(this.firestore, document), {isFinished: true})
+    return updateDoc(doc(this.ordersCollection, orderId), {isFinished: true})
   }
 
 }

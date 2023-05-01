@@ -91,7 +91,7 @@ export default class StripeController {
         .map(cartItem => StripeController.cartItemToLineItem(cartItem, activeLanguage)),
       mode: 'payment',
       success_url: 'http://localhost:4200/success',
-      cancel_url: 'http://localhost:3000/cancel.html'
+      cancel_url: 'http://localhost:4200/user-order'
     }
   }
 
@@ -127,7 +127,7 @@ export default class StripeController {
 
   private static cartItemToLineItem(cartItem: any, activeLang: string): Stripe.Checkout.SessionCreateParams.LineItem {
     const lineItem: Stripe.Checkout.SessionCreateParams.LineItem = {
-      quantity: cartItem.amount,
+      quantity: cartItem.quantity,
       price_data: {
         currency: 'eur',
         product_data: {

@@ -37,8 +37,8 @@ export class Order {
     return this.isHomeDelivery ? totalPrice + Order.HOME_DELIVERY_FEE : totalPrice
   }
 
-  get totalPriceIncludingTip(): [number, number] {
-    return [this.totalPriceNotIncludingTip + (this.tip ?? 0), this.tip ?? 0]
+  get totalPriceIncludingTip(): number {
+    return this.totalPriceNotIncludingTip + (this.tip ?? 0)
   }
 
   // updateTotalPrice(): void {

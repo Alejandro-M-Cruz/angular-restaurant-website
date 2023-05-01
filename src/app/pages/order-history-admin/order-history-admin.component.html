@@ -17,7 +17,7 @@
         <mat-card-subtitle>{{t('ordersAdmin.dateLabel')}}{{order.creationTimestamp | date:'medium'}}</mat-card-subtitle>
         <mat-card-subtitle *ngIf="order.isHomeDelivery;else isPickUp">{{t('ordersAdmin.deliveryAddressLabel')}}{{order.deliveryAddress}}</mat-card-subtitle>
         <ng-template #isPickUp><mat-card-subtitle> {{t('ordersAdmin.pickUpLabel')}}</mat-card-subtitle></ng-template>
-        <mat-card-content *ngFor="let item of order.cartItems">{{item.amount}}X {{item.menuItem.name[getActiveLanguage()]}}</mat-card-content>
+        <mat-card-content *ngFor="let item of order.cartItems">{{item.quantity}}X {{item.menuItem.name[getActiveLanguage()]}}</mat-card-content>
         <mat-card-actions *ngIf="orders===activeOrders.orders" [align]="'end'">
           <button (click)="completeOrder(order.id)" class="confirm-button management-button" *ngIf="!order.isFinished;else elseComplete">{{t('ordersAdmin.confirmButton')}}</button>
           <ng-template #elseComplete>

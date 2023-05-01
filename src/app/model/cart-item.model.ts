@@ -2,15 +2,15 @@ import {MenuItem} from "./menu-item.model";
 
 export class CartItem {
   menuItem: MenuItem;
-  amount: number;
+  quantity: number;
 
-  constructor(menuItem: MenuItem, amount: number) {
+  constructor(menuItem: MenuItem, quantity: number) {
     this.menuItem = menuItem;
-    this.amount = amount;
+    this.quantity = quantity;
   }
 
   get subtotalPrice() {
-    return this.menuItem.price * this.amount;
+    return this.menuItem.price * this.quantity;
   }
 
 }

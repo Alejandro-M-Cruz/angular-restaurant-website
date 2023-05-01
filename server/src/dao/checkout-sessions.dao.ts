@@ -19,7 +19,12 @@ export default class CheckoutSessionsDao {
   static add(sessionId: string, userId: string, cartItems: any[]) {
     return CheckoutSessionsDao.checkoutSessionsCollection
       .doc(sessionId)
-      .set({cartItems, userId, status: CheckoutSessionStatus.OPEN} as CheckoutSession)
+      .set({
+        cartItems,
+        userId,
+        status: CheckoutSessionStatus.OPEN,
+        creationTimestamp: new Date()
+      } as CheckoutSession)
   }
 
   static setStatus(sessionId: string, status: CheckoutSessionStatus) {

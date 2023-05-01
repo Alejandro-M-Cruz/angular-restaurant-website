@@ -114,7 +114,7 @@ class StripeController {
     }
     static sessionParams(cartItems, activeLanguage) {
         return Object.assign(Object.assign({}, StripeController.shippingOptions(activeLanguage)), { locale: ['en', 'es'].includes(activeLanguage) ? activeLanguage : 'en', payment_method_types: ['card'], line_items: cartItems
-                .map(cartItem => StripeController.cartItemToLineItem(cartItem, activeLanguage)), mode: 'payment', success_url: 'http://localhost:4200/success', cancel_url: 'http://localhost:3000/cancel.html' });
+                .map(cartItem => StripeController.cartItemToLineItem(cartItem, activeLanguage)), mode: 'payment', success_url: 'http://localhost:4200/success', cancel_url: 'http://localhost:4200/user-order' });
     }
     static shippingOptions(activeLang) {
         return {
@@ -147,7 +147,7 @@ class StripeController {
     }
     static cartItemToLineItem(cartItem, activeLang) {
         const lineItem = {
-            quantity: cartItem.amount,
+            quantity: cartItem.quantity,
             price_data: {
                 currency: 'eur',
                 product_data: {

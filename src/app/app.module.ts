@@ -69,7 +69,7 @@ import { CarouselComponent } from './pages/home/components/carousel/carousel.com
 import { MenuSectionFormDialogComponent } from './components/form-dialogs/menu-section-form-dialog/menu-section-form-dialog.component';
 import { CartComponent } from './components/cart/cart.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
-import { UserOrderHistoryComponent } from './pages/user-orderhistory/user-orderhistory.component';
+import { UserOrderHistoryComponent } from './pages/user-order-history/user-order-history.component';
 import { SuccessComponent } from './pages/success/success.component';
 import { TipSelectorComponent } from './components/tip-selector/tip-selector.component';
 import { IsHomeDeliverySelectorComponent } from './components/is-home-delivery-selector/is-home-delivery-selector.component';

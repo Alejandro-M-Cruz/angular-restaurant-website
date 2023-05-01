@@ -1,0 +1,43 @@
+<ng-container *transloco="let t">
+  <h2 class="page-title">{{ t('titles.orderHistory') }}</h2>
+
+  <div class="cards-grid">
+    <mat-card *ngFor="let order of userOrders | async" class="m-2">
+      <mat-card-header>
+        <mat-card-title class="text-center m-2">
+          {{order.creationTimestamp | date: t('dateFormat')}}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-card-subtitle *ngIf="order.deliveryAddress?.line1">{{order.deliveryAddress?.line1}}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="order.deliveryAddress?.line2">{{order.deliveryAddress?.line2}}</mat-card-subtitle>
+        <mat-card *ngFor="let cartItem of order.cartItems" class="m-2">
+          <mat-card-header>
+            <mat-card-title>
+              <b>{{cartItem.quantity + ' x '}}</b>{{cartItem.menuItem.name[activeLanguage]}}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-card-subtitle>{{cartItem.menuItem.ingredients[activeLanguage]}}</mat-card-subtitle>
+            <mat-card-subtitle class="text-center">
+              {{t('order.subtotalPrice') + ': ' + (cartItem.subtotalPrice | currency: 'EUR')}}
+            </mat-card-subtitle>
+          </mat-card-content>
+        </mat-card>
+      </mat-card-content>
+      <mat-card-subtitle class="text-center my-2">
+        <b>{{t('order.totalPrice') + ': ' + (order.totalPriceIncludingTip | currency: 'EUR')}}</b>
+      </mat-card-subtitle>
+      <mat-card-actions class="d-flex flex-row justify-content-center">
+        <button mat-icon-button (click)="repeatOrder(order)">
+          <mat-icon class="scale-150">add_shopping_cart</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="buttons-container">
+    <button class="management-button back-button" onclick="window.history.back()">{{t('buttons.back')}}</button>
+  </div>
+
+</ng-container>

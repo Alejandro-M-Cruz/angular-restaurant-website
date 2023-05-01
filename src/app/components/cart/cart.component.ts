@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/orders/cart.service';
 import { TranslocoService } from '@ngneat/transloco';
-import { FormControl } from '@angular/forms';
 import {OrderCheckoutService} from "../../services/orders/order-checkout.service";
 
 @Component({
@@ -10,7 +9,6 @@ import {OrderCheckoutService} from "../../services/orders/order-checkout.service
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
-  @Input() homeDeliveryButtonSelected: FormControl<boolean | null>;
   cartItems = this.cartService.getCartItems();
 
   constructor(

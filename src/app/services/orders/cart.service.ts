@@ -11,7 +11,7 @@ export class CartService {
 
   private getTotalMenuItems(): number {
     let totalMenuItems = 0;
-    this.cartItems.forEach(cartItem => totalMenuItems += cartItem.amount);
+    this.cartItems.forEach(cartItem => totalMenuItems += cartItem.quantity);
     return totalMenuItems;
   }
 
@@ -23,15 +23,19 @@ export class CartService {
     if (this.isFull()) throw new Error()
     const includedCartItemWithSameMenuItem = this.cartItems.find(cartItem => cartItem.menuItem.id === menuItem.id);
     includedCartItemWithSameMenuItem ?
-      includedCartItemWithSameMenuItem.amount++ :
+      includedCartItemWithSameMenuItem.quantity++ :
       this.cartItems.push(new CartItem(menuItem, 1));
+  }
+
+  setPreviousOrderItems(order: Order) {
+    this.cartItems = order.cartItems
   }
 
   deleteFromCart(menuItem: MenuItem) {
     const cartItemIndex = this.cartItems.findIndex(cartItem => cartItem.menuItem.id === menuItem.id);
     if (cartItemIndex === -1) throw new Error();
-    this.cartItems[cartItemIndex].amount > 1 ?
-      this.cartItems[cartItemIndex].amount -- :
+    this.cartItems[cartItemIndex].quantity > 1 ?
+      this.cartItems[cartItemIndex].quantity -- :
       this.cartItems.splice(cartItemIndex, 1);
   }
 

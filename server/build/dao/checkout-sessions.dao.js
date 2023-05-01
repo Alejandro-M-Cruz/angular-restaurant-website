@@ -13,7 +13,12 @@ class CheckoutSessionsDao {
     static add(sessionId, userId, cartItems) {
         return CheckoutSessionsDao.checkoutSessionsCollection
             .doc(sessionId)
-            .set({ cartItems, userId, status: CheckoutSessionStatus.OPEN });
+            .set({
+            cartItems,
+            userId,
+            status: CheckoutSessionStatus.OPEN,
+            creationTimestamp: new Date()
+        });
     }
     static setStatus(sessionId, status) {
         return CheckoutSessionsDao.checkoutSessionsCollection.doc(sessionId).update({ status });

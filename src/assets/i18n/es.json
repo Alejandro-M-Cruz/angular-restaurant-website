@@ -25,7 +25,8 @@
     "menuItemsAdmin": "Productos del menú",
     "contactInfo": "Información de contacto",
     "success": "Éxito en la operación",
-    "orderHistoryAdmin":"Historial de pedidos"
+    "orderHistoryAdmin":"Historial de pedidos",
+    "orderHistoryUser": "Historial de pedidos"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -151,6 +152,10 @@
   "tableEmptyRows": {
     "reservations": "Puede realizar {{available}} reserva/s más",
     "adminReservations": "No hay reservas en este momento"
+  },
+  "order": {
+    "subtotalPrice": "Subtotal",
+    "totalPrice": "Precio total"
   },
   "orderForms": {
     "optionLabel": "Seleccione una opción (Obligatoria)",

@@ -25,7 +25,8 @@
     "menuItemsAdmin": "Menu items",
     "contactInfo": "Contact information",
     "success": "Payment successful",
-    "orderHistoryAdmin":"Order History"
+    "orderHistoryAdmin": "Order history",
+    "orderHistoryUser": "Order history"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -151,6 +152,10 @@
   "tableEmptyRows": {
     "reservations": "You can create {{available}} more reservation/s",
     "adminReservations": "There are no reservations for the moment"
+  },
+  "order": {
+    "subtotalPrice": "Subtotal",
+    "totalPrice": "Total price"
   },
   "orderForms": {
     "optionLabel": "Select an option (Required)",
