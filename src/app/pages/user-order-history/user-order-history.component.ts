@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 })
 export class UserOrderHistoryComponent {
   readonly userOrders = this.ordersService.getAllUserOrders()
+  readonly HOME_DELIVERY_FEE = Order.HOME_DELIVERY_FEE
 
   constructor(
     private readonly ordersService: OrdersService,

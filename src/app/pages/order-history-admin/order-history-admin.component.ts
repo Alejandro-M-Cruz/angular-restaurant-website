@@ -9,7 +9,7 @@ import { OrdersService } from 'src/app/services/orders/orders.service';
   styleUrls: ['./order-history-admin.component.css']
 })
 export class OrderHistoryAdminComponent implements OnInit{
-  private orders:Order[] = []
+  private orders: Order[] = []
   allOrders= {orders:[...this.orders]};
   activeOrders =  {orders:[...this.orders]};
 
@@ -18,9 +18,6 @@ export class OrderHistoryAdminComponent implements OnInit{
   ngOnInit(){
     this.orderService.getAllOrders().subscribe(orders => (this.allOrders.orders as Order[]) = orders);
     this.orderService.getActiveOrders().subscribe(orders => (this.activeOrders.orders as Order[])=orders);
-
-
-
   }
 
   async completeOrder(id:string){

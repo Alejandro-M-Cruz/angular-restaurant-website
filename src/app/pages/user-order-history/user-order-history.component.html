@@ -25,6 +25,9 @@
           </mat-card-content>
         </mat-card>
       </mat-card-content>
+      <mat-card-subtitle *ngIf="order.isHomeDelivery" class="text-center my-2">
+        {{t('order.homeDelivery') + ': +' + (HOME_DELIVERY_FEE | currency: 'EUR')}}
+      </mat-card-subtitle>
       <mat-card-subtitle class="text-center my-2">
         <b>{{t('order.totalPrice') + ': ' + (order.totalPriceIncludingTip | currency: 'EUR')}}</b>
       </mat-card-subtitle>

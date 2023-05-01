@@ -3,8 +3,8 @@
     <div class="picsum-img-wrapper">
       <img [src] = "image" alt="Angular Carousel" >
     </div>
-    <div class="carousel-welcome-user" *ngIf="username">
-      <h3> {{t('welcomeMessage')}}  {{username}} </h3>
+    <div class="carousel-welcome-user" *ngIf="(username | async)">
+      <h3> {{t('welcomeMessage')}}  {{username | async}} </h3>
     </div>
     <div class="carousel-caption">
       <h3> {{t('slideShowTitle')}} </h3>

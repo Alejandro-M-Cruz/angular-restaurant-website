@@ -8,12 +8,13 @@ import {
 import {FormError} from "../../errors/form-error.errors";
 import {AlertError} from "../../errors/alert-error.errors";
 import {User} from "../../model/user";
+import {UserService} from "./user.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  constructor(private readonly auth: Auth) {}
+  constructor(private readonly auth: Auth, private readonly userService: UserService) {}
 
   async signUp(username: string, email: string, password: string): Promise<void> {
     try {
@@ -56,8 +57,8 @@ export class AuthenticationService {
     }
   }
 
-  logOut(): Promise<void> {
-    return this.auth.signOut()
+  async logOut(): Promise<void> {
+    await this.auth.signOut()
   }
 
   getUsernameMaxLength(): number {

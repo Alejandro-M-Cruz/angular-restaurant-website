@@ -155,7 +155,8 @@
   },
   "order": {
     "subtotalPrice": "Subtotal",
-    "totalPrice": "Total price"
+    "totalPrice": "Total price",
+    "homeDelivery": "Home delivery"
   },
   "orderForms": {
     "optionLabel": "Select an option (Required)",
@@ -177,7 +178,7 @@
     "cardTitle":"ORDER #",
     "dateLabel":"DATE - ",
     "deliveryAddressLabel":"Delivery Address: ",
-    "pickUpLabel":"Order to pick up.",
+    "pickUpLabel":"Order to pick up",
     "confirmButton": "Ready",
     "completedLabel":"Finished"
   },

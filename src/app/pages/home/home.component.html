@@ -1,12 +1,12 @@
 <ng-container *transloco="let t">
   <section class="slide-image">
-    <app-carousel [username]="user?.username"></app-carousel>
+    <app-carousel [username]="currentUserUsername$"></app-carousel>
   </section>
   <section id="menu-section">
     <app-menu></app-menu>
   </section>
 
-  <ng-container *ngIf="!userIsAdmin; else isAdmin">
+  <ng-container *ngIf="!(currentUserIsAdmin$ | async); else isAdmin">
     <section class="reserva">
       <a routerLink="/user-reservations"><b>{{t('links.reservations')}}</b></a>
     </section>

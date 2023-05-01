@@ -51,7 +51,6 @@ export class MyAccountComponent implements OnInit, OnDestroy {
   async deleteAccount(): Promise<void> {
     try {
       await this.userDeletionService.deleteCurrentUser()
-      await this.router.navigate(['/log-in'])
     } catch (e: any) {
       console.error(e)
       if (e.name === AlertError.RECENT_LOGIN_REQUIRED)

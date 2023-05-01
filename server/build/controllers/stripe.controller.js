@@ -106,7 +106,7 @@ class StripeController {
                 cartItems: checkoutSession.cartItems,
                 creationTimestamp: new Date(stripeSession.created * 1000),
                 deliveryAddress: stripeSession.shipping_details.address,
-                isHomeDelivery: stripeSession.shipping_details.name === 'b',
+                isHomeDelivery: stripeSession.shipping_cost.amount_total > 0,
                 isFinished: false,
                 userId: checkoutSession.userId
             };

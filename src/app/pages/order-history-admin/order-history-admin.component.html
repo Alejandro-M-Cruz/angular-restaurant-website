@@ -15,9 +15,13 @@
       <mat-card class="main-card" *ngFor="let order of orders">
         <mat-card-title class="card-title">{{t('ordersAdmin.cardTitle')}}{{order.id}}</mat-card-title>
         <mat-card-subtitle>{{order.creationTimestamp | date:'short'}}</mat-card-subtitle>
-        <ng-container *ngIf="order.isHomeDelivery;else isPickUp">
-          <mat-card-subtitle *ngIf="order.deliveryAddress?.line1">{{order.deliveryAddress?.line1}}</mat-card-subtitle>
-          <mat-card-subtitle *ngIf="order.deliveryAddress?.line2">{{order.deliveryAddress?.line2}}</mat-card-subtitle>
+        <ng-container *ngIf="order.isHomeDelivery; else isPickUp">
+          <mat-card-subtitle *ngIf="order.deliveryAddress?.line1">
+            {{t('ordersAdmin.deliveryAddressLabel') + order.deliveryAddress?.line1}}
+          </mat-card-subtitle>
+          <mat-card-subtitle *ngIf="order.deliveryAddress?.line2">
+            {{t('ordersAdmin.deliveryAddressLabel') + order.deliveryAddress?.line2}}
+          </mat-card-subtitle>
         </ng-container>
         <ng-template #isPickUp><mat-card-subtitle> {{t('ordersAdmin.pickUpLabel')}}</mat-card-subtitle></ng-template>
         <mat-card *ngFor="let cartItem of order.cartItems" class="m-2">

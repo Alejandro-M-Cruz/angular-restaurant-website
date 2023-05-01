@@ -155,7 +155,8 @@
   },
   "order": {
     "subtotalPrice": "Subtotal",
-    "totalPrice": "Precio total"
+    "totalPrice": "Precio total",
+    "homeDelivery": "Pedido a domicilio"
   },
   "orderForms": {
     "optionLabel": "Seleccione una opción (Obligatoria)",
@@ -177,7 +178,7 @@
     "cardTitle":"PEDIDO #",
     "dateLabel":"FECHA - ",
     "deliveryAddressLabel":"Dirección de entrega: ",
-    "pickUpLabel":"Pedido para recoger.",
+    "pickUpLabel":"Pedido para recoger",
     "confirmButton": "Listo",
     "completedLabel":"Finalizado"
   },

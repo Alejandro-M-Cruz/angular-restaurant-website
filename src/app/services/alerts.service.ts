@@ -7,7 +7,6 @@ import {translate} from "@ngneat/transloco";
 })
 export class AlertsService {
   async showErrorAlert(errorName: string) {
-    console.log(errorName)
     await Swal.fire({
       icon: 'error',
       title: translate('alerts.titles.error'),

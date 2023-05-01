@@ -30,5 +30,4 @@ export class UserService {
   get currentUser$(): Observable<User | null> {
     return this.authState$.pipe(map(user => this.extractUserInfo(user)))
   }
-
 }

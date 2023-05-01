@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-carousel',
@@ -7,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 
 export class CarouselComponent {
-  @Input() username?: string;
+  @Input() username?: Observable<string | null>;
 
   images: string[] = [
     "../../assets/images/carousel/restaurante-1.jpg",

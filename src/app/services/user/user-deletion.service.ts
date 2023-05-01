@@ -3,6 +3,7 @@ import {first} from "rxjs";
 import {AlertError} from "../../errors/alert-error.errors";
 import {Auth} from "@angular/fire/auth";
 import {ReservationsService} from "../reservations/reservations.service";
+import {Reservation} from "../../model/reservation.model";
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +12,25 @@ export class UserDeletionService {
 
   constructor(private readonly auth: Auth, private readonly reservationsService: ReservationsService) { }
 
-  private deleteCurrentUserAndTheirReservations() {
-    this.reservationsService.getUserActiveReservations().pipe(first()).subscribe(async reservations => {
-      reservations.forEach(reservation => {
-        this.reservationsService.cancelReservation(reservation.id!)
-      })
-      await this.auth.currentUser!.delete()
-    })
+  private async deleteCurrentUserAndCancelTheirReservations(reservations: Reservation[]) {
+    for (const reservation of reservations)
+      await this.reservationsService.cancelReservation(reservation.id!)
+    await this.auth.currentUser!.delete()
   }
 
-  async deleteCurrentUser(): Promise<void> {
+  async deleteCurrentUser() {
     if (!this.auth.currentUser) return
+    let reservations: Reservation[] = []
+    this.reservationsService.getUserActiveReservations().pipe(first())
+      .subscribe(userReservations => {
+        reservations = userReservations
+      })
     try {
-      this.deleteCurrentUserAndTheirReservations()
+      await this.deleteCurrentUserAndCancelTheirReservations(reservations)
     } catch (e: any) {
       const error = new Error()
       switch(e.code) {
-        case 'auth/requires':
+        case 'auth/requires-recent-login':
           error.name = AlertError.RECENT_LOGIN_REQUIRED
           break
         default:
@@ -35,5 +38,6 @@ export class UserDeletionService {
       }
       throw error
     }
+
   }
 }
