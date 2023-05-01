@@ -729,6 +729,10 @@ app-reservations-admin .buttons-container .management-button{
   background-color: var(--confirm-button-color);
 }
 
+.confirm-button:hover {
+  color: black;
+}
+
 .edit-button {
   color: white;
   background-color: var(--edit-button-color);
