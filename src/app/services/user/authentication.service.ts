@@ -60,8 +60,7 @@ export class AuthenticationService {
 
   async logOut(): Promise<void> {
     await this.auth.signOut()
-    window.close()
-    window.open('/log-in', '_blank')
+    location.reload()
   }
 
   getUsernameMaxLength(): number {

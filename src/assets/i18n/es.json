@@ -163,7 +163,7 @@
     "homeDelivery" :"A Domicilio",
     "pickUpOrder" : "A Recoger",
     "directionLabelRequest" : "Introduzca su dirección (Obligatoria)",
-    "askLabel" : "¿Quieres volver a probar?",
+    "askLabel" : "¿Desea repetir un pedido?",
     "previousOrderButton" : "Ver pedidos anteriores",
     "selectLabel": "Seleccione sus opciones",
     "totalPrice":"Precio total",

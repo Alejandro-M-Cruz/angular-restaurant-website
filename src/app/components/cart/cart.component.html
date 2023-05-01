@@ -9,7 +9,7 @@
     <span> {{ cartItem.quantity }} </span>
   </div>
 
-  <div class="cart-buttons">
+  <div class="buttons-container">
     <button type="reset" onclick="window.history.back()" class="management-button back-button">{{t('buttons.back')}}</button>
     <button class="management-button cancel-button" (click)="clearCart()">{{t('buttons.deleteCart')}}</button>
     <button class="management-button buy-button" (click)="goToCheckout()" [disabled]="cartItems.length === 0">{{t('buttons.buy')}}</button>

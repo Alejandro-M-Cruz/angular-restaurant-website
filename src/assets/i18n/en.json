@@ -163,7 +163,7 @@
     "homeDelivery": "Home Delivery",
     "pickUpOrder": "Pick Up Order",
     "directionLabelRequest": "Enter your order address (Required)",
-    "askLabel": "Do you want to taste again?",
+    "askLabel": "Would you like to repeat an order?",
     "previousOrderButton": "See previous orders",
     "selectLabel": "See previous orders",
     "totalPrice": "Total price",

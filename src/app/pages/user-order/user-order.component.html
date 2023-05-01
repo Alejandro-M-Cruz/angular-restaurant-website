@@ -1,8 +1,9 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.orderUser')}}</h2>
 
-  <label>{{t('orderForms.askLabel')}}</label>
-  <a routerLink="/user-order-history" class="previous-order-button">{{t('orderForms.previousOrderButton')}}</a>
+  <a routerLink="/user-order-history" class="management-button back-button" style="margin-top: 8rem;">
+    {{t('orderForms.previousOrderButton')}}
+  </a>
 
   <app-menu></app-menu>
   <app-cart></app-cart>
