@@ -388,7 +388,7 @@ app-cart div {
   margin-left: 1rem;
 }
 
-app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons, .sides, .buttons-items), h2.ng-star-inserted:not(.page-title.ng-star-inserted), label, .totalPrice {
+app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons, .sides, .buttons-items), .previous-order-button, h2.ng-star-inserted:not(.page-title.ng-star-inserted), label, .totalPrice {
   margin-left: 1rem;
 }
 
@@ -397,17 +397,18 @@ app-user-order label {
   flex-direction: column;
   margin-bottom: 2%;
   margin-top: 2%;
-  font-size: large;
-}
-
-app-user-order label input {
-  width: 25rem;
-  margin-top: 0.5rem;
+  font-size: 23px;
 }
 
 app-user-order .previous-order-button {
+  margin-top: 1%;
   padding: 1%;
   background-color: #ffd232;
+  color: black;
+}
+
+app-user-order .previous-order-button:hover {
+  color: black;
 }
 
 app-menu h2{
@@ -426,7 +427,7 @@ app-menu h2{
 .totalPrice {
   font-size: 18px;
   font-weight: 500;
-  margin-top: 1%;
+  margin-top: 2%;
 }
 
 /* -------------FOOTER------------- */
@@ -1022,6 +1023,16 @@ app-menu-sections-admin .mat-mdc-select-value {
     width: 100%;
   }
 
+  /* ----- MENU ORDERS ----- */
+
+  app-user-order label {
+    margin-bottom: 3%;
+  }
+
+  app-user-order .previous-order-button {
+    padding: 2%;
+  }
+
   app-user-order .sides {
     grid-template-columns: 12% 45% 10% 20%;
     grid-gap: 12px;
@@ -1210,6 +1221,15 @@ app-menu-sections-admin .mat-mdc-select-value {
 
   app-menu-sections-admin .mdc-menu-surface.mat-mdc-select-panel {
     width: 100%;
+  }
+
+  /* ----- MENU ORDERS ----- */
+
+  app-user-order label {
+    margin-bottom: 4%;
+  }
+  app-user-order .previous-order-button {
+    padding: 3%;
   }
 
   app-user-order .right-side-text p {
