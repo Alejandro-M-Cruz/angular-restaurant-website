@@ -25,7 +25,7 @@ export class OrdersService {
     today.setHours(0, 0, 0, 0)
     const q = query(
       this.ordersCollection,
-      where('creationTimestamp', '>=', today),
+      //where('creationTimestamp', '>=', today),
       where('isFinished', '==', false),
       orderBy('creationTimestamp', 'asc')
     )
@@ -50,7 +50,8 @@ export class OrdersService {
   }
 
   completeOrder(orderId: string): Promise<void> {
-    return updateDoc(doc(this.firestore, orderId), {isFinished: true})
+    const document = "/orders/"+orderId
+    return updateDoc(doc(this.firestore, document), {isFinished: true})
   }
 
 }

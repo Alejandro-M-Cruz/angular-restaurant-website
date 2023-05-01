@@ -18,6 +18,9 @@ export class OrderHistoryAdminComponent implements OnInit{
   ngOnInit(){
     this.orderService.getAllOrders().subscribe(orders => (this.allOrders.orders as Order[]) = orders);
     this.orderService.getActiveOrders().subscribe(orders => (this.activeOrders.orders as Order[])=orders);
+    
+
+
   }
 
   async completeOrder(id:string){
