@@ -75,6 +75,7 @@ import { TipSelectorComponent } from './components/tip-selector/tip-selector.com
 import { IsHomeDeliverySelectorComponent } from './components/is-home-delivery-selector/is-home-delivery-selector.component';
 import { OrderHistoryAdminComponent } from './pages/order-history-admin/order-history-admin.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ReviewsPreviewComponent } from './components/reviews/reviews-preview.component';
 
 registerLocaleData(es);
 
@@ -121,7 +122,8 @@ registerLocaleData(es);
     SuccessfulOrderComponent,
     TipSelectorComponent,
     IsHomeDeliverySelectorComponent,
-    OrderHistoryAdminComponent
+    OrderHistoryAdminComponent,
+    ReviewsPreviewComponent
   ],
   imports: [
     BrowserModule,

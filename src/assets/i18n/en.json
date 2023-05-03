@@ -39,6 +39,7 @@
     "complaints": "Complaint form",
     "complaintsAdmin": "Complaints",
     "menu": "MENU",
+    "reviews": "REVIEWS",
     "aboutUs": "ABOUT US",
     "menuSectionsAdmin": "Modify the menu sections using the drop-down",
     "orderUser": "Make an order",
@@ -135,6 +136,9 @@
     "sectionId": "Section that the item belongs to",
     "image": "Image of the product",
     "noImage": "No image has been selected"
+  },
+  "review": {
+    "noReviews": "There are no reviews for the moment"
   },
   "reservationsTable": {
     "date": "Date",

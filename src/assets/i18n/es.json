@@ -39,6 +39,7 @@
     "complaints": "Hoja de reclamaciones",
     "complaintsAdmin": "Reclamaciones",
     "menu": "MENÚ",
+    "reviews": "RESEÑAS",
     "aboutUs": "SOBRE NOSOTROS",
     "menuSectionsAdmin": "Modifique las secciones del menú mediante el desplegable",
     "orderUser" : "Realice su pedido",
@@ -48,6 +49,7 @@
     "home": "Inicio",
     "reservations": "Reservas",
     "menu": "Menú",
+    "reviews": "REVIEWS",
     "aboutUs": "Sobre nosotros",
     "cart": "Carrito",
     "contact": "Contacto",
@@ -135,6 +137,9 @@
     "sectionId": "Sección a la que pertenece",
     "image": "Imagen del producto",
     "noImage": "No se ha seleccionado una imagen"
+  },
+  "review": {
+    "noReviews": "No hay ninguna reseña por el momento"
   },
   "reservationsTable": {
     "date": "Fecha",

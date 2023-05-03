@@ -1,0 +1,27 @@
+<section *transloco="let t">
+  <h2 class="text-center mb-5">{{t('titles.reviews')}}</h2>
+  <div class="d-flex flex-row overflow-auto">
+    <mat-card class="w-25 h-100 m-3" *ngFor="let review of reviewsPreview$ | async">
+      <mat-card-header class="d-flex justify-content-between">
+        <mat-card-title>
+          {{review.dateOfCreationOrLastUpdate | date: t('dateFormat')}}
+          <span *ngIf="review.wasUpdated"> (Updated) </span>
+        </mat-card-title>
+        <div>
+          <mat-icon *ngFor="let _ of [].constructor(review.rating)">star</mat-icon>
+        </div>
+      </mat-card-header>
+      <mat-card-content class="overflow-auto">
+        <p>{{review.description}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <h3
+    *ngIf="(reviewsPreview$ | async)?.length === 0"
+      class="w-1000 mt-4 text-center text-secondary"
+      style="margin-bottom: 15rem;"
+  >
+    {{t('review.noReviews')}}
+  </h3>
+</section>
+
