@@ -138,7 +138,8 @@
     "noImage": "No image has been selected"
   },
   "review": {
-    "noReviews": "There are no reviews for the moment"
+    "noReviews": "There are no reviews for the moment",
+    "wasUpdated": " (Updated)"
   },
   "reservationsTable": {
     "date": "Date",

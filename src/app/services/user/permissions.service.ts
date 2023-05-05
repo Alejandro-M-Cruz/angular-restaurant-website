@@ -22,7 +22,6 @@ export class PermissionsService {
     this.userService.currentUser$.subscribe(user => {
       if (user === null)
         return this.userStatus$.next(UserStatus.LOGGED_OUT)
-      this.userStatus$.next(UserStatus.UNKNOWN)
       this.adminsCollectionIncludesUser(user.uid).then(isAdmin => {
         isAdmin ? this.userStatus$.next(UserStatus.ADMIN) : this.userStatus$.next(UserStatus.LOGGED_IN)
       })

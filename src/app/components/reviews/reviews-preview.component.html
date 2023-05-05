@@ -4,8 +4,8 @@
     <mat-card class="w-25 h-100 m-3" *ngFor="let review of reviewsPreview$ | async">
       <mat-card-header class="d-flex justify-content-between">
         <mat-card-title>
-          {{review.dateOfCreationOrLastUpdate | date: t('dateFormat')}}
-          <span *ngIf="review.wasUpdated"> (Updated) </span>
+          <b>{{review.dateOfCreationOrLastUpdate | date: t('dateFormat')}}</b>
+          <span *ngIf="review.wasUpdated">{{t('review.wasUpdated')}}</span>
         </mat-card-title>
         <div>
           <mat-icon *ngFor="let _ of [].constructor(review.rating)">star</mat-icon>
