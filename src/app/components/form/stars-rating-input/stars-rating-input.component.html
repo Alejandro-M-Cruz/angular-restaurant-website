@@ -1,0 +1,24 @@
+<mat-form-field appearance="outline" *transloco="let t" floatLabel="always" style="width: 300px;">
+  <mat-label>{{t('review.rating')}}</mat-label>
+  <input hidden matInput>
+  <div class="d-flex flex-row">
+    <button
+      mat-icon-button
+      class="p-2"
+      *ngFor="let _ of [].constructor(control.value); let i = index"
+      (click)="onRatingChanged(i + 1)"
+    >
+      <mat-icon class="scale-150">star</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      class="p-2"
+      *ngFor="let _ of [].constructor(maxRating - control.value); let i = index"
+      (click)="onRatingChanged(control.value + i + 1)"
+    >
+      <mat-icon class="scale-150">star_border</mat-icon>
+    </button>
+
+  </div>
+</mat-form-field>

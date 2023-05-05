@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-  addDoc,
   collection,
   collectionData,
   deleteDoc,
@@ -11,6 +10,7 @@ import {
 } from "@angular/fire/firestore";
 import {Review, ReviewsSortingMethod} from "../../model/review.model";
 import {map, Observable, take} from "rxjs";
+import {UserService} from "../user/user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,9 @@ import {map, Observable, take} from "rxjs";
 export class ReviewsService {
   private readonly reviewsCollection = collection(this.firestore, 'reviews')
 
-  constructor(private readonly firestore: Firestore) { }
+  constructor(private readonly firestore: Firestore, private readonly userService: UserService) { }
 
-  private reviewsSortingMethodToFirestoreOrderBy(sortingMethod?: ReviewsSortingMethod) {
+  private reviewsSortingMethodToFirestoreOrderBy(sortingMethod?: ReviewsSortingMethod): any {
     switch(sortingMethod) {
       case ReviewsSortingMethod.DATE_DESC:
         return orderBy('dateOfCreationOrLastUpdate', 'desc')
@@ -31,7 +31,7 @@ export class ReviewsService {
       case ReviewsSortingMethod.RATING_ASC:
         return orderBy('rating', 'asc')
       default:
-        return orderBy('dateOfCreationOrLastUpdate', 'desc')
+        return this.reviewsSortingMethodToFirestoreOrderBy(ReviewsSortingMethod.DEFAULT)
     }
   }
 
@@ -47,7 +47,7 @@ export class ReviewsService {
       this.reviewsCollection,
       this.reviewsSortingMethodToFirestoreOrderBy(sortingMethod)
     )
-    return collectionData(q, {idField: 'id'}).pipe(
+    return collectionData(q, {idField: 'userId'}).pipe(
       map(reviews => reviews.map(this.firestoreDocumentDataToReview))
     ) as Observable<Review[]>
   }
@@ -58,14 +58,14 @@ export class ReviewsService {
       this.reviewsSortingMethodToFirestoreOrderBy(sortingMethod),
       limit(10)
     )
-    return collectionData(q, {idField: 'id'}).pipe(
+    return collectionData(q, {idField: 'userId'}).pipe(
       take(1),
       map(reviews => reviews.map(this.firestoreDocumentDataToReview))
     ) as Observable<Review[]>
   }
 
   async addReview(review: Review): Promise<void> {
-    await addDoc(this.reviewsCollection, {
+    await setDoc(doc(this.reviewsCollection, this.userService.currentUser!.uid), {
       ...review,
       dateOfCreationOrLastUpdate: new Date(),
       wasUpdated: false

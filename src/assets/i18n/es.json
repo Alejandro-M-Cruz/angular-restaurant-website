@@ -26,7 +26,8 @@
     "contactInfo": "Información de contacto",
     "success": "Éxito en la operación",
     "orderHistoryAdmin":"Historial de pedidos",
-    "orderHistoryUser": "Historial de pedidos"
+    "orderHistoryUser": "Historial de pedidos",
+    "writeReview": "Escriba su reseña"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -43,7 +44,8 @@
     "aboutUs": "SOBRE NOSOTROS",
     "menuSectionsAdmin": "Modifique las secciones del menú mediante el desplegable",
     "orderUser" : "Realice su pedido",
-    "orderHistory": "Historial de pedidos"
+    "orderHistory": "Historial de pedidos",
+    "writeReview": "Escriba su reseña"
   },
   "navbarLinks": {
     "home": "Inicio",
@@ -110,7 +112,8 @@
     "tryagain" : "Volver a pedir",
     "buy": "Comprar",
     "continueShopping": "Seguir comprando",
-    "goToOrdersHistory": "Acceder al historial de pedidos"
+    "goToOrdersHistory": "Acceder al historial de pedidos",
+    "writeAReview": "Escribir una reseña"
   },
   "userInfo": {
     "username": "Nombre de usuario",
@@ -140,7 +143,9 @@
   },
   "review": {
     "noReviews": "No hay ninguna reseña por el momento",
-    "wasUpdated": " (Modificado)"
+    "wasUpdated": " (Modificado)",
+    "description": "Descripción",
+    "rating": "Puntuación"
   },
   "reservationsTable": {
     "date": "Fecha",

@@ -3,14 +3,18 @@ export enum ReviewsSortingMethod {
   DATE_ASC,
   RATING_DESC,
   RATING_ASC,
-  DEFAULT = DATE_DESC
+  DEFAULT = RATING_DESC
 }
 
-export interface Review {
-  id?: string
+export type Rating = typeof Review.RATING_OPTIONS[number]
+
+export class Review {
+  static readonly MIN_DESCRIPTION_LENGTH = 20
+  static readonly MAX_DESCRIPTION_LENGTH = 2000
+  static readonly RATING_OPTIONS = [1, 2, 3, 4, 5]
+  userId?: string
   description: string
-  rating: 1 | 2 | 3 | 4 | 5
+  rating: Rating
   dateOfCreationOrLastUpdate?: Date
   wasUpdated?: boolean
-  userId?: string
 }

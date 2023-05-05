@@ -26,7 +26,8 @@
     "contactInfo": "Contact information",
     "success": "Payment successful",
     "orderHistoryAdmin": "Order history",
-    "orderHistoryUser": "Order history"
+    "orderHistoryUser": "Order history",
+    "writeReview": "Write your review"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -43,7 +44,8 @@
     "aboutUs": "ABOUT US",
     "menuSectionsAdmin": "Modify the menu sections using the drop-down",
     "orderUser": "Make an order",
-    "orderHistory": "Order history"
+    "orderHistory": "Order history",
+    "writeReview": "Write your review"
   },
   "navbarLinks": {
     "home": "Home",
@@ -109,7 +111,8 @@
     "tryagain": "Try again",
     "buy": "Buy",
     "continueShopping": "Continue shopping",
-    "goToOrdersHistory": "Access order history"
+    "goToOrdersHistory": "Access order history",
+    "writeAReview": "Write a review"
   },
   "userInfo": {
     "username": "Username",
@@ -139,7 +142,9 @@
   },
   "review": {
     "noReviews": "There are no reviews for the moment",
-    "wasUpdated": " (Updated)"
+    "wasUpdated": " (Updated)",
+    "description": "Description",
+    "rating": "Rating"
   },
   "reservationsTable": {
     "date": "Date",

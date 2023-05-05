@@ -26,6 +26,7 @@ import { CartComponent } from './components/cart/cart.component';
 import {UserOrderHistoryComponent} from './pages/user-order-history/user-order-history.component';
 import { SuccessfulOrderComponent } from './pages/successful-order/successful-order.component';
 import { OrderHistoryAdminComponent } from './pages/order-history-admin/order-history-admin.component';
+import {WriteReviewComponent} from "./pages/write-review/write-review.component";
 
 const canActivateLoggedIn: CanActivateFn = (_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot) => {
   const isLoggedIn = inject(PermissionsService).isLoggedIn()
@@ -72,6 +73,7 @@ const routes: Routes = [
   { path: 'user-order', title: 'order', component: UserOrderComponent, canActivate: [canActivateLoggedIn] },
   { path: 'user-order-history', title: 'orderHistoryUser', component: UserOrderHistoryComponent, canActivate: [canActivateLoggedIn] },
   { path: 'cart', title: 'shoppingCart', component: CartComponent, canActivate: [canActivateLoggedIn] },
+  { path: 'write-review', title: 'writeReview', component: WriteReviewComponent, canActivate: [canActivateLoggedIn] },
 
   // ADMIN
   { path: 'reservations-admin', title: 'reservationsAdmin', component: AdminReservationsComponent, canActivate: [canActivateAdmin] },

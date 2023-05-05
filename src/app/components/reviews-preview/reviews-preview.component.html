@@ -1,0 +1,23 @@
+<section *transloco="let t">
+  <h2 class="text-center mb-5">{{t('titles.reviews')}}</h2>
+  <div class="d-flex flex-row overflow-auto">
+    <ng-container *ngFor="let review of reviewsPreview$ | async">
+      <app-review class="col-12 col-sm-6 col-xl-4" [review]="review"></app-review>
+    </ng-container>
+
+  </div>
+  <h3
+    *ngIf="!(reviewsPreview$ | async)"
+      class="w-1000 mt-4 text-center text-secondary"
+      style="margin-bottom: 15rem;"
+  >
+    {{t('review.noReviews')}}
+  </h3>
+  <div class="buttons-container" (click)="navigateToWriteReview()">
+    <button class="p-4 text-light mb-5" mat-raised-button>
+      <span class="mx-2">{{t('buttons.writeAReview')}}</span>
+      <mat-icon class="scale-150">edit</mat-icon>
+    </button>
+  </div>
+</section>
+

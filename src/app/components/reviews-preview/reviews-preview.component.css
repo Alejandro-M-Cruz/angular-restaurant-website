@@ -1,0 +1,4 @@
+div button {
+  background-color: var(--edit-button-color);
+  font-size: 1.5rem;
+}

@@ -75,7 +75,11 @@ import { TipSelectorComponent } from './components/tip-selector/tip-selector.com
 import { IsHomeDeliverySelectorComponent } from './components/is-home-delivery-selector/is-home-delivery-selector.component';
 import { OrderHistoryAdminComponent } from './pages/order-history-admin/order-history-admin.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import { ReviewsPreviewComponent } from './components/reviews/reviews-preview.component';
+import { ReviewsPreviewComponent } from './components/reviews-preview/reviews-preview.component';
+import { WriteReviewComponent } from './pages/write-review/write-review.component';
+import { ReviewComponent } from './components/review/review.component';
+import { StarsRatingComponent } from './components/stars-rating/stars-rating.component';
+import { StarsRatingInputComponent } from './components/form/stars-rating-input/stars-rating-input.component';
 
 registerLocaleData(es);
 
@@ -123,7 +127,11 @@ registerLocaleData(es);
     TipSelectorComponent,
     IsHomeDeliverySelectorComponent,
     OrderHistoryAdminComponent,
-    ReviewsPreviewComponent
+    ReviewsPreviewComponent,
+    WriteReviewComponent,
+    ReviewComponent,
+    StarsRatingComponent,
+    StarsRatingInputComponent
   ],
   imports: [
     BrowserModule,
