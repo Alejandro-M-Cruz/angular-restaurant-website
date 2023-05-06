@@ -8,15 +8,30 @@
   </div>
   <h3
     *ngIf="!(reviewsPreview$ | async)"
-      class="w-1000 mt-4 text-center text-secondary"
+      class="w-100 mt-4 text-center text-secondary"
       style="margin-bottom: 15rem;"
   >
     {{t('review.noReviews')}}
   </h3>
-  <div class="buttons-container" (click)="navigateToWriteReview()">
-    <button class="p-4 text-light mb-5" mat-raised-button>
+  <div class="buttons-container">
+    <button
+      id="write-a-review-button"
+      class="p-4 text-light mt-3 mb-5 mx-3"
+      mat-raised-button
+      *ngIf="!(userIsAdmin$ | async)"
+      (click)="navigateToWriteReview()"
+    >
       <span class="mx-2">{{t('buttons.writeAReview')}}</span>
       <mat-icon class="scale-150">edit</mat-icon>
+    </button>
+    <button
+      id="see-all-reviews-button"
+      class="p-4 text-light mt-3 mb-5 mx-3"
+      mat-raised-button
+      (click)="navigateToReviews()"
+    >
+      <span class="mx-2">{{t('buttons.seeAllReviews')}}</span>
+      <mat-icon class="scale-150">view_module</mat-icon>
     </button>
   </div>
 </section>

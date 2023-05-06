@@ -27,6 +27,7 @@ import {UserOrderHistoryComponent} from './pages/user-order-history/user-order-h
 import { SuccessfulOrderComponent } from './pages/successful-order/successful-order.component';
 import { OrderHistoryAdminComponent } from './pages/order-history-admin/order-history-admin.component';
 import {WriteReviewComponent} from "./pages/write-review/write-review.component";
+import {ReviewsComponent} from "./pages/reviews/reviews.component";
 
 const canActivateLoggedIn: CanActivateFn = (_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot) => {
   const isLoggedIn = inject(PermissionsService).isLoggedIn()
@@ -61,6 +62,7 @@ const routes: Routes = [
   { path: 'home', title: 'home', component: HomeComponent },
   { path: 'complaints', title: 'complaints', component: ComplaintsComponent },
   { path: 'success' , title: 'success', component: SuccessfulOrderComponent },
+  { path: 'reviews', title: 'allReviews', component: ReviewsComponent },
 
   // LOGGED OUT
   { path: 'sign-up', title: 'signup', component: SignUpComponent, canActivate: [canActivateLoggedOut] },

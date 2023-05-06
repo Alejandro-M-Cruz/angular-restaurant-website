@@ -1,19 +1,22 @@
-import {MatPaginatorIntl} from "@angular/material/paginator";
+import { Injectable } from '@angular/core';
 import {translate, TranslocoService} from "@ngneat/transloco";
-import {Injectable} from "@angular/core";
+import {MatPaginatorIntl} from "@angular/material/paginator";
+import {first} from "rxjs";
 
-@Injectable({providedIn: 'root'})
-export class ReservationsPaginatorIntl extends MatPaginatorIntl {
+@Injectable({
+  providedIn: 'root'
+})
+export class CustomMatPaginatorIntlService extends MatPaginatorIntl {
   constructor(private readonly translateService: TranslocoService) {
     super()
-    translateService.selectTranslate('reservationsPaginator.itemsPerPageLabel')
+    translateService.selectTranslate('paginator.itemsPerPageLabel').pipe(first())
       .subscribe((t: string) => {
         this.changes.next()
         this.itemsPerPageLabel = t
       })
-    translateService.selectTranslate('reservationsPaginator.nextPageLabel')
+    translateService.selectTranslate('paginator.nextPageLabel').pipe(first())
       .subscribe((t: string) => this.nextPageLabel = t)
-    translateService.selectTranslate('reservationsPaginator.previousPageLabel')
+    translateService.selectTranslate('paginator.previousPageLabel').pipe(first())
       .subscribe((t: string) => this.previousPageLabel = t)
   }
 
@@ -24,9 +27,6 @@ export class ReservationsPaginatorIntl extends MatPaginatorIntl {
     const endIndex = startIndex < length ?
       Math.min(startIndex + pageSize, length) :
       startIndex + pageSize;
-    return `${startIndex + 1} - ${endIndex} ${translate('reservationsPaginator.of')} ${length}`;
+    return `${startIndex + 1} - ${endIndex} ${translate('paginator.of')} ${length}`;
   };
-
 }
-
-

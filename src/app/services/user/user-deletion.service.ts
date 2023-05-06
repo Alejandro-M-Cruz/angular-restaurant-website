@@ -20,25 +20,22 @@ export class UserDeletionService {
 
   async deleteCurrentUser() {
     if (!this.auth.currentUser) return
-    let reservations: Reservation[] = []
     this.reservationsService.getUserActiveReservations().pipe(first())
-      .subscribe(userReservations => {
-        reservations = userReservations
+      .subscribe(async userReservations => {
+        try {
+          await this.deleteCurrentUserAndCancelTheirReservations(userReservations)
+          location.reload()
+        } catch (e: any) {
+          const error = new Error()
+          switch(e.code) {
+            case 'auth/requires-recent-login':
+              error.name = AlertError.RECENT_LOGIN_REQUIRED
+              break
+            default:
+              error.name = AlertError.UNKNOWN
+          }
+          throw error
+        }
       })
-    try {
-      await this.deleteCurrentUserAndCancelTheirReservations(reservations)
-      location.reload()
-    } catch (e: any) {
-      const error = new Error()
-      switch(e.code) {
-        case 'auth/requires-recent-login':
-          error.name = AlertError.RECENT_LOGIN_REQUIRED
-          break
-        default:
-          error.name = AlertError.UNKNOWN
-      }
-      throw error
-    }
-
   }
 }

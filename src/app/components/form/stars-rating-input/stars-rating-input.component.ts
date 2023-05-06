@@ -8,7 +8,7 @@ import {Rating, Review} from "../../../model/review.model";
   styleUrls: ['./stars-rating-input.component.css']
 })
 export class StarsRatingInputComponent {
-  @Input() control!: FormControl<Rating>
+  @Input() control!: FormControl
   maxRating = Review.RATING_OPTIONS[Review.RATING_OPTIONS.length - 1]
 
   onRatingChanged(rating: Rating) {

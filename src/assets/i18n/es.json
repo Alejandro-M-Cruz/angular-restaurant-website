@@ -27,7 +27,8 @@
     "success": "Éxito en la operación",
     "orderHistoryAdmin":"Historial de pedidos",
     "orderHistoryUser": "Historial de pedidos",
-    "writeReview": "Escriba su reseña"
+    "writeReview": "Escriba su reseña",
+    "allReviews": "Reseñas"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -45,13 +46,13 @@
     "menuSectionsAdmin": "Modifique las secciones del menú mediante el desplegable",
     "orderUser" : "Realice su pedido",
     "orderHistory": "Historial de pedidos",
-    "writeReview": "Escriba su reseña"
+    "writeReview": "Escriba su reseña",
+    "allReviews": "Reseñas"
   },
   "navbarLinks": {
     "home": "Inicio",
     "reservations": "Reservas",
     "menu": "Menú",
-    "reviews": "REVIEWS",
     "aboutUs": "Sobre nosotros",
     "cart": "Carrito",
     "contact": "Contacto",
@@ -60,7 +61,8 @@
     "complaints": "Reclamaciones",
     "complaintForm": "Hoja de reclamaciones",
     "myAccount": "Mi cuenta",
-    "order": "Pedidos"
+    "order": "Pedidos",
+    "reviews": "Reseñas"
   },
   "footerTexts": {
     "followUs": "Síguenos en",
@@ -113,7 +115,8 @@
     "buy": "Comprar",
     "continueShopping": "Seguir comprando",
     "goToOrdersHistory": "Acceder al historial de pedidos",
-    "writeAReview": "Escribir una reseña"
+    "writeAReview": "Escribir una reseña",
+    "seeAllReviews": "Ver todas las reseñas"
   },
   "userInfo": {
     "username": "Nombre de usuario",
@@ -145,7 +148,12 @@
     "noReviews": "No hay ninguna reseña por el momento",
     "wasUpdated": " (Modificado)",
     "description": "Descripción",
-    "rating": "Puntuación"
+    "rating": "Puntuación",
+    "userAlreadyHasReview": "Ya ha realizado una reseña",
+    "modifyIt": "Editarla",
+    "deleteReview": "Eliminar mi reseña",
+    "descriptionTooShort": "La reseña debe tener al menos {{minLength}} caracteres",
+    "descriptionTooLong": "La reseña puede tener como máximo {{maxLength}} caracteres"
   },
   "reservationsTable": {
     "date": "Fecha",
@@ -154,8 +162,8 @@
     "email": "Correo electrónico del usuario",
     "noUser": "Este usuario ha eliminado su cuenta"
   },
-  "reservationsPaginator": {
-    "itemsPerPageLabel": "Reservas por página",
+  "paginator": {
+    "itemsPerPageLabel": "Elementos por página",
     "nextPageLabel": "Siguiente página",
     "previousPageLabel": "Página anterior",
     "of": "de"

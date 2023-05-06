@@ -5,6 +5,7 @@
     <button
       mat-icon-button
       class="p-2"
+      type="button"
       *ngFor="let _ of [].constructor(control.value); let i = index"
       (click)="onRatingChanged(i + 1)"
     >
@@ -14,6 +15,7 @@
     <button
       mat-icon-button
       class="p-2"
+      type="button"
       *ngFor="let _ of [].constructor(maxRating - control.value); let i = index"
       (click)="onRatingChanged(control.value + i + 1)"
     >

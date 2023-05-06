@@ -18,6 +18,7 @@ export class NavbarService {
     {name: 'navbarLinks.menu', route: '/home/menu'},
     {name: 'navbarLinks.reservations', route: '/user-reservations'},
     {name: 'navbarLinks.order', route: '/user-order'},
+    {name: 'navbarLinks.reviews', route: '/reviews'},
     {name: 'navbarLinks.complaintForm', route: '/complaints'},
     {name: 'navbarLinks.cart', route: '/cart'},
     {name: 'navbarLinks.myAccount', route: '/my-account'}
@@ -27,6 +28,7 @@ export class NavbarService {
     {name: 'navbarLinks.reservations', route: '/reservations-admin'},
     {name: 'navbarLinks.order', route:'/order-history-admin'},
     {name: 'navbarLinks.editMenu', route: '/menu-sections-admin'},
+    {name: 'navbarLinks.reviews', route: '/reviews'},
     {name: 'navbarLinks.complaints', route: '/complaints-admin'},
     {name: 'navbarLinks.myAccount', route: '/my-account'}
   ]

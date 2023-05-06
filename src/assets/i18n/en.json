@@ -27,7 +27,8 @@
     "success": "Payment successful",
     "orderHistoryAdmin": "Order history",
     "orderHistoryUser": "Order history",
-    "writeReview": "Write your review"
+    "writeReview": "Write your review",
+    "allReviews": "Reviews"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -45,7 +46,8 @@
     "menuSectionsAdmin": "Modify the menu sections using the drop-down",
     "orderUser": "Make an order",
     "orderHistory": "Order history",
-    "writeReview": "Write your review"
+    "writeReview": "Write your review",
+    "allReviews": "Reviews"
   },
   "navbarLinks": {
     "home": "Home",
@@ -59,7 +61,8 @@
     "complaints": "Complaints",
     "complaintForm": "Complaint form",
     "myAccount": "My account",
-    "order": "Orders"
+    "order": "Orders",
+    "reviews": "Reviews"
   },
   "footerTexts": {
     "followUs": "Follow us on",
@@ -112,7 +115,8 @@
     "buy": "Buy",
     "continueShopping": "Continue shopping",
     "goToOrdersHistory": "Access order history",
-    "writeAReview": "Write a review"
+    "writeAReview": "Write a review",
+    "seeAllReviews": "See all reviews"
   },
   "userInfo": {
     "username": "Username",
@@ -144,7 +148,12 @@
     "noReviews": "There are no reviews for the moment",
     "wasUpdated": " (Updated)",
     "description": "Description",
-    "rating": "Rating"
+    "rating": "Rating",
+    "userAlreadyHasReview": "You have already written a review",
+    "modifyIt": "Modify it",
+    "deleteReview": "Delete my review",
+    "descriptionTooShort": "The review must be at least {{minLength}} characters long",
+    "descriptionTooLong": "The review cannot be more than {{maxLength}} characters long"
   },
   "reservationsTable": {
     "date": "Date",
@@ -153,8 +162,8 @@
     "email": "User email",
     "noUser": "This user has deleted their account"
   },
-  "reservationsPaginator": {
-    "itemsPerPageLabel": "Reservations per page",
+  "paginator": {
+    "itemsPerPageLabel": "Items per page",
     "nextPageLabel": "Next page",
     "previousPageLabel": "Previous page",
     "of": "of"

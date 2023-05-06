@@ -9,7 +9,8 @@ export enum ReviewsSortingMethod {
 export type Rating = typeof Review.RATING_OPTIONS[number]
 
 export class Review {
-  static readonly MIN_DESCRIPTION_LENGTH = 20
+  [key: string]: string | Rating | Date | boolean | undefined
+  static readonly MIN_DESCRIPTION_LENGTH = 15
   static readonly MAX_DESCRIPTION_LENGTH = 2000
   static readonly RATING_OPTIONS = [1, 2, 3, 4, 5]
   userId?: string

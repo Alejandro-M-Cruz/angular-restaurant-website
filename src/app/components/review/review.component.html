@@ -1,5 +1,5 @@
 <mat-card class="m-3" *transloco="let t">
-  <mat-card-header class="d-flex justify-content-between">
+  <mat-card-header class="mb-3 d-flex justify-content-between">
     <mat-card-title>
       <b>{{review.dateOfCreationOrLastUpdate | date: t('dateFormat')}}</b>
       <span *ngIf="review.wasUpdated">{{t('review.wasUpdated')}}</span>

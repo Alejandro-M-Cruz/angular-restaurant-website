@@ -58,7 +58,6 @@ import {getStorage, provideStorage} from "@angular/fire/storage";
 import { MenuSectionsAdminComponent } from './pages/menu-sections-admin/menu-sections-admin.component';
 import { MenuItemsAdminComponent } from './pages/menu-items-admin/menu-items-admin.component';
 import { TextInputDialogComponent } from './components/text-input-dialog/text-input-dialog.component';
-import { ReservationsPaginatorIntl } from "./pages/reservations-admin/admin-reservations-table/reservations-paginator-intl";
 import { MenuItemComponent } from './pages/menu-items-admin/components/menu-item/menu-item.component';
 import {MatCardModule} from "@angular/material/card";
 import { MenuItemFormDialogComponent } from './pages/menu-items-admin/components/menu-item-form-dialog/menu-item-form-dialog.component';
@@ -80,6 +79,8 @@ import { WriteReviewComponent } from './pages/write-review/write-review.componen
 import { ReviewComponent } from './components/review/review.component';
 import { StarsRatingComponent } from './components/stars-rating/stars-rating.component';
 import { StarsRatingInputComponent } from './components/form/stars-rating-input/stars-rating-input.component';
+import { ReviewsComponent } from './pages/reviews/reviews.component';
+import {CustomMatPaginatorIntlService} from "./services/custom-mat-paginator-intl.service";
 
 registerLocaleData(es);
 
@@ -131,7 +132,8 @@ registerLocaleData(es);
     WriteReviewComponent,
     ReviewComponent,
     StarsRatingComponent,
-    StarsRatingInputComponent
+    StarsRatingInputComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,
@@ -167,7 +169,7 @@ registerLocaleData(es);
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' },
-    { provide: MatPaginatorIntl, useClass: ReservationsPaginatorIntl }
+    { provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntlService }
   ],
   bootstrap: [AppComponent]
 })

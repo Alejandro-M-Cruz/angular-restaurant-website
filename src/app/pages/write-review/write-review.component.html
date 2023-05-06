@@ -1,19 +1,35 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.writeReview')}}</h2>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <app-stars-rating-input [control]="form.controls.rating"></app-stars-rating-input>
-    <mat-form-field appearance="outline">
-      <mat-label>{{t('review.description')}}</mat-label>
-      <textarea matInput cols="100" rows="5" formControlName="description"></textarea>
-    </mat-form-field>
-    <div class="buttons-container">
-      <button class="management-button back-button" type="reset" onclick="window.history.back()">
-        {{t('buttons.back')}}
-      </button>
-      <button class="management-button confirm-button" type="submit" [disabled]="form.invalid">
-        {{t('buttons.confirm')}}
-      </button>
-    </div>
-  </form>
+  <ng-container>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <app-stars-rating-input [control]="form.controls.rating"></app-stars-rating-input>
+      <mat-form-field appearance="outline">
+        <mat-label>{{t('review.description')}}</mat-label>
+        <textarea matInput cols="100" rows="5" formControlName="description"></textarea>
+        <mat-error *ngIf="form.controls.description.errors?.['minlength']">
+          {{t('review.descriptionTooShort', {minLength: descriptionMinLength})}}
+        </mat-error>
+        <mat-error *ngIf="form.controls.description.errors?.['maxlength']">
+          {{t('review.descriptionTooLong', {maxLength: descriptionMaxLength})}}
+        </mat-error>
+      </mat-form-field>
+      <div class="buttons-container">
+        <button class="management-button back-button" type="reset" onclick="window.history.back()">
+          {{t('buttons.back')}}
+        </button>
+        <button
+          class="management-button cancel-button"
+          type="button"
+          [disabled]="!(userReview$ | async)"
+          (click)="deleteUserReview()"
+        >
+          {{t('review.deleteReview')}}
+        </button>
+        <button class="management-button confirm-button" type="submit" [disabled]="form.invalid || submitButtonDisabled">
+          {{t('buttons.confirm')}}
+        </button>
+      </div>
+    </form>
+  </ng-container>
 </ng-container>
 

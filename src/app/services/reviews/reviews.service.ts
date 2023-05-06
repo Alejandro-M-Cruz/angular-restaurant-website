@@ -3,8 +3,8 @@ import {
   collection,
   collectionData,
   deleteDoc,
-  doc,
-  Firestore, limit,
+  doc, docData,
+  Firestore, getDoc, limit,
   orderBy,
   query, setDoc
 } from "@angular/fire/firestore";
@@ -64,23 +64,24 @@ export class ReviewsService {
     ) as Observable<Review[]>
   }
 
-  async addReview(review: Review): Promise<void> {
+  getUserReview$(): Observable<Review> {
+    return docData(doc(this.reviewsCollection, this.userService.currentUser!.uid)) as Observable<Review>
+  }
+
+  async addOrUpdateUserReview(review: Review): Promise<void> {
     await setDoc(doc(this.reviewsCollection, this.userService.currentUser!.uid), {
       ...review,
       dateOfCreationOrLastUpdate: new Date(),
-      wasUpdated: false
+      wasUpdated: await this.userHasWrittenReview()
     })
   }
 
-  async updateReview(reviewId: string, review: Review): Promise<void> {
-    await setDoc(doc(this.reviewsCollection, reviewId), {
-      ...review,
-      dateOfCreationOrLastUpdate: new Date(),
-      wasUpdated: true
-    })
+  async deleteUserReview(): Promise<void> {
+    return deleteDoc(doc(this.reviewsCollection, this.userService.currentUser!.uid))
   }
 
-  async deleteReview(reviewId: string): Promise<void> {
-    return deleteDoc(doc(this.reviewsCollection, reviewId))
+  private userHasWrittenReview(): Promise<boolean> {
+    return getDoc(doc(this.reviewsCollection, this.userService.currentUser!.uid))
+      .then(doc => doc.exists())
   }
 }
