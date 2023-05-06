@@ -5,6 +5,7 @@ import {passwordMatchingValidator} from "../../validators/password-matching.vali
 import {Router} from "@angular/router";
 import {FormError} from "../../errors/form-error.errors";
 import {AlertsService} from "../../services/alerts.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-sign-up',
@@ -35,7 +36,8 @@ export class SignUpComponent {
     private readonly authService: AuthenticationService,
     private readonly fb: FormBuilder,
     private readonly router: Router,
-    private readonly alertsService: AlertsService
+    private readonly alertsService: AlertsService,
+    public readonly location: Location
   ) {}
 
   async onSubmit() {

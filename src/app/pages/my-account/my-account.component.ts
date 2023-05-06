@@ -10,6 +10,7 @@ import {Subscription} from "rxjs";
 import {AlertError} from "../../errors/alert-error.errors";
 import {AlertsService} from "../../services/alerts.service";
 import {UserDeletionService} from "../../services/user/user-deletion.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-my-account',
@@ -26,7 +27,8 @@ export class MyAccountComponent implements OnInit, OnDestroy {
     private readonly authService: AuthenticationService,
     private readonly router: Router,
     private readonly dialog: MatDialog,
-    private readonly alertsService: AlertsService
+    private readonly alertsService: AlertsService,
+    public readonly location: Location
   ) { }
 
   ngOnInit() {

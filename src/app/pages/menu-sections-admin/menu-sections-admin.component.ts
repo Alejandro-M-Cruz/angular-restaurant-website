@@ -11,6 +11,7 @@ import {MenuEditService} from "../../services/admin/menu-edit.service";
 import {
   MenuSectionFormDialogComponent
 } from "../../components/form-dialogs/menu-section-form-dialog/menu-section-form-dialog.component";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-menu-sections-admin',
@@ -30,7 +31,8 @@ export class MenuSectionsAdminComponent {
     private readonly fb: FormBuilder,
     private readonly translateService: TranslocoService,
     private readonly dialog: MatDialog,
-    private readonly router: Router
+    private readonly router: Router,
+    public readonly location: Location
   ) { }
 
   onDeleteSectionClicked() {

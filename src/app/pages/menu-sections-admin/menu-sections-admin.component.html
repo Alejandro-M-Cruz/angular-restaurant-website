@@ -7,7 +7,7 @@
       </mat-option>
     </mat-select>
     <div class="buttons-container">
-      <button class="management-button back-button" type="reset" onclick="window.history.back()">
+      <button class="management-button back-button" type="reset" (click)="location.back()">
         {{t('buttons.back')}}
       </button>
       <button class="management-button cancel-button" type="button" (click)="onDeleteSectionClicked()" [disabled]="form.invalid">

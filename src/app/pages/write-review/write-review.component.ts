@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {AlertsService} from "../../services/alerts.service";
 import {first} from "rxjs";
 import {AlertError} from "../../errors/alert-error.errors";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-write-review',
@@ -34,7 +35,8 @@ export class WriteReviewComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly reviewsService: ReviewsService,
     private readonly router: Router,
-    private readonly alertsService: AlertsService
+    private readonly alertsService: AlertsService,
+    public readonly location: Location
   ) {}
 
   ngOnInit() {

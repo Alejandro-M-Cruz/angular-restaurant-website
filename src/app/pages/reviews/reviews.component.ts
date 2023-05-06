@@ -2,7 +2,9 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ReviewsService} from "../../services/reviews/reviews.service";
 import {Review, ReviewsSortingMethod} from "../../model/review.model";
 import {PageEvent} from "@angular/material/paginator";
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
+import {PermissionsService} from "../../services/user/permissions.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-reviews',
@@ -14,8 +16,13 @@ export class ReviewsComponent implements OnInit, OnDestroy {
   reviewsSubscription?: Subscription
   pageIndex = 0
   pageSize = 6
+  readonly isAdmin$: Observable<boolean> = this.permissionsService.isAdmin()
 
-  constructor(private readonly reviewsService: ReviewsService) { }
+  constructor(
+    private readonly reviewsService: ReviewsService,
+    private readonly permissionsService: PermissionsService,
+    public readonly location: Location
+  ) { }
 
   ngOnInit() {
     this.subscribeToReviewsObservable()

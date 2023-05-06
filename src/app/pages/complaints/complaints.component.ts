@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {ComplaintsService} from "../../services/complaints/complaints.service";
 import {Complaint} from "../../model/complaint.model";
 import {Router} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-complaints',
@@ -23,7 +24,8 @@ export class ComplaintsComponent {
   constructor(
     private readonly complaintsService: ComplaintsService,
     private readonly fb: FormBuilder,
-    private readonly router: Router
+    private readonly router: Router,
+    public readonly location: Location
   ) { }
 
   async onSubmit() {

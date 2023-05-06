@@ -152,6 +152,7 @@
     "userAlreadyHasReview": "Ya ha realizado una reseña",
     "modifyIt": "Editarla",
     "deleteReview": "Eliminar mi reseña",
+    "deleteReviewAsAdmin": "Elminar reseña",
     "descriptionTooShort": "La reseña debe tener al menos {{minLength}} caracteres",
     "descriptionTooLong": "La reseña puede tener como máximo {{maxLength}} caracteres"
   },

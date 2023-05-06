@@ -15,6 +15,7 @@ import {
 import {
   MenuSectionFormDialogComponent
 } from "../../components/form-dialogs/menu-section-form-dialog/menu-section-form-dialog.component";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-menu-items-admin',
@@ -31,7 +32,8 @@ export class MenuItemsAdminComponent {
     private readonly menuService: MenuService,
     private readonly router: Router,
     private readonly dialog: MatDialog,
-    private readonly translateService: TranslocoService
+    private readonly translateService: TranslocoService,
+    public readonly location: Location
   ) {
     const section = this.menuEditService.getSectionBeingEdited()
     if (!section) {

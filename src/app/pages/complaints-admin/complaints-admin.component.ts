@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {ComplaintsService} from "../../services/complaints/complaints.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-complaints-admin',
@@ -9,6 +10,6 @@ import {ComplaintsService} from "../../services/complaints/complaints.service";
 export class ComplaintsAdminComponent {
   complaints = this.complaintsService.getComplaints()
 
-  constructor(private readonly complaintsService: ComplaintsService) {
+  constructor(private readonly complaintsService: ComplaintsService, public readonly location: Location) {
   }
 }

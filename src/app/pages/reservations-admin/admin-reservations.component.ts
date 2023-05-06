@@ -4,7 +4,7 @@ import {ReservationsService} from "../../services/reservations/reservations.serv
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 import {translate} from "@ngneat/transloco";
-import {formatDate} from "@angular/common";
+import {formatDate, Location} from "@angular/common";
 import {UsersService} from "../../services/admin/users.service";
 import {User} from "../../model/user";
 
@@ -24,7 +24,8 @@ export class AdminReservationsComponent {
   constructor(
     private readonly usersService: UsersService,
     private readonly reservationsService: ReservationsService,
-    private readonly dialog: MatDialog
+    private readonly dialog: MatDialog,
+    public readonly location: Location
   ) {}
 
   toggleShowPastReservations() {

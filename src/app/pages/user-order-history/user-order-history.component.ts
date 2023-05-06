@@ -4,6 +4,7 @@ import {TranslocoService} from "@ngneat/transloco";
 import {CartService} from "../../services/orders/cart.service";
 import {Order} from "../../model/order.model";
 import {Router} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-user-order-history',
@@ -18,7 +19,8 @@ export class UserOrderHistoryComponent {
     private readonly ordersService: OrdersService,
     private readonly translateService: TranslocoService,
     private readonly cartService: CartService,
-    private readonly router: Router
+    private readonly router: Router,
+    public readonly location: Location
   ) {}
 
   get activeLanguage(): string {

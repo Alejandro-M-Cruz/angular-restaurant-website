@@ -152,6 +152,7 @@
     "userAlreadyHasReview": "You have already written a review",
     "modifyIt": "Modify it",
     "deleteReview": "Delete my review",
+    "deleteReviewAsAdmin": "Delete review",
     "descriptionTooShort": "The review must be at least {{minLength}} characters long",
     "descriptionTooLong": "The review cannot be more than {{maxLength}} characters long"
   },

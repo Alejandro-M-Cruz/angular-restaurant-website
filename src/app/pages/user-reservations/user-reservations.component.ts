@@ -4,7 +4,7 @@ import {ReservationsService} from "../../services/reservations/reservations.serv
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 import {translate} from "@ngneat/transloco";
-import {formatDate} from "@angular/common";
+import {formatDate, Location} from "@angular/common";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -19,7 +19,11 @@ export class UserReservationsComponent implements OnInit, OnDestroy {
   maxReservations = Reservation.MAX_ACTIVE_RESERVATIONS_PER_USER
   selectedReservation: Reservation | null = null
 
-  constructor(private readonly reservationsService: ReservationsService, private readonly dialog: MatDialog) {}
+  constructor(
+    private readonly reservationsService: ReservationsService,
+    private readonly dialog: MatDialog,
+    public readonly location: Location
+  ) {}
 
   ngOnInit() {
     this.reservationsSubscription = this.reservationsService.getUserActiveReservations()

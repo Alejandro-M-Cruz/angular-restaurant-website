@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/orders/cart.service';
 import { TranslocoService } from '@ngneat/transloco';
 import {OrderCheckoutService} from "../../services/orders/order-checkout.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,8 @@ export class CartComponent {
   constructor(
     private readonly cartService: CartService,
     private readonly orderCheckoutService: OrderCheckoutService,
-    private readonly translationService: TranslocoService
+    private readonly translationService: TranslocoService,
+    public readonly location: Location
   ) { }
 
   getActiveLanguage() {
