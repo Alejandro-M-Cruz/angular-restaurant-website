@@ -886,7 +886,7 @@ app-complaints-admin .complaints-button {
 app-menu-sections-admin .mat-mdc-select-trigger {
   justify-content: center;
   border: 1px solid black;
-  margin-bottom: 2%;
+  margin-bottom: 10%;
 }
 
 app-menu-sections-admin .mat-mdc-select {
