@@ -1218,6 +1218,10 @@ app-menu-sections-admin .mat-mdc-select-value {
     filter: brightness(0.6);
   }
 
+  .carousel-welcome-user h3 {
+    font-size: 2rem;
+ }
+
 
   /* ----- MENU ----- */
   .menu {
