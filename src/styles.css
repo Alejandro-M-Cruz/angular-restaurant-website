@@ -340,6 +340,12 @@ app-write-review .mat-mdc-form-field {
   width: 50%;
 }
 
+/* ----- ADMIN REVIEWS ----- */
+
+app-reviews .mat-mdc-paginator-container {
+  justify-content: center;
+}
+
 /* -------------ABOUT US------------- */
 
 #about-us-test h2 {
