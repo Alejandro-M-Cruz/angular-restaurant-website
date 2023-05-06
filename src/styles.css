@@ -307,6 +307,39 @@ app-user-order .sides .buttons-items span.ng-star-inserted {
   width: 100%;
 }
 
+/* ------------- REVIEWS ------------- */
+
+app-write-review form {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.app-stars-rating-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+app-write-review .flex-row {
+  justify-content: center;
+}
+
+app-write-review .mat-mdc-form-field-error-wrapper {
+  padding-top: 1%;
+}
+
+app-write-review .mat-form-field {
+  text-align: center;
+}
+
+app-write-review .mat-mdc-form-field {
+  width: 50%;
+}
+
 /* -------------ABOUT US------------- */
 
 #about-us-test h2 {
@@ -1078,6 +1111,12 @@ app-menu-sections-admin .mat-mdc-select-value {
     padding-bottom: 5%;
   }
 
+  /* ----- REVIEWS ----- */
+
+  app-write-review .mat-mdc-form-field {
+    width: 65%;
+  }
+
   /* ----- FOOTER ----- */
 
   .contact-list li {
@@ -1264,6 +1303,12 @@ app-menu-sections-admin .mat-mdc-select-value {
     padding: 5%;
   }
 
+  /* ----- REVIEWS ----- */
+
+  app-write-review .mat-mdc-form-field {
+    width: 90%;
+  }
+  
   /* ----- ADMIN RESERVATIONS ----- */
 
   app-admin-reservations-table .mat-mdc-paginator-container {
