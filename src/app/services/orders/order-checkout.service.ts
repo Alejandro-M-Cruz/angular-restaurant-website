@@ -5,6 +5,7 @@ import {TranslocoService} from "@ngneat/transloco";
 import {CartService} from "./cart.service";
 import {AlertsService} from "../alerts.service";
 import {AlertError} from "../../errors/alert-error.errors";
+import {environment} from "../../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class OrderCheckoutService {
   ) { }
 
   goToCheckout() {
-    this.http.post('http://localhost:3000/api/v1/orders/checkout', {
+    this.http.post(environment.apiUrl + '/orders/checkout', {
       cartItems: this.cartService
         .getCartItems()
         .map(cartItem => ({...cartItem, subtotalPrice: cartItem.subtotalPrice})),

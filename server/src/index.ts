@@ -18,7 +18,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 app.get('/', (req, res) => {
-  res.send('Welcome, admin')
+  res.send('Welcome')
 })
 
 app.use(API + '/users', usersRoutes)
