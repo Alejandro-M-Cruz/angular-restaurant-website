@@ -1,8 +1,8 @@
 export enum ReviewsSortingMethod {
-  DATE_DESC,
-  DATE_ASC,
-  RATING_DESC,
-  RATING_ASC,
+  DATE_DESC = 'reviewsSortingMethod.newest',
+  DATE_ASC = 'reviewsSortingMethod.oldest',
+  RATING_DESC = 'reviewsSortingMethod.highestRating',
+  RATING_ASC = 'reviewsSortingMethod.lowestRating',
   DEFAULT = RATING_DESC
 }
 

@@ -1,6 +1,29 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.allReviews')}}</h2>
   <ng-container *ngIf="reviews; else noReviews">
+    <div class="d-flex flex-row justify-content-center">
+      <mat-form-field class="mx-3" appearance="outline">
+        <mat-label>{{t('reviewsSortingMethod.sortBy')}}</mat-label>
+        <mat-select [formControl]="sortingMethodControl">
+          <mat-option
+            *ngFor="let sortingMethod of reviewsSortingMethods"
+            [value]="sortingMethod"
+          >
+            {{t(sortingMethod)}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-paginator
+        class="mx-3"
+        (page)="onPageChanged($event)"
+        [length]="reviews!.length"
+        [pageIndex]="pageIndex"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[3, 6, 12, 18]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
     <div class="cards-grid">
       <app-review *ngFor="let review of reviews?.slice(
           pageIndex * pageSize,
@@ -9,15 +32,6 @@
         [review]="review"
       ></app-review>
     </div>
-    <mat-paginator
-      (page)="onPageChanged($event)"
-      [length]="reviews!.length"
-      [pageIndex]="pageIndex"
-      [pageSize]="pageSize"
-      [pageSizeOptions]="[3, 6, 12, 18]"
-      aria-label="Select page"
-    >
-    </mat-paginator>
   </ng-container>
   <ng-template #noReviews>
     <h3 class="w-100 mt-5 text-center text-secondary">{{t('review.noReviews')}}</h3>

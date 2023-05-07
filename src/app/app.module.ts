@@ -81,6 +81,7 @@ import { StarsRatingComponent } from './components/stars-rating/stars-rating.com
 import { StarsRatingInputComponent } from './components/form/stars-rating-input/stars-rating-input.component';
 import { ReviewsComponent } from './pages/reviews/reviews.component';
 import {CustomMatPaginatorIntlService} from "./services/custom-mat-paginator-intl.service";
+import { JobApplicationsComponent } from './pages/job-applications/job-applications.component';
 
 registerLocaleData(es);
 
@@ -133,7 +134,8 @@ registerLocaleData(es);
     ReviewComponent,
     StarsRatingComponent,
     StarsRatingInputComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    JobApplicationsComponent
   ],
   imports: [
     BrowserModule,

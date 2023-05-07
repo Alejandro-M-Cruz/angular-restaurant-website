@@ -156,6 +156,13 @@
     "descriptionTooShort": "La reseña debe tener al menos {{minLength}} caracteres",
     "descriptionTooLong": "La reseña puede tener como máximo {{maxLength}} caracteres"
   },
+  "reviewsSortingMethod": {
+    "sortBy": "Ordenar por",
+    "newest": "Más nuevas",
+    "oldest": "Más antiguas",
+    "highestRating": "Mayor puntuación",
+    "lowestRating": "Menor puntuación"
+  },
   "reservationsTable": {
     "date": "Fecha",
     "time": "Hora",
