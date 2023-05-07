@@ -222,6 +222,10 @@ ngb-carousel img {
   width: 3rem;
 }
 
+app-user-order .management-button {
+  width: 20%;
+}
+
 app-user-order .right-side-text {
   padding-right: 0%;
 }
@@ -427,6 +431,11 @@ app-cart div {
   margin-left: 1rem;
 }
 
+app-cart .buttons-container {
+  justify-content: flex-start;
+  width: 95%;
+}
+
 app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons, .sides, .buttons-items), .previous-order-button, h2.ng-star-inserted:not(.page-title.ng-star-inserted), label, .totalPrice {
   margin-left: 1rem;
 }
@@ -446,7 +455,7 @@ app-user-order .previous-order-button {
   color: black;
 }
 
-app-user-order .previous-order-button:hover {
+app-user-order .management-button:hover:not(app-cart div.buttons-container .management-button) {
   color: black;
 }
 
@@ -886,7 +895,7 @@ app-complaints-admin .complaints-button {
 app-menu-sections-admin .mat-mdc-select-trigger {
   justify-content: center;
   border: 1px solid black;
-  margin-bottom: 2%;
+  margin-bottom: 10%;
 }
 
 app-menu-sections-admin .mat-mdc-select {
@@ -1301,6 +1310,14 @@ app-menu-sections-admin .mat-mdc-select-value {
 
   app-user-order .sides .buttons-items span.ng-star-inserted {
     margin-top: 11px;
+  }
+
+  app-user-order .management-button {
+    width: 75%;
+  }
+
+  app-user-order .management-button:not(app-cart div.buttons-container .management-button) {
+    margin-left: 12%;
   }
 
   /* ----- RESERVE HERE ----- */
