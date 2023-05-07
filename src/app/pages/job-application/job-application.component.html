@@ -1,0 +1,46 @@
+<ng-container *transloco="let t">
+  <h2 class="page-title">{{t('titles.jobApplication')}}</h2>
+  <form class="w-100 text-center my-5" (ngSubmit)="onSubmit()">
+    <mat-form-field
+      *ngIf="!(userJobApplicationPromise | async); else alreadySent"
+      appearance="outline"
+      class="my-5 col-9 col-sm-6 col-xl-4"
+    >
+      <mat-label>{{t('jobApplication.file')}}</mat-label>
+      <input matInput type="text" readonly [value]="jobApplicationFile?.name">
+      <button *ngIf="jobApplicationFile" mat-icon-button matIconSuffix type="button" (click)="discardSelectedFile()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <button mat-icon-button matIconSuffix type="button" (click)="fileInput.click()">
+        <mat-icon>insert_drive_file</mat-icon>
+      </button>
+      <input
+        #fileInput
+        type="file"
+        accept=".pdf"
+        hidden
+        (change)="onFileInputChanged(fileInput.files?.item(0) ?? null)"
+      >
+    </mat-form-field>
+    <ng-template #alreadySent>
+      <p class="my-5 already-sent-paragraph">
+        {{t('jobApplication.alreadySent')}}
+      </p>
+      <app-pdf-viewer [fileUrl]="userJobApplicationFileUrl"></app-pdf-viewer>
+    </ng-template>
+    <div class="buttons-container">
+      <button class="management-button back-button" type="button" (click)="location.back()">
+        {{t('buttons.back')}}
+      </button>
+      <button
+        *ngIf="!(userJobApplicationPromise | async)"
+        class="management-button confirm-button"
+        type="submit"
+        [disabled]="!jobApplicationFile"
+      >
+        {{t('buttons.sendJobApplication')}}
+      </button>
+    </div>
+  </form>
+</ng-container>
+

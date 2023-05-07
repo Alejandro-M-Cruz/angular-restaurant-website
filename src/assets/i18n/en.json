@@ -28,7 +28,8 @@
     "orderHistoryAdmin": "Order history",
     "orderHistoryUser": "Order history",
     "writeReview": "Write your review",
-    "allReviews": "Reviews"
+    "allReviews": "Reviews",
+    "jobApplication": "Job application"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -47,7 +48,8 @@
     "orderUser": "Make an order",
     "orderHistory": "Order history",
     "writeReview": "Write your review",
-    "allReviews": "Reviews"
+    "allReviews": "Reviews",
+    "jobApplication": "Job application"
   },
   "navbarLinks": {
     "home": "Home",
@@ -62,7 +64,8 @@
     "complaintForm": "Complaint form",
     "myAccount": "My account",
     "order": "Orders",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "jobApplication": "Job application"
   },
   "footerTexts": {
     "followUs": "Follow us on",
@@ -116,7 +119,8 @@
     "continueShopping": "Continue shopping",
     "goToOrdersHistory": "Access order history",
     "writeAReview": "Write a review",
-    "seeAllReviews": "See all reviews"
+    "seeAllReviews": "See all reviews",
+    "sendJobApplication": "Send curriculum vitae"
   },
   "userInfo": {
     "username": "Username",
@@ -162,6 +166,14 @@
     "oldest": "Oldest",
     "highestRating": "Highest rating",
     "lowestRating": "Lowest rating"
+  },
+  "jobApplication": {
+    "file": "PDF File",
+    "alreadySent": "You have already sent your curriculum vitae. You will receive a reply via email soon."
+  },
+  "pdfViewer": {
+    "couldNotLoad": "Unable to display the file, you can access it",
+    "here": "HERE"
   },
   "reservationsTable": {
     "date": "Date",
