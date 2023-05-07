@@ -156,6 +156,13 @@
     "descriptionTooShort": "The review must be at least {{minLength}} characters long",
     "descriptionTooLong": "The review cannot be more than {{maxLength}} characters long"
   },
+  "reviewsSortingMethod": {
+    "sortBy": "Sort by",
+    "newest": "Newest",
+    "oldest": "Oldest",
+    "highestRating": "Highest rating",
+    "lowestRating": "Lowest rating"
+  },
   "reservationsTable": {
     "date": "Date",
     "time": "Time",
