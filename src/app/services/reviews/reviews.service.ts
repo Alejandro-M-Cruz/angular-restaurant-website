@@ -80,6 +80,10 @@ export class ReviewsService {
     return deleteDoc(doc(this.reviewsCollection, this.userService.currentUser!.uid))
   }
 
+  async deleteReview(userId: string): Promise<void> {
+    return deleteDoc(doc(this.reviewsCollection, userId))
+  }
+
   private userHasWrittenReview(): Promise<boolean> {
     return getDoc(doc(this.reviewsCollection, this.userService.currentUser!.uid))
       .then(doc => doc.exists())
