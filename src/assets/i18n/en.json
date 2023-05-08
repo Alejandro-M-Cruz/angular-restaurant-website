@@ -29,7 +29,8 @@
     "orderHistoryUser": "Order history",
     "writeReview": "Write your review",
     "allReviews": "Reviews",
-    "jobApplication": "Job application"
+    "jobApplication": "Job application",
+    "jobApplications": "Job applications"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -49,7 +50,8 @@
     "orderHistory": "Order history",
     "writeReview": "Write your review",
     "allReviews": "Reviews",
-    "jobApplication": "Job application"
+    "jobApplication": "Job application",
+    "jobApplications": "Job applications"
   },
   "navbarLinks": {
     "home": "Home",
@@ -65,7 +67,8 @@
     "myAccount": "My account",
     "order": "Orders",
     "reviews": "Reviews",
-    "jobApplication": "Job application"
+    "jobApplication": "Job application",
+    "jobApplications": "Job applications"
   },
   "footerTexts": {
     "followUs": "Follow us on",
@@ -169,7 +172,10 @@
   },
   "jobApplication": {
     "file": "PDF File",
-    "alreadySent": "You have already sent your curriculum vitae. You will receive a reply via email soon."
+    "alreadySent": "You have already sent your curriculum vitae. You will receive a reply via email soon.",
+    "available": "Available",
+    "here": "HERE",
+    "replyTo": "Reply to the following email:"
   },
   "pdfViewer": {
     "couldNotLoad": "Unable to display the file, you can access it",

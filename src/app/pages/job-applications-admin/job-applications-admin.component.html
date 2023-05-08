@@ -1,0 +1,17 @@
+<ng-container *transloco="let t">
+  <h2 class="page-title">{{t('titles.jobApplications')}}</h2>
+  <div class="cards-grid">
+    <mat-card *ngFor="let jobApplication of jobApplications$ | async">
+      <mat-card-title>{{jobApplication.creationTimestamp | date: t('dateFormat')}}</mat-card-title>
+      <mat-card-content>
+        <mat-card-subtitle>
+          {{t('jobApplication.available')}}
+          <a [href]="jobApplication.fileUrl" target="_blank">{{t('jobApplication.here')}}</a>
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+          {{t('replyTo')}} <a [href]="'mailto: ' + jobApplication.userEmail">{{jobApplication.userEmail}}</a>
+        </mat-card-subtitle>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-container>

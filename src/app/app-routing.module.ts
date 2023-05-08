@@ -29,6 +29,7 @@ import { OrderHistoryAdminComponent } from './pages/order-history-admin/order-hi
 import {WriteReviewComponent} from "./pages/write-review/write-review.component";
 import {ReviewsComponent} from "./pages/reviews/reviews.component";
 import {JobApplicationComponent} from "./pages/job-application/job-application.component";
+import {JobApplicationsAdminComponent} from "./pages/job-applications-admin/job-applications-admin.component";
 
 const canActivateLoggedIn: CanActivateFn = (_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot) => {
   const isLoggedIn = inject(PermissionsService).isLoggedIn()
@@ -84,7 +85,8 @@ const routes: Routes = [
   { path: 'complaints-admin', title: 'complaintsAdmin', component: ComplaintsAdminComponent, canActivate: [canActivateAdmin] },
   { path: 'menu-sections-admin', title: 'menuSectionsAdmin', component: MenuSectionsAdminComponent, canActivate: [canActivateAdmin] },
   { path: 'menu-items-admin', title: 'menuItemsAdmin', component: MenuItemsAdminComponent, canActivate: [canActivateAdmin] },
-  { path: 'order-history-admin', title:'orderHistoryAdmin', component:OrderHistoryAdminComponent, canActivate:[canActivateAdmin]},
+  { path: 'order-history-admin', title:'orderHistoryAdmin', component:OrderHistoryAdminComponent, canActivate: [canActivateAdmin]},
+  { path: 'job-applications-admin', title: 'jobApplications', component: JobApplicationsAdminComponent, canActivate: [canActivateAdmin] },
 
   { path: '**', redirectTo: '/home' }
 ];

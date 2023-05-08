@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
-import {collection, doc, docData, Firestore, getDoc, setDoc} from "@angular/fire/firestore";
+import {
+  collection,
+  collectionData,
+  doc,
+  docData,
+  Firestore,
+  getDoc, orderBy,
+  query,
+  setDoc,
+  where
+} from "@angular/fire/firestore";
 import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
 import {UserService} from "../user/user.service";
 import {JobApplication} from "../../model/job-application.model";
-import {firstValueFrom, Observable} from "rxjs";
+import {firstValueFrom, map, Observable} from "rxjs";
 import {DomSanitizer} from "@angular/platform-browser";
 
 @Injectable({
@@ -20,22 +30,41 @@ export class JobApplicationsService {
     private userService: UserService
   ) { }
 
+  private firestoreDocumentDataToJobApplication(docData: any): JobApplication {
+    return {
+      ...docData,
+      creationTimestamp: docData.creationTimestamp.toDate()
+    } as JobApplication
+  }
+
+  getJobApplications(): Observable<JobApplication[]> {
+    const q = query(this.jobApplicationsCollection, orderBy('creationTimestamp', 'asc'))
+    return collectionData(q, {idField: 'userId'}).pipe(
+      map(jobApplications => jobApplications.map(this.firestoreDocumentDataToJobApplication))
+    ) as Observable<JobApplication[]>
+  }
+
   getSafeJobApplicationFileUrl(jobApplication: JobApplication): string {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(jobApplication.fileUrl!) as string
   }
 
   getUserJobApplication(): Promise<JobApplication> {
-    return firstValueFrom(docData(
-      doc(this.jobApplicationsCollection, this.userService.currentUser!.uid),
-      { idField: 'userId' }
-    )) as Promise<JobApplication>
+    return firstValueFrom(
+      docData(
+        doc(this.jobApplicationsCollection, this.userService.currentUser!.uid),
+        { idField: 'userId' }
+      ).pipe(
+        map(jobApplication => this.firestoreDocumentDataToJobApplication(jobApplication))
+      )
+    ) as Promise<JobApplication>
   }
 
   private async addJobApplication(jobApplicationFileUrl: string) {
     const userId = this.userService.currentUser!.uid
+    const userEmail = this.userService.currentUser!.email
     await setDoc(
-      doc(this.jobApplicationsCollection, userId)
-      , { userId, fileUrl: jobApplicationFileUrl } as JobApplication
+      doc(this.jobApplicationsCollection, userId),
+      { userId, userEmail, fileUrl: jobApplicationFileUrl, creationTimestamp: new Date() } as JobApplication
     )
   }
 

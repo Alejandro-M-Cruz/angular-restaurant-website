@@ -83,6 +83,7 @@ import { ReviewsComponent } from './pages/reviews/reviews.component';
 import {CustomMatPaginatorIntlService} from "./services/custom-mat-paginator-intl.service";
 import { JobApplicationComponent } from './pages/job-application/job-application.component';
 import { PdfViewerComponent } from './components/pdf-viewer/pdf-viewer.component';
+import { JobApplicationsAdminComponent } from './pages/job-applications-admin/job-applications-admin.component';
 
 registerLocaleData(es);
 
@@ -137,7 +138,8 @@ registerLocaleData(es);
     StarsRatingInputComponent,
     ReviewsComponent,
     JobApplicationComponent,
-    PdfViewerComponent
+    PdfViewerComponent,
+    JobApplicationsAdminComponent
   ],
   imports: [
     BrowserModule,
