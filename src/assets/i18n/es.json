@@ -28,7 +28,8 @@
     "orderHistoryAdmin":"Historial de pedidos",
     "orderHistoryUser": "Historial de pedidos",
     "writeReview": "Escriba su reseña",
-    "allReviews": "Reseñas"
+    "allReviews": "Reseñas",
+    "jobApplication": "Solicitud de empleo"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -47,7 +48,8 @@
     "orderUser" : "Realice su pedido",
     "orderHistory": "Historial de pedidos",
     "writeReview": "Escriba su reseña",
-    "allReviews": "Reseñas"
+    "allReviews": "Reseñas",
+    "jobApplication": "Solicitud de empleo"
   },
   "navbarLinks": {
     "home": "Inicio",
@@ -62,7 +64,8 @@
     "complaintForm": "Hoja de reclamaciones",
     "myAccount": "Mi cuenta",
     "order": "Pedidos",
-    "reviews": "Reseñas"
+    "reviews": "Reseñas",
+    "jobApplication": "Solicitud de empleo"
   },
   "footerTexts": {
     "followUs": "Síguenos en",
@@ -116,7 +119,8 @@
     "continueShopping": "Seguir comprando",
     "goToOrdersHistory": "Acceder al historial de pedidos",
     "writeAReview": "Escribir una reseña",
-    "seeAllReviews": "Ver todas las reseñas"
+    "seeAllReviews": "Ver todas las reseñas",
+    "sendJobApplication": "Enviar curriculum vitae"
   },
   "userInfo": {
     "username": "Nombre de usuario",
@@ -162,6 +166,14 @@
     "oldest": "Más antiguas",
     "highestRating": "Mayor puntuación",
     "lowestRating": "Menor puntuación"
+  },
+  "jobApplication": {
+    "file": "Fichero PDF",
+    "alreadySent": "Usted ya ha enviado su curriculum vitae. Recibirá una respuesta pronto en su correo electrónico."
+  },
+  "pdfViewer": {
+    "couldNotLoad": "No se pudo abrir el archivo, puede acceder a él",
+    "here": "AQUÍ"
   },
   "reservationsTable": {
     "date": "Fecha",

@@ -20,6 +20,7 @@ export class NavbarService {
     {name: 'navbarLinks.order', route: '/user-order'},
     {name: 'navbarLinks.reviews', route: '/reviews'},
     {name: 'navbarLinks.complaintForm', route: '/complaints'},
+    {name: 'navbarLinks.jobApplication', route: '/job-application'},
     {name: 'navbarLinks.cart', route: '/cart'},
     {name: 'navbarLinks.myAccount', route: '/my-account'}
   ]

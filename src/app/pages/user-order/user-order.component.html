@@ -1,17 +1,15 @@
 <ng-container *transloco="let t">
   <h2 class="page-title">{{t('titles.orderUser')}}</h2>
-
-  <a routerLink="/user-order-history" class="management-button back-button" style="margin-top: 8rem;">
-    {{t('orderForms.previousOrderButton')}}
-  </a>
-
+  <div class="buttons-container">
+    <a routerLink="/user-order-history" class="management-button back-button" style="margin-top: 5rem;">
+      {{t('orderForms.previousOrderButton')}}
+    </a>
+  </div>
   <app-menu></app-menu>
   <app-cart></app-cart>
-
   <div class="totalPrice">
     <p> {{t('orderForms.totalPrice')}} : {{totalPrice | currency: 'EUR'}} </p>
   </div>
-
 </ng-container>
 
 
