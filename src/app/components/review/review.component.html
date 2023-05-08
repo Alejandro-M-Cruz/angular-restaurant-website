@@ -9,4 +9,9 @@
   <mat-card-content class="overflow-auto">
     <p>{{review.description}}</p>
   </mat-card-content>
+  <mat-card-actions *ngIf="isDeletable" class="justify-content-end">
+    <button mat-icon-button class="p-2" (click)="deleteItem()">
+      <mat-icon class="scale-2" [ngStyle]="{color: 'var(--cancel-button-color)'}">delete_forever</mat-icon>
+    </button>
+  </mat-card-actions>
 </mat-card>

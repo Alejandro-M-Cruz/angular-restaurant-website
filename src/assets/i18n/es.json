@@ -29,7 +29,8 @@
     "orderHistoryUser": "Historial de pedidos",
     "writeReview": "Escriba su reseña",
     "allReviews": "Reseñas",
-    "jobApplication": "Solicitud de empleo"
+    "jobApplication": "Solicitud de empleo",
+    "jobApplications": "Solicitudes de empleo"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -49,7 +50,8 @@
     "orderHistory": "Historial de pedidos",
     "writeReview": "Escriba su reseña",
     "allReviews": "Reseñas",
-    "jobApplication": "Solicitud de empleo"
+    "jobApplication": "Solicitud de empleo",
+    "jobApplications": "Solicitudes de empleo"
   },
   "navbarLinks": {
     "home": "Inicio",
@@ -65,7 +67,8 @@
     "myAccount": "Mi cuenta",
     "order": "Pedidos",
     "reviews": "Reseñas",
-    "jobApplication": "Solicitud de empleo"
+    "jobApplication": "Solicitud de empleo",
+    "jobApplications": "Solicitudes de empleo"
   },
   "footerTexts": {
     "followUs": "Síguenos en",
@@ -169,7 +172,10 @@
   },
   "jobApplication": {
     "file": "Fichero PDF",
-    "alreadySent": "Usted ya ha enviado su curriculum vitae. Recibirá una respuesta pronto en su correo electrónico."
+    "alreadySent": "Usted ya ha enviado su curriculum vitae. Recibirá una respuesta pronto en su correo electrónico.",
+    "available": "Disponible",
+    "here": "AQUÍ",
+    "replyTo": "Responda al siguiente correo electrónico:"
   },
   "pdfViewer": {
     "couldNotLoad": "No se pudo abrir el archivo, puede acceder a él",
@@ -282,7 +288,8 @@
     "deleteAccount": "Borrado de cuenta",
     "deleteMenuSection": "Eliminando sección del menú",
     "addMenuSection": "Añadiendo sección al menú",
-    "deleteMenuItem": "Eliminando producto del menú"
+    "deleteMenuItem": "Eliminando producto del menú",
+    "deleteReview": "Eliminando reseña"
   },
   "confirmations": {
     "cancelReservation": "¿Está seguro de que desea cancelar su reserva para el {{date}} a las {{time}}?",
@@ -291,7 +298,8 @@
     "deleteAccount2": "¿Está seguro? Esta acción no se puede deshacer",
     "logInBeforeDeleteAccount": "Para poder eliminar su cuenta, debe haber iniciado sesión recientemente",
     "deleteMenuSection": "¿Está seguro de que desea eliminar la sección de {{section}} del menú y todos los productos que contiene?",
-    "deleteMenuItem": "¿Está seguro de que desea eliminar {{itemName}} del menú?"
+    "deleteMenuItem": "¿Está seguro de que desea eliminar {{itemName}} del menú?",
+    "deleteReview": "¿Está seguro de que desea eliminar esta reseña?"
   },
   "confirmationOptions": {
     "yes": "Sí",

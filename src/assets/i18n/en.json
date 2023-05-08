@@ -29,7 +29,8 @@
     "orderHistoryUser": "Order history",
     "writeReview": "Write your review",
     "allReviews": "Reviews",
-    "jobApplication": "Job application"
+    "jobApplication": "Job application",
+    "jobApplications": "Job applications"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -49,7 +50,8 @@
     "orderHistory": "Order history",
     "writeReview": "Write your review",
     "allReviews": "Reviews",
-    "jobApplication": "Job application"
+    "jobApplication": "Job application",
+    "jobApplications": "Job applications"
   },
   "navbarLinks": {
     "home": "Home",
@@ -65,7 +67,8 @@
     "myAccount": "My account",
     "order": "Orders",
     "reviews": "Reviews",
-    "jobApplication": "Job application"
+    "jobApplication": "Job application",
+    "jobApplications": "Job applications"
   },
   "footerTexts": {
     "followUs": "Follow us on",
@@ -169,7 +172,10 @@
   },
   "jobApplication": {
     "file": "PDF File",
-    "alreadySent": "You have already sent your curriculum vitae. You will receive a reply via email soon."
+    "alreadySent": "You have already sent your curriculum vitae. You will receive a reply via email soon.",
+    "available": "Available",
+    "here": "HERE",
+    "replyTo": "Reply to the following email:"
   },
   "pdfViewer": {
     "couldNotLoad": "Unable to display the file, you can access it",
@@ -281,7 +287,9 @@
     "deleteAccount": "Account deletion",
     "deleteMenuSection": "Deleting menu section",
     "addMenuSection": "Adding menu section",
-    "deleteMenuItem": "Deleting menu item"
+    "deleteMenuItem": "Deleting menu item",
+    "deleteReview": "Deleting review"
+
   },
   "confirmations": {
     "cancelReservation": "Are you sure you want to cancel your reservation for {{date}} at {{time}}?",
@@ -290,7 +298,8 @@
     "deleteAccount2": "Are you sure? This action cannot be undone",
     "logInBeforeDeleteAccount": "In order to delete your account, you must have logged in recently",
     "deleteMenuSection": "Are you sure you want to delete the section {{section}} from the menu and all the products that it contains?",
-    "deleteMenuItem": "Are you sure you want to delete {{itemName}} from the menu?"
+    "deleteMenuItem": "Are you sure you want to delete {{itemName}} from the menu?",
+    "deleteReview": "Are you sure you want to delete this review?"
   },
   "confirmationOptions": {
     "yes": "Yes",

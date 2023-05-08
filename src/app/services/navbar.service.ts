@@ -31,6 +31,7 @@ export class NavbarService {
     {name: 'navbarLinks.editMenu', route: '/menu-sections-admin'},
     {name: 'navbarLinks.reviews', route: '/reviews'},
     {name: 'navbarLinks.complaints', route: '/complaints-admin'},
+    {name: 'navbarLinks.jobApplications', route: '/job-applications-admin'},
     {name: 'navbarLinks.myAccount', route: '/my-account'}
   ]
 
