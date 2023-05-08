@@ -67,7 +67,8 @@
     "myAccount": "Mi cuenta",
     "order": "Pedidos",
     "reviews": "Reseñas",
-    "jobApplication": "Solicitud de empleo"
+    "jobApplication": "Solicitud de empleo",
+    "jobApplications": "Solicitudes de empleo"
   },
   "footerTexts": {
     "followUs": "Síguenos en",

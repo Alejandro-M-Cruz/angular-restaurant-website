@@ -67,7 +67,8 @@
     "myAccount": "My account",
     "order": "Orders",
     "reviews": "Reviews",
-    "jobApplication": "Job application"
+    "jobApplication": "Job application",
+    "jobApplications": "Job applications"
   },
   "footerTexts": {
     "followUs": "Follow us on",
