@@ -26,8 +26,8 @@ export class MenuImagesService {
   async uploadImage(imageFile: File): Promise<string> {
     const imageRef = ref(this.storage, `${this.menuImagesStorage}/${imageFile.name}`)
     try {
-      const snapshot = await uploadBytes(imageRef, imageFile)
-      return getDownloadURL(snapshot.ref)
+      const uploadResult = await uploadBytes(imageRef, imageFile)
+      return getDownloadURL(uploadResult.ref)
     } catch (e: any) {
       console.error(e)
       throw new Error(e)

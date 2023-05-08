@@ -1,0 +1,12 @@
+<ng-container *transloco="let t">
+  <object
+    [data]="fileUrl"
+    class="mb-5 col-12 col-lg-11 col-xl-10"
+    type="application/pdf"
+    height="500px"
+  >
+    <p class="my-5 could-not-load-paragraph">
+      {{t('pdfViewer.couldNotLoad')}} <b><a [href]="fileUrl">{{t('pdfViewer.here')}}</a></b>.
+    </p>
+  </object>
+</ng-container>
