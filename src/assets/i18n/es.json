@@ -29,7 +29,8 @@
     "orderHistoryUser": "Historial de pedidos",
     "writeReview": "Escriba su reseña",
     "allReviews": "Reseñas",
-    "jobApplication": "Solicitud de empleo"
+    "jobApplication": "Solicitud de empleo",
+    "jobApplications": "Solicitudes de empleo"
   },
   "titles": {
     "main": "La Nostra Casa",
@@ -49,7 +50,8 @@
     "orderHistory": "Historial de pedidos",
     "writeReview": "Escriba su reseña",
     "allReviews": "Reseñas",
-    "jobApplication": "Solicitud de empleo"
+    "jobApplication": "Solicitud de empleo",
+    "jobApplications": "Solicitudes de empleo"
   },
   "navbarLinks": {
     "home": "Inicio",
@@ -169,7 +171,10 @@
   },
   "jobApplication": {
     "file": "Fichero PDF",
-    "alreadySent": "Usted ya ha enviado su curriculum vitae. Recibirá una respuesta pronto en su correo electrónico."
+    "alreadySent": "Usted ya ha enviado su curriculum vitae. Recibirá una respuesta pronto en su correo electrónico.",
+    "available": "Disponible",
+    "here": "AQUÍ",
+    "replyTo": "Responda al siguiente correo electrónico:"
   },
   "pdfViewer": {
     "couldNotLoad": "No se pudo abrir el archivo, puede acceder a él",
