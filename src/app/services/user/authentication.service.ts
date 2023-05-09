@@ -5,8 +5,8 @@ import {
   signInWithEmailAndPassword,
   updateProfile
 } from '@angular/fire/auth';
-import {FormError} from "../../errors/form-error.errors";
-import {AlertError} from "../../errors/alert-error.errors";
+import {FormError} from "../../alerts/form-error.alerts";
+import {ErrorAlert} from "../../alerts/error-alert.alerts";
 import {User} from "../../model/user";
 import {UserService} from "./user.service";
 
@@ -28,7 +28,7 @@ export class AuthenticationService {
           error.name = FormError.EMAIL_ALREADY_IN_USE
           break
         default:
-          error.name = AlertError.UNKNOWN
+          error.name = ErrorAlert.UNKNOWN
           break
       }
       throw error
@@ -48,10 +48,10 @@ export class AuthenticationService {
           error.name = FormError.WRONG_EMAIL_OR_PASSWORD
           break
         case 'auth/too-many-requests':
-          error.name = AlertError.TOO_MANY_LOGIN_REQUESTS
+          error.name = ErrorAlert.TOO_MANY_LOGIN_REQUESTS
           break
         default:
-          error.name = AlertError.UNKNOWN
+          error.name = ErrorAlert.UNKNOWN
           break
       }
       throw error

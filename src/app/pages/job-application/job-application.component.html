@@ -2,7 +2,7 @@
   <h2 class="page-title">{{t('titles.jobApplication')}}</h2>
   <form class="w-100 text-center my-5" (ngSubmit)="onSubmit()">
     <mat-form-field
-      *ngIf="!(userJobApplicationPromise | async); else alreadySent"
+      *ngIf="!(userJobApplication$ | async); else alreadySent"
       appearance="outline"
       class="my-5 col-9 col-sm-6 col-xl-4"
     >
@@ -17,7 +17,7 @@
       <input
         #fileInput
         type="file"
-        accept=".pdf"
+        [accept]="allowedFileExtensions.join(',')"
         hidden
         (change)="onFileInputChanged(fileInput.files?.item(0) ?? null)"
       >
@@ -26,14 +26,14 @@
       <p class="my-5 already-sent-paragraph">
         {{t('jobApplication.alreadySent')}}
       </p>
-      <app-pdf-viewer [fileUrl]="userJobApplicationFileUrl"></app-pdf-viewer>
+      <app-pdf-viewer [fileUrl]="userJobApplicationFileUrl ?? ''"></app-pdf-viewer>
     </ng-template>
     <div class="buttons-container">
       <button class="management-button back-button" type="button" (click)="location.back()">
         {{t('buttons.back')}}
       </button>
       <button
-        *ngIf="!(userJobApplicationPromise | async)"
+        *ngIf="!(userJobApplication$ | async)"
         class="management-button confirm-button"
         type="submit"
         [disabled]="!jobApplicationFile"

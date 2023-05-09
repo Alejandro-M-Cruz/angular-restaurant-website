@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/user/authentication.service";
 import {Router} from "@angular/router";
-import {FormError} from "../../errors/form-error.errors";
+import {FormError} from "../../alerts/form-error.alerts";
 import {AlertsService} from "../../services/alerts.service";
-import {AlertError} from "../../errors/alert-error.errors";
+import {ErrorAlert} from "../../alerts/error-alert.alerts";
 import {Location} from "@angular/common";
 
 @Component({

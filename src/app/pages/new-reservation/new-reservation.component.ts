@@ -4,9 +4,9 @@ import {Reservation} from "../../model/reservation.model";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AlertsService} from "../../services/alerts.service";
-import {AlertError} from "../../errors/alert-error.errors";
+import {ErrorAlert} from "../../alerts/error-alert.alerts";
 import {catchError, first, Observable, Subscription} from "rxjs";
-import {FormError} from "../../errors/form-error.errors";
+import {FormError} from "../../alerts/form-error.alerts";
 import {Location} from "@angular/common";
 import { SenderEmailService } from 'src/app/services/email-services/sender-email-service.service';
 
@@ -110,7 +110,7 @@ export class NewReservationComponent implements OnInit, OnDestroy {
         await this.alertsService.showErrorAlert(errorName)
         break
       default:
-        await this.alertsService.showErrorAlert(AlertError.UNKNOWN)
+        await this.alertsService.showErrorAlert(ErrorAlert.UNKNOWN)
         break
     }
   }
