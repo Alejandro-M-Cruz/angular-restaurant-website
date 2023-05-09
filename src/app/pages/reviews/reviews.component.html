@@ -25,11 +25,14 @@
       </mat-paginator>
     </div>
     <div class="cards-grid">
-      <app-review *ngFor="let review of reviews?.slice(
+      <app-review 
+          *ngFor="let review of reviews?.slice(
           pageIndex * pageSize,
           (pageIndex + 1) * pageSize > reviews!.length ? reviews!.length : (pageIndex + 1) * pageSize
         )"
         [review]="review"
+        [isDeletable]="isAdmin"
+        (reviewItemDeleted)="onDeleteReviewClicked($event)"
       ></app-review>
     </div>
   </ng-container>
