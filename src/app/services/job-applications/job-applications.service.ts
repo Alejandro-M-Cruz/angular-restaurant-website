@@ -58,12 +58,9 @@ export class JobApplicationsService {
 
   getUserJobApplication(): Observable<JobApplication | null> {
     return docData(
-      doc(this.jobApplicationsCollection, this.userService.currentUser!.uid),
-      { idField: 'userId' }
+      doc(this.jobApplicationsCollection, this.userService.currentUser!.uid), { idField: 'userId' }
     ).pipe(
-      map(jobApplication => {
-        return jobApplication ? this.firestoreDocumentDataToJobApplication(jobApplication) : null
-      })
+      map(jobApplication => jobApplication ? this.firestoreDocumentDataToJobApplication(jobApplication) : null)
     ) as Observable<JobApplication | null>
   }
 
