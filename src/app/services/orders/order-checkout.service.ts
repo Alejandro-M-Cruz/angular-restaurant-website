@@ -4,7 +4,7 @@ import {UserService} from "../user/user.service";
 import {TranslocoService} from "@ngneat/transloco";
 import {CartService} from "./cart.service";
 import {AlertsService} from "../alerts.service";
-import {AlertError} from "../../errors/alert-error.errors";
+import {ErrorAlert} from "../../alerts/error-alert.alerts";
 import {environment} from "../../../environments/environment.development";
 
 @Injectable({
@@ -31,7 +31,7 @@ export class OrderCheckoutService {
 
   private async redirectToCheckoutUrl(response: any): Promise<void> {
     if (response.error)
-      return this.alertsService.showErrorAlert(AlertError.ORDER_CHECKOUT_CREATION_FAILED)
+      return this.alertsService.showErrorAlert(ErrorAlert.ORDER_CHECKOUT_CREATION_FAILED)
     window.location.href = response.url
   }
 }

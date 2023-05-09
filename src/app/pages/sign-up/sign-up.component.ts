@@ -3,7 +3,7 @@ import {AuthenticationService} from "../../services/user/authentication.service"
 import {FormBuilder, Validators} from "@angular/forms";
 import {passwordMatchingValidator} from "../../validators/password-matching.validator";
 import {Router} from "@angular/router";
-import {FormError} from "../../errors/form-error.errors";
+import {FormError} from "../../alerts/form-error.alerts";
 import {AlertsService} from "../../services/alerts.service";
 import {Location} from "@angular/common";
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {first} from "rxjs";
-import {AlertError} from "../../errors/alert-error.errors";
+import {ErrorAlert} from "../../alerts/error-alert.alerts";
 import {Auth} from "@angular/fire/auth";
 import {ReservationsService} from "../reservations/reservations.service";
 import {Reservation} from "../../model/reservation.model";
@@ -29,10 +29,10 @@ export class UserDeletionService {
           const error = new Error()
           switch(e.code) {
             case 'auth/requires-recent-login':
-              error.name = AlertError.RECENT_LOGIN_REQUIRED
+              error.name = ErrorAlert.RECENT_LOGIN_REQUIRED
               break
             default:
-              error.name = AlertError.UNKNOWN
+              error.name = ErrorAlert.UNKNOWN
           }
           throw error
         }

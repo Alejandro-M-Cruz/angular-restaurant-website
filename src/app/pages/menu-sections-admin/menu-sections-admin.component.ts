@@ -41,7 +41,7 @@ export class MenuSectionsAdminComponent {
 
   private deleteSection(sectionId: string) {
     this.menuEditService.deleteSection(sectionId).then((result: any) => {
-      if (result.error) alert(translate('errors.standard'))
+      if (result.error) alert(translate('alerts.standard'))
     })
   }
 
@@ -51,7 +51,7 @@ export class MenuSectionsAdminComponent {
 
   private addSection(menuSection: MenuSection) {
     this.menuEditService.addSection(menuSection).then((result: any) => {
-      if (result.error) alert(translate('errors.standard'))
+      if (result.error) alert(translate('alerts.standard'))
     })
   }
 

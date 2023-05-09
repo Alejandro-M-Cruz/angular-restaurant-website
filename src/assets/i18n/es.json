@@ -171,7 +171,7 @@
     "lowestRating": "Menor puntuación"
   },
   "jobApplication": {
-    "file": "Fichero PDF",
+    "file": "Curriculum vitae (fichero PDF)",
     "alreadySent": "Usted ya ha enviado su curriculum vitae. Recibirá una respuesta pronto en su correo electrónico.",
     "available": "Disponible",
     "here": "AQUÍ",
@@ -317,14 +317,21 @@
       "accept": "Aceptar"
     },
     "titles": {
-      "error": "Error"
+      "error": "Error",
+      "success": "Éxito"
     },
     "errors": {
       "unknown": "Se ha producido un error, inténtelo de nuevo",
       "imageUpload": "Se ha producido un error al subir la imagen",
       "recentLoginRequired": "Inicie sesión nuevamente para confirmar su identidad",
       "tooManyLoginRequests": "Ha habido demasiados intentos de inicio de sesión en esta cuenta, inténtelo de nuevo más tarde",
-      "orderCheckoutCreationFailed": "Se ha producido un error al intentar acceder a la pasarela de pago, inténtelo de nuevo más tarde"
+      "orderCheckoutCreationFailed": "Se ha producido un error al intentar acceder a la pasarela de pago, inténtelo de nuevo más tarde",
+      "jobApplicationFileTooLarge": "El tamaño del archivo seleccionado excede el máximo",
+      "jobApplicationFileWrongType": "El archivo seleccionado no es un PDF"
+    },
+    "success": {
+      "generic": "La operación se realizó correctamente",
+      "jobApplicationSent": "La solicitud de empleo se envío correctamente"
     },
     "NOT_FOUND": "El recurso solicitado no está disponible",
     "PASSWORDS_DONT_MATCH": "Las contraseñas no coinciden",

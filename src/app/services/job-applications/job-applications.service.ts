@@ -5,16 +5,16 @@ import {
   doc,
   docData,
   Firestore,
-  getDoc, orderBy,
+  orderBy,
   query,
   setDoc,
-  where
 } from "@angular/fire/firestore";
 import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
 import {UserService} from "../user/user.service";
 import {JobApplication} from "../../model/job-application.model";
-import {firstValueFrom, map, Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {DomSanitizer} from "@angular/platform-browser";
+import {ErrorAlert} from "../../alerts/error-alert.alerts";
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,7 @@ export class JobApplicationsService {
     return {
       ...docData,
       creationTimestamp: docData.creationTimestamp.toDate()
-    } as JobApplication
+    }
   }
 
   getJobApplications(): Observable<JobApplication[]> {
@@ -44,19 +44,27 @@ export class JobApplicationsService {
     ) as Observable<JobApplication[]>
   }
 
+  validateJobApplicationFile(file: File): ErrorAlert | null {
+    if (!JobApplication.ALLOWED_FILE_TYPES.includes(file.type))
+      return ErrorAlert.JOB_APPLICATION_FILE_WRONG_TYPE
+    if (file.size > JobApplication.MAX_FILE_SIZE_IN_BYTES)
+      return ErrorAlert.JOB_APPLICATION_FILE_TOO_LARGE
+    return null
+  }
+
   getSafeJobApplicationFileUrl(jobApplication: JobApplication): string {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(jobApplication.fileUrl!) as string
   }
 
-  getUserJobApplication(): Promise<JobApplication> {
-    return firstValueFrom(
-      docData(
-        doc(this.jobApplicationsCollection, this.userService.currentUser!.uid),
-        { idField: 'userId' }
-      ).pipe(
-        map(jobApplication => this.firestoreDocumentDataToJobApplication(jobApplication))
-      )
-    ) as Promise<JobApplication>
+  getUserJobApplication(): Observable<JobApplication | null> {
+    return docData(
+      doc(this.jobApplicationsCollection, this.userService.currentUser!.uid),
+      { idField: 'userId' }
+    ).pipe(
+      map(jobApplication => {
+        return jobApplication ? this.firestoreDocumentDataToJobApplication(jobApplication) : null
+      })
+    ) as Observable<JobApplication | null>
   }
 
   private async addJobApplication(jobApplicationFileUrl: string) {

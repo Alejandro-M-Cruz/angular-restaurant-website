@@ -171,7 +171,7 @@
     "lowestRating": "Lowest rating"
   },
   "jobApplication": {
-    "file": "PDF File",
+    "file": "Curriculum vitae (PDF file)",
     "alreadySent": "You have already sent your curriculum vitae. You will receive a reply via email soon.",
     "available": "Available",
     "here": "HERE",
@@ -316,14 +316,21 @@
       "accept": "Accept"
     },
     "titles": {
-      "error": "Error"
+      "error": "Error",
+      "generic": "Success"
     },
     "errors": {
       "unknown": "There has been an error, try again later",
       "imageUpload": "There has been an error uploading the image",
       "recentLoginRequired": "Log in again to confirm your identity",
       "tooManyLoginRequests": "There have been too many log-in attempts in this account, try again later",
-      "orderCheckoutCreationFailed": "There has been an error creating the checkout session, try again later"
+      "orderCheckoutCreationFailed": "There has been an error creating the checkout session, try again later",
+      "jobApplicationFileTooLarge": "The size of the file you have selected exceeds the maximum allowed",
+      "jobApplicationFileWrongType": "The file you have selected is not a PDF"
+    },
+    "success": {
+      "generic": "The action was successful",
+      "jobApplicationSent": "The job application was sent successfully"
     },
     "NOT_FOUND": "The requested resource is not available",
     "PASSWORDS_DONT_MATCH": "The passwords don't match",

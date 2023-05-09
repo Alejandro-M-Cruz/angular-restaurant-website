@@ -12,7 +12,7 @@ import {
 } from "@angular/fire/firestore";
 import {BehaviorSubject, first, map, Observable} from "rxjs";
 import {UserService} from "../user/user.service";
-import {FormError} from "../../errors/form-error.errors";
+import {FormError} from "../../alerts/form-error.alerts";
 
 @Injectable({
   providedIn: 'root'

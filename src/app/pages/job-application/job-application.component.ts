@@ -1,7 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Location} from "@angular/common";
 import {JobApplicationsService} from "../../services/job-applications/job-applications.service";
-import {Router} from "@angular/router";
+import {Subscription} from "rxjs";
+import {AlertsService} from "../../services/alerts.service";
+import {SuccessAlert} from "../../alerts/success-alert.alerts";
+import {ErrorAlert} from "../../alerts/error-alert.alerts";
 import {JobApplication} from "../../model/job-application.model";
 
 @Component({
@@ -9,27 +12,41 @@ import {JobApplication} from "../../model/job-application.model";
   templateUrl: './job-application.component.html',
   styleUrls: ['./job-application.component.css']
 })
-export class JobApplicationComponent implements OnInit {
-  userJobApplicationPromise: Promise<JobApplication> = this.jobApplicationsService.getUserJobApplication()
+export class JobApplicationComponent implements OnInit, OnDestroy {
+  userJobApplication$ = this.jobApplicationsService.getUserJobApplication()
+  userJobApplicationSubscription?: Subscription
   userJobApplicationFileUrl?: string
   jobApplicationFile: File | null = null
+  allowedFileExtensions = JobApplication.ALLOWED_FILE_EXTENSIONS
 
   constructor(
     public readonly location: Location,
     private readonly jobApplicationsService: JobApplicationsService,
-    private readonly router: Router
+    private readonly alertsService: AlertsService
   ) {}
 
-  async ngOnInit() {
-    await this.loadSafeUrl()
+  ngOnInit() {
+    this.loadSafeUrl()
   }
 
-  private async loadSafeUrl() {
-    this.userJobApplicationFileUrl = this.jobApplicationsService
-      .getSafeJobApplicationFileUrl(await this.userJobApplicationPromise)
+  private loadSafeUrl() {
+    this.userJobApplicationSubscription = this.userJobApplication$.subscribe(userJobApplication => {
+      if (!userJobApplication) return
+      this.userJobApplicationFileUrl = this.jobApplicationsService.getSafeJobApplicationFileUrl(userJobApplication)
+    })
   }
 
-  onFileInputChanged(file: File | null) {
+  private async onInvalidFileSelected(fileError: ErrorAlert) {
+    await this.alertsService.showErrorAlert(fileError)
+    this.jobApplicationFile = null
+  }
+
+  async onFileInputChanged(file: File | null) {
+    const fileError: ErrorAlert | null = file ? this.jobApplicationsService.validateJobApplicationFile(file) : null
+    if (fileError) {
+      await this.onInvalidFileSelected(fileError)
+      return
+    }
     this.jobApplicationFile = file
   }
 
@@ -38,8 +55,16 @@ export class JobApplicationComponent implements OnInit {
   }
 
   async onSubmit() {
-    await this.jobApplicationsService.uploadJobApplication(this.jobApplicationFile!)
+    try {
+      await this.jobApplicationsService.uploadJobApplication(this.jobApplicationFile!)
+      await this.alertsService.showSuccessAlert(SuccessAlert.JOB_APPLICATION_SENT)
+    } catch (e: any) {
+      console.error(e)
+      await this.alertsService.showErrorAlert(ErrorAlert.UNKNOWN)
+    }
+  }
 
-    await this.router.navigate(['/home'])
+  ngOnDestroy() {
+    this.userJobApplicationSubscription?.unsubscribe()
   }
 }

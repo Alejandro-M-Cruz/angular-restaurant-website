@@ -5,7 +5,7 @@ import {ReviewsService} from "../../services/reviews/reviews.service";
 import {Router} from "@angular/router";
 import {AlertsService} from "../../services/alerts.service";
 import {first} from "rxjs";
-import {AlertError} from "../../errors/alert-error.errors";
+import {ErrorAlert} from "../../alerts/error-alert.alerts";
 import {Location} from "@angular/common";
 
 @Component({
@@ -72,7 +72,7 @@ export class WriteReviewComponent implements OnInit {
       await this.router.navigate(['/home'])
     } catch (e: any) {
       console.error(e)
-      await this.alertsService.showErrorAlert(AlertError.UNKNOWN)
+      await this.alertsService.showErrorAlert(ErrorAlert.UNKNOWN)
     }
   }
 

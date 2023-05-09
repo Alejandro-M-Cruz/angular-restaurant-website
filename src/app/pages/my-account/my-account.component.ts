@@ -7,7 +7,7 @@ import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/
 import {translate} from "@ngneat/transloco";
 import {MatDialog} from "@angular/material/dialog";
 import {Subscription} from "rxjs";
-import {AlertError} from "../../errors/alert-error.errors";
+import {ErrorAlert} from "../../alerts/error-alert.alerts";
 import {AlertsService} from "../../services/alerts.service";
 import {UserDeletionService} from "../../services/user/user-deletion.service";
 import {Location} from "@angular/common";
@@ -55,7 +55,7 @@ export class MyAccountComponent implements OnInit, OnDestroy {
       await this.userDeletionService.deleteCurrentUser()
     } catch (e: any) {
       console.error(e)
-      if (e.name === AlertError.RECENT_LOGIN_REQUIRED)
+      if (e.name === ErrorAlert.RECENT_LOGIN_REQUIRED)
         return this.openLogInRedirectConfirmation()
       await this.alertsService.showErrorAlert(e.name)
     }
