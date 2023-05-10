@@ -8,7 +8,7 @@ import {MenuImagesService} from "../../../../services/menu/menu-images.service";
 import {MenuService} from "../../../../services/menu/menu.service";
 import {MenuSection} from "../../../../model/menu-section.model";
 import {AlertsService} from "../../../../services/alerts.service";
-import {AlertError} from "../../../../errors/alert-error.errors";
+import {ErrorAlert} from "../../../../alerts/error-alert.alerts";
 
 export interface MenuItemFormDialogData {
   menuSectionBeingUpdated: MenuSection
@@ -84,7 +84,7 @@ export class MenuItemFormDialogComponent {
       return this.menuImagesService.uploadImage(imageFile)
     } catch (e: any) {
       console.error(e)
-      await this.alertsService.showErrorAlert(AlertError.IMAGE_UPLOAD)
+      await this.alertsService.showErrorAlert(ErrorAlert.IMAGE_UPLOAD)
       return null
     }
   }
