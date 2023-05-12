@@ -18,13 +18,16 @@
           <a [href]="'mailto: ' + jobApplication.userEmail">{{jobApplication.userEmail}}</a>
         </mat-card-subtitle>
       </mat-card-content>
-      <mat-card-actions>
-        <button id="replied-button" class="p-2" mat-raised-button>
-          <mat-icon class="scale-2 mx-2">check_circle_outline</mat-icon>
-          <span class="mx-2">Respondida</span>
+      <mat-card-actions class="mt-1 d-flex flex-row justify-content-end">
+        <button
+          class="p-3 m-2 replied-button"
+          mat-raised-button
+          (click)="setJobApplicationAsReplied(jobApplication.userId)"
+        >
+          <mat-icon class="scale-150">check_circle_outline</mat-icon>
+          <span class="mx-2">{{t('jobApplication.replied')}}</span>
         </button>
       </mat-card-actions>
     </mat-card>
-
   </div>
 </ng-container>

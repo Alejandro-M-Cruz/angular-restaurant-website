@@ -10,4 +10,8 @@ export class JobApplicationsAdminComponent {
   readonly jobApplications$ = this.jobApplicationsService.getJobApplications()
 
   constructor(private readonly jobApplicationsService: JobApplicationsService) {}
+
+  async setJobApplicationAsReplied(userId: string) {
+    await this.jobApplicationsService.setJobApplicationAsReplied(userId)
+  }
 }

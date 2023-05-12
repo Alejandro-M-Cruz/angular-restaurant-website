@@ -13,7 +13,7 @@ import {JobApplication} from "../../model/job-application.model";
   styleUrls: ['./job-application.component.css']
 })
 export class JobApplicationComponent implements OnInit, OnDestroy {
-  userJobApplication$ = this.jobApplicationsService.getUserJobApplication()
+  userJobApplication?: JobApplication
   userJobApplicationSubscription?: Subscription
   userJobApplicationFileUrl?: string
   jobApplicationFile: File | null = null
@@ -30,10 +30,12 @@ export class JobApplicationComponent implements OnInit, OnDestroy {
   }
 
   private loadSafeUrl() {
-    this.userJobApplicationSubscription = this.userJobApplication$.subscribe(userJobApplication => {
-      if (!userJobApplication) return
-      this.userJobApplicationFileUrl = this.jobApplicationsService.getSafeJobApplicationFileUrl(userJobApplication)
-    })
+    this.userJobApplicationSubscription = this.jobApplicationsService.getUserJobApplication()
+      .subscribe(userJobApplication => {
+        if (!userJobApplication) return
+        this.userJobApplication = userJobApplication
+        this.userJobApplicationFileUrl = this.jobApplicationsService.getSafeJobApplicationFileUrl(userJobApplication)
+      })
   }
 
   private async onInvalidFileSelected(fileError: ErrorAlert) {
@@ -56,7 +58,7 @@ export class JobApplicationComponent implements OnInit, OnDestroy {
 
   async onSubmit() {
     try {
-      await this.jobApplicationsService.uploadJobApplication(this.jobApplicationFile!)
+      await this.jobApplicationsService.uploadJobApplicationFile(this.jobApplicationFile!)
       await this.alertsService.showSuccessAlert(SuccessAlert.JOB_APPLICATION_SENT)
     } catch (e: any) {
       console.error(e)

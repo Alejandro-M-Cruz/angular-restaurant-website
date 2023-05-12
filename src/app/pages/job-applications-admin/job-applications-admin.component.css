@@ -12,6 +12,7 @@ mat-card-content mat-card-subtitle a {
   font-weight: bold;
 }
 
-.replied-button mat-icon {
-  color: var(--confirm-button-color);
+.replied-button {
+  background-color: var(--confirm-button-color);
+  color: white;
 }
