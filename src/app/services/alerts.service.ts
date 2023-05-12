@@ -11,7 +11,7 @@ export class AlertsService {
     await Swal.fire({
       icon: 'error',
       title: translate('alerts.titles.error'),
-      text: translate(errorName) ?? errorName,
+      text: translate(errorName) ?? translate('alerts.errors.unknown'),
       confirmButtonText: translate('alerts.confirmButtonTexts.accept')
     })
   }
@@ -19,7 +19,9 @@ export class AlertsService {
   async showSuccessAlert(successAlertName: SuccessAlert) {
     await Swal.fire({
       icon: 'success',
-      title: translate('alerts.titles.success')
+      title: translate('alerts.titles.success'),
+      text: translate(successAlertName) ?? translate('alerts.success.generic'),
+      confirmButtonText: translate('alerts.confirmButtonTexts.accept')
     })
   }
 }
