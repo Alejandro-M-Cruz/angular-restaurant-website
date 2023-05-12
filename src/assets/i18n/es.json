@@ -1,7 +1,7 @@
 {
   "locale": "es-ES",
   "dateFormat": "dd/MM/yyyy",
-  "oppositeFlag": "/assets/images/languages/english.png",
+  "flag": "/assets/images/languages/spanish.png",
   "welcomeMessage": "Bienvenido a La Nostra Casa, {{user}}",
   "slideShowTitle": "Restaurante de auténtica comida italiana",
   "slideShowAddress": "En calle Triana / 30, Las Palmas de Gran Canaria",
@@ -173,9 +173,10 @@
   "jobApplication": {
     "file": "Curriculum vitae (fichero PDF)",
     "alreadySent": "Usted ya ha enviado su curriculum vitae. Recibirá una respuesta pronto en su correo electrónico.",
-    "available": "Disponible",
+    "available": "Acceda al fichero",
     "here": "AQUÍ",
-    "replyTo": "Responda al siguiente correo electrónico:"
+    "replyTo": "Para responder, contacte al siguiente correo electrónico:",
+    "sentOn": "Fecha de envío: "
   },
   "pdfViewer": {
     "couldNotLoad": "No se pudo abrir el archivo, puede acceder a él",

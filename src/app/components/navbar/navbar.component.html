@@ -7,7 +7,7 @@
         </button>
         <h2 class="flex-fill"><a routerLink="/home" class="text-decoration-none text-white">La Nostra Casa</a></h2>
         <button class="p-2 mx-sm-2 d-flex justify-content-center align-items-center" mat-icon-button (click)="changeLanguage()">
-          <img class="scale-150" [src]="t('oppositeFlag')" alt="Language">
+          <img class="scale-150" [src]="t('flag')" alt="Language">
         </button>
         <a routerLink="/user-order" class="p-2 mx-sm-2 text-black text-decoration-none" mat-icon-button>
           <mat-icon class="scale-150">shopping_cart</mat-icon>
@@ -50,7 +50,7 @@
     <ul class = "navbar-list">
         <li class="navbar-list__logo">
             <a id="la-nostra-casa-nav-logo" routerLink="/home"><img src="/assets/images/logo.png" alt="Logo" width="100"></a>
-            <button (click)="onChangeLanguage()"><img src="{{t('oppositeFlag')}}" alt="Flag" width="50"></button>
+            <button (click)="onChangeLanguage()"><img src="{{t('flag')}}" alt="Flag" width="50"></button>
             <button class="hamburger-button">
                 <img src="/assets/images/hamburger-button.png" alt="Button that opens menu" width="40">
             </button>
