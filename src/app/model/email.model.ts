@@ -64,7 +64,7 @@ export class BuildEmail{
   }
 
 
-  static sendEmail(user:User,emailType:"register"|"order"|"reservation",order?:Order,reservation?:Reservation):email{
+  static sendEmail(user:User,emailType:"register"|"order"|"reservation",data?:Order | Reservation):email{
     let http:email = {
       to: user.email,
       subject: "",
@@ -80,14 +80,14 @@ export class BuildEmail{
         http.body = buildRegister.body;
         break;
       case 'order':
-        const buildOrder = BuildEmail.orderEmailBody(order!);
+        const buildOrder = BuildEmail.orderEmailBody(data as Order);
         http.html_body = buildOrder.html_body;
         http.subject = buildOrder.subject;
         http.body = buildOrder.body;
 
         break;
       case 'reservation':
-        const buildReservation = BuildEmail.reservationEmailBody(reservation!);
+        const buildReservation = BuildEmail.reservationEmailBody(data as Reservation);
         http.html_body = buildReservation.html_body;
         http.subject = buildReservation.subject;
         http.body = buildReservation.body;
