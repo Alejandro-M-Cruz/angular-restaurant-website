@@ -90,6 +90,9 @@ export default class StripeController {
       line_items: cartItems
         .map(cartItem => StripeController.cartItemToLineItem(cartItem, activeLanguage)),
       mode: 'payment',
+      metadata: {
+        "tip_amount": "0"
+      },
       success_url: 'http://localhost:4200/success',
       cancel_url: 'http://localhost:4200/user-order'
     }

@@ -114,7 +114,9 @@ class StripeController {
     }
     static sessionParams(cartItems, activeLanguage) {
         return Object.assign(Object.assign({}, StripeController.shippingOptions(activeLanguage)), { locale: ['en', 'es'].includes(activeLanguage) ? activeLanguage : 'en', payment_method_types: ['card'], line_items: cartItems
-                .map(cartItem => StripeController.cartItemToLineItem(cartItem, activeLanguage)), mode: 'payment', success_url: 'http://localhost:4200/success', cancel_url: 'http://localhost:4200/user-order' });
+                .map(cartItem => StripeController.cartItemToLineItem(cartItem, activeLanguage)), mode: 'payment', metadata: {
+                "tip_amount": "0"
+            }, success_url: 'http://localhost:4200/success', cancel_url: 'http://localhost:4200/user-order' });
     }
     static shippingOptions(activeLang) {
         return {
