@@ -115,10 +115,6 @@ export class NewReservationComponent implements OnInit, OnDestroy {
     }
   }
 
-  probando(){
-    this.senderService.sendMessage({});
-  }
-
   ngOnDestroy() {
     this.dateInputSubscription?.unsubscribe()
     this.timeInputSubscription?.unsubscribe()

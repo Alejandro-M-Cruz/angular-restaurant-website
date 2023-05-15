@@ -15,7 +15,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   tabletQuerySubscription: Subscription
   @ViewChild('sidenav') sidenav: any
 
-  constructor(private readonly navbarService: NavbarService) { }
+
+
+  constructor(private readonly navbarService: NavbarService,private elementRef: ElementRef) {
+    console.log(this.elementRef.nativeElement.outerHTML);
+
+  }
 
   ngOnInit() {
     this.mobileQuerySubscription = this.navbarService.mobileQueryMatches().subscribe(matches => {
