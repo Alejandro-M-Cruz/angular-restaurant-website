@@ -1,7 +1,7 @@
 {
   "locale": "en-US",
   "dateFormat": "MM/dd/yyyy",
-  "oppositeFlag": "/assets/images/languages/spanish.png",
+  "flag": "/assets/images/languages/english.png",
   "welcomeMessage": "Welcome to La Nostra Casa, {{user}}",
   "slideShowTitle": "Authentic Italian restaurant",
   "slideShowAddress": "Located in Triana St. / 30, Las Palmas de Gran Canaria",
@@ -173,9 +173,12 @@
   "jobApplication": {
     "file": "Curriculum vitae (PDF file)",
     "alreadySent": "You have already sent your curriculum vitae. You will receive a reply via email soon.",
-    "available": "Available",
+    "available": "Access the file",
     "here": "HERE",
-    "replyTo": "Reply to the following email:"
+    "replyTo": "To reply, contact the following email:",
+    "sentOn": "Sent on: ",
+    "replied": "Replied",
+    "wasReplied": "You should have received a reply via email, if you have not, please contact the restaurant"
   },
   "pdfViewer": {
     "couldNotLoad": "Unable to display the file, you can access it",

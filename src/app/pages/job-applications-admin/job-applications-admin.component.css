@@ -1,0 +1,18 @@
+mat-card-header {
+  font-size: 1.4rem;
+}
+
+mat-card-content mat-card-subtitle, mat-card-title span {
+  font-size: 1.3rem;
+}
+
+mat-card-content mat-card-subtitle a {
+  color: var(--emphasis-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.replied-button {
+  background-color: var(--confirm-button-color);
+  color: white;
+}

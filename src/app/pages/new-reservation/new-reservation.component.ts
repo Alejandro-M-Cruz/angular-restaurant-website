@@ -8,6 +8,7 @@ import {ErrorAlert} from "../../alerts/error-alert.alerts";
 import {catchError, first, Observable, Subscription} from "rxjs";
 import {FormError} from "../../alerts/form-error.alerts";
 import {Location} from "@angular/common";
+import { SenderEmailService } from 'src/app/services/email-services/sender-email-service.service';
 
 @Component({
   selector: 'app-new-reservation',
@@ -32,7 +33,8 @@ export class NewReservationComponent implements OnInit, OnDestroy {
     private readonly fb: FormBuilder,
     private readonly router: Router,
     private readonly alertsService: AlertsService,
-    public readonly location: Location
+    public readonly location: Location,
+    private readonly senderService:SenderEmailService
   ) { }
 
   ngOnInit() {
@@ -111,6 +113,10 @@ export class NewReservationComponent implements OnInit, OnDestroy {
         await this.alertsService.showErrorAlert(ErrorAlert.UNKNOWN)
         break
     }
+  }
+
+  probando(){
+    this.senderService.sendMessage({});
   }
 
   ngOnDestroy() {

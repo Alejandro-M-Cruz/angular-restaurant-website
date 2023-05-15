@@ -7,7 +7,7 @@ import {
   Firestore,
   orderBy,
   query,
-  setDoc,
+  setDoc, updateDoc, where,
 } from "@angular/fire/firestore";
 import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
 import {UserService} from "../user/user.service";
@@ -38,7 +38,11 @@ export class JobApplicationsService {
   }
 
   getJobApplications(): Observable<JobApplication[]> {
-    const q = query(this.jobApplicationsCollection, orderBy('creationTimestamp', 'asc'))
+    const q = query(
+      this.jobApplicationsCollection,
+      where('replied', '==', false),
+      orderBy('creationTimestamp', 'asc')
+    )
     return collectionData(q, {idField: 'userId'}).pipe(
       map(jobApplications => jobApplications.map(this.firestoreDocumentDataToJobApplication))
     ) as Observable<JobApplication[]>
@@ -67,13 +71,19 @@ export class JobApplicationsService {
   private async addJobApplication(jobApplicationFileUrl: string) {
     const userId = this.userService.currentUser!.uid
     const userEmail = this.userService.currentUser!.email
-    await setDoc(
-      doc(this.jobApplicationsCollection, userId),
-      { userId, userEmail, fileUrl: jobApplicationFileUrl, creationTimestamp: new Date() } as JobApplication
-    )
+    await setDoc(doc(this.jobApplicationsCollection, userId), {
+      userId, userEmail,
+      fileUrl: jobApplicationFileUrl,
+      creationTimestamp: new Date(),
+      replied: false
+    })
   }
 
-  async uploadJobApplication(jobApplicationFile: File) {
+  async setJobApplicationAsReplied(userId: string) {
+    await updateDoc(doc(this.jobApplicationsCollection, userId), {replied: true})
+  }
+
+  async uploadJobApplicationFile(jobApplicationFile: File) {
     try {
       const jobApplicationsRef = ref(
         this.storage,

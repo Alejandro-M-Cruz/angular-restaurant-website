@@ -1,6 +1,6 @@
 import {CartItem} from "./cart-item.model";
 
-interface Address {
+export interface Address {
   city: string
   country: string
   line1: string
