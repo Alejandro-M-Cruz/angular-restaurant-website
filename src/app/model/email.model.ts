@@ -1,3 +1,6 @@
+import { Order } from "./order.model";
+import { Reservation } from "./reservation.model";
+
 export class buildEmail{
 
   /*<div #miElemento>
@@ -48,38 +51,38 @@ export class buildEmail{
     return {subject:subject, html_body:html_body, body:body};
   }
 
-  private  orderEmailBody(creationTimestamp:Date, city:string, country:string, line1:string, line2:string, postalCode:string, state:string){
+  private  orderEmailBody(order:Order){
     const subject = "Pedido confirmado";
     const html_body = "<p>Información del pedido: </p>"
   +              "<ul>"
-  +               `<li>Día: ${creationTimestamp.getDay} </li>`
-  +               `<li>Realizado a las: ${creationTimestamp.getHours} </li>`
-  +               `<li>Dirección de envío: ${city} ${country} ${line1} ${line2} ${postalCode} ${state} </li>`
+  +               `<li>Día: ${order.creationTimestamp!.getDay()} </li>`
+  +               `<li>Realizado a las: ${order.creationTimestamp!.getHours()} </li>`
+  +               `<li>Dirección de envío: ${order.deliveryAddress} </li>`
   +              "</ul>"
   +              "<p>¡Gracias por pedir en La Nostra Casa!</p>"
     const body = "Información del pedido:"
-  +               `Día: ${creationTimestamp.getDay}`
-  +               `Realizado a las: ${creationTimestamp.getHours}`
-  +               `Dirección de envío: ${city} ${country} ${line1} ${line2} ${postalCode} ${state}`
+  +               `Día: ${order.creationTimestamp!.getDay()}`
+  +               `Realizado a las: ${order.creationTimestamp!.getHours()}`
+  +               `Dirección de envío: ${order.deliveryAddress}`
   +               "¡Gracias por pedir en La Nostra Casa!"
     return {subject:subject, html_body:html_body, body:body};
   }
 
-  private  reservationEmailBody(date:number, time:string, customers:number){
+  private  reservationEmailBody(reservation:Reservation){
     const subject = "Reserva confirmada"
     const html_body = "<p>¡Gracias por reservar con La Nostra Casa!</p>"
   +              "<p>Datos de la reserva:</p>"
   +              "<ul>"
-  +               `<li>Fecha: ${date} </li>`
-  +               `<li>Hora: ${time} </li>`
-  +               `<li>Número de personas: ${customers} </li>`
+  +               `<li>Fecha: ${reservation.date} </li>`
+  +               `<li>Hora: ${reservation.time} </li>`
+  +               `<li>Número de personas: ${reservation.customers} </li>`
   +              "</ul>"
   +              "<p>Guarde este mail en caso de cualquier problema con la reserva.</p>"
     const body = "¡Gracias por reservar con La Nostra Casa!"
   +              "Datos de la reserva:"
-  +               `Fecha: ${date}`
-  +               `Hora: ${time}`
-  +               `Número de personas: ${customers}`
+  +               `Fecha: ${reservation.date}`
+  +               `Hora: ${reservation.time}`
+  +               `Número de personas: ${reservation.customers}`
   +              "Guarde este mail en caso de cualquier problema con la reserva."
     return {subject:subject, html_body:html_body, body:body};
   }
