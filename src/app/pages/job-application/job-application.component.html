@@ -2,7 +2,7 @@
   <h2 class="page-title">{{t('titles.jobApplication')}}</h2>
   <form class="w-100 text-center my-5" (ngSubmit)="onSubmit()">
     <mat-form-field
-      *ngIf="!(userJobApplication$ | async); else alreadySent"
+      *ngIf="!userJobApplication; else alreadySent"
       appearance="outline"
       class="my-5 col-9 col-sm-6 col-xl-4"
     >
@@ -23,8 +23,8 @@
       >
     </mat-form-field>
     <ng-template #alreadySent>
-      <p class="my-5 already-sent-paragraph">
-        {{t('jobApplication.alreadySent')}}
+      <p class="m-5 already-sent-paragraph">
+        {{userJobApplication!.replied ? t('jobApplication.wasReplied') : t('jobApplication.alreadySent')}}
       </p>
       <app-pdf-viewer [fileUrl]="userJobApplicationFileUrl ?? ''"></app-pdf-viewer>
     </ng-template>
@@ -33,7 +33,7 @@
         {{t('buttons.back')}}
       </button>
       <button
-        *ngIf="!(userJobApplication$ | async)"
+        *ngIf="!userJobApplication"
         class="management-button confirm-button"
         type="submit"
         [disabled]="!jobApplicationFile"

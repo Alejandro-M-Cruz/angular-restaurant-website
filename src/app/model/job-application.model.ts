@@ -6,4 +6,5 @@ export class JobApplication {
   userEmail: string
   fileUrl: string
   creationTimestamp: Date
+  replied: boolean
 }

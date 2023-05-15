@@ -10,7 +10,7 @@
     to: [emailData.to],
     subject: emailData.subject,
     html_body: emailData.html_body,
-    text_body: emailData.body
+    text_body: emailData.body 
   };
 
   axios.post(url, data, {
