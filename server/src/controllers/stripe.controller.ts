@@ -25,8 +25,13 @@ export default class StripeController {
       const userExists = await UsersController.userExists(req.body.userId)
       if (!userExists) return res.json({error: 'user-not-found', message: 'User not found'})
       const session = await StripeController.stripe.checkout.sessions
-        .create(StripeController.sessionParams(req.body.cartItems, req.body.activeLanguage))
-      await StripeController.onCheckoutSessionCreated(session, req.body.userId, req.body.cartItems)
+        .create(StripeController.sessionParams(req.body.cartItems, !!req.body.deliveryAddress, req.body.activeLanguage))
+      await StripeController.onCheckoutSessionCreated(
+        session,
+        req.body.userId,
+        req.body.cartItems,
+        req.body.deliveryAddress
+      )
       res.status(200).json({url: session.url})
     } catch (error: any) {
       console.error(error)
@@ -53,8 +58,13 @@ export default class StripeController {
     }
   }
 
-  private static async onCheckoutSessionCreated(session: Stripe.Checkout.Session, userId: string, cartItems: any[]) {
-    await CheckoutSessionsDao.add(session.id, userId,cartItems)
+  private static async onCheckoutSessionCreated(
+    session: Stripe.Checkout.Session,
+    userId: string,
+    cartItems: any[],
+    deliveryAddress: any
+  ) {
+    await CheckoutSessionsDao.add(session.id, userId, cartItems, deliveryAddress)
   }
 
   private static async onCheckoutSessionExpired(session: Stripe.Checkout.Session) {
@@ -75,16 +85,20 @@ export default class StripeController {
     return {
       cartItems: checkoutSession.cartItems,
       creationTimestamp: new Date(stripeSession.created * 1000),
-      deliveryAddress: stripeSession.shipping_details!.address,
-      isHomeDelivery: stripeSession.shipping_cost!.amount_total > 0,
+      deliveryAddress: checkoutSession.deliveryAddress ?? null,
+      isHomeDelivery: !!checkoutSession.deliveryAddress,
       isFinished: false,
       userId: checkoutSession.userId
     }
   }
 
-  private static sessionParams(cartItems: any[], activeLanguage: string): Stripe.Checkout.SessionCreateParams {
+  private static sessionParams(
+    cartItems: any[],
+    isHomeDelivery: boolean,
+    activeLanguage: string
+  ): Stripe.Checkout.SessionCreateParams {
     return {
-      ...StripeController.shippingOptions(activeLanguage),
+      ...StripeController.shippingOptions(isHomeDelivery, activeLanguage),
       locale: ['en', 'es'].includes(activeLanguage) ? activeLanguage : 'en',
       payment_method_types: ['card'],
       line_items: cartItems
@@ -95,34 +109,36 @@ export default class StripeController {
     }
   }
 
-  private static shippingOptions(activeLang: string): any {
-    return {
-      shipping_address_collection: {
-        allowed_countries: ['ES']
-      },
-      shipping_options: [
-        {
-          shipping_rate_data: {
-            type: 'fixed_amount',
-            fixed_amount: {
-              amount: 0,
-              currency: 'eur',
-            },
-            display_name: StripeController.DELIVERY_OPTIONS.pickUpOrder[activeLang]
+  private static shippingOptions(isHomeDelivery: boolean, activeLang: string): any {
+    return isHomeDelivery ?
+      {
+        shipping_options: [
+          {
+            shipping_rate_data: {
+              type: 'fixed_amount',
+              fixed_amount: {
+                amount: StripeController.HOME_DELIVERY_FEE_IN_EUR_CENTS,
+                currency: 'eur',
+              },
+              display_name: StripeController.DELIVERY_OPTIONS.homeDelivery[activeLang]
+            }
           }
-        },
-        {
-          shipping_rate_data: {
-            type: 'fixed_amount',
-            fixed_amount: {
-              amount: StripeController.HOME_DELIVERY_FEE_IN_EUR_CENTS,
-              currency: 'eur',
-            },
-            display_name: StripeController.DELIVERY_OPTIONS.homeDelivery[activeLang]
-          }
-        }
-      ]
-    }
+        ]
+      } :
+      {
+        shipping_options: [
+          {
+            shipping_rate_data: {
+              type: 'fixed_amount',
+              fixed_amount: {
+                amount: 0,
+                currency: 'eur',
+              },
+              display_name: StripeController.DELIVERY_OPTIONS.pickUpOrder[activeLang]
+            }
+          },
+        ]
+      }
   }
 
   private static cartItemToLineItem(cartItem: any, activeLang: string): Stripe.Checkout.SessionCreateParams.LineItem {

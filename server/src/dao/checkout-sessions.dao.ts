@@ -16,12 +16,13 @@ interface CheckoutSession {
 export default class CheckoutSessionsDao {
   private static readonly checkoutSessionsCollection = firestore.collection('order_checkout_sessions')
 
-  static add(sessionId: string, userId: string, cartItems: any[]) {
+  static add(sessionId: string, userId: string, cartItems: any[], deliveryAddress: any) {
     return CheckoutSessionsDao.checkoutSessionsCollection
       .doc(sessionId)
       .set({
         cartItems,
         userId,
+        deliveryAddress: deliveryAddress ?? null,
         status: CheckoutSessionStatus.OPEN,
         creationTimestamp: new Date()
       } as CheckoutSession)

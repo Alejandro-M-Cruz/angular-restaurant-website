@@ -1,6 +1,6 @@
 import {CartItem} from "./cart-item.model";
 
-interface Address {
+export interface Address {
   city: string
   country: string
   line1: string
@@ -8,6 +8,20 @@ interface Address {
   postalCode: string
   state: string
 }
+
+/*
+interface Address {
+  city: string
+  street: string
+  streetNumber: number
+  postalCode: string
+  additionalData?: {
+    storey: number
+    doorNumber: number
+    comments: string
+  }
+}
+*/
 
 export class Order {
   static readonly MAX_TOTAL_ITEMS = 30
@@ -23,14 +37,6 @@ export class Order {
   deliveryAddress?: Address;
   userId?: string;
 
-  /*constructor(cartItems: CartItem[], isHomeDelivery: boolean, deliveryAddress?: string, tip?: number | null) {
-    this.cartItems = cartItems
-    this.isHomeDelivery = isHomeDelivery
-    this.deliveryAddress = deliveryAddress
-    this.tip = tip
-    this.isFinished = false
-  }*/
-
   get totalPriceNotIncludingTip(): number {
     let totalPrice = 0
     this.cartItems.forEach(cartItem => totalPrice += cartItem.subtotalPrice)
@@ -40,18 +46,5 @@ export class Order {
   get totalPriceIncludingTip(): number {
     return this.totalPriceNotIncludingTip + (this.tip ?? 0)
   }
-
-  // updateTotalPrice(): void {
-  //   const tipAmounts = [0, 1, 2, 3]; // The available tip amounts
-  //   const tipIndex = tipAmounts.indexOf(Number(this.orderForm.get('tip').value)); // Get the index of the selected tip amount
-  //   const tip = tipIndex >= 0 ? tipAmounts[tipIndex] : 0; // Get the selected tip amount, or 0 if the index is invalid
-
-  //   this.order.tip = tip; // Set the tip property of the order object
-  //   this.order.totalPriceIncludingTip = this.order.totalPriceNotIncludingTip + tip; // Calculate the total price including tip
-  // }
-
-  // get totalPriceIncludingTip(): number {
-  //   return this.order.totalPriceIncludingTip;
-  // }
 
 }

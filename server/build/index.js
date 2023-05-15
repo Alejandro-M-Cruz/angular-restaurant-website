@@ -13,7 +13,6 @@ const email_confirmations_routes_1 = __importDefault(require("./routes/email-con
 const API = '/api/v1';
 const PORT = 3000;
 const app = (0, express_1.default)();
-app.use(express_1.default.static('public'));
 app.use((0, cors_1.default)({
     origin: true,
     credentials: true
