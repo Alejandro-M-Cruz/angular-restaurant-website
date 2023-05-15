@@ -43,7 +43,7 @@ export class SignUpComponent {
   async onSubmit() {
     try {
       const { username, email, password } = this.form.value
-      await this.authService.signUp(username!, email!, password!).then(() => )
+      await this.authService.signUp(username!, email!, password!)
       await this.router.navigate(['/home'])
     } catch (e: any) {
       console.error(e)
