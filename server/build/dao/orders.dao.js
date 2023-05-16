@@ -18,6 +18,6 @@ class OrdersDao {
         return OrdersDao.ordersCollection.add(Object.assign(Object.assign({}, order), { totalPriceIncludingTip: OrdersDao.getOrderTotalPriceIncludingTip(order) }));
     }
 }
-OrdersDao.HOME_DELIVERY_FEE = 2.99;
+OrdersDao.HOME_DELIVERY_FEE = 3.99;
 OrdersDao.ordersCollection = firebase_1.firestore.collection('orders');
 exports.default = OrdersDao;

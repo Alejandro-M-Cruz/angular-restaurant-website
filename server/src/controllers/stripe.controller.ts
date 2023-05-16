@@ -33,12 +33,13 @@ export default class StripeController {
       const userExists = await UsersController.userExists(req.body.userId)
       if (!userExists) return res.json({error: 'user-not-found', message: 'User not found'})
       const session = await StripeController.stripe.checkout.sessions
-        .create(StripeController.sessionParams(req.body.cartItems, !!req.body.deliveryAddress, req.body.activeLanguage))
+        .create(StripeController.sessionParams(req.body.cartItems, !!req.body.deliveryAddress, req.body.activeLanguage, req.body.tip))
       await StripeController.onCheckoutSessionCreated(
         session,
         req.body.userId,
         req.body.cartItems,
-        req.body.deliveryAddress
+        req.body.deliveryAddress,
+        req.body.tip
       )
       res.status(200).json({url: session.url})
     } catch (error: any) {
@@ -70,9 +71,10 @@ export default class StripeController {
     session: Stripe.Checkout.Session,
     userId: string,
     cartItems: any[],
-    deliveryAddress: any
+    deliveryAddress: any,
+    tip?: number
   ) {
-    await CheckoutSessionsDao.add(session.id, userId, cartItems, deliveryAddress)
+    await CheckoutSessionsDao.add(session.id, userId, cartItems, deliveryAddress, tip)
   }
 
   private static async onCheckoutSessionExpired(session: Stripe.Checkout.Session) {
@@ -95,6 +97,7 @@ export default class StripeController {
       creationTimestamp: new Date(stripeSession.created * 1000),
       deliveryAddress: checkoutSession.deliveryAddress ?? null,
       isHomeDelivery: !!checkoutSession.deliveryAddress,
+      tip: checkoutSession.tip ?? null,
       isFinished: false,
       userId: checkoutSession.userId
     }
