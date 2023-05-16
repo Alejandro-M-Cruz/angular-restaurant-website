@@ -39,6 +39,7 @@ import { UserOrderComponent } from './pages/user-order/user-order.component';
 import {MatTableModule} from "@angular/material/table";
 import { ReservationsTableComponent } from './pages/user-reservations/reservations-table/reservations-table.component';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import es from '@angular/common/locales/es';
 import {registerLocaleData} from "@angular/common";
@@ -71,7 +72,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { UserOrderHistoryComponent } from './pages/user-order-history/user-order-history.component';
 import { SuccessfulOrderComponent } from './pages/successful-order/successful-order.component';
 import { TipSelectorComponent } from './components/tip-selector/tip-selector.component';
-import { IsHomeDeliverySelectorComponent } from './components/is-home-delivery-selector/is-home-delivery-selector.component';
+import { HomeDeliverySelectorComponent } from './components/home-delivery-selector/home-delivery-selector.component';
 import { OrderHistoryAdminComponent } from './pages/order-history-admin/order-history-admin.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ReviewsPreviewComponent } from './components/reviews-preview/reviews-preview.component';
@@ -129,7 +130,7 @@ registerLocaleData(es);
     UserOrderHistoryComponent,
     SuccessfulOrderComponent,
     TipSelectorComponent,
-    IsHomeDeliverySelectorComponent,
+    HomeDeliverySelectorComponent,
     OrderHistoryAdminComponent,
     ReviewsPreviewComponent,
     WriteReviewComponent,
@@ -170,8 +171,8 @@ registerLocaleData(es);
     MatCardModule,
     MatRadioModule,
     MatButtonToggleModule,
-    MatTabsModule
-
+    MatTabsModule,
+    MatSlideToggleModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' },

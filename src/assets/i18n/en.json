@@ -209,6 +209,8 @@
   "orderForms": {
     "optionLabel": "Select an option (Required)",
     "homeDelivery": "Home Delivery",
+    "isHomeDelivery": "Home delivery order",
+    "isPickUpOrder": "Pick up order",
     "pickUpOrder": "Pick Up Order",
     "directionLabelRequest": "Enter your order address (Required)",
     "askLabel": "Would you like to repeat an order?",
@@ -218,6 +220,17 @@
     "tip": "Tip",
     "askTip": "Would you like to leave a tip?",
     "customTip": "Specific amount"
+  },
+  "homeDeliveryAddress": {
+    "city": "City",
+    "street": "Street",
+    "streetNumber": "Number",
+    "postalCode": "Postal code",
+    "additionalData": {
+      "storey": "Storey",
+      "doorNumber": "Door number",
+      "comments": "Additional comments"
+    }
   },
   "ordersAdmin":{
     "title":"Orders",

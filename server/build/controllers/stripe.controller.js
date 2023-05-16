@@ -47,8 +47,8 @@ class StripeController {
                 if (!userExists)
                     return res.json({ error: 'user-not-found', message: 'User not found' });
                 const session = yield StripeController.stripe.checkout.sessions
-                    .create(StripeController.sessionParams(req.body.cartItems, req.body.activeLanguage, req.body.tip));
-                yield StripeController.onCheckoutSessionCreated(session, req.body.userId, req.body.cartItems);
+                    .create(StripeController.sessionParams(req.body.cartItems, !!req.body.deliveryAddress, req.body.activeLanguage));
+                yield StripeController.onCheckoutSessionCreated(session, req.body.userId, req.body.cartItems, req.body.deliveryAddress);
                 res.status(200).json({ url: session.url });
             }
             catch (error) {
@@ -78,9 +78,9 @@ class StripeController {
             }
         });
     }
-    static onCheckoutSessionCreated(session, userId, cartItems) {
+    static onCheckoutSessionCreated(session, userId, cartItems, deliveryAddress) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield checkout_sessions_dao_1.default.add(session.id, userId, cartItems);
+            yield checkout_sessions_dao_1.default.add(session.id, userId, cartItems, deliveryAddress);
         });
     }
     static onCheckoutSessionExpired(session) {
@@ -100,19 +100,20 @@ class StripeController {
         });
     }
     static extractOrderDataFromCheckoutSession(stripeSession) {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             const checkoutSession = yield checkout_sessions_dao_1.default.getCheckoutSessionById(stripeSession.id);
             return {
                 cartItems: checkoutSession.cartItems,
                 creationTimestamp: new Date(stripeSession.created * 1000),
-                deliveryAddress: stripeSession.shipping_details.address,
-                isHomeDelivery: stripeSession.shipping_cost.amount_total > 0,
+                deliveryAddress: (_a = checkoutSession.deliveryAddress) !== null && _a !== void 0 ? _a : null,
+                isHomeDelivery: !!checkoutSession.deliveryAddress,
                 isFinished: false,
                 userId: checkoutSession.userId
             };
         });
     }
-    static sessionParams(cartItems, activeLanguage, tip) {
+    static sessionParams(cartItems, isHomeDelivery, activeLanguage, tip) {
         const line_items = cartItems.map(cartItem => StripeController.cartItemToLineItem(cartItem, activeLanguage));
         if (tip != 0)
             line_items.push({
@@ -125,36 +126,38 @@ class StripeController {
                     unit_amount: Math.round((tip || 0) * 100)
                 }
             });
-        return Object.assign(Object.assign({}, StripeController.shippingOptions(activeLanguage)), { locale: ['en', 'es'].includes(activeLanguage) ? activeLanguage : 'en', payment_method_types: ['card'], line_items: line_items, mode: 'payment', success_url: 'http://localhost:4200/success', cancel_url: 'http://localhost:4200/user-order' });
+        return Object.assign(Object.assign({}, StripeController.shippingOptions(isHomeDelivery, activeLanguage)), { locale: ['en', 'es'].includes(activeLanguage) ? activeLanguage : 'en', payment_method_types: ['card'], line_items: line_items, mode: 'payment', success_url: 'http://localhost:4200/success', cancel_url: 'http://localhost:4200/user-order' });
     }
-    static shippingOptions(activeLang) {
-        return {
-            shipping_address_collection: {
-                allowed_countries: ['ES']
-            },
-            shipping_options: [
-                {
-                    shipping_rate_data: {
-                        type: 'fixed_amount',
-                        fixed_amount: {
-                            amount: 0,
-                            currency: 'eur',
-                        },
-                        display_name: StripeController.DELIVERY_OPTIONS.pickUpOrder[activeLang]
+    static shippingOptions(isHomeDelivery, activeLang) {
+        return isHomeDelivery ?
+            {
+                shipping_options: [
+                    {
+                        shipping_rate_data: {
+                            type: 'fixed_amount',
+                            fixed_amount: {
+                                amount: 0,
+                                currency: 'eur',
+                            },
+                            display_name: StripeController.DELIVERY_OPTIONS.pickUpOrder[activeLang]
+                        }
+                    },
+                ]
+            } :
+            {
+                shipping_options: [
+                    {
+                        shipping_rate_data: {
+                            type: 'fixed_amount',
+                            fixed_amount: {
+                                amount: StripeController.HOME_DELIVERY_FEE_IN_EUR_CENTS,
+                                currency: 'eur',
+                            },
+                            display_name: StripeController.DELIVERY_OPTIONS.homeDelivery[activeLang]
+                        }
                     }
-                },
-                {
-                    shipping_rate_data: {
-                        type: 'fixed_amount',
-                        fixed_amount: {
-                            amount: StripeController.HOME_DELIVERY_FEE_IN_EUR_CENTS,
-                            currency: 'eur',
-                        },
-                        display_name: StripeController.DELIVERY_OPTIONS.homeDelivery[activeLang]
-                    }
-                }
-            ]
-        };
+                ]
+            };
     }
     static cartItemToLineItem(cartItem, activeLang) {
         const lineItem = {

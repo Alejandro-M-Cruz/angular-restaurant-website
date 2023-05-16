@@ -5,14 +5,11 @@ import cors from 'cors'
 import usersRoutes from './routes/users.routes'
 import ordersRoutes from './routes/orders.routes'
 import emailConfirmationsRoutes from './routes/email-confirmations.routes'
-import { log } from 'console'
-
 
 const API = '/api/v1'
 const PORT = 3000
 const app = express()
 
-app.use(express.static('public'))
 app.use(cors({
   origin: true,
   credentials: true

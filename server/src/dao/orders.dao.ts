@@ -1,7 +1,7 @@
 import {firestore} from '../firebase'
 
 export default class OrdersDao {
-  static readonly HOME_DELIVERY_FEE = 2.99
+  static readonly HOME_DELIVERY_FEE = 3.99
   private static readonly ordersCollection = firestore.collection('orders')
 
   private static getCartItemSubtotalPrice(cartItem) {
