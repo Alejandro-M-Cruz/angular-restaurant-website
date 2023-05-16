@@ -209,6 +209,8 @@
   "orderForms": {
     "optionLabel": "Seleccione una opción (Obligatoria)",
     "homeDelivery" :"A Domicilio",
+    "isHomeDelivery": "Pedido a domicilio",
+    "isPickUpOrder": "Pedido a recoger en el restaurante",
     "pickUpOrder" : "A Recoger",
     "directionLabelRequest" : "Introduzca su dirección (Obligatoria)",
     "askLabel" : "¿Desea repetir un pedido?",
@@ -218,6 +220,17 @@
     "tip":"Propina",
     "askTip":"¿Desea dejar propina?",
     "customTip": "Cantidad específica"
+  },
+  "homeDeliveryAddress": {
+    "city": "Ciudad",
+    "street": "Calle",
+    "streetNumber": "Número",
+    "postalCode": "Código postal",
+    "additionalData": {
+      "storey": "Piso",
+      "doorNumber": "Número de puerta",
+      "comments": "Comentarios adicionales"
+    }
   },
   "ordersAdmin":{
     "title":"Pedidos",

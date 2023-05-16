@@ -9,6 +9,44 @@
     <span> {{ cartItem.quantity }} </span>
   </div>
 
+  <app-home-delivery-selector
+    [default]="false"
+    (deliveryOptionChanged)="onDeliveryOptionChanged($event)"
+  ></app-home-delivery-selector>
+
+  <form [formGroup]="addressForm">
+    <mat-form-field appearance="outline">
+      <mat-label>{{t('homeDeliveryAddress.city')}}</mat-label>
+      <input type="text" matInput placeHolder="Las Palmas de Gran Canaria" formControlName="city">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>{{t('homeDeliveryAddress.street')}}</mat-label>
+      <input type="text" matInput formControlName="street">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>{{t('homeDeliveryAddress.streetNumber')}}</mat-label>
+      <input type="number" matInput formControlName="streetNumber">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>{{t('homeDeliveryAddress.postalCode')}}</mat-label>
+      <input type="number" matInput formControlName="postalCode">
+    </mat-form-field>
+    <div formGroupName="additionalData">
+      <mat-form-field appearance="outline">
+        <mat-label>{{t('homeDeliveryAddress.additionalData.storey')}}</mat-label>
+        <input type="number" matInput formControlName="storey">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{t('homeDeliveryAddress.additionalData.doorNumber')}}</mat-label>
+        <input type="number" matInput formControlName="doorNumber">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{t('homeDeliveryAddress.additionalData.comments')}}</mat-label>
+        <input type="text" matInput formControlName="comments">
+      </mat-form-field>
+    </div>
+  </form>
+
   <div class="buttons-container">
     <button type="reset" (click)="location.back()" class="management-button back-button">{{t('buttons.back')}}</button>
     <button class="management-button cancel-button" (click)="clearCart()">{{t('buttons.deleteCart')}}</button>
