@@ -47,7 +47,7 @@ class StripeController {
                 if (!userExists)
                     return res.json({ error: 'user-not-found', message: 'User not found' });
                 const session = yield StripeController.stripe.checkout.sessions
-                    .create(StripeController.sessionParams(req.body.cartItems, req.body.activeLanguage));
+                    .create(StripeController.sessionParams(req.body.cartItems, req.body.activeLanguage, req.body.tip));
                 yield StripeController.onCheckoutSessionCreated(session, req.body.userId, req.body.cartItems);
                 res.status(200).json({ url: session.url });
             }
@@ -112,11 +112,20 @@ class StripeController {
             };
         });
     }
-    static sessionParams(cartItems, activeLanguage) {
-        return Object.assign(Object.assign({}, StripeController.shippingOptions(activeLanguage)), { locale: ['en', 'es'].includes(activeLanguage) ? activeLanguage : 'en', payment_method_types: ['card'], line_items: cartItems
-                .map(cartItem => StripeController.cartItemToLineItem(cartItem, activeLanguage)), mode: 'payment', metadata: {
-                "tip_amount": "0"
-            }, success_url: 'http://localhost:4200/success', cancel_url: 'http://localhost:4200/user-order' });
+    static sessionParams(cartItems, activeLanguage, tip) {
+        const line_items = cartItems.map(cartItem => StripeController.cartItemToLineItem(cartItem, activeLanguage));
+        if (tip != 0)
+            line_items.push({
+                quantity: 1,
+                price_data: {
+                    currency: 'eur',
+                    product_data: {
+                        name: StripeController.TIP.tip[activeLanguage],
+                    },
+                    unit_amount: Math.round((tip || 0) * 100)
+                }
+            });
+        return Object.assign(Object.assign({}, StripeController.shippingOptions(activeLanguage)), { locale: ['en', 'es'].includes(activeLanguage) ? activeLanguage : 'en', payment_method_types: ['card'], line_items: line_items, mode: 'payment', success_url: 'http://localhost:4200/success', cancel_url: 'http://localhost:4200/user-order' });
     }
     static shippingOptions(activeLang) {
         return {
@@ -173,7 +182,13 @@ StripeController.DELIVERY_OPTIONS = {
     pickUpOrder: {
         es: 'Recogida en local',
         en: 'Pick up order'
-    }
+    },
+};
+StripeController.TIP = {
+    tip: {
+        es: 'Propina por los servicios',
+        en: 'Tip for the services'
+    },
 };
 StripeController.stripe = new stripe_1.default(process.env.STRIPE_API_KEY, {
     timeout: 60000,

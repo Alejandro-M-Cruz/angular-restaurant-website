@@ -24,6 +24,7 @@ export class OrderCheckoutService {
       cartItems: this.cartService
         .getCartItems()
         .map(cartItem => ({...cartItem, subtotalPrice: cartItem.subtotalPrice})),
+      tip: this.cartService.getTip(),
       userId: this.userService.currentUser!.uid,
       activeLanguage: this.translateService.getActiveLang()
     }).subscribe(response => this.redirectToCheckoutUrl(response))

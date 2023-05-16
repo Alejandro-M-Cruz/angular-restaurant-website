@@ -7,7 +7,9 @@
   </div>
   <app-menu></app-menu>
   <app-cart></app-cart>
+  <app-tip-selector (tip)="getTip($event)"></app-tip-selector>
   <div class="totalPrice">
-    <p> {{t('orderForms.totalPrice')}} : {{totalPrice | currency: 'EUR'}} </p>
+    <P> {{t('orderForms.tip')}} : {{totalPrice[0] | currency: 'EUR'}} </P>
+    <p> {{t('orderForms.totalPrice')}} : {{totalPrice[1] | currency: 'EUR'}} </p>
   </div>
 </ng-container>

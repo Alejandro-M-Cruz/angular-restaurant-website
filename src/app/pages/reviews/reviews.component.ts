@@ -32,7 +32,7 @@ export class ReviewsComponent implements OnInit, OnDestroy {
     private readonly permissionsService: PermissionsService,
     public readonly location: Location,
     private readonly dialog: MatDialog,
-  ) { 
+  ) {
     this.permissionsService.isAdmin().subscribe(isAdmin =>{
       this.isAdmin = isAdmin;
     });
@@ -95,6 +95,6 @@ export class ReviewsComponent implements OnInit, OnDestroy {
     await this.reviewsService.deleteReview(id)
   }
 
-  
+
 
 }

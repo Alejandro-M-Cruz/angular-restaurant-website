@@ -16,7 +16,7 @@ export class CartComponent {
     private readonly cartService: CartService,
     private readonly orderCheckoutService: OrderCheckoutService,
     private readonly translationService: TranslocoService,
-    public readonly location: Location
+    public readonly location: Location,
   ) { }
 
   getActiveLanguage() {
@@ -30,5 +30,7 @@ export class CartComponent {
   async goToCheckout(){
     this.orderCheckoutService.goToCheckout()
   }
+
+
 
 }

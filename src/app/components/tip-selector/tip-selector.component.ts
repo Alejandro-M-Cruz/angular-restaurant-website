@@ -1,34 +1,34 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import {Order} from "../../model/order.model";
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tip-selector',
   templateUrl: './tip-selector.component.html',
   styleUrls: ['./tip-selector.component.css']
 })
-export class TipSelectorComponent implements OnInit {
-  tipOptions = Order.TIP_OPTIONS;
-  customTipFormControl = new FormControl<number>(
-    0,
-    [Validators.min(0), Validators.max(Order.MAX_TIP)]
-  );
-  @Input() tipFormControl: FormControl;
+export class TipSelectorComponent {
 
-  ngOnInit() {
-    this.customTipFormControl.disable()
+  @Output() tip: EventEmitter<number> = new EventEmitter<number>();
+
+  selectedOption: string;
+
+  onOptionChange() {
+    switch(this.selectedOption) {
+      case 'option1':
+        this.tip.emit(0);
+        break;
+      case 'option2':
+        this.tip.emit(1);
+        break;
+      case 'option3':
+        this.tip.emit(2);
+        break;
+      case 'option4':
+        this.tip.emit(3);
+        break;
+      case 'option5':
+        this.tip.emit(4);
+        break;
+    }
   }
 
-  onCustomTipOptionSelected() {
-    this.customTipFormControl.enable()
-    this.tipFormControl.setValue(this.customTipFormControl.value ?? 0)
-  }
-
-  onCustomTipOptionDeselected() {
-    this.customTipFormControl.disable()
-  }
-
-  onCustomTipInputChanged() {
-    this.tipFormControl.setValue(this.customTipFormControl.value ?? 0)
-  }
 }
