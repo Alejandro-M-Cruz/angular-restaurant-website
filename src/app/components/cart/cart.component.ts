@@ -4,7 +4,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import {OrderCheckoutService} from "../../services/orders/order-checkout.service";
 import {Location} from "@angular/common";
 import {Address} from 'src/app/model/order.model';
-import { FormBuilder, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -16,19 +16,19 @@ export class CartComponent {
   addressForm = this.formBuilder.group({
     city: ['', [Validators.maxLength(Address.CITY_MAX_LENGTH), Validators.required]],
     street: ['', [Validators.maxLength(Address.STREET_MAX_LENGTH), Validators.required]],
-    streetNumber: ['', [
+    streetNumber: new FormControl<number | null>(null, [
       Validators.min(0),
       Validators.max(Address.MAX_STREET_NUMBER),
       Validators.required
-    ]],
-    postalCode: ['', [
+    ]),
+    postalCode: new FormControl<number | null>(null, [
       Validators.min(Address.MIN_POSTAL_CODE),
       Validators.max(Address.MAX_POSTAL_CODE),
       Validators.required
-    ]],
+    ]),
     additionalData: this.formBuilder.group({
-      storey: ['', [Validators.min(0), Validators.max(100)]],
-      doorNumber: ['', [Validators.min(0), Validators.max(10000)]],
+      storey: new FormControl(null, [Validators.min(0), Validators.max(100)]),
+      doorNumber: new FormControl(null, [Validators.min(0), Validators.max(10000)]),
       comments: ['', Validators.maxLength(100)]
     })
   })
