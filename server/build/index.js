@@ -26,9 +26,6 @@ app.get('/', (req, res) => {
 app.use(API + '/users', users_routes_1.default);
 app.use(API + '/orders', orders_routes_1.default);
 app.use(API + "/email-confirmations", email_confirmations_routes_1.default);
-app.get(API + '/email', (req, res) => {
-    res.send('mail server');
-});
 app.get('*', (req, res) => {
     res.sendStatus(404);
 });

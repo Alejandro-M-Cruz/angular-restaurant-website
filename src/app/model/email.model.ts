@@ -28,12 +28,13 @@ export class BuildEmail{
   }
 
   private  static orderEmailBody(order:Order){
+
     const subject = "Pedido confirmado";
     const html_body = "<p>Información del pedido: </p>"
   +              "<ul>"
-  +               `<li>Día: ${order.creationTimestamp!.getDay()} </li>`
-  +               `<li>Realizado a las: ${order.creationTimestamp!.getHours()} </li>`
-  +               `<li>Dirección de envío: ${order.deliveryAddress} </li>`
+  +               `<li>Día: ${order.creationTimestamp!.toLocaleDateString()} </li>`
+  +               `<li>Realizado a las: ${order.creationTimestamp!.getHours()}:${order.creationTimestamp!.getMinutes()} </li>`
+  +               `<li>Dirección de envío: ${order.deliveryAddress ?? 'A Recoger '} </li>`
   +              "</ul>"
   +              "<p>¡Gracias por pedir en La Nostra Casa!</p>"
     const body = "Información del pedido:"
@@ -49,7 +50,7 @@ export class BuildEmail{
     const html_body = "<p>¡Gracias por reservar con La Nostra Casa!</p>"
   +              "<p>Datos de la reserva:</p>"
   +              "<ul>"
-  +               `<li>Fecha: ${reservation.date} </li>`
+  +               `<li>Fecha: ${new Date(reservation.date).toLocaleDateString()} </li>`
   +               `<li>Hora: ${reservation.time} </li>`
   +               `<li>Número de personas: ${reservation.customers} </li>`
   +              "</ul>"

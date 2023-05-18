@@ -36,10 +36,10 @@ export class OrdersService {
       }))) as Observable<Order[]>
   }
 
-  getAllUserOrders(): Observable<Order[]> {
+  getAllUserOrders(user?:any): Observable<Order[]> {
     const q = query(
       this.ordersCollection,
-      where('userId', '==', this.userService.currentUser!.uid),
+      where('userId', '==', user ? user.uid :this.userService.currentUser!.uid),
       orderBy('creationTimestamp', 'desc')
     )
     return collectionData(q, {idField: 'id'})

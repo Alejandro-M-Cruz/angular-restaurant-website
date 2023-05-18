@@ -7,4 +7,6 @@ export default class EmailConfirmationsController {
     smtp(req.body);
     res.status(200).send();
   }
+
+  
 }
