@@ -1,28 +1,22 @@
 <ng-container *transloco="let t">
   <label>
     {{t('orderForms.askTip')}}
-    <mat-radio-group aria-label="Select an option" [formControl]="tipFormControl">
-      <mat-radio-button
-        *ngFor="let tipOption of tipOptions; let i = index"
-        [value]="tipOption"
-        (click)="onCustomTipOptionDeselected()"
-      >
-        {{tipOption | currency: 'EUR'}}
+    <mat-radio-group [(ngModel)]="selectedOption" (change)="onOptionChange()">
+      <mat-radio-button value="option1">
+        <mat-label> No </mat-label>
       </mat-radio-button>
-      <mat-radio-button [value]="customTipFormControl.value" (click)="onCustomTipOptionSelected()">
-        <mat-form-field appearance="outline">
-          <mat-label>{{t('orderForms.customTip')}}</mat-label>
-          <input
-            class="text-end"
-            matInput
-            type="number"
-            step="0.01"
-            [formControl]="customTipFormControl"
-            (change)="onCustomTipInputChanged()"
-          >
-        </mat-form-field>
+      <mat-radio-button value="option2">
+        <mat-label> 1€ </mat-label>
       </mat-radio-button>
-
+      <mat-radio-button value="option3">
+        <mat-label> 2€ </mat-label>
+      </mat-radio-button>
+      <mat-radio-button value="option4">
+        <mat-label> 3€ </mat-label>
+      </mat-radio-button>
+      <mat-radio-button value="option5">
+        <mat-label> 4€ </mat-label>
+      </mat-radio-button>
     </mat-radio-group>
   </label>
 </ng-container>

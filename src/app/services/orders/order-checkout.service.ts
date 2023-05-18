@@ -6,6 +6,7 @@ import {CartService} from "./cart.service";
 import {AlertsService} from "../alerts.service";
 import {ErrorAlert} from "../../alerts/error-alert.alerts";
 import {environment} from "../../../environments/environment.development";
+import {Address} from "../../model/order.model";
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +20,13 @@ export class OrderCheckoutService {
     private readonly alertsService: AlertsService
   ) { }
 
-  goToCheckout() {
+  goToCheckout(deliveryAddress?: Address) {
     this.http.post(environment.apiUrl + '/orders/checkout', {
       cartItems: this.cartService
         .getCartItems()
         .map(cartItem => ({...cartItem, subtotalPrice: cartItem.subtotalPrice})),
+      tip: this.cartService.getTip(),
+      deliveryAddress,
       userId: this.userService.currentUser!.uid,
       activeLanguage: this.translateService.getActiveLang()
     }).subscribe(response => this.redirectToCheckoutUrl(response))

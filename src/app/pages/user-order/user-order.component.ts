@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormControl} from '@angular/forms';
 import { CartService } from 'src/app/services/orders/cart.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -10,14 +10,22 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class UserOrderComponent {
   cartItems = this.cartService.getCartItems()
+  selectedTip: number = 0;
 
   constructor(
     private readonly fb:FormBuilder,
     private readonly user:UserService,
-    private readonly cartService:CartService
+    private readonly cartService:CartService,
   ){}
 
-  get totalPrice(){
-    return this.cartItems.reduce((total, cartItem) => total + cartItem.subtotalPrice, 0)
+  getTip(valor: number){
+    this.cartService.changeTip(valor);
   }
+
+  get totalPrice(){
+    const priceWithoutTip = this.cartItems.reduce((total, cartItem) => total + cartItem.subtotalPrice, 0)
+    return [this.cartService.getTip(), priceWithoutTip + this.cartService.getTip()];
+  }
+
+
 }

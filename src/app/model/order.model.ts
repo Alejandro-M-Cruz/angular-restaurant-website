@@ -1,17 +1,26 @@
 import {CartItem} from "./cart-item.model";
 
-export interface Address {
+export class Address {
+  static readonly RESTAURANT_LOCATION = [28.103909684420604, -15.415260933313707]
+  static readonly CITY_MAX_LENGTH = 100
+  static readonly STREET_MAX_LENGTH = 100
+  static readonly MIN_POSTAL_CODE = 35000
+  static readonly MAX_POSTAL_CODE = 35999
+  static readonly MAX_STREET_NUMBER = 1000
   city: string
-  country: string
-  line1: string
-  line2: string
-  postalCode: string
-  state: string
+  street: string
+  streetNumber: number
+  postalCode: number
+  additionalData: {
+    storey: number | null
+    doorNumber: number | null
+    comments: string | null
+  }
 }
 
 export class Order {
   static readonly MAX_TOTAL_ITEMS = 30
-  static readonly HOME_DELIVERY_FEE = 2.99
+  static readonly HOME_DELIVERY_FEE = 3.99
   static readonly TIP_OPTIONS = [0, 1, 2, 5]
   static readonly MAX_TIP = 100
   id?: string;
@@ -23,14 +32,6 @@ export class Order {
   deliveryAddress?: Address;
   userId?: string;
 
-  /*constructor(cartItems: CartItem[], isHomeDelivery: boolean, deliveryAddress?: string, tip?: number | null) {
-    this.cartItems = cartItems
-    this.isHomeDelivery = isHomeDelivery
-    this.deliveryAddress = deliveryAddress
-    this.tip = tip
-    this.isFinished = false
-  }*/
-
   get totalPriceNotIncludingTip(): number {
     let totalPrice = 0
     this.cartItems.forEach(cartItem => totalPrice += cartItem.subtotalPrice)
@@ -40,18 +41,5 @@ export class Order {
   get totalPriceIncludingTip(): number {
     return this.totalPriceNotIncludingTip + (this.tip ?? 0)
   }
-
-  // updateTotalPrice(): void {
-  //   const tipAmounts = [0, 1, 2, 3]; // The available tip amounts
-  //   const tipIndex = tipAmounts.indexOf(Number(this.orderForm.get('tip').value)); // Get the index of the selected tip amount
-  //   const tip = tipIndex >= 0 ? tipAmounts[tipIndex] : 0; // Get the selected tip amount, or 0 if the index is invalid
-
-  //   this.order.tip = tip; // Set the tip property of the order object
-  //   this.order.totalPriceIncludingTip = this.order.totalPriceNotIncludingTip + tip; // Calculate the total price including tip
-  // }
-
-  // get totalPriceIncludingTip(): number {
-  //   return this.order.totalPriceIncludingTip;
-  // }
 
 }

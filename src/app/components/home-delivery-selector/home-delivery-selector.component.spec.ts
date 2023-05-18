@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IsHomeDeliverySelectorComponent } from './is-home-delivery-selector.component';
+import { HomeDeliverySelectorComponent } from './home-delivery-selector.component';
 
 describe('IsHomeDeliverySelectorComponent', () => {
-  let component: IsHomeDeliverySelectorComponent;
-  let fixture: ComponentFixture<IsHomeDeliverySelectorComponent>;
+  let component: HomeDeliverySelectorComponent;
+  let fixture: ComponentFixture<HomeDeliverySelectorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IsHomeDeliverySelectorComponent ]
+      declarations: [ HomeDeliverySelectorComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(IsHomeDeliverySelectorComponent);
+    fixture = TestBed.createComponent(HomeDeliverySelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

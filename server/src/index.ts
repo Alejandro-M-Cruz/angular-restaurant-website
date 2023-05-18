@@ -10,7 +10,6 @@ const API = '/api/v1'
 const PORT = 3000
 const app = express()
 
-app.use(express.static('public'))
 app.use(cors({
   origin: true,
   credentials: true
