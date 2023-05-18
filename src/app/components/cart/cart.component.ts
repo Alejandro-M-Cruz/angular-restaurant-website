@@ -46,15 +46,13 @@ export class CartComponent {
     return this.translationService.getActiveLang()
   }
 
-  clearCart(){
+  clearCart() {
     this.cartService.clearCart()
   }
 
   async goToCheckout(){
     this.orderCheckoutService.goToCheckout(
-      this.isHomeDelivery ?
-        this.addressForm.value as Address :
-        undefined
+      this.isHomeDelivery ? this.addressForm.value as Address : undefined
     )
   }
 
