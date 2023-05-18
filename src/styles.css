@@ -1,5 +1,5 @@
 :root {
-  --main-color: #ffb939;
+  --main-color: #Ffb35c;
   --emphasis-color: darkorange;
   --cancel-button-color: #fa372b;
   --confirm-button-color: limegreen;
@@ -9,8 +9,8 @@
   --selected-row-color: rgb(255 206 116 / 70%);
   --empty-row-color: #dddddd;
   --input-focus-color: #eeeeee;
-  --menu-background-color: #dddddd;
-  --footer-background-color: #bcbbbb;
+  --menu-background-color: #202020;
+  --footer-background-color: #202020;
   --page-title-font-size: 2.5rem;
   --big-links-font-size: 1.5rem;
   --box-shadow-color: #bbbbbb;
@@ -1335,7 +1335,7 @@ app-menu-sections-admin .mat-mdc-select-value {
   app-write-review .mat-mdc-form-field {
     width: 90%;
   }
-  
+
   /* ----- ADMIN RESERVATIONS ----- */
 
   app-admin-reservations-table .mat-mdc-paginator-container {
