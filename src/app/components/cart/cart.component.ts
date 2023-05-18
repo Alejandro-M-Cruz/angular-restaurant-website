@@ -27,8 +27,8 @@ export class CartComponent {
       Validators.required
     ]],
     additionalData: this.formBuilder.group({
-      storey: ['', Validators.min(0), Validators.max(100)],
-      doorNumber: ['', Validators.min(0), Validators.max(10000)],
+      storey: ['', [Validators.min(0), Validators.max(100)]],
+      doorNumber: ['', [Validators.min(0), Validators.max(10000)]],
       comments: ['', Validators.maxLength(100)]
     })
   })

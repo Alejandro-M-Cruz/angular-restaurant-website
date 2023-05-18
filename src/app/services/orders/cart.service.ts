@@ -8,6 +8,15 @@ import {Order} from "../../model/order.model";
 })
 export class CartService {
   cartItems: CartItem[] = [];
+  tip: number = 0;
+
+  changeTip(tip: number){
+    this.tip = tip;
+  }
+
+  getTip(){
+    return this.tip;
+  }
 
   private getTotalMenuItems(): number {
     let totalMenuItems = 0;

@@ -436,9 +436,9 @@ app-cart .buttons-container {
   width: 95%;
 }
 
-app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons, .sides, .buttons-items), .previous-order-button, h2.ng-star-inserted:not(.page-title.ng-star-inserted), label, .totalPrice {
+/* app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons, .sides, .buttons-items), .previous-order-button, h2.ng-star-inserted:not(.page-title.ng-star-inserted), label, .totalPrice {
   margin-left: 1rem;
-}
+} */
 
 app-user-order label {
   display: flex;
