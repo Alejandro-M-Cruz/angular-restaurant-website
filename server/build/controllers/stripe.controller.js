@@ -94,30 +94,6 @@ class StripeController {
                 yield checkout_sessions_dao_1.default.setStatus(session.id, checkout_sessions_dao_1.CheckoutSessionStatus.SUCCEEDED);
                 const order = yield StripeController.extractOrderDataFromCheckoutSession(session);
                 yield orders_dao_1.default.addOrder(order);
-                console.log(session.customer_email);
-                const body = {
-                    to: session.customer_email,
-                    subject: "Pedido confirmado!!!!!",
-                    html_body: "<p>Información del pedido: </p>"
-                        + "<ul>"
-                        + `<li>Día: ${order.creationTimestamp.getDay()} </li>`
-                        + `<li>Realizado a las: ${order.creationTimestamp.getHours()} </li>`
-                        + `<li>Dirección de envío: ${order.deliveryAddress} </li>`
-                        + "</ul>"
-                        + "<p>¡Gracias por pedir en La Nostra Casa!</p>",
-                    body: "Información del pedido:"
-                        + `Día: ${order.creationTimestamp.getDay()}`
-                        + `Realizado a las: ${order.creationTimestamp.getHours()}`
-                        + `Dirección de envío: ${order.deliveryAddress}`
-                        + "¡Gracias por pedir en La Nostra Casa!"
-                };
-                const axios = require('axios');
-                axios.get('http://localhost:3000/api/v1/users/' + order.userId, { headers: {
-                        'Content-Type': 'application/json'
-                    } });
-                axios.post('http://localhost:3000/api/v1/email-confirmations', body, { headers: {
-                        'Content-Type': 'application/json'
-                    } });
             }
             else {
                 yield checkout_sessions_dao_1.default.setStatus(session.id, checkout_sessions_dao_1.CheckoutSessionStatus.FAILED);

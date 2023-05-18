@@ -27,7 +27,9 @@ export class SuccessfulOrderComponent implements OnInit {
 
       if(user){
         this.ordersService.getAllUserOrders(user).subscribe((order) => {
-          if(order) this.emailService.sendMessage("order",order[0],user);
+          console.log(order);
+          
+          if(order.length) this.emailService.sendMessage("order",order[0],user);
         })
       }
     })
