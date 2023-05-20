@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {FormError} from "../../alerts/form-error.alerts";
 import {AlertsService} from "../../services/alerts.service";
 import {Location} from "@angular/common";
+import { SenderEmailService } from 'src/app/services/email-services/sender-email-service.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -37,14 +38,16 @@ export class SignUpComponent {
     private readonly fb: FormBuilder,
     private readonly router: Router,
     private readonly alertsService: AlertsService,
-    public readonly location: Location
+    public readonly location: Location,
+    private readonly senderEmailService:SenderEmailService
   ) {}
 
   async onSubmit() {
     try {
       const { username, email, password } = this.form.value
       await this.authService.signUp(username!, email!, password!)
-      
+      .then( () => this.senderEmailService.sendMessage("register"))
+
       await this.router.navigate(['/home'])
     } catch (e: any) {
       console.error(e)

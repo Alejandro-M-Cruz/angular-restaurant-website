@@ -1,5 +1,5 @@
 :root {
-  --main-color: #ffb939;
+  --main-color: #Ffb35c;
   --emphasis-color: darkorange;
   --cancel-button-color: #fa372b;
   --confirm-button-color: limegreen;
@@ -9,8 +9,8 @@
   --selected-row-color: rgb(255 206 116 / 70%);
   --empty-row-color: #dddddd;
   --input-focus-color: #eeeeee;
-  --menu-background-color: #dddddd;
-  --footer-background-color: #bcbbbb;
+  --menu-background-color: #202020;
+  --footer-background-color: #202020;
   --page-title-font-size: 2.5rem;
   --big-links-font-size: 1.5rem;
   --box-shadow-color: #bbbbbb;
@@ -436,9 +436,17 @@ app-cart .buttons-container {
   width: 95%;
 }
 
-/* app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons, .sides, .buttons-items), .previous-order-button, h2.ng-star-inserted:not(.page-title.ng-star-inserted), label, .totalPrice {
+app-user-order div.totalPrice p {
   margin-left: 1rem;
-} */
+}
+
+app-tip-selector label {
+  margin-left: 1rem;
+}
+
+app-tip-selector label mat-label {
+  margin-top: 13px;
+}
 
 app-user-order label {
   display: flex;
@@ -461,6 +469,14 @@ app-user-order .management-button:hover:not(app-cart div.buttons-container .mana
 
 app-menu h2{
   margin-top: 5%;
+}
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+  color: white;
+}
+
+app-user-order .sides .buttons-items span.ng-star-inserted {
+  color: white;
 }
 
 .cart-buttons {
@@ -1312,12 +1328,12 @@ app-menu-sections-admin .mat-mdc-select-value {
     margin-top: 11px;
   }
 
-  app-user-order .management-button {
-    width: 75%;
+  app-tip-selector label mat-label {
+    margin-top: 0px;
   }
 
-  app-user-order .management-button:not(app-cart div.buttons-container .management-button) {
-    margin-left: 12%;
+  app-user-order .management-button {
+    width: 75%;
   }
 
   /* ----- RESERVE HERE ----- */
@@ -1335,7 +1351,7 @@ app-menu-sections-admin .mat-mdc-select-value {
   app-write-review .mat-mdc-form-field {
     width: 90%;
   }
-  
+
   /* ----- ADMIN RESERVATIONS ----- */
 
   app-admin-reservations-table .mat-mdc-paginator-container {

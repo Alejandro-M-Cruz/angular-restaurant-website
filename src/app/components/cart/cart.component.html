@@ -14,7 +14,8 @@
     (deliveryOptionChanged)="onDeliveryOptionChanged($event)"
   ></app-home-delivery-selector>
 
-  <form [formGroup]="addressForm">
+  <form *ngIf="isHomeDelivery" [formGroup]="addressForm">
+
     <mat-form-field appearance="outline">
       <mat-label>{{t('homeDeliveryAddress.city')}}</mat-label>
       <input type="text" matInput placeHolder="Las Palmas de Gran Canaria" formControlName="city">

@@ -25,9 +25,6 @@ app.use(API + '/users', usersRoutes)
 app.use(API + '/orders', ordersRoutes)
 app.use(API + "/email-confirmations", emailConfirmationsRoutes)
 
-app.get(API + '/email',(req,res) =>{
-  res.send('mail server')
-})
 
 app.get('*', (req, res) => {
   res.sendStatus(404)

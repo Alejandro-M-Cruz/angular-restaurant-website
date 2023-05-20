@@ -10,13 +10,14 @@ var CheckoutSessionStatus;
     CheckoutSessionStatus["EXPIRED"] = "expired";
 })(CheckoutSessionStatus = exports.CheckoutSessionStatus || (exports.CheckoutSessionStatus = {}));
 class CheckoutSessionsDao {
-    static add(sessionId, userId, cartItems, deliveryAddress) {
+    static add(sessionId, userId, cartItems, deliveryAddress, tip) {
         return CheckoutSessionsDao.checkoutSessionsCollection
             .doc(sessionId)
             .set({
             cartItems,
             userId,
             deliveryAddress: deliveryAddress !== null && deliveryAddress !== void 0 ? deliveryAddress : null,
+            tip: tip !== null && tip !== void 0 ? tip : null,
             status: CheckoutSessionStatus.OPEN,
             creationTimestamp: new Date()
         });

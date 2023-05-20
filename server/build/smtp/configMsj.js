@@ -23,13 +23,4 @@ exports.default = (emailData) => {
         .catch((error) => {
         console.error(error);
     });
-    // request.post({
-    //   url: url,
-    //   headers: {
-    //     'Content-Type': "application/json"
-    //   },
-    //   body: JSON.stringify(params),
-    //   }, function(err: any, response: any, body: any) {
-    //   console.log(body,formulario);
-    // })
 };
