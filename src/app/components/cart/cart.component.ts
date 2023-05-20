@@ -50,7 +50,11 @@ export class CartComponent {
     this.cartService.clearCart()
   }
 
-  async goToCheckout(){
+  async onBuyButtonClicked(){
+    // TODO VALIDATE ADDRESS
+  }
+
+  private goToCheckout() {
     this.orderCheckoutService.goToCheckout(
       this.isHomeDelivery ?
         this.addressForm.value as Address :
