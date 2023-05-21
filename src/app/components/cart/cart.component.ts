@@ -52,7 +52,7 @@ export class CartComponent {
     this.cartService.clearCart()
   }
 
-  async onBuyButtonClicked(){
+  onBuyButtonClicked(){
     this.orderCheckoutService.goToCheckout(
       this.isHomeDelivery ? this.addressForm.value! as Address : undefined
     )

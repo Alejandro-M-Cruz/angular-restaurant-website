@@ -471,14 +471,6 @@ app-menu h2{
   margin-top: 5%;
 }
 
-.mat-mdc-icon-button.mat-mdc-button-base {
-  color: white;
-}
-
-app-user-order .sides .buttons-items span.ng-star-inserted {
-  color: white;
-}
-
 .cart-buttons {
   display: flex;
   flex-direction: row;
