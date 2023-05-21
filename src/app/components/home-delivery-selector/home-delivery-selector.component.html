@@ -1,10 +1,10 @@
 <mat-slide-toggle
   class="m-4"
-  [checked]="isHomeDelivery"
+  [checked]="!!isHomeDelivery"
   (change)="onDeliveryOptionChanged($event.checked)"
   *transloco="let t"
 >
   {{isHomeDelivery ?
-  t('orderForms.isHomeDelivery') + ' (' + (homeDeliveryFee | currency: 'EUR') + ')' :
+  t('orderForms.isHomeDelivery') + ' (+' + (homeDeliveryFee | currency: 'EUR') + ')' :
   t('orderForms.isPickUpOrder')}}
 </mat-slide-toggle>

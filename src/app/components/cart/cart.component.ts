@@ -5,6 +5,7 @@ import {OrderCheckoutService} from "../../services/orders/order-checkout.service
 import {Location} from "@angular/common";
 import {Address} from 'src/app/model/order.model';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {DeliveryAddressService} from "../../services/orders/delivery-address.service";
 
 @Component({
   selector: 'app-cart',
@@ -27,16 +28,17 @@ export class CartComponent {
       Validators.required
     ]),
     additionalData: this.formBuilder.group({
-      storey: new FormControl(null, [Validators.min(0), Validators.max(100)]),
-      doorNumber: new FormControl(null, [Validators.min(0), Validators.max(10000)]),
+      storey: new FormControl<number | null>(null, [Validators.min(0), Validators.max(100)]),
+      doorNumber: new FormControl<number | null>(null, [Validators.min(0), Validators.max(10000)]),
       comments: ['', Validators.maxLength(100)]
     })
-  })
+  }, {asyncValidators: [this.deliveryAddressService.deliveryAddressValidator]})
   isHomeDelivery = false
 
   constructor(
     private readonly cartService: CartService,
     private readonly orderCheckoutService: OrderCheckoutService,
+    private readonly deliveryAddressService: DeliveryAddressService,
     private readonly translationService: TranslocoService,
     private readonly formBuilder: FormBuilder,
     public readonly location: Location
@@ -51,12 +53,8 @@ export class CartComponent {
   }
 
   async onBuyButtonClicked(){
-    // TODO VALIDATE ADDRESS
-  }
-
-  private goToCheckout() {
     this.orderCheckoutService.goToCheckout(
-      this.isHomeDelivery ? this.addressForm.value as Address : undefined
+      this.isHomeDelivery ? this.addressForm.value! as Address : undefined
     )
   }
 

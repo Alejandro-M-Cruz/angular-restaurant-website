@@ -554,12 +554,12 @@ app-user-order .sides .buttons-items span.ng-star-inserted {
   padding-bottom:1em;
 }
 
-.social-icons {
-  padding-top: 50%;
+.social-icons  {
+  margin-top: 1.2rem;
 }
 
-.social-icons img{
-  padding-bottom: 25%;
+.social-icons li {
+  margin: 1.5rem 0;
 }
 
 .social-media-icon {
