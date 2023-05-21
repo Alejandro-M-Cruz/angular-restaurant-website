@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import * as leaflet from "leaflet";
 import {Address} from "../../model/order.model";
 import {HttpClient} from "@angular/common/http";
-import {map} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 import {ValidationErrors, ValidatorFn} from "@angular/forms";
 import {Observable} from "rxjs";
 
@@ -15,6 +15,7 @@ export class DeliveryAddressService {
     Address.RESTAURANT_LOCATION.latitude,
     Address.RESTAURANT_LOCATION.longitude
   )
+  deliveryLocationMarker: leaflet.Marker | null = null
 
   constructor(private http: HttpClient) {}
 
@@ -43,16 +44,29 @@ export class DeliveryAddressService {
       if (response.length === 0)
         return null
       const deliveryLocation = leaflet.latLng( response[0].lat, response[0].lon)
-      leaflet.marker(deliveryLocation).addTo(this.map)
-      return Math.round(this.restaurantLocation.distanceTo(deliveryLocation))
+      this.placeDeliveryLocationMarker(deliveryLocation)
+      return this.restaurantLocation.distanceTo(deliveryLocation)
     }))
+  }
+
+  private clearDeliveryLocationMarker() {
+    this.deliveryLocationMarker?.remove()
+    this.deliveryLocationMarker = null
+  }
+
+  private placeDeliveryLocationMarker(deliveryLocation: leaflet.LatLng) {
+    this.clearDeliveryLocationMarker()
+    this.deliveryLocationMarker = leaflet.marker(deliveryLocation)
+    this.deliveryLocationMarker.addTo(this.map)
   }
 
   deliveryAddressValidator: ValidatorFn = (control): Observable<ValidationErrors | null> => {
     return this.getDeliveryAddressDistanceToRestaurant(control.value! as Address).pipe(
       map(distance => {
-        if (!distance)
+        if (!distance) {
+          this.clearDeliveryLocationMarker()
           return {unknownAddress: true}
+        }
         return distance > Address.MAX_DISTANCE_TO_RESTAURANT_IN_METERS ? {tooFarFromRestaurant: true} : null
       })
     )

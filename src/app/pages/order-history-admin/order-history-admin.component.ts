@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
-import { Order } from 'src/app/model/order.model';
+import {translate, TranslocoService} from '@ngneat/transloco';
+import {Address, Order} from 'src/app/model/order.model';
 import { OrdersService } from 'src/app/services/orders/orders.service';
 
 @Component({
@@ -26,6 +26,17 @@ export class OrderHistoryAdminComponent implements OnInit{
 
   get activeLanguage() {
     return this.translationService.getActiveLang()
+  }
+
+  deliveryAddressToString(address: Address) {
+    let addressString = `${address.street}/${address.streetNumber}, ${address.postalCode}, ${address.city}`
+    if (address.additionalData.storey)
+      addressString += `, ${translate('homeDeliveryAddress.additionalData.storey') + ': ' + address.additionalData.storey}`
+    if (address.additionalData.doorNumber)
+      addressString += `, ${translate('homeDeliveryAddress.additionalData.doorNumber') + ': ' + address.additionalData.doorNumber}`
+    if (address.additionalData.comments)
+      addressString += `, ${translate('homeDeliveryAddress.additionalData.comments') + ': ' + address.additionalData.comments}`
+    return addressString
   }
 
 }
