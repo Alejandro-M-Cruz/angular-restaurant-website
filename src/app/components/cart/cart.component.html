@@ -73,7 +73,7 @@
       type="button"
       class="management-button confirm-button"
       (click)="onBuyButtonClicked()"
-      [disabled]="cartItems.length === 0 || addressForm.invalid"
+      [disabled]="cartItems.length === 0 || (addressForm.invalid && isHomeDelivery)"
     >{{t('buttons.buy')}}</button>
   </div>
 </ng-container>
