@@ -231,6 +231,7 @@
       "doorNumber": "Número de puerta",
       "comments": "Comentarios adicionales"
     },
+    "additionalDataLabel": "Datos adicionales",
     "tooFarFromRestaurant": "La dirección de envío seleccionada está demasiado lejos del restaurante, por favor seleccione una que se encuentre dentro del radio de 5 km",
     "unknownAddress": "No hemos podido encontrar la dirección de envío seleccionada, por favor seleccione una dirección válida"
   },

@@ -427,10 +427,6 @@ app-reviews .mat-mdc-paginator-container {
   padding: 1rem;
 }
 
-app-cart div {
-  margin-left: 1rem;
-}
-
 app-cart .buttons-container {
   justify-content: flex-start;
   width: 95%;

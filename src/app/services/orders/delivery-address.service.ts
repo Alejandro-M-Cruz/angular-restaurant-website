@@ -19,7 +19,7 @@ export class DeliveryAddressService {
   constructor(private http: HttpClient) {}
 
   initMap() {
-    this.map = leaflet.map('map').setView(this.restaurantLocation, 12);
+    this.map = leaflet.map('map').setView(this.restaurantLocation, 11);
     leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(this.map)

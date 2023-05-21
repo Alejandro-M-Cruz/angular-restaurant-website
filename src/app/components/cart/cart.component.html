@@ -9,44 +9,49 @@
     <span> {{ cartItem.quantity }} </span>
   </div>
 
-  <app-home-delivery-selector
-    [default]="false"
-    (deliveryOptionChanged)="onDeliveryOptionChanged($event)"
-  ></app-home-delivery-selector>
+  <div class="d-flex justify-content-center">
+    <app-home-delivery-selector
+      [default]="false"
+      (deliveryOptionChanged)="onDeliveryOptionChanged($event)"
+    ></app-home-delivery-selector>
+  </div>
 
-  <form *ngIf="isHomeDelivery" [formGroup]="addressForm">
-
-    <mat-form-field appearance="outline">
+  <form *ngIf="isHomeDelivery" [formGroup]="addressForm" class="d-flex flex-column align-items-center mx-2">
+    <mat-form-field appearance="outline" class="col-12 col-md-9 col-xl-6">
       <mat-label>{{t('homeDeliveryAddress.city')}}</mat-label>
       <input type="text" matInput placeHolder="Las Palmas de Gran Canaria" formControlName="city">
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="col-12 col-md-9 col-xl-6">
       <mat-label>{{t('homeDeliveryAddress.street')}}</mat-label>
       <input type="text" matInput formControlName="street">
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="col-12 col-md-9 col-xl-6">
       <mat-label>{{t('homeDeliveryAddress.streetNumber')}}</mat-label>
       <input type="number" matInput formControlName="streetNumber">
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="col-12 col-md-9 col-xl-6">
       <mat-label>{{t('homeDeliveryAddress.postalCode')}}</mat-label>
       <input type="number" matInput formControlName="postalCode">
     </mat-form-field>
-    <div formGroupName="additionalData">
-      <mat-form-field appearance="outline">
+
+    <h4 class="mt-4">{{t('homeDeliveryAddress.additionalDataLabel')}}</h4>
+    <div formGroupName="additionalData" class="w-100 d-flex flex-column flex-md-row justify-content-center align-items-center">
+      <mat-form-field appearance="outline" class="mx-2 col-12 col-md-3">
         <mat-label>{{t('homeDeliveryAddress.additionalData.storey')}}</mat-label>
         <input type="number" matInput formControlName="storey">
       </mat-form-field>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="mx-2 col-12 col-md-3">
         <mat-label>{{t('homeDeliveryAddress.additionalData.doorNumber')}}</mat-label>
         <input type="number" matInput formControlName="doorNumber">
       </mat-form-field>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="mx-2 col-12 col-md-3">
         <mat-label>{{t('homeDeliveryAddress.additionalData.comments')}}</mat-label>
         <input type="text" matInput formControlName="comments">
       </mat-form-field>
     </div>
-    <app-map></app-map>
+
+    <app-map class="col-12 col-md-8"></app-map>
+
     <div *ngIf="addressForm.errors">
       <mat-error *ngIf="addressForm.errors?.['tooFarFromRestaurant']">
         {{t('homeDeliveryAddress.tooFarFromRestaurant')}}
@@ -55,20 +60,20 @@
         {{t('homeDeliveryAddress.unknownAddress')}}
       </mat-error>
     </div>
-
-    <div class="buttons-container">
-      <button type="reset" (click)="location.back()" class="management-button back-button">
-        {{t('buttons.back')}}
-      </button>
-      <button type="button" class="management-button cancel-button" (click)="clearCart()">
-        {{t('buttons.deleteCart')}}
-      </button>
-      <button
-        type="button"
-        class="management-button confirm-button"
-        (click)="onBuyButtonClicked()"
-        [disabled]="cartItems.length === 0 || addressForm.invalid"
-      >{{t('buttons.buy')}}</button>
-    </div>
   </form>
+
+  <div class="buttons-container">
+    <button type="reset" (click)="location.back()" class="management-button back-button">
+      {{t('buttons.back')}}
+    </button>
+    <button type="button" class="management-button cancel-button" (click)="clearCart()">
+      {{t('buttons.deleteCart')}}
+    </button>
+    <button
+      type="button"
+      class="management-button confirm-button"
+      (click)="onBuyButtonClicked()"
+      [disabled]="cartItems.length === 0 || addressForm.invalid"
+    >{{t('buttons.buy')}}</button>
+  </div>
 </ng-container>
