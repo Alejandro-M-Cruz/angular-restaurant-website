@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+let lastEmail;
 exports.default = (emailData) => {
+    if (JSON.stringify(emailData) === JSON.stringify(lastEmail))
+        return;
+    lastEmail = emailData;
     const axios = require('axios');
     const url = "https://api.smtp2go.com/v3/email/send";
     const fromAddress = "admlanostracasa@gmail.com";

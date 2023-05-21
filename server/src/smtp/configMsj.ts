@@ -1,5 +1,7 @@
-
- export default (emailData: { to: string; subject: string; html_body: string; body: string; }) => {
+let lastEmail:any;
+export default (emailData: { to: string; subject: string; html_body: string; body: string; }) => {
+  if(JSON.stringify(emailData) === JSON.stringify(lastEmail)) return
+  lastEmail = emailData;
   const axios = require('axios');
   const url = "https://api.smtp2go.com/v3/email/send";
   const fromAddress = "admlanostracasa@gmail.com";

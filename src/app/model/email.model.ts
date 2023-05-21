@@ -34,13 +34,22 @@ export class BuildEmail{
   +              "<ul>"
   +               `<li>Día: ${order.creationTimestamp!.toLocaleDateString()} </li>`
   +               `<li>Realizado a las: ${order.creationTimestamp!.getHours()}:${order.creationTimestamp!.getMinutes()} </li>`
-  +               `<li>Dirección de envío: ${order.deliveryAddress ?? 'A Recoger '} </li>`
+  +               `<li>Dirección de envío: ${ order.deliveryAddress ?
+                                              order.deliveryAddress?.street
+                                            + ", "
+                                            + order.deliveryAddress?.streetNumber
+                                            + ", "
+                                            + order.deliveryAddress?.city  : 'A Recoger '} </li>`
   +              "</ul>"
   +              "<p>¡Gracias por pedir en La Nostra Casa!</p>"
     const body = "Información del pedido: "
-  +               `Día: ${order.creationTimestamp!.getDay()} `
-  +               `Realizado a las: ${order.creationTimestamp!.getHours()} `
-  +               `Dirección de envío: ${order.deliveryAddress} `
+  +               `Día:  ${order.creationTimestamp!.toLocaleDateString()} `
+  +               `Realizado a las:  ${order.creationTimestamp!.getHours()}:${order.creationTimestamp!.getMinutes()} `
+  +               `Dirección de envío: ${order.deliveryAddress?.street
+                                        + ", "
+                                        + order.deliveryAddress?.streetNumber
+                                        + ", "
+                                        + order.deliveryAddress?.city  ?? 'A Recoger '} `
   +               "¡Gracias por pedir en La Nostra Casa!"
     return {subject:subject, html_body:html_body, body:body};
   }
