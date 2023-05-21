@@ -1,32 +1,26 @@
 import {CartItem} from "./cart-item.model";
 
 export class Address {
+  static readonly RESTAURANT_LOCATION = {
+    latitude: 28.103909684420604,
+    longitude: -15.415260933313707
+  }
   static readonly CITY_MAX_LENGTH = 100
-  static readonly STREET_MAX_LENGTH = 100
+  static readonly STREET_MAX_LENGTH = 200
   static readonly MIN_POSTAL_CODE = 35000
   static readonly MAX_POSTAL_CODE = 35999
   static readonly MAX_STREET_NUMBER = 1000
-  city: string
-  country: string
-  line1: string
-  line2: string
-  postalCode: string
-  state: string
-}
-
-/*
-interface Address {
+  static readonly MAX_DISTANCE_TO_RESTAURANT_IN_METERS = 5000
   city: string
   street: string
   streetNumber: number
-  postalCode: string
+  postalCode: number
   additionalData: {
     storey: number | null
     doorNumber: number | null
     comments: string | null
   }
 }
-*/
 
 export class Order {
   static readonly MAX_TOTAL_ITEMS = 30

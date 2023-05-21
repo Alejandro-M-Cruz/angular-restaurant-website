@@ -85,6 +85,7 @@ import {CustomMatPaginatorIntlService} from "./services/custom-mat-paginator-int
 import { JobApplicationComponent } from './pages/job-application/job-application.component';
 import { PdfViewerComponent } from './components/pdf-viewer/pdf-viewer.component';
 import { JobApplicationsAdminComponent } from './pages/job-applications-admin/job-applications-admin.component';
+import { MapComponent } from './components/map/map.component';
 
 registerLocaleData(es);
 
@@ -140,7 +141,8 @@ registerLocaleData(es);
     ReviewsComponent,
     JobApplicationComponent,
     PdfViewerComponent,
-    JobApplicationsAdminComponent
+    JobApplicationsAdminComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

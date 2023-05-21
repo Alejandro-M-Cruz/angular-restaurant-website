@@ -230,7 +230,10 @@
       "storey": "Storey",
       "doorNumber": "Door number",
       "comments": "Additional comments"
-    }
+    },
+    "additionalDataLabel": "Additional data",
+    "tooFarFromRestaurant": "The selected delivery address is too far from the restaurant, please select one within the {{maxDistance}} km radius",
+    "unknownAddress": "We were not able to find the selected address, please introduce a valid one"
   },
   "ordersAdmin":{
     "title":"Orders",

@@ -1,5 +1,7 @@
-
- export default (emailData: { to: string; subject: string; html_body: string; body: string; }) => {
+let lastEmail:any;
+export default (emailData: { to: string; subject: string; html_body: string; body: string; }) => {
+  if(JSON.stringify(emailData) === JSON.stringify(lastEmail)) return
+  lastEmail = emailData;
   const axios = require('axios');
   const url = "https://api.smtp2go.com/v3/email/send";
   const fromAddress = "admlanostracasa@gmail.com";
@@ -10,7 +12,7 @@
     to: [emailData.to],
     subject: emailData.subject,
     html_body: emailData.html_body,
-    text_body: emailData.body 
+    text_body: emailData.body
   };
 
   axios.post(url, data, {
@@ -24,13 +26,5 @@
   .catch((error: any) => {
     console.error(error);
   });
-    // request.post({
-    //   url: url,
-    //   headers: {
-    //     'Content-Type': "application/json"
-    //   },
-    //   body: JSON.stringify(params),
-    //   }, function(err: any, response: any, body: any) {
-    //   console.log(body,formulario);
-    // })
+
  }

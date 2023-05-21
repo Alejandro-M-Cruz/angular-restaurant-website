@@ -9,8 +9,9 @@
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <mat-card-subtitle *ngIf="order.deliveryAddress?.line1">{{order.deliveryAddress?.line1}}</mat-card-subtitle>
-        <mat-card-subtitle *ngIf="order.deliveryAddress?.line2">{{order.deliveryAddress?.line2}}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="order.deliveryAddress?.street">
+          {{order.deliveryAddress?.street + ', ' + order.deliveryAddress?.streetNumber}}
+        </mat-card-subtitle>
         <mat-card *ngFor="let cartItem of order.cartItems" class="m-2">
           <mat-card-header>
             <mat-card-title>

@@ -427,18 +427,22 @@ app-reviews .mat-mdc-paginator-container {
   padding: 1rem;
 }
 
-app-cart div {
-  margin-left: 1rem;
-}
-
 app-cart .buttons-container {
   justify-content: flex-start;
   width: 95%;
 }
 
-/* app-user-order div.ng-star-inserted:not(.menu.ng-star-inserted, .cart-buttons, .sides, .buttons-items), .previous-order-button, h2.ng-star-inserted:not(.page-title.ng-star-inserted), label, .totalPrice {
+app-user-order div.totalPrice p {
   margin-left: 1rem;
-} */
+}
+
+app-tip-selector label {
+  margin-left: 1rem;
+}
+
+app-tip-selector label mat-label {
+  margin-top: 13px;
+}
 
 app-user-order label {
   display: flex;
@@ -538,12 +542,12 @@ app-menu h2{
   padding-bottom:1em;
 }
 
-.social-icons {
-  padding-top: 50%;
+.social-icons  {
+  margin-top: 1.2rem;
 }
 
-.social-icons img{
-  padding-bottom: 25%;
+.social-icons li {
+  margin: 1.5rem 0;
 }
 
 .social-media-icon {
@@ -1312,12 +1316,12 @@ app-menu-sections-admin .mat-mdc-select-value {
     margin-top: 11px;
   }
 
-  app-user-order .management-button {
-    width: 75%;
+  app-tip-selector label mat-label {
+    margin-top: 0px;
   }
 
-  app-user-order .management-button:not(app-cart div.buttons-container .management-button) {
-    margin-left: 12%;
+  app-user-order .management-button {
+    width: 75%;
   }
 
   /* ----- RESERVE HERE ----- */

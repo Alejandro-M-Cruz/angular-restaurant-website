@@ -4,7 +4,8 @@ import { TranslocoService } from '@ngneat/transloco';
 import {OrderCheckoutService} from "../../services/orders/order-checkout.service";
 import {Location} from "@angular/common";
 import {Address} from 'src/app/model/order.model';
-import { FormBuilder, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {DeliveryAddressService} from "../../services/orders/delivery-address.service";
 
 @Component({
   selector: 'app-cart',
@@ -16,27 +17,28 @@ export class CartComponent {
   addressForm = this.formBuilder.group({
     city: ['', [Validators.maxLength(Address.CITY_MAX_LENGTH), Validators.required]],
     street: ['', [Validators.maxLength(Address.STREET_MAX_LENGTH), Validators.required]],
-    streetNumber: ['', [
+    streetNumber: new FormControl<number | null>(null, [
       Validators.min(0),
       Validators.max(Address.MAX_STREET_NUMBER),
       Validators.required
-    ]],
-    postalCode: ['', [
+    ]),
+    postalCode: new FormControl<number | null>(null, [
       Validators.min(Address.MIN_POSTAL_CODE),
       Validators.max(Address.MAX_POSTAL_CODE),
       Validators.required
-    ]],
+    ]),
     additionalData: this.formBuilder.group({
-      storey: ['', [Validators.min(0), Validators.max(100)]],
-      doorNumber: ['', [Validators.min(0), Validators.max(10000)]],
+      storey: new FormControl<number | null>(null, [Validators.min(0), Validators.max(100)]),
+      doorNumber: new FormControl<number | null>(null, [Validators.min(0), Validators.max(10000)]),
       comments: ['', Validators.maxLength(100)]
     })
-  })
+  }, {asyncValidators: [this.deliveryAddressService.deliveryAddressValidator]})
   isHomeDelivery = false
 
   constructor(
     private readonly cartService: CartService,
     private readonly orderCheckoutService: OrderCheckoutService,
+    private readonly deliveryAddressService: DeliveryAddressService,
     private readonly translationService: TranslocoService,
     private readonly formBuilder: FormBuilder,
     public readonly location: Location
@@ -46,15 +48,13 @@ export class CartComponent {
     return this.translationService.getActiveLang()
   }
 
-  clearCart(){
+  clearCart() {
     this.cartService.clearCart()
   }
 
-  async goToCheckout(){
+  onBuyButtonClicked(){
     this.orderCheckoutService.goToCheckout(
-      this.isHomeDelivery ?
-        this.addressForm.value as Address :
-        undefined
+      this.isHomeDelivery ? this.addressForm.value! as Address : undefined
     )
   }
 

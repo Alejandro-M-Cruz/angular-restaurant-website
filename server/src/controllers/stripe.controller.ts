@@ -2,6 +2,9 @@ import Stripe from 'stripe'
 import OrdersDao from '../dao/orders.dao'
 import CheckoutSessionsDao, {CheckoutSessionStatus} from '../dao/checkout-sessions.dao'
 import UsersController from "./users.controller";
+import * as configMsj from "../smtp/configMsj"
+import { HttpClient } from '@angular/common/http';
+
 
 export default class StripeController {
   private static readonly HOME_DELIVERY_FEE_IN_EUR_CENTS = 399
@@ -84,10 +87,12 @@ export default class StripeController {
   private static async onCheckoutSessionCompleted(session: Stripe.Checkout.Session) {
     if (session.payment_status === 'paid') {
       await CheckoutSessionsDao.setStatus(session.id, CheckoutSessionStatus.SUCCEEDED)
-      await OrdersDao.addOrder(await StripeController.extractOrderDataFromCheckoutSession(session))
+      const order = await StripeController.extractOrderDataFromCheckoutSession(session)
+      await OrdersDao.addOrder(order);
     } else {
       await CheckoutSessionsDao.setStatus(session.id, CheckoutSessionStatus.FAILED)
     }
+    
   }
 
   private static async extractOrderDataFromCheckoutSession(stripeSession: Stripe.Checkout.Session): Promise<any> {

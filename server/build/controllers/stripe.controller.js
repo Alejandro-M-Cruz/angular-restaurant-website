@@ -92,7 +92,8 @@ class StripeController {
         return __awaiter(this, void 0, void 0, function* () {
             if (session.payment_status === 'paid') {
                 yield checkout_sessions_dao_1.default.setStatus(session.id, checkout_sessions_dao_1.CheckoutSessionStatus.SUCCEEDED);
-                yield orders_dao_1.default.addOrder(yield StripeController.extractOrderDataFromCheckoutSession(session));
+                const order = yield StripeController.extractOrderDataFromCheckoutSession(session);
+                yield orders_dao_1.default.addOrder(order);
             }
             else {
                 yield checkout_sessions_dao_1.default.setStatus(session.id, checkout_sessions_dao_1.CheckoutSessionStatus.FAILED);

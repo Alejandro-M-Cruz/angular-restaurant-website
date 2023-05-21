@@ -34,7 +34,7 @@ export class NewReservationComponent implements OnInit, OnDestroy {
     private readonly router: Router,
     private readonly alertsService: AlertsService,
     public readonly location: Location,
-    private readonly senderService:SenderEmailService
+    private readonly senderService:SenderEmailService,
   ) { }
 
   ngOnInit() {
@@ -94,11 +94,18 @@ export class NewReservationComponent implements OnInit, OnDestroy {
         .subscribe({
           next: addPromise => {
             addPromise
-              .then(() => this.router.navigate(['/user-reservations']))
+              .then(() => {
+                this.senderService.sendMessage("reservation",this.form.value as Reservation);
+                this.router.navigate(['/user-reservations'])
+              })
               .catch((e: any) => this.showErrorAlert(e.name))
           },
           error: e => this.showErrorAlert(e.name)
         })
+
+
+
+
   }
 
   private async showErrorAlert(errorName: string) {
