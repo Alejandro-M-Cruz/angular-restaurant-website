@@ -22,7 +22,8 @@ export class DeliveryAddressService {
   initMap() {
     this.map = leaflet.map('map').setView(this.restaurantLocation, 11);
     leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
+      attribution: '© OpenStreetMap contributors',
+      crossOrigin: true
     }).addTo(this.map)
     this.configureMarker()
     this.addMarkerAndCircleAroundRestaurantLocation()
@@ -40,7 +41,9 @@ export class DeliveryAddressService {
     let { street, streetNumber, city } = deliveryAddress
     const deliveryLocationUrl =
       'https://nominatim.openstreetmap.org/search?q=' + street +'+'+ streetNumber +'+'+ city +' &format=json'
-    return this.http.get(deliveryLocationUrl).pipe(map((response: any) => {
+    return this.http.get(deliveryLocationUrl, {
+      headers: {}
+    }).pipe(map((response: any) => {
       if (response.length === 0)
         return null
       const deliveryLocation = leaflet.latLng( response[0].lat, response[0].lon)
